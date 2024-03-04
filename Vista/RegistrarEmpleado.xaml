@@ -8,27 +8,104 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegistrarEmpleado">
 
-    <!-- Grid de la columna -->
-    <Grid x:Name="columna">
-        <Image Source="/Recursos/FondoVerde.png" Margin="0,0,623,0" Stretch="UniformToFill" />
-        <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-33,-26,597,299" />
 
-        <!-- Grid llamado "atrás" -->
-        <Grid x:Name="atrás" Margin="0,85,622,305">
-            <Image Source="/Recursos/FlechaAtras.png" Margin="-2,13,128,15" />
-            <Label Content="Ir atrás" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="46,9,0,0" FontSize="20" />
+    <Grid Background="White">
+
+        <!-- Grid de la columna -->
+        <Grid x:Name="columna" Margin="0,0,622,0">
+            <Image Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-31,7,-20,381"  />
+
+            <!-- Grid llamado "atrás" -->
+            <Grid x:Name="atrás" Margin="0,65,0,323" >
+                <Image Source="/Recursos/FlechaAtras.png" Margin="-2,13,128,15" />
+                <Label Content="Ir atrás" VerticalAlignment="Top" Foreground="White" Margin="46,9,62,0" FontSize="20" />
+            </Grid>
+
         </Grid>
 
 
-        <!-- Grid llamado "atrás" -->
-        <Grid x:Name="registrar" Margin="0,150,622,240">
+        <Grid x:Name="registrar" Margin="0,129,622,261">
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
             <Label Content="Registrar &#xD;&#xA;Empleado" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
 
 
+        <Label Content="Empleado" HorizontalAlignment="Left" Height="40" Margin="185,14,0,0" VerticalAlignment="Top" Width="125" FontSize="24"/>
 
-        
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,101,0,0" VerticalAlignment="Top" Width="234" Height="35">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+        </Border>
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="429,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+        </Border>
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="607,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+        </Border>
+
+
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,170,0,0" VerticalAlignment="Top" Width="370" Height="35">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+        </Border>
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="565,170,0,0" VerticalAlignment="Top" Width="215" Height="35">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+        </Border>
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,244,0,0" VerticalAlignment="Top" Width="370" Height="34">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+        </Border>
+
+        <ComboBox HorizontalAlignment="Left" Margin="565,244,0,0" VerticalAlignment="Top" Width="215" BorderBrush="#FF527243" Foreground="#FF527243" Height="34"/>
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,312,0,0" VerticalAlignment="Top" Width="335" Height="34">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+        </Border>
+
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="530,311,0,0" VerticalAlignment="Top" Width="250" Height="35">
+            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+        </Border>
+
+
+        <CheckBox Content="Activo" HorizontalAlignment="Left" Margin="190,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Background="#FF527243"/>
+
+        <Image Source="/Recursos/BotonVerde.png" Margin="655,376,20,43" />
+        <Label Content="Registrar" HorizontalAlignment="Left" Margin="691,377,0,0" VerticalAlignment="Top" Width="86" Foreground="White"/>
+
+
+        <Label Content="Nombre(s)" HorizontalAlignment="Left" Height="27" Margin="190,74,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="A. Paterno" HorizontalAlignment="Left" Height="27" Margin="429,76,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="A. Materno" HorizontalAlignment="Left" Height="27" Margin="607,76,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="Correo Electrónico" HorizontalAlignment="Left" Height="27" Margin="190,145,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="Num. Telefónico" HorizontalAlignment="Left" Height="27" Margin="565,145,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="Dirección" HorizontalAlignment="Left" Height="27" Margin="190,219,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="Puesto" HorizontalAlignment="Left" Height="27" Margin="564,221,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="Usuario" HorizontalAlignment="Left" Height="27" Margin="190,287,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="Contraseña" HorizontalAlignment="Left" Height="27" Margin="530,288,0,0" VerticalAlignment="Top" Width="168"/>
+
+
+
+
+
+
+
+
+
+
+
     </Grid>
 
 </Page>
