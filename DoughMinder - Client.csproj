@@ -55,8 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Vista\InicioSesion.xaml.cs">
+      <DependentUpon>InicioSesion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\RegistroProveedores.xaml.cs">
+      <DependentUpon>RegistroProveedores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
@@ -73,7 +79,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Vista\InicioSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\RegistrarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\RegistroProveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,6 +124,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Vista\login.png" />
     <Resource Include="Recursos\BotonVerde.png" />
     <Resource Include="Recursos\Agregar.png" />
     <Content Include="Recursos\FondoVerde.png" />
