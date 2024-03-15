@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:DoughMinder___Client"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Recursos\Diccionarios\TextboxStyle.xaml"/>
+                <ResourceDictionary Source="Recursos\Diccionarios\CheckboxStyle.xaml"/>
+                <ResourceDictionary Source="Recursos\Diccionarios\TitleLabelStyle.xaml"/>
+                <ResourceDictionary Source="Recursos\Diccionarios\ColumnLabelStyle.xaml"/>
+                <ResourceDictionary Source="Recursos\Diccionarios\ContentLabelStyle.xaml"/>
+                <ResourceDictionary Source="Recursos\Diccionarios\ComboboxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
