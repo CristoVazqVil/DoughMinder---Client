@@ -56,14 +56,44 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Vista\Emergentes\CamposVacios.xaml.cs">
+      <DependentUpon>CamposVacios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\ConexionFallidaBase.xaml.cs">
+      <DependentUpon>ConexionFallidaBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
+      <DependentUpon>InsumoExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\ProductoExistente.xaml.cs">
+      <DependentUpon>ProductoExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\RecetaExistente.xaml.cs">
+      <DependentUpon>RecetaExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\RegistroExitoso.xaml.cs">
+      <DependentUpon>RegistroExitoso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\SinConexionServidor.xaml.cs">
+      <DependentUpon>SinConexionServidor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\RegistroInsumos.xaml.cs">
+      <DependentUpon>RegistroInsumos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\RegistroProductos.xaml.cs">
+      <DependentUpon>RegistroProductos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\RegistroProveedores.xaml.cs">
       <DependentUpon>RegistroProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\RegistroRecetas.xaml.cs">
+      <DependentUpon>RegistroRecetas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
@@ -84,11 +114,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Recursos\Diccionarios\ColumnLabelStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Recursos\Diccionarios\ComboboxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Recursos\Diccionarios\ContentLabelStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Recursos\Diccionarios\TextboxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Recursos\Diccionarios\TitleLabelStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\CamposVacios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ConexionFallidaBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\InsumoExistente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ProductoExistente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\RecetaExistente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\RegistroExitoso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\SinConexionServidor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,7 +170,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\RegistroInsumos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\RegistroProductos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\RegistroProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\RegistroRecetas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,11 +219,42 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Recursos\IconoMas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Vista\login.png" />
-    <Resource Include="Recursos\BotonVerde.png" />
+    <Resource Include="Recursos\BotonVerde.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Recursos\Agregar.png" />
-    <Content Include="Recursos\FondoVerde.png" />
-    <Resource Include="Recursos\FlechaAtras.png" />
+    <Resource Include="Recursos\Advertencia.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\Exito.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\FondoAmarillo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\FondoRojo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\BotonAmarillo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\BotonRojo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recursos\BotonAzul.png" />
+    <Content Include="Recursos\FondoVerde.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Recursos\FlechaAtras.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Recursos\MicrosoftTeams-image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
