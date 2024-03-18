@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoughMinder___Client.Vista.Emergentes"
         mc:Ignorable="d"
-        Title="ProductoExistente" Height="250" Width="450">
+        Title="ProductoExistente" Height="275" Width="468" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <Grid Margin="0,0,0,181">
         <Image Source="/Recursos/FondoAmarillo.png" Stretch="UniformToFill"  />
         <Image Source="/Recursos/Advertencia.png" Stretch="UniformToFill" Margin="23,82,341,-103"  />

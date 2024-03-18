@@ -64,7 +64,7 @@
         
         <Label Content="Cantidad:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="183,319,0,0" VerticalAlignment="Top" Width="215"/>
 
-        <DataGrid Name="dtgTablaRecetas" AutoGenerateColumns="False" Margin="499,141,16,157">
+        <DataGrid Name="dtgTablaRecetas" AutoGenerateColumns="False" Margin="499,141,10,157">
             <DataGrid.Style>
                 <Style TargetType="DataGrid">
                     <Setter Property="Foreground" Value="Black"/>
