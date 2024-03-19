@@ -40,7 +40,8 @@ namespace DoughMinder___Client.Vista
             {
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
-            } else
+            } 
+            else
             {
                 try
                 {
@@ -72,7 +73,6 @@ namespace DoughMinder___Client.Vista
                         {
                             MostrarMensajeSinConexionBase();
                         }
-
                     }
                 }
                 catch (TimeoutException ex)
@@ -191,6 +191,12 @@ namespace DoughMinder___Client.Vista
         {
             TextBox textBox = sender as TextBox;
 
+            if (textBox.Text.Length >= 10)
+            {
+                e.Handled = true;
+                return;
+            }
+
             Regex regex = new Regex(@"^\d+(\.\d{0,2})?$");
             e.Handled = !regex.IsMatch(textBox.Text + e.Text);
         }
@@ -199,8 +205,25 @@ namespace DoughMinder___Client.Vista
         {
             TextBox textBox = sender as TextBox;
 
+            if (textBox.Text.Length >= 12)
+            {
+                e.Handled = true;
+                return;
+            }
+
             Regex regex = new Regex(@"^\d+(\.\d{0,3})?$");
             e.Handled = !regex.IsMatch(textBox.Text + e.Text);
+        }
+
+        private void EliminarCaracteresNombre(object sender, TextCompositionEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            if (textBox.Text.Length >= 60 || !Regex.IsMatch(e.Text, @"^[a-zA-ZáéíóúüÁÉÍÓÚÜ]+$"))
+            {
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

@@ -1352,6 +1352,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/GuardarInsumo", ReplyAction="http://tempuri.org/IInsumo/GuardarInsumoResponse")]
         System.Threading.Tasks.Task<int> GuardarInsumoAsync(DoughMinder___Client.DoughMinderServicio.Insumo insumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumos", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumosResponse")]
+        System.Collections.Generic.Dictionary<int, string> RecuperarInsumos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumos", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumosResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RecuperarInsumosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1387,6 +1393,61 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> GuardarInsumoAsync(DoughMinder___Client.DoughMinderServicio.Insumo insumo) {
             return base.Channel.GuardarInsumoAsync(insumo);
+        }
+        
+        public System.Collections.Generic.Dictionary<int, string> RecuperarInsumos() {
+            return base.Channel.RecuperarInsumos();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RecuperarInsumosAsync() {
+            return base.Channel.RecuperarInsumosAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DoughMinderServicio.IReceta")]
+    public interface IReceta {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/GuardarReceta", ReplyAction="http://tempuri.org/IReceta/GuardarRecetaResponse")]
+        int GuardarReceta(DoughMinder___Client.DoughMinderServicio.Receta receta, System.Collections.Generic.Dictionary<int, float> listaInsumos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/GuardarReceta", ReplyAction="http://tempuri.org/IReceta/GuardarRecetaResponse")]
+        System.Threading.Tasks.Task<int> GuardarRecetaAsync(DoughMinder___Client.DoughMinderServicio.Receta receta, System.Collections.Generic.Dictionary<int, float> listaInsumos);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRecetaChannel : DoughMinder___Client.DoughMinderServicio.IReceta, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RecetaClient : System.ServiceModel.ClientBase<DoughMinder___Client.DoughMinderServicio.IReceta>, DoughMinder___Client.DoughMinderServicio.IReceta {
+        
+        public RecetaClient() {
+        }
+        
+        public RecetaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RecetaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RecetaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RecetaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int GuardarReceta(DoughMinder___Client.DoughMinderServicio.Receta receta, System.Collections.Generic.Dictionary<int, float> listaInsumos) {
+            return base.Channel.GuardarReceta(receta, listaInsumos);
+        }
+        
+        public System.Threading.Tasks.Task<int> GuardarRecetaAsync(DoughMinder___Client.DoughMinderServicio.Receta receta, System.Collections.Generic.Dictionary<int, float> listaInsumos) {
+            return base.Channel.GuardarRecetaAsync(receta, listaInsumos);
         }
     }
 }

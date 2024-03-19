@@ -30,7 +30,7 @@
 
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Insumo" Height="40" Margin="185,14,0,0" Width="125"/>
 
-        <TextBox Name="txbNombreInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,108,313,0"/>
+        <TextBox Name="txbNombreInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,108,313,0" PreviewTextInput="EliminarCaracteresNombre"/>
 
         <TextBox Name="txbPrecioInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,303,313,0" PreviewTextInput="EliminarCaracteresPrecio"/>
 
