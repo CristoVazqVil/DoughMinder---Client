@@ -24,33 +24,33 @@
 
         <Grid x:Name="registrar" Margin="0,129,622,261">
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+            <Label Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="46,0,0,0" FontSize="20" Width="113" Height="62" />
         </Grid>
 
 
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Insumo" Height="40" Margin="185,14,0,0" Width="125"/>
 
-        <TextBox Name="txbNombreInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,108,313,0"/>
+        <TextBox Name="txbNombreInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,108,313,0" PreviewTextInput="EliminarCaracteresNombre"/>
 
-        <TextBox Name="txbPrecioInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,303,313,0"/>
+        <TextBox Name="txbPrecioInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,303,313,0" PreviewTextInput="EliminarCaracteresPrecio"/>
 
-        <TextBox Name="txbCantidadInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,203,313,0"/>
+        <TextBox Name="txbCantidadInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,203,313,0" PreviewTextInput="EliminarCaracteresCantidad"/>
 
-        <TextBox Name="txbImagenInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="517,190,10,0"/>
+        <TextBox Name="txbImagenInsumo" IsEnabled="False" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="Sin imagen adjunta..." Padding="5" Margin="517,190,10,0"/>
 
-        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="404,370,240,28" />
+        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="404,370,240,28" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
 
-        <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,378,266,36" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
+        <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,375,266,39" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
 
-        <Label Content="Nombre del insumo" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,76,0,0" VerticalAlignment="Top" Width="215"/>
+        <Label Name="lblNombre" Content="Nombre del insumo" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,76,0,0" VerticalAlignment="Top" Width="215"/>
 
-        <Label Content="Imagen del insumo:" FontSize="17" HorizontalAlignment="Left" Height="37" Margin="517,153,0,0" VerticalAlignment="Top" Width="157"/>
+        <Label Name="lblImagen" Content="Imagen del insumo:" FontSize="17" HorizontalAlignment="Left" Height="37" Margin="517,153,0,0" VerticalAlignment="Top" Width="157"/>
 
-        <Label Content="Cantidad actual (Kg/L):" FontSize="17" HorizontalAlignment="Left" Height="30" Margin="185,172,0,0" VerticalAlignment="Top" Width="175"/>
+        <Label Name="lblCantidad" Content="Cantidad actual (Kg/L):" FontSize="17" HorizontalAlignment="Left" Height="35" Margin="185,168,0,0" VerticalAlignment="Top" Width="175"/>
 
-        <Label Content="Precio por kilo/litro:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,271,0,0" VerticalAlignment="Top" Width="177"/>
+        <Label Name="lblPrecio" Content="Precio por kilo/litro:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,271,0,0" VerticalAlignment="Top" Width="177"/>
 
-        <Image Name="btnElegirImagen" Source="/Recursos/IconoMas.png" Margin="739,199,20,210" />
+        <Image Name="btnAdjuntarImagen" Source="/Recursos/IconoMas.png" Margin="739,199,20,210" MouseEnter="CambiarAdjuntarAzul" MouseLeave="CambiarAdjuntarVerde" MouseDown="AdjuntarImagen" />
 
     </Grid>
 </Page>

@@ -23,5 +23,20 @@ namespace DoughMinder___Client.Vista.Emergentes
         {
             InitializeComponent();
         }
+
+        private void CerrarMensaje(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CambiarAzul(object sender, MouseEventArgs e)
+        {
+            btnOK.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void Restaurar(object sender, MouseEventArgs e)
+        {
+            btnOK.Source = new BitmapImage(new Uri("/Recursos/BotonRojo.png", UriKind.Relative));
+        }
     }
 }
