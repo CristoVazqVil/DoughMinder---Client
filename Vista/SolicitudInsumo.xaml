@@ -1,0 +1,82 @@
+﻿<Page x:Class="DoughMinder___Client.Vista.SolicitudInsumo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DoughMinder___Client.Vista"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SolicitudInsumo">
+
+    <Grid Background="White">
+
+        <Grid x:Name="columna" Margin="0,0,622,0">
+            <Image Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-31,7,-20,381"  />
+
+            <Grid x:Name="atrás" Margin="0,65,0,323" >
+                <Image Name="btnAtras" Source="/Recursos/FlechaAtras.png" Margin="-2,13,128,15" />
+                <Label Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás" Margin="49,10,0,0"/>
+            </Grid>
+
+        </Grid>
+
+
+        <Grid x:Name="registro" Margin="0,129,622,261">
+            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
+            <Label Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="46,0,0,0" FontSize="19" Width="113" Height="62" />
+        </Grid>
+
+        <Grid x:Name="solicitud" Margin="0,203,622,187">
+            <Image Source="/Recursos/IconoSolicitudInsumo.png" Margin="-2,13,128,15" />
+            <Label Content="Solicitar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="46,0,0,0" FontSize="19" Width="113" Height="62" />
+        </Grid>
+
+        <StackPanel>
+
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Label Style="{DynamicResource LabelTitleStyle}" Content="Solicitud de insumo" Height="40" Margin="205,26,0,0" Width="250"/>
+
+
+
+                <Grid Margin="205,81,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Source="/Recursos/IconoMas.png" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Width="30" Margin="10"/>
+                    <Button Style="{DynamicResource ButtonStyle1}" Content="Agregar" x:Name="btnAgregarInsumo" Grid.Column="0" Grid.Row="2" Margin="0,10,60,10"/>
+                    <Label Name="lblInsumo" Grid.Row="0" Grid.Column="0" Content="Insumo:" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="215"/>
+                    <ComboBox Name="cmbInsumo" Grid.Row="1" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Height="40"/>
+                    <ComboBox x:Name="cmbCantidad" Grid.Column="1" Grid.Row="1" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Height="40"/>
+                    <Label x:Name="lblCantidad" Grid.Column="1" Grid.Row="0" Content="Cantidad:" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="214"/>
+                </Grid>
+
+
+                <Label Name="lblProveedor" Content="Proveedor:" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="215" Margin="205,253,0,0"/>
+
+                <ComboBox Name="cmbProveedor" Margin="205,285,303,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Height="41"/>
+
+                <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="412,386,218,12" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
+
+                <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,390,236,24" VerticalContentAlignment="Top" Foreground="White"/>
+
+
+
+                <Label Name="lblCostoTotal" Content="Costo total: $0" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="205,351,0,0" VerticalAlignment="Top" Width="177"/>
+                <Label x:Name="lblFecha" Content="Fecha: 03/03/2024 a las 15:40" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="473,34,0,0" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="290"/>
+
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
