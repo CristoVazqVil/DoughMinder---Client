@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Recursos\Diccionarios\ColumnLabelStyle.xaml"/>
                 <ResourceDictionary Source="Recursos\Diccionarios\ContentLabelStyle.xaml"/>
                 <ResourceDictionary Source="Recursos\Diccionarios\ComboboxStyle.xaml"/>
+                <ResourceDictionary Source="Recursos\Diccionarios\AddFieldsButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
