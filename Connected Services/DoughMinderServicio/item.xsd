@@ -1,162 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Clases" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Clases" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="Insumo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CantidadKiloLitro" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IdInsumo" type="xs:int" />
-      <xs:element minOccurs="0" name="InsumoReceta" nillable="true" type="tns:ArrayOfInsumoReceta" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PrecioKiloLitro" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="RutaFoto" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Insumo" nillable="true" type="tns:Insumo" />
-  <xs:complexType name="ArrayOfInsumoReceta">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="InsumoReceta" nillable="true" type="tns:InsumoReceta" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfInsumoReceta" nillable="true" type="tns:ArrayOfInsumoReceta" />
-  <xs:complexType name="InsumoReceta">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="IdInsumo" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="IdInsumoReceta" type="xs:int" />
-      <xs:element minOccurs="0" name="IdReceta" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Insumo" nillable="true" type="tns:Insumo" />
-      <xs:element minOccurs="0" name="Receta" nillable="true" type="tns:Receta" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="InsumoReceta" nillable="true" type="tns:InsumoReceta" />
-  <xs:complexType name="Receta">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IdReceta" type="xs:int" />
-      <xs:element minOccurs="0" name="InsumoReceta" nillable="true" type="tns:ArrayOfInsumoReceta" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:ArrayOfProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Receta" nillable="true" type="tns:Receta" />
-  <xs:complexType name="ArrayOfProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Producto" nillable="true" type="tns:Producto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfProducto" nillable="true" type="tns:ArrayOfProducto" />
-  <xs:complexType name="Producto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IdReceta" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PedidoProducto" nillable="true" type="tns:ArrayOfPedidoProducto" />
-      <xs:element minOccurs="0" name="Precio" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Receta" nillable="true" type="tns:Receta" />
-      <xs:element minOccurs="0" name="Restricciones" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RutaFoto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SolicitudProducto" nillable="true" type="tns:ArrayOfSolicitudProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Producto" nillable="true" type="tns:Producto" />
-  <xs:complexType name="ArrayOfPedidoProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PedidoProducto" nillable="true" type="tns:PedidoProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPedidoProducto" nillable="true" type="tns:ArrayOfPedidoProducto" />
-  <xs:complexType name="PedidoProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ClaveProducto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdPedido" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="IdPedidoProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="Pedido" nillable="true" type="tns:Pedido" />
-      <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:Producto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PedidoProducto" nillable="true" type="tns:PedidoProducto" />
-  <xs:complexType name="Pedido">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EstadoPedido" nillable="true" type="tns:EstadoPedido" />
-      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="IdEstadoPedido" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="IdPedido" type="xs:int" />
-      <xs:element minOccurs="0" name="PedidoProducto" nillable="true" type="tns:ArrayOfPedidoProducto" />
-      <xs:element minOccurs="0" name="TipoEntrega" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Pedido" nillable="true" type="tns:Pedido" />
-  <xs:complexType name="EstadoPedido">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="EstadoPedido1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdEstadoPedido" type="xs:int" />
-      <xs:element minOccurs="0" name="Pedido" nillable="true" type="tns:ArrayOfPedido" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="EstadoPedido" nillable="true" type="tns:EstadoPedido" />
-  <xs:complexType name="ArrayOfPedido">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pedido" nillable="true" type="tns:Pedido" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPedido" nillable="true" type="tns:ArrayOfPedido" />
-  <xs:complexType name="ArrayOfSolicitudProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="SolicitudProducto" nillable="true" type="tns:SolicitudProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSolicitudProducto" nillable="true" type="tns:ArrayOfSolicitudProducto" />
-  <xs:complexType name="SolicitudProducto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ClaveProducto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdSolicitud" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSolicitudProducto" type="xs:int" />
-      <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:Producto" />
-      <xs:element minOccurs="0" name="Solicitud" nillable="true" type="tns:Solicitud" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SolicitudProducto" nillable="true" type="tns:SolicitudProducto" />
-  <xs:complexType name="Solicitud">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="IdProveedor" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSolicitud" type="xs:int" />
-      <xs:element minOccurs="0" name="Proveedor" nillable="true" type="tns:Proveedor" />
-      <xs:element minOccurs="0" name="SolicitudProducto" nillable="true" type="tns:ArrayOfSolicitudProducto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Solicitud" nillable="true" type="tns:Solicitud" />
-  <xs:complexType name="Proveedor">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdProveedor" type="xs:int" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Solicitud" nillable="true" type="tns:ArrayOfSolicitud" />
-      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Proveedor" nillable="true" type="tns:Proveedor" />
-  <xs:complexType name="ArrayOfSolicitud">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Solicitud" nillable="true" type="tns:Solicitud" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSolicitud" nillable="true" type="tns:ArrayOfSolicitud" />
-  <xs:complexType name="Movimiento">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdMovimiento" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Movimiento" nillable="true" type="tns:Movimiento" />
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Clases" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GuardarInsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="insumo" nillable="true" type="q1:Insumo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarInsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarInsumoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInsumos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInsumosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarInsumosResult" nillable="true" type="q2:ArrayOfKeyValueOfintstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarReceta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="receta" nillable="true" type="q3:Receta" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listaInsumos" nillable="true" type="q4:ArrayOfKeyValueOfintfloat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarRecetaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarRecetaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="empleado" nillable="true" type="q5:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarEmpleadoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarEmpleados">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarEmpleadosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarEmpleadosResult" nillable="true" type="q6:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarProveedor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="proveedor" nillable="true" type="q7:Proveedor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarProveedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarProveedorResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
