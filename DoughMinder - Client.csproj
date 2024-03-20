@@ -162,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Recursos\Diccionarios\ErrorLabelStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Recursos\Diccionarios\TextboxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

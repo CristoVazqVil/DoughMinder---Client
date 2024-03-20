@@ -151,4 +151,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSolicitud" nillable="true" type="tns:ArrayOfSolicitud" />
+  <xs:complexType name="Movimiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdMovimiento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Movimiento" nillable="true" type="tns:Movimiento" />
 </xs:schema>

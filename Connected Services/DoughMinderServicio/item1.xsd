@@ -43,4 +43,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RegistrarMovimiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="movimiento" nillable="true" type="q5:Movimiento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarMovimientoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarMovimientoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
