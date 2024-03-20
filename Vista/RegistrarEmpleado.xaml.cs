@@ -23,12 +23,15 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class RegistrarEmpleado : Page
     {
-        public RegistrarEmpleado()
+        public RegistrarEmpleado(string nombre)
         {
             InitializeComponent();
 
-            //TODO: PERMITIR SOLO LETRAS EN TODOS LOS CAMPOS Y PERMITIR SOLO NÚMEROS EN TELEFONO
-            //DESHABILITAR BOTÓN ACTIVO
+
+            txbNombre.Text = nombre;
+
+
+
 
             txbNombre.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbPaterno.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;

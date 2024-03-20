@@ -26,18 +26,27 @@
         </Grid>
 
 
-        <Grid x:Name="registrar" Margin="0,129,622,261">
+        <Grid x:Name="registrar" Margin="0,129,622,261" MouseDown="AbrirRegistrarEmpleado">
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
             <Label Content="Registrar &#xD;&#xA;Empleado" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
+
 
 
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Empleados" Height="40" Margin="185,14,0,0" Width="125"/>
 
 
         <CheckBox Style="{DynamicResource CheckBoxStyle1}" Content="Activo" HorizontalAlignment="Left" Margin="472,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="82"  Visibility="Collapsed"/>
-        
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="207,84,41,43"/>
+
+        <ListBox x:Name="lstEmpleados" Margin="207,84,41,43" MouseDoubleClick="MostrarEmpleado" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Nombre}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 
