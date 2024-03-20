@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
       xmlns:local="clr-namespace:DoughMinder___Client.Vista"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -34,43 +35,47 @@
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Empleado" Height="40" Margin="185,14,0,0" Width="125"/>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,101,0,0" VerticalAlignment="Top" Width="234" Height="35">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+            <TextBox Name="txbNombre" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
         </Border>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="429,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+            <TextBox Name="txbPaterno" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
         </Border>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="607,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+            <TextBox TextWrapping="Wrap" Name="txbMaterno" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
         </Border>
 
-        <TextBox Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Width="370" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="190,170,240,0"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Name="txbCorreo"  Padding="5" Margin="190,170,240,0"/>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="565,170,0,0" VerticalAlignment="Top" Width="215" Height="35">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+            <TextBox TextWrapping="Wrap" Name="txbTelefono" BorderThickness="0" Background="Transparent" Padding="5" Margin="9,-1,27,1"/>
         </Border>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,244,0,0" VerticalAlignment="Top" Width="370" Height="34">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+            <TextBox TextWrapping="Wrap" Name="txbDireccion"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
         </Border>
 
-        <ComboBox Style="{DynamicResource ComboBoxStyle1}" HorizontalAlignment="Left" Margin="565,244,0,0" VerticalAlignment="Top" Width="215" Height="34"/>
+        <ComboBox Style="{DynamicResource ComboBoxStyle1}" HorizontalAlignment="Left" Name="cbPuesto" Margin="565,244,0,0" VerticalAlignment="Top" Width="215" Height="34" FontSize="16">
+            <ComboBoxItem Content="Gerente"/>
+            <ComboBoxItem Content="Cocinero"/>
+            <ComboBoxItem Content="Cajero"/>
+        </ComboBox>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,312,0,0" VerticalAlignment="Top" Width="335" Height="34">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+            <TextBox TextWrapping="Wrap" Name="txbUsuario" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
         </Border>
 
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="530,311,0,0" VerticalAlignment="Top" Width="250" Height="35">
-            <TextBox TextWrapping="Wrap" Text="TextBox" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+            <PasswordBox Name="txbContrasena" PasswordChar="♥" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
         </Border>
 
 
-        <CheckBox Style="{DynamicResource CheckBoxStyle1}" Content="Activo" HorizontalAlignment="Left" Margin="190,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81"/>
+        <CheckBox Style="{DynamicResource CheckBoxStyle1}" Content="Activo" HorizontalAlignment="Left" Margin="190,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Visibility="Hidden"/>
 
-        <Image Source="/Recursos/BotonVerde.png" Margin="655,376,20,43" />
-        <Label Content="Registrar" HorizontalAlignment="Left" Margin="691,377,0,0" VerticalAlignment="Top" Width="86" Foreground="White"/>
+        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="655,376,20,43" MouseDown="Registrar" />
+        <Label Content="Registrar" HorizontalAlignment="Left" Margin="691,377,0,0" VerticalAlignment="Top" Width="86" Foreground="White" IsHitTestVisible="False" />
 
 
         <Label Style="{DynamicResource LabelContentStyle}" Content="Nombre(s)" Height="27" Margin="190,74,0,0" Width="168"/>
@@ -91,6 +96,12 @@
 
         <Label Content="Contraseña" HorizontalAlignment="Left" Height="27" Margin="530,288,0,0" VerticalAlignment="Top" Width="168"/>
 
+        <Label Content="Confirma Contraseña" HorizontalAlignment="Left" Height="27" Margin="189,354,0,0" VerticalAlignment="Top" Width="168"/>
+
+
+        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,381,0,0" VerticalAlignment="Top" Width="250" Height="35">
+            <PasswordBox Name="txbConfirmaContrasena" PasswordChar="♥" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
+        </Border>
 
     </Grid>
 

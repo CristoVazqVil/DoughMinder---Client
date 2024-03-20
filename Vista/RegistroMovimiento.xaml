@@ -36,7 +36,6 @@
 
         <TextBox Name="txtbDescripcion" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="68" TextWrapping="Wrap" Text="" Padding="5" Margin="185,203,35,0" MaxLength="100"/>
 
-        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="404,370,240,28" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
 
         <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,375,266,39" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
 

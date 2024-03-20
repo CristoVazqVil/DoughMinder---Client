@@ -66,7 +66,6 @@
 
                 <ComboBox Name="cmbProveedor" Margin="205,285,303,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Height="41"/>
 
-                <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="412,386,218,12" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
 
                 <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,390,236,24" VerticalContentAlignment="Top" Foreground="White"/>
 
