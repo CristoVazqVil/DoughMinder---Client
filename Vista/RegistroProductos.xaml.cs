@@ -68,6 +68,7 @@ namespace DoughMinder___Client.Vista
                     producto.RutaFoto = txbImagenProducto.Text;
                     producto.Estado = true;
 
+
                     if (ckbSinReceta.IsChecked == false)
                     {
                         RecetaItem recetaSeleccionada = dtgTablaRecetas.SelectedItem as RecetaItem;
