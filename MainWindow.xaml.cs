@@ -23,7 +23,7 @@ namespace DoughMinder___Client
         public MainWindow()
         {
             InitializeComponent();
-            framePage.Navigate(new Uri("/Vista/RegistrarEmpleado.xaml", UriKind.Relative));
+            framePage.Navigate(new Uri("/Vista/RegistroProveedores.xaml", UriKind.Relative));
         }
     }
 }

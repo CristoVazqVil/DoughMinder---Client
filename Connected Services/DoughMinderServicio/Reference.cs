@@ -1607,11 +1607,6 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public static implicit operator Puesto(int v)
-        {
-            throw new NotImplementedException();
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1766,6 +1761,53 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado) {
             return base.Channel.GuardarEmpleadoAsync(empleado);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DoughMinderServicio.IProveedor")]
+    public interface IProveedor {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/GuardarProveedor", ReplyAction="http://tempuri.org/IProveedor/GuardarProveedorResponse")]
+        int GuardarProveedor(DoughMinder___Client.DoughMinderServicio.Proveedor proveedor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/GuardarProveedor", ReplyAction="http://tempuri.org/IProveedor/GuardarProveedorResponse")]
+        System.Threading.Tasks.Task<int> GuardarProveedorAsync(DoughMinder___Client.DoughMinderServicio.Proveedor proveedor);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IProveedorChannel : DoughMinder___Client.DoughMinderServicio.IProveedor, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ProveedorClient : System.ServiceModel.ClientBase<DoughMinder___Client.DoughMinderServicio.IProveedor>, DoughMinder___Client.DoughMinderServicio.IProveedor {
+        
+        public ProveedorClient() {
+        }
+        
+        public ProveedorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ProveedorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ProveedorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ProveedorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int GuardarProveedor(DoughMinder___Client.DoughMinderServicio.Proveedor proveedor) {
+            return base.Channel.GuardarProveedor(proveedor);
+        }
+        
+        public System.Threading.Tasks.Task<int> GuardarProveedorAsync(DoughMinder___Client.DoughMinderServicio.Proveedor proveedor) {
+            return base.Channel.GuardarProveedorAsync(proveedor);
         }
     }
 }

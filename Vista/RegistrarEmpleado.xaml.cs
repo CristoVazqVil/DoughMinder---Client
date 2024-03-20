@@ -44,71 +44,73 @@ namespace DoughMinder___Client.Vista
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
             }
-            if (!ConfirmarContrasena())
-            {
-                return;
-            }
             else
             {
-                try
+                if (!ConfirmarContrasena())
                 {
-                    DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
-                    DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
-
-                    empleado.Nombre = txbNombre.Text;
-                    empleado.Paterno = txbPaterno.Text;
-                    empleado.Materno = txbMaterno.Text;
-                    empleado.Direccion = txbDireccion.Text;
-                    empleado.Telefono = txbTelefono.Text;
-                    empleado.Usuario = txbUsuario.Text;
-                    empleado.Contraseña = txbContrasena.Password;
-                    empleado.Estado = true;
-
-                    ComboBoxItem item = (ComboBoxItem)cbPuesto.SelectedItem;
-                    string puestoSeleccionado = item.Content.ToString();
-
-                    switch (puestoSeleccionado)
+                    return;
+                }
+                else
+                {
+                    try
                     {
-                        case "Gerente":
-                            empleado.IdPuesto = 1;
-                            break;
-                        case "Cocinero":
-                            empleado.IdPuesto = 2;
-                            break;
-                        case "Cajero":
-                            empleado.IdPuesto = 3;
-                            break;
-                        default:
+                        DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
+                        DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
 
-                            break;
-                    }
+                        empleado.Nombre = txbNombre.Text;
+                        empleado.Paterno = txbPaterno.Text;
+                        empleado.Materno = txbMaterno.Text;
+                        empleado.Direccion = txbDireccion.Text;
+                        empleado.Telefono = txbTelefono.Text;
+                        empleado.Usuario = txbUsuario.Text;
+                        empleado.Contraseña = txbContrasena.Password;
+                        empleado.Estado = true;
 
-                    int codigo = cliente.GuardarEmpleado(empleado);
+                        ComboBoxItem item = (ComboBoxItem)cbPuesto.SelectedItem;
+                        string puestoSeleccionado = item.Content.ToString();
 
-
-                    if (codigo == 1)
-                    {
-                        MostrarMensajeRegistroExitoso();
-                    }
-                    else
-                    {
-                        if (codigo == 0)
+                        switch (puestoSeleccionado)
                         {
-                            MostrarMensajeInsumoExistente();
+                            case "Gerente":
+                                empleado.IdPuesto = 1;
+                                break;
+                            case "Cocinero":
+                                empleado.IdPuesto = 2;
+                                break;
+                            case "Cajero":
+                                empleado.IdPuesto = 3;
+                                break;
+                            default:
+
+                                break;
+                        }
+
+                        int codigo = cliente.GuardarEmpleado(empleado);
+
+                        if (codigo == 1)
+                        {
+                            MostrarMensajeRegistroExitoso();
                         }
                         else
                         {
-                            MostrarMensajeSinConexionBase();
+                            if (codigo == 0)
+                            {
+                                MostrarMensajeInsumoExistente();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
                         }
                     }
-                }
-                catch (TimeoutException ex)
-                {
-                    MostrarMensajeSinConexionServidor();
-                }
-                catch (CommunicationException ex)
-                {
-                    MostrarMensajeSinConexionServidor();
+                    catch (TimeoutException ex)
+                    {
+                        MostrarMensajeSinConexionServidor();
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        MostrarMensajeSinConexionServidor();
+                    }
                 }
             }
         }
@@ -144,6 +146,7 @@ namespace DoughMinder___Client.Vista
             registroExitoso.Show();
         }
 
+        //CORREGIR
         private void MostrarMensajeInsumoExistente()
         {
             InsumoExistente insumoExistente = new InsumoExistente();
@@ -179,7 +182,7 @@ namespace DoughMinder___Client.Vista
                 return false;
             }
 
-            return true; // Las contraseñas coinciden
+            return true; 
         }
 
 

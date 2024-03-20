@@ -72,7 +72,7 @@
         </Border>
 
 
-        <CheckBox Style="{DynamicResource CheckBoxStyle1}" Content="Activo" HorizontalAlignment="Left" Margin="190,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Visibility="Hidden"/>
+        <CheckBox Style="{DynamicResource CheckBoxStyle1}" Content="Activo" HorizontalAlignment="Left" Margin="472,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="82"  Visibility="Collapsed"/>
 
         <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="655,376,20,43" MouseDown="Registrar" />
         <Label Content="Registrar" HorizontalAlignment="Left" Margin="691,377,0,0" VerticalAlignment="Top" Width="86" Foreground="White" IsHitTestVisible="False" />
