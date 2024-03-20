@@ -80,7 +80,6 @@ namespace DoughMinder___Client.Vista
             
         }
 
-
         private bool ValidarCamposVacios()
         {
             if (string.IsNullOrWhiteSpace(txbNombre.Text) ||

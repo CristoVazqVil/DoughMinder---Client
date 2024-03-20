@@ -1726,6 +1726,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/GuardarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/GuardarEmpleadoResponse")]
         System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/RecuperarEmpleados", ReplyAction="http://tempuri.org/IEmpleado/RecuperarEmpleadosResponse")]
+        System.Collections.Generic.Dictionary<string, string> RecuperarEmpleados();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/RecuperarEmpleados", ReplyAction="http://tempuri.org/IEmpleado/RecuperarEmpleadosResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> RecuperarEmpleadosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1761,6 +1767,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado) {
             return base.Channel.GuardarEmpleadoAsync(empleado);
+        }
+        
+        public System.Collections.Generic.Dictionary<string, string> RecuperarEmpleados() {
+            return base.Channel.RecuperarEmpleados();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, string>> RecuperarEmpleadosAsync() {
+            return base.Channel.RecuperarEmpleadosAsync();
         }
     }
     
