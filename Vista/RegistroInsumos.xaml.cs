@@ -49,7 +49,7 @@ namespace DoughMinder___Client.Vista
                     DoughMinderServicio.Insumo insumo = new DoughMinderServicio.Insumo();
 
                     decimal precio; 
-                    decimal.TryParse(txbNombreInsumo.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out precio);
+                    decimal.TryParse(txbPrecioInsumo.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out precio);
 
                     insumo.Nombre = txbNombreInsumo.Text;
                     insumo.CantidadKiloLitro = double.Parse(txbCantidadInsumo.Text);
@@ -166,25 +166,25 @@ namespace DoughMinder___Client.Vista
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();
-            sinConexionServidor.Show();
+            sinConexionServidor.ShowDialog();
         }
 
         private void MostrarMensajeRegistroExitoso()
         {
             RegistroExitoso registroExitoso = new RegistroExitoso();
-            registroExitoso.Show();
+            registroExitoso.ShowDialog();
         }
 
         private void MostrarMensajeInsumoExistente()
         {
             InsumoExistente insumoExistente = new InsumoExistente();
-            insumoExistente.Show();
+            insumoExistente.ShowDialog();
         }
 
         private void MostrarMensajeSinConexionBase()
         {
             ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
-            conexionFallidaBase.Show();
+            conexionFallidaBase.ShowDialog();
         }
 
         private void EliminarCaracteresPrecio(object sender, TextCompositionEventArgs e)

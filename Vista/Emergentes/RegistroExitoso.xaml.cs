@@ -36,7 +36,7 @@ namespace DoughMinder___Client.Vista.Emergentes
 
         private void Restaurar(object sender, MouseEventArgs e)
         {
-            btnOK.Source = new BitmapImage(new Uri("/Recursos/BotonAmarillo.png", UriKind.Relative));
+            btnOK.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
         }
     }
 }

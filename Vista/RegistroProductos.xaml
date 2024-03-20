@@ -30,41 +30,41 @@
 
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Producto" Height="40" Margin="185,9,0,0" Width="125"/>
 
-        <TextBox Name="txbNombreProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,71,356,0"/>
+        <TextBox Name="txbNombreProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="185,71,356,0" PreviewTextInput="EliminarCaracteresNombre"/>
 
-        <TextBox Name="txbPrecioProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="632,72,10,0"/>
+        <TextBox Name="txbPrecioProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="632,72,10,0" PreviewTextInput="EliminarCaracteresPrecio"/>
 
-        <TextBox Name="txbCodigoProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="452,71,173,0"/>
+        <TextBox Name="txbCodigoProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="452,71,173,0" PreviewTextInput="EliminarCaracteresCodigo"/>
 
-        <TextBox Name="txbImagenProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="493,330,10,0"/>
+        <TextBox Name="txbImagenProducto" IsEnabled="False"  Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="Sin imagen adjunta..." Padding="5" Margin="493,330,10,0"/>
 
-        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="407,396,237,2" />
+        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="407,396,237,2" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
 
         <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="433,404,264,10" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
 
-        <Label Content="Nombre del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,39,0,0" VerticalAlignment="Top" Width="178"/>
+        <Label Name="lblNombre" Content="Nombre del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,39,0,0" VerticalAlignment="Top" Width="178"/>
 
-        <Label Content="Imagen del producto:" FontSize="17" HorizontalAlignment="Left" Height="37" Margin="493,293,0,0" VerticalAlignment="Top" Width="174"/>
+        <Label Name="lblImagen" Content="Imagen del producto:" FontSize="17" HorizontalAlignment="Left" Height="37" Margin="493,293,0,0" VerticalAlignment="Top" Width="174"/>
 
-        <Label Content="Código:" FontSize="17" HorizontalAlignment="Left" Height="34" Margin="452,37,0,0" VerticalAlignment="Top" Width="69"/>
+        <Label Name="lblCodigo" Content="Código:" FontSize="17" HorizontalAlignment="Left" Height="34" Margin="452,37,0,0" VerticalAlignment="Top" Width="69"/>
 
-        <Label Content="Precio (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="632,40,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label Name="lblPrecio" Content="Precio (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="632,40,0,0" VerticalAlignment="Top" Width="124"/>
 
-        <Image Name="btnElegirImagen" Source="/Recursos/IconoMas.png" Margin="743,338,16,70" />
+        <Image Name="btnAdjuntarImagen" Source="/Recursos/IconoMas.png" Margin="743,338,16,70" MouseEnter="CambiarAdjuntarAzul" MouseLeave="CambiarAdjuntarVerde" MouseDown="AdjuntarImagen" />
         
-        <TextBox Name="txbDescripcionProducto" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="72" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,138,324,0"/>
+        <TextBox Name="txbDescripcionProducto" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="72" TextWrapping="Wrap" Padding="5" Margin="185,138,324,0" PreviewTextInput="EliminarCaracteresDescripcion"/>
         
-        <Label Content="Descripción:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,106,0,0" VerticalAlignment="Top" Width="105"/>
+        <Label Name="lblDescripcion" Content="Descripción:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,106,0,0" VerticalAlignment="Top" Width="105"/>
         
-        <TextBox Name="txbRestriccionesProducto" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="77" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,242,324,0"/>
+        <TextBox Name="txbRestriccionesProducto" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="77" TextWrapping="Wrap" Padding="5" Margin="185,242,324,0" PreviewTextInput="EliminarCaracteresRestricciones"/>
         
-        <Label Content="Restricciones:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,0,0,0" VerticalAlignment="Center" Width="116"/>
+        <Label Name="lblRestricciones" Content="Restricciones:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,0,0,0" VerticalAlignment="Center" Width="116"/>
         
-        <TextBox Name="txbCantidadProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="TextBox" Padding="5" Margin="185,353,324,0"/>
+        <TextBox Name="txbCantidadProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="185,353,324,0" PreviewTextInput="EliminarCaracteresCantidad"/>
         
-        <Label Content="Cantidad:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="183,319,0,0" VerticalAlignment="Top" Width="215"/>
+        <Label Name="lblCantidad" Content="Cantidad:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="183,319,0,0" VerticalAlignment="Top" Width="215"/>
 
-        <DataGrid Name="dtgTablaRecetas" AutoGenerateColumns="False" Margin="499,141,10,157">
+        <DataGrid Name="dtgTablaRecetas" AutoGenerateColumns="False" Margin="499,141,10,157" SelectionMode="Single" CanUserAddRows="False">
             <DataGrid.Style>
                 <Style TargetType="DataGrid">
                     <Setter Property="Foreground" Value="Black"/>
@@ -72,23 +72,23 @@
                     <Setter Property="Background" Value="LightGray"/>
                     <Setter Property="BorderThickness" Value="2"/>
                     <Setter Property="BorderBrush" Value="#5c804a"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=ckbSinReceta}" Value="True">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
             </DataGrid.Style>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Receta" Binding="{Binding}" Width="*" />
-                <DataGridTemplateColumn Header="Seleccionar">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding IdReceta}" Width="50"/>
+                <DataGridTextColumn Header="Receta" Binding="{Binding Nombre}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-        <Label Content="Seleccione la receta del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="496,107,0,0" VerticalAlignment="Top" Width="268"/>
-        
-        <CheckBox Style="{DynamicResource CheckBoxStyle1}" Content="Sin receta" HorizontalAlignment="Left" Margin="185,403,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Checked="CheckBox_Checked"/>
+
+        <Label Name="lblRecetas" Content="Seleccione la receta del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="496,107,0,0" VerticalAlignment="Top" Width="268"/>
+
+        <CheckBox Name="ckbSinReceta" Style="{DynamicResource CheckBoxStyle1}" Content="Sin receta" HorizontalAlignment="Left" Margin="185,403,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81"/>
 
     </Grid>
 </Page>

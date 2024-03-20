@@ -27,7 +27,7 @@ namespace DoughMinder___Client.Vista
         public RegistroRecetas()
         {
             InitializeComponent();
-            MostrarListaInsumos();
+            RecuperarInsumos();
         }
 
         public class InsumoItem
@@ -38,8 +38,9 @@ namespace DoughMinder___Client.Vista
             public string Cantidad { get; set; }
         }
 
-        private Dictionary<int, string> RecuperarInsumos()
+        private async void RecuperarInsumos()
         {
+            await Task.Delay(200);
             Dictionary<int, string> listaInsumos = new Dictionary<int, string>();
             try
             {
@@ -50,6 +51,10 @@ namespace DoughMinder___Client.Vista
                 {
                     MostrarMensajeSinConexionBase();
                 }
+                else
+                {
+                    MostrarListaInsumos(listaInsumos);
+                }
             }
             catch (TimeoutException ex)
             {
@@ -59,8 +64,6 @@ namespace DoughMinder___Client.Vista
             {
                 MostrarMensajeSinConexionServidor();
             }
-
-            return listaInsumos;
         }
 
         private void Registrar(object sender, MouseButtonEventArgs e)
@@ -148,13 +151,11 @@ namespace DoughMinder___Client.Vista
             return camposValidos;
         }
 
-        private void MostrarListaInsumos()
+        private void MostrarListaInsumos(Dictionary<int, string> listaInsumos)
         {
-            Dictionary<int, string> insumosRecuperados = RecuperarInsumos();
-
             List<InsumoItem> datosTabla = new List<InsumoItem>();
 
-            foreach (var kvp in insumosRecuperados)
+            foreach (var kvp in listaInsumos)
             {
                 InsumoItem insumoItem = new InsumoItem
                 {
@@ -203,25 +204,25 @@ namespace DoughMinder___Client.Vista
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();
-            sinConexionServidor.Show();
+            sinConexionServidor.ShowDialog();
         }
 
         private void MostrarMensajeRegistroExitoso()
         {
             RegistroExitoso registroExitoso = new RegistroExitoso();
-            registroExitoso.Show();
+            registroExitoso.ShowDialog();
         }
 
         private void MostrarMensajeRecetaExistente()
         {
             RecetaExistente recetaExistente = new RecetaExistente();
-            recetaExistente.Show();
+            recetaExistente.ShowDialog();
         }
 
         private void MostrarMensajeSinConexionBase()
         {
             ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
-            conexionFallidaBase.Show();
+            conexionFallidaBase.ShowDialog();
         }
 
         private void CambiarRegistrarAzul(object sender, MouseEventArgs e)

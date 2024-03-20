@@ -16,6 +16,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProducto_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -42,6 +50,18 @@
   <wsdl:message name="IReceta_GuardarReceta_OutputMessage">
     <wsdl:part name="parameters" element="tns:GuardarRecetaResponse" />
   </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarRecetas_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarRecetas" />
+  </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarRecetas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarRecetasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_GuardarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_GuardarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarProductoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IInsumo">
     <wsdl:operation name="GuardarInsumo">
       <wsdl:input wsaw:Action="http://tempuri.org/IInsumo/GuardarInsumo" message="tns:IInsumo_GuardarInsumo_InputMessage" />
@@ -56,6 +76,16 @@
     <wsdl:operation name="GuardarReceta">
       <wsdl:input wsaw:Action="http://tempuri.org/IReceta/GuardarReceta" message="tns:IReceta_GuardarReceta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReceta/GuardarRecetaResponse" message="tns:IReceta_GuardarReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarRecetas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetas" message="tns:IReceta_RecuperarRecetas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasResponse" message="tns:IReceta_RecuperarRecetas_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProducto">
+    <wsdl:operation name="GuardarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/GuardarProducto" message="tns:IProducto_GuardarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/GuardarProductoResponse" message="tns:IProducto_GuardarProducto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IInsumo" type="tns:IInsumo">
@@ -92,6 +122,28 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarRecetas">
+      <soap12:operation soapAction="http://tempuri.org/IReceta/RecuperarRecetas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProducto" type="tns:IProducto">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProducto_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GuardarProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/GuardarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Servicio">
     <wsdl:port name="NetTcpBinding_IInsumo" binding="tns:NetTcpBinding_IInsumo">
@@ -104,6 +156,12 @@
       <soap12:address location="net.tcp://localhost:8081/Receta" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Receta</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProducto" binding="tns:NetTcpBinding_IProducto">
+      <soap12:address location="net.tcp://localhost:8081/Producto" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Producto</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
