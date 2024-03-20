@@ -9,42 +9,77 @@
       Title="RegistroMovimiento">
 
     <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid x:Name="columna" Margin="0,0,622,0">
-            <Image Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
-            <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-31,7,-20,381"  />
+        <Grid x:Name="gpColumna" Grid.Row="0" Grid.RowSpan="6" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid x:Name="atrás" Margin="0,65,0,323" >
-                <Image Name="btnAtras" Source="/Recursos/FlechaAtras.png" Margin="-2,13,128,15" />
-                <Label Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás" Margin="49,10,0,0"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,10,0,0" Source="/Recursos/MicrosoftTeams-image.png"/>
+
+            <Image Grid.Column="0" Grid.Row="1" Height="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png"/>
+            <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
+
+            <Image Grid.Column="0" Grid.Row="2" Height="40" Source="/Recursos/Agregar.png"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="Registrar &#xD;&#xA;Movimiento" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
+        </Grid>
+
+
+        <ScrollViewer Grid.Column="1" Margin="20,20,0,20">
+            <Grid x:Name="gpPrincipal">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Movimiento" Height="40" Width="175"/>
+
+                <ComboBox Grid.Row="2" Name="cmbTipo" HorizontalAlignment="Left" Width="260" Style="{DynamicResource ComboBoxStyle1}" Height="40" SelectionChanged="CmbTipo_SelectionChanged"/>
+
+                <TextBox Grid.Row="8" Width="260" HorizontalAlignment="Left" Name="txtbCostoTotal" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" TextWrapping="Wrap" Text="" Padding="5" MaxLength="7" PreviewTextInput="TxtbCostoTotal_PreviewTextInput" TextChanged="TxtbCostoTotal_TextChanged"/>
+
+                <TextBox Grid.Row="5" Margin="0,0,15,0" Name="txtbDescripcion" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="68" TextWrapping="Wrap" Text="" VerticalContentAlignment="Top" MaxLength="200" TextChanged="TxtbDescripcion_TextChanged"/>
+
+                <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="3" Name="lblTipoError" Content="error:" Visibility="Collapsed" HorizontalAlignment="Left" Height="35" VerticalAlignment="Center"/>
+
+                <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="6" Name="lblDescripcionError" Content="error" Visibility="Collapsed"/>
+
+                <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="9" Name="lblCostoError" Content="error" Visibility="Collapsed"/>
+
+                <Image Grid.Row="10" Height="30" VerticalAlignment="Center" Name="btnRegistrar" Source="/Recursos/BotonVerde.png" MouseLeftButtonDown="BtnRegistrar_MouseLeftButtonDown"/>
+
+                <Label Grid.Row="10" Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="103" Foreground="White"/>
+
+                <Label Grid.Row="1" VerticalAlignment="Center" Name="lblTipo" Content="Tipo:" FontSize="17" HorizontalAlignment="Left" Height="32" Width="215"/>
+
+                <Label Grid.Row="4" Name="lblDescripcion" Content="Descripción:" FontSize="17" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="175"/>
+
+                <Label Grid.Row="7" Name="lblCostoTotal" Content="Costo total (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="177"/>
             </Grid>
-
-        </Grid>
-
-
-        <Grid x:Name="registrar" Margin="0,129,622,261">
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Movimiento" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="46,0,0,0" FontSize="19" Width="113" Height="62" />
-        </Grid>
-
-
-        <Label Style="{DynamicResource LabelTitleStyle}" Content="Movimiento" Height="40" Margin="185,14,0,0" Width="175"/>
-
-        <ComboBox Name="cmbTipo" Style="{DynamicResource ComboBoxStyle1}" Margin="185,113,313,291" Height="40"/>
-
-        <TextBox Name="txtbCostoTotal" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,319,313,0" MaxLength="7"/>
-
-        <TextBox Name="txtbDescripcion" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="68" TextWrapping="Wrap" Text="" Padding="5" Margin="185,203,35,0" MaxLength="100"/>
-
-        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="404,370,240,28" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
-
-        <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,375,266,39" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
-
-        <Label Name="lblTipo" Content="Tipo:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,76,0,0" VerticalAlignment="Top" Width="215"/>
-
-        <Label Name="lblDescripcion" Content="Descripción:" FontSize="17" HorizontalAlignment="Left" Height="35" Margin="185,168,0,0" VerticalAlignment="Top" Width="175"/>
-
-        <Label Name="lblCostoTotal" Content="Costo total (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,287,0,0" VerticalAlignment="Top" Width="177"/>
-
+        </ScrollViewer>
+        
     </Grid>
 </Page>
