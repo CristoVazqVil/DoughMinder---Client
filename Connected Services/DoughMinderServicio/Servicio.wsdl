@@ -64,6 +64,12 @@
   <wsdl:message name="IEmpleado_GuardarEmpleado_OutputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IEmpleado_BuscarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_BuscarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarEmpleadoResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmpleado_RecuperarEmpleados_InputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarEmpleados" />
   </wsdl:message>
@@ -96,6 +102,10 @@
     <wsdl:operation name="GuardarEmpleado">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/GuardarEmpleado" message="tns:IEmpleado_GuardarEmpleado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/GuardarEmpleadoResponse" message="tns:IEmpleado_GuardarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/BuscarEmpleado" message="tns:IEmpleado_BuscarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/BuscarEmpleadoResponse" message="tns:IEmpleado_BuscarEmpleado_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecuperarEmpleados">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/RecuperarEmpleados" message="tns:IEmpleado_RecuperarEmpleados_InputMessage" />
@@ -148,6 +158,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GuardarEmpleado">
       <soap12:operation soapAction="http://tempuri.org/IEmpleado/GuardarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IEmpleado/BuscarEmpleado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

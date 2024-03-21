@@ -32,23 +32,20 @@ namespace DoughMinder___Client.Vista
         public class EmpleadoItem
         {
             public string Nombre { get; set; }
+            public string Usuario { get; set; }
            
         }
 
 
         private void CargarEmpleados()
         {
-            // Llama al método RecuperarEmpleados para obtener la lista de empleados
             Dictionary<string, string> listaEmpleados = RecuperarEmpleados();
 
-            // Crea una lista de objetos EmpleadoItem
             List<EmpleadoItem> empleados = new List<EmpleadoItem>();
             foreach (var empleado in listaEmpleados)
             {
-                empleados.Add(new EmpleadoItem { Nombre = empleado.Key });
+                empleados.Add(new EmpleadoItem { Nombre = empleado.Key, Usuario = empleado.Value});
             }
-
-            // Establece la lista de empleados como ItemsSource del ListBox
             lstEmpleados.ItemsSource = empleados;
         }
 
@@ -104,14 +101,14 @@ namespace DoughMinder___Client.Vista
 
             if (empleadoSeleccionado != null)
             {
-                RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(empleadoSeleccionado.Nombre);
+                RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(empleadoSeleccionado.Nombre, empleadoSeleccionado.Usuario);
                 NavigationService.Navigate(registrarEmpleadoPage);
             }
         }
 
         private void AbrirRegistrarEmpleado(object sender, MouseButtonEventArgs e)
         {
-            RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado("");
+            RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado("","");
             NavigationService.Navigate(registrarEmpleadoPage);
         }
     }

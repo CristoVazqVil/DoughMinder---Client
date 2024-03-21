@@ -23,15 +23,16 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class RegistrarEmpleado : Page
     {
-        public RegistrarEmpleado(string nombre)
+        public RegistrarEmpleado(string nombre,string usuario)
         {
             InitializeComponent();
 
 
-            txbNombre.Text = nombre;
+            txbUsuario.Text = usuario;
 
+            Console.WriteLine("HOLA "+ usuario);
 
-
+            MostrarEmpleado(usuario);
 
             txbNombre.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbPaterno.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
@@ -39,6 +40,56 @@ namespace DoughMinder___Client.Vista
             txbTelefono.PreviewTextInput += TextBoxSoloNumeros_PreviewTextInput;
           
         }
+
+
+        private void MostrarEmpleado(string usuario)
+        {
+            try
+            {
+                Console.WriteLine(usuario);
+
+                DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
+                DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
+                
+
+                empleado =  cliente.BuscarEmpleado(usuario);
+
+
+                if (empleado != null)
+                {
+                    txbPaterno.Text = empleado.Paterno;
+                    txbMaterno.Text = empleado.Materno;
+                    txbTelefono.Text = empleado.Telefono;
+                    txbDireccion.Text = empleado.Direccion;
+                    txbCorreo.Text = empleado.Correo;
+                    txbNombre.Text = empleado.Nombre;
+                    txbUsuario.Text = empleado.Usuario;
+                    txbContrasena.Password = empleado.Contraseña;
+                    txbConfirmaContrasena.Password = empleado.Contraseña;
+                    
+                }
+                else
+                {
+                    Console.WriteLine("No se encontró el empleado.");
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+            catch (CommunicationException ex)
+            {
+                Console.WriteLine("Error de comunicación al intentar recuperar el empleado. Detalles: " + ex.Message);
+                MostrarMensajeSinConexionServidor();
+            }
+            catch (Exception ex) // Captura cualquier excepción
+            {
+                Console.WriteLine("Excepción al mostrar empleado: " + ex.Message);
+            }
+        }
+
+
+
 
         private void Registrar(object sender, MouseButtonEventArgs e)
         {
@@ -57,9 +108,10 @@ namespace DoughMinder___Client.Vista
                 {
                     try
                     {
+                        
                         DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
                         DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
-
+                        
                         empleado.Nombre = txbNombre.Text;
                         empleado.Paterno = txbPaterno.Text;
                         empleado.Materno = txbMaterno.Text;
@@ -67,11 +119,12 @@ namespace DoughMinder___Client.Vista
                         empleado.Telefono = txbTelefono.Text;
                         empleado.Usuario = txbUsuario.Text;
                         empleado.Contraseña = txbContrasena.Password;
+                        empleado.Correo = txbCorreo.Text;
                         empleado.Estado = true;
 
                         ComboBoxItem item = (ComboBoxItem)cbPuesto.SelectedItem;
                         string puestoSeleccionado = item.Content.ToString();
-
+                        
                         switch (puestoSeleccionado)
                         {
                             case "Gerente":
@@ -87,7 +140,6 @@ namespace DoughMinder___Client.Vista
 
                                 break;
                         }
-
                         int codigo = cliente.GuardarEmpleado(empleado);
 
                         if (codigo == 1)
@@ -105,6 +157,7 @@ namespace DoughMinder___Client.Vista
                                 MostrarMensajeSinConexionBase();
                             }
                         }
+                        
                     }
                     catch (TimeoutException ex)
                     {

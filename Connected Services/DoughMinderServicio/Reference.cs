@@ -1521,7 +1521,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 }
             }
         }
-        
+
+        public string Correo { get; internal set; }
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1727,6 +1729,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/GuardarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/GuardarEmpleadoResponse")]
         System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/BuscarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/BuscarEmpleadoResponse")]
+        DoughMinder___Client.DoughMinderServicio.Empleado BuscarEmpleado(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/BuscarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/BuscarEmpleadoResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Empleado> BuscarEmpleadoAsync(string usuario);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/RecuperarEmpleados", ReplyAction="http://tempuri.org/IEmpleado/RecuperarEmpleadosResponse")]
         System.Collections.Generic.Dictionary<string, string> RecuperarEmpleados();
         
@@ -1767,6 +1775,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado) {
             return base.Channel.GuardarEmpleadoAsync(empleado);
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Empleado BuscarEmpleado(string usuario) {
+            return base.Channel.BuscarEmpleado(usuario);
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Empleado> BuscarEmpleadoAsync(string usuario) {
+            return base.Channel.BuscarEmpleadoAsync(usuario);
         }
         
         public System.Collections.Generic.Dictionary<string, string> RecuperarEmpleados() {
