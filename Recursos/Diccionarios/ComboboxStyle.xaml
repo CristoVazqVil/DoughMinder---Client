@@ -21,7 +21,8 @@
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="BorderBrush" Value="#FF527243"/>
-        <Setter Property="Foreground" Value="#FF527243"/>
+        <Setter Property="BorderThickness" Value="1.2"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Template">
@@ -39,7 +40,7 @@
     <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFACACAC"/>
     <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FF606060"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FF527243"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
     <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" EndPoint="0,1" StartPoint="0,0">
@@ -268,7 +269,7 @@
     <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
+        <Setter Property="BorderBrush" Value="#FF527243"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
