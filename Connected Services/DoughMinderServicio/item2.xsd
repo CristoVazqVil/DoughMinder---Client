@@ -151,6 +151,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSolicitud" nillable="true" type="tns:ArrayOfSolicitud" />
+  <xs:complexType name="ArrayOfInsumo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Insumo" nillable="true" type="tns:Insumo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInsumo" nillable="true" type="tns:ArrayOfInsumo" />
+  <xs:complexType name="Movimiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdMovimiento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Movimiento" nillable="true" type="tns:Movimiento" />
   <xs:complexType name="Empleado">
     <xs:sequence>
       <xs:element minOccurs="0" name="Contraseña" nillable="true" type="xs:string" />
@@ -180,4 +194,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEmpleado" nillable="true" type="tns:ArrayOfEmpleado" />
+  <xs:complexType name="ArrayOfProveedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Proveedor" nillable="true" type="tns:Proveedor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProveedor" nillable="true" type="tns:ArrayOfProveedor" />
 </xs:schema>

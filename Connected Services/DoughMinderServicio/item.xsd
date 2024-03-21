@@ -28,11 +28,23 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RecuperarTodosInsumos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarTodosInsumosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarTodosInsumosResult" nillable="true" type="q3:ArrayOfInsumo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GuardarReceta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="receta" nillable="true" type="q3:Receta" />
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listaInsumos" nillable="true" type="q4:ArrayOfKeyValueOfintfloat" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="receta" nillable="true" type="q4:Receta" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="listaInsumos" nillable="true" type="q5:ArrayOfKeyValueOfintfloat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -43,10 +55,62 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RecuperarRecetas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarRecetasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarRecetasResult" nillable="true" type="q6:ArrayOfKeyValueOfintstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarMovimiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="movimiento" nillable="true" type="q7:Movimiento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarMovimientoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarMovimientoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="producto" nillable="true" type="q8:Producto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarProductoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarProductosSinReceta">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarProductosSinRecetaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarProductosSinRecetaResult" nillable="true" type="q9:ArrayOfProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GuardarEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="empleado" nillable="true" type="q5:Empleado" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="empleado" nillable="true" type="q10:Empleado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -80,6 +144,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GuardarProveedorResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarProveedores">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarProveedoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarProveedoresResult" nillable="true" type="q13:ArrayOfProveedor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
