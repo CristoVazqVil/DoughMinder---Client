@@ -101,14 +101,14 @@ namespace DoughMinder___Client.Vista
 
             if (empleadoSeleccionado != null)
             {
-                RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(empleadoSeleccionado.Nombre, empleadoSeleccionado.Usuario);
+                RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(false, empleadoSeleccionado.Usuario);
                 NavigationService.Navigate(registrarEmpleadoPage);
             }
         }
 
         private void AbrirRegistrarEmpleado(object sender, MouseButtonEventArgs e)
         {
-            RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado("","");
+            RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(true,"");
             NavigationService.Navigate(registrarEmpleadoPage);
         }
     }

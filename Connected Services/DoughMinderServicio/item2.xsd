@@ -154,6 +154,7 @@
   <xs:complexType name="Empleado">
     <xs:sequence>
       <xs:element minOccurs="0" name="Contraseña" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Correo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IdPuesto" nillable="true" type="xs:int" />

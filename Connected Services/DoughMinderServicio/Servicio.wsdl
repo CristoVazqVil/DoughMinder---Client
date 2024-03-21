@@ -64,6 +64,12 @@
   <wsdl:message name="IEmpleado_GuardarEmpleado_OutputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IEmpleado_ReemplazarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_ReemplazarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarEmpleadoResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmpleado_BuscarEmpleado_InputMessage">
     <wsdl:part name="parameters" element="tns:BuscarEmpleado" />
   </wsdl:message>
@@ -102,6 +108,10 @@
     <wsdl:operation name="GuardarEmpleado">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/GuardarEmpleado" message="tns:IEmpleado_GuardarEmpleado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/GuardarEmpleadoResponse" message="tns:IEmpleado_GuardarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/ReemplazarEmpleado" message="tns:IEmpleado_ReemplazarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/ReemplazarEmpleadoResponse" message="tns:IEmpleado_ReemplazarEmpleado_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BuscarEmpleado">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/BuscarEmpleado" message="tns:IEmpleado_BuscarEmpleado_InputMessage" />
@@ -158,6 +168,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GuardarEmpleado">
       <soap12:operation soapAction="http://tempuri.org/IEmpleado/GuardarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IEmpleado/ReemplazarEmpleado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

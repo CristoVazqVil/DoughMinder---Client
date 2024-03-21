@@ -23,14 +23,11 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class RegistrarEmpleado : Page
     {
-        public RegistrarEmpleado(string nombre,string usuario)
+
+        
+        public RegistrarEmpleado(bool modificar,string usuario)
         {
             InitializeComponent();
-
-
-            txbUsuario.Text = usuario;
-
-            Console.WriteLine("HOLA "+ usuario);
 
             MostrarEmpleado(usuario);
 
@@ -38,8 +35,37 @@ namespace DoughMinder___Client.Vista
             txbPaterno.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbMaterno.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbTelefono.PreviewTextInput += TextBoxSoloNumeros_PreviewTextInput;
-          
+
+
+            NoModificar(modificar);
         }
+
+
+        private void NoModificar(bool permitirModificacion)
+        {
+            // Ocultar el botón Registrar y el label
+            btnRegistrar.Visibility = Visibility.Collapsed;
+            lblRegistrar.Visibility = Visibility.Collapsed;
+
+            btnModificar.Visibility = Visibility.Visible;
+            lblModificar.Visibility = Visibility.Visible;
+
+            // Deshabilitar los controles si permitirModificacion es falso
+            if (!permitirModificacion)
+            {
+                txbNombre.IsEnabled = false;
+                txbPaterno.IsEnabled = false;
+                txbMaterno.IsEnabled = false;
+                txbTelefono.IsEnabled = false;
+                txbDireccion.IsEnabled = false;
+                txbCorreo.IsEnabled = false;
+                txbUsuario.IsEnabled = false;
+                txbContrasena.IsEnabled = false;
+                txbConfirmaContrasena.IsEnabled = false;
+                cbPuesto.IsEnabled = false;
+            }
+        }
+
 
 
         private void MostrarEmpleado(string usuario)
@@ -89,10 +115,9 @@ namespace DoughMinder___Client.Vista
         }
 
 
-
-
-        private void Registrar(object sender, MouseButtonEventArgs e)
+        private void Registrar()
         {
+
             if (!ValidarCamposVacios())
             {
                 CamposVacios camposVacios = new CamposVacios();
@@ -108,10 +133,10 @@ namespace DoughMinder___Client.Vista
                 {
                     try
                     {
-                        
+
                         DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
                         DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
-                        
+
                         empleado.Nombre = txbNombre.Text;
                         empleado.Paterno = txbPaterno.Text;
                         empleado.Materno = txbMaterno.Text;
@@ -124,7 +149,7 @@ namespace DoughMinder___Client.Vista
 
                         ComboBoxItem item = (ComboBoxItem)cbPuesto.SelectedItem;
                         string puestoSeleccionado = item.Content.ToString();
-                        
+
                         switch (puestoSeleccionado)
                         {
                             case "Gerente":
@@ -145,6 +170,8 @@ namespace DoughMinder___Client.Vista
                         if (codigo == 1)
                         {
                             MostrarMensajeRegistroExitoso();
+                            NavigationService.GoBack();
+
                         }
                         else
                         {
@@ -157,7 +184,7 @@ namespace DoughMinder___Client.Vista
                                 MostrarMensajeSinConexionBase();
                             }
                         }
-                        
+
                     }
                     catch (TimeoutException ex)
                     {
@@ -170,6 +197,10 @@ namespace DoughMinder___Client.Vista
                 }
             }
         }
+
+
+
+      
 
 
         private bool ValidarCamposVacios()
@@ -241,8 +272,70 @@ namespace DoughMinder___Client.Vista
             return true; 
         }
 
+        private void PermitirModificar(object sender, MouseButtonEventArgs e)
+        {
+            txbNombre.IsEnabled = true;
+            txbPaterno.IsEnabled = true;
+            txbMaterno.IsEnabled = true;
+            txbTelefono.IsEnabled = true;
+            txbDireccion.IsEnabled = true;
+            txbCorreo.IsEnabled = true;
+            txbContrasena.IsEnabled = true;
+            txbConfirmaContrasena.IsEnabled = true;
+            cbPuesto.IsEnabled = true;
+
+            btnAceptarModificacion.Visibility = Visibility.Visible;
+            lblAceptarModificacion.Visibility = Visibility.Visible;
+
+            btnModificar.Visibility = Visibility.Collapsed;
+            lblModificar.Visibility = Visibility.Collapsed;
+        }
+
+        private void IrAtras(object sender, MouseButtonEventArgs e)
+        {
+             NavigationService.GoBack();
+        }
+
+        private void ModificarEmpleado(object sender, MouseButtonEventArgs e)
+        {
+
+            if (!ValidarCamposVacios())
+            {
+                CamposVacios camposVacios = new CamposVacios();
+                camposVacios.Show();
+            }
+            else
+            {
+
+                try
+                {
+                    DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
+                    DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
+                    int codigo = cliente.ReemplazarEmpleado(txbUsuario.Text);
+
+                    if (codigo == 1)
+                    {
+                        Registrar();
+                    }
+                }
 
 
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+
+            }
+        }
+
+        private void ConfirmaRegistro(object sender, MouseButtonEventArgs e)
+        {
+            Registrar();
+        }
     }
 }
 

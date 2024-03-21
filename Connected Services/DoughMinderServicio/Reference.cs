@@ -1356,6 +1356,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private string ContraseñaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DireccionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1401,6 +1404,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
                     this.ContraseñaField = value;
                     this.RaisePropertyChanged("Contraseña");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Correo {
+            get {
+                return this.CorreoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
+                    this.CorreoField = value;
+                    this.RaisePropertyChanged("Correo");
                 }
             }
         }
@@ -1521,9 +1537,7 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 }
             }
         }
-
-        public string Correo { get; internal set; }
-
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1729,6 +1743,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/GuardarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/GuardarEmpleadoResponse")]
         System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/ReemplazarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/ReemplazarEmpleadoResponse")]
+        int ReemplazarEmpleado(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/ReemplazarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/ReemplazarEmpleadoResponse")]
+        System.Threading.Tasks.Task<int> ReemplazarEmpleadoAsync(string usuario);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleado/BuscarEmpleado", ReplyAction="http://tempuri.org/IEmpleado/BuscarEmpleadoResponse")]
         DoughMinder___Client.DoughMinderServicio.Empleado BuscarEmpleado(string usuario);
         
@@ -1775,6 +1795,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> GuardarEmpleadoAsync(DoughMinder___Client.DoughMinderServicio.Empleado empleado) {
             return base.Channel.GuardarEmpleadoAsync(empleado);
+        }
+        
+        public int ReemplazarEmpleado(string usuario) {
+            return base.Channel.ReemplazarEmpleado(usuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> ReemplazarEmpleadoAsync(string usuario) {
+            return base.Channel.ReemplazarEmpleadoAsync(usuario);
         }
         
         public DoughMinder___Client.DoughMinderServicio.Empleado BuscarEmpleado(string usuario) {
