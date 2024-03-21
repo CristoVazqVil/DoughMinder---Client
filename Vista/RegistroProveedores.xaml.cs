@@ -1,7 +1,11 @@
-﻿using System;
+﻿using DoughMinder___Client.DoughMinderServicio;
+using DoughMinder___Client.Vista.Emergentes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +27,102 @@ namespace DoughMinder___Client.Vista
         public RegistroProveedores()
         {
             InitializeComponent();
+            txbTelefono.PreviewTextInput += TextBoxSoloNumeros_PreviewTextInput;
+
         }
+
+        private void Registrar(object sender, MouseButtonEventArgs e)
+        {
+            if (!ValidarCamposVacios())
+            {
+                CamposVacios camposVacios = new CamposVacios();
+                camposVacios.Show();
+            }
+            else
+            {
+                try
+                {
+                    DoughMinderServicio.ProveedorClient cliente = new DoughMinderServicio.ProveedorClient();
+                    DoughMinderServicio.Proveedor proveedor = new DoughMinderServicio.Proveedor();
+
+                    proveedor.Nombre = txbNombre.Text;
+                    proveedor.Email = txbCorreo.Text;
+                    proveedor.Telefono = txbTelefono.Text;
+
+                    int codigo = cliente.GuardarProveedor(proveedor);
+
+
+                    if (codigo == 1)
+                    {
+                        MostrarMensajeRegistroExitoso();
+                    }
+                    else
+                    {
+                        if (codigo == 0)
+                        {
+                            MostrarMensajeInsumoExistente();
+                        }
+                        else
+                        {
+                            MostrarMensajeSinConexionBase();
+                        }
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+            
+        }
+
+        private bool ValidarCamposVacios()
+        {
+            if (string.IsNullOrWhiteSpace(txbNombre.Text) ||
+                string.IsNullOrWhiteSpace(txbTelefono.Text) ||
+                string.IsNullOrWhiteSpace(txbCorreo.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        private void MostrarMensajeSinConexionServidor()
+        {
+            SinConexionServidor sinConexionServidor = new SinConexionServidor();
+            sinConexionServidor.Show();
+        }
+
+        private void MostrarMensajeRegistroExitoso()
+        {
+            RegistroExitoso registroExitoso = new RegistroExitoso();
+            registroExitoso.Show();
+        }
+
+        //CORREGIR
+        private void MostrarMensajeInsumoExistente()
+        {
+            InsumoExistente insumoExistente = new InsumoExistente();
+            insumoExistente.Show();
+        }
+
+        private void MostrarMensajeSinConexionBase()
+        {
+            ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
+            conexionFallidaBase.Show();
+        }
+
+        private void TextBoxSoloNumeros_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+
     }
 }

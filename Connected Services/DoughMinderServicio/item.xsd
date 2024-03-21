@@ -129,14 +129,14 @@
   <xs:element name="RecuperarEmpleadosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarEmpleadosResult" nillable="true" type="q11:ArrayOfKeyValueOfstringstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarEmpleadosResult" nillable="true" type="q6:ArrayOfKeyValueOfstringstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GuardarProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="proveedor" nillable="true" type="q12:Proveedor" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="proveedor" nillable="true" type="q7:Proveedor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
