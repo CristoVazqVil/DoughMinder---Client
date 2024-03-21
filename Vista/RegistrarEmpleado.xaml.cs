@@ -43,12 +43,6 @@ namespace DoughMinder___Client.Vista
 
         private void NoModificar(bool permitirModificacion)
         {
-            // Ocultar el botón Registrar y el label
-            btnRegistrar.Visibility = Visibility.Collapsed;
-            lblRegistrar.Visibility = Visibility.Collapsed;
-
-            btnModificar.Visibility = Visibility.Visible;
-            lblModificar.Visibility = Visibility.Visible;
 
             // Deshabilitar los controles si permitirModificacion es falso
             if (!permitirModificacion)
@@ -70,6 +64,19 @@ namespace DoughMinder___Client.Vista
 
         private void MostrarEmpleado(string usuario)
         {
+            if(usuario == "")
+            {
+
+                btnModificar.Visibility = Visibility.Collapsed;
+                lblModificar.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            btnRegistrar.Visibility = Visibility.Collapsed;
+            lblRegistrar.Visibility = Visibility.Collapsed;
+            btnModificar.Visibility = Visibility.Visible;
+            lblModificar.Visibility = Visibility.Visible;
+
             try
             {
                 Console.WriteLine(usuario);
@@ -92,11 +99,30 @@ namespace DoughMinder___Client.Vista
                     txbUsuario.Text = empleado.Usuario;
                     txbContrasena.Password = empleado.Contraseña;
                     txbConfirmaContrasena.Password = empleado.Contraseña;
-                    
+                    Console.WriteLine(empleado.IdPuesto);
+
+                    switch (empleado.IdPuesto)
+                    {
+                        case 1:
+                            cbPuesto.SelectedIndex = 0; 
+                            break;
+                        case 2:
+                            cbPuesto.SelectedIndex = 1;
+
+                            break;
+                        case 3:
+                            cbPuesto.SelectedIndex = 2;
+
+                            break;
+                        default:
+                            break;
+                    }
+
+
                 }
                 else
                 {
-                    Console.WriteLine("No se encontró el empleado.");
+                    MostrarMensajeSinConexionServidor();
                 }
             }
             catch (TimeoutException ex)
@@ -108,7 +134,7 @@ namespace DoughMinder___Client.Vista
                 Console.WriteLine("Error de comunicación al intentar recuperar el empleado. Detalles: " + ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
-            catch (Exception ex) // Captura cualquier excepción
+            catch (Exception ex) 
             {
                 Console.WriteLine("Excepción al mostrar empleado: " + ex.Message);
             }
@@ -233,11 +259,10 @@ namespace DoughMinder___Client.Vista
             registroExitoso.Show();
         }
 
-        //CORREGIR
         private void MostrarMensajeInsumoExistente()
         {
-            InsumoExistente insumoExistente = new InsumoExistente();
-            insumoExistente.Show();
+            EmpleadoExistente empleadoExistente = new EmpleadoExistente();
+            empleadoExistente.Show();
         }
 
         private void MostrarMensajeSinConexionBase()

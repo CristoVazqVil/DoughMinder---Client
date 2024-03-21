@@ -60,7 +60,7 @@ namespace DoughMinder___Client.Vista
                     {
                         if (codigo == 0)
                         {
-                            MostrarMensajeInsumoExistente();
+                            MostrarMensaProveedorExistente();
                         }
                         else
                         {
@@ -104,11 +104,11 @@ namespace DoughMinder___Client.Vista
             registroExitoso.Show();
         }
 
-        //CORREGIR
-        private void MostrarMensajeInsumoExistente()
+        
+        private void MostrarMensaProveedorExistente()
         {
-            InsumoExistente insumoExistente = new InsumoExistente();
-            insumoExistente.Show();
+            ProveedorExistente proveedorExistente = new ProveedorExistente();
+            proveedorExistente.Show();
         }
 
         private void MostrarMensajeSinConexionBase()

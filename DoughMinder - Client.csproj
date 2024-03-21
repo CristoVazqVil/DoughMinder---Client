@@ -84,6 +84,12 @@
     <Compile Include="Vista\Emergentes\ConexionFallidaBase.xaml.cs">
       <DependentUpon>ConexionFallidaBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Emergentes\ProveedorExistente.xaml.cs">
+      <DependentUpon>ProveedorExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\EmpleadoExistente.xaml.cs">
+      <DependentUpon>EmpleadoExistente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
       <DependentUpon>InsumoExistente.xaml</DependentUpon>
     </Compile>
@@ -180,6 +186,14 @@
     <Page Include="Vista\Emergentes\ConexionFallidaBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ProveedorExistente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\Emergentes\EmpleadoExistente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\Emergentes\InsumoExistente.xaml">
       <SubType>Designer</SubType>
