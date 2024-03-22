@@ -11,7 +11,7 @@
         <Image Source="/Recursos/Advertencia.png" Stretch="UniformToFill" Margin="23,82,341,-103"  />
         <Image x:Name="btnOK" Source="/Recursos/BotonAmarillo.png" Margin="162,172,132,-171" MouseDown="CerrarMensaje" MouseEnter="CambiarAzul" MouseLeave="Restaurar" />
         <Label Content="OK" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="188,180,159,-163" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
-        <Label Content="Empleado Existente" FontSize="25" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="10,4,231,3" VerticalContentAlignment="Top" Foreground="White"/>
+        <Label Content="Empleado Existente" FontSize="25" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="10,4,180,3" VerticalContentAlignment="Top" Foreground="White"/>
         <Label Content="El empleado ya ha sido registrado" FontSize="18" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Left" Margin="124,101,16,-85" VerticalContentAlignment="Top" Foreground="Black" RenderTransformOrigin="0.395,-1.299"/>
         <Label Content="anteriormente." FontSize="18" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Left" Margin="124,138,16,-122" VerticalContentAlignment="Top" Foreground="Black" RenderTransformOrigin="0.395,-1.299"/>
         <Label Content="No fue posible completar la accion." FontSize="18" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Left" Margin="124,64,16,-48" VerticalContentAlignment="Top" Foreground="Black" RenderTransformOrigin="0.395,-1.299"/>

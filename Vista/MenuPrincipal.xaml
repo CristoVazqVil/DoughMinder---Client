@@ -1,0 +1,62 @@
+﻿<Page x:Class="DoughMinder___Client.Vista.MenuPrincipal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DoughMinder___Client.Vista"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuPrincipal">
+
+    <Grid Background="White">
+
+        <Image Source="/Recursos/logoBlack.png" Margin="220,117,64,118" Opacity="0.6" />
+
+
+
+        <Grid x:Name="columna" Margin="0,0,622,0">
+            <Image Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+
+            <Grid x:Name="Productos" Margin="0,65,0,323" >
+                <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
+                <Label Style="{DynamicResource LabelColumnStyle}" Content="Productos" Margin="46,9,0,0" Width="132" IsHitTestVisible="False"/>
+            </Grid>
+
+            <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-30,-3,-22,364" IsHitTestVisible="False"  />
+
+        </Grid>
+
+
+        <Grid x:Name="Empleados" Margin="0,129,622,261" MouseDown="AbrirRegistrarEmpleado">
+            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
+            <Label Content="Empleados" HorizontalAlignment="Left" IsHitTestVisible="False" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="51"  />
+        </Grid>
+
+        <Grid x:Name="Insumo" Margin="0,195,622,195" >
+            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
+            <Label Content="Registrar &#xD;&#xA;Insumo"  IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+        </Grid>
+
+
+        <Grid x:Name="Receta" Margin="0,260,622,130" >
+            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
+            <Label Content="Registrar &#xD;&#xA;Receta" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+        </Grid>
+
+        <Grid x:Name="Proveedor" Margin="0,325,622,65" >
+            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
+            <Label Content="Registrar &#xD;&#xA;Proveedor" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+        </Grid>
+
+        <Button Content="Pedidos" HorizontalAlignment="Left" Margin="206,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045"/>
+
+
+
+        <Button Content="Insumos" HorizontalAlignment="Left" Margin="273,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045"/>
+
+        <Button Content="Finanzas" HorizontalAlignment="Left" Margin="351,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045"/>
+
+    </Grid>
+
+
+</Page>
