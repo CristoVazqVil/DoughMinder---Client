@@ -9,6 +9,7 @@
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PrecioKiloLitro" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="RutaFoto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SolicitudProducto" nillable="true" type="tns:ArrayOfSolicitudProducto" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Insumo" nillable="true" type="tns:Insumo" />
@@ -88,7 +89,9 @@
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdEstadoPedido" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdPedido" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreCliente" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PedidoProducto" nillable="true" type="tns:ArrayOfPedidoProducto" />
+      <xs:element minOccurs="0" name="TelefonoCliente" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TipoEntrega" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -115,10 +118,12 @@
   <xs:element name="ArrayOfSolicitudProducto" nillable="true" type="tns:ArrayOfSolicitudProducto" />
   <xs:complexType name="SolicitudProducto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="ClaveProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdInsumo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdSolicitud" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IdSolicitudProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="Insumo" nillable="true" type="tns:Insumo" />
       <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:Producto" />
       <xs:element minOccurs="0" name="Solicitud" nillable="true" type="tns:Solicitud" />
     </xs:sequence>
