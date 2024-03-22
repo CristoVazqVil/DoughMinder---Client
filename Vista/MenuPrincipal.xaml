@@ -27,7 +27,7 @@
         </Grid>
 
 
-        <Grid x:Name="Empleados" Margin="0,129,622,261" MouseDown="AbrirRegistrarEmpleado">
+        <Grid x:Name="Empleados" Margin="0,129,622,261" >
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
             <Label Content="Empleados" HorizontalAlignment="Left" IsHitTestVisible="False" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="51"  />
         </Grid>

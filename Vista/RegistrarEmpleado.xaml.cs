@@ -43,8 +43,9 @@ namespace DoughMinder___Client.Vista
 
         private void NoModificar(bool permitirModificacion)
         {
+          
 
-            // Deshabilitar los controles si permitirModificacion es falso
+
             if (!permitirModificacion)
             {
                 txbNombre.IsEnabled = false;
@@ -64,81 +65,94 @@ namespace DoughMinder___Client.Vista
 
         private void MostrarEmpleado(string usuario)
         {
-            if(usuario == "")
+            if (usuario == "")
             {
-
+                // Show password fields for new user registration
                 btnModificar.Visibility = Visibility.Collapsed;
                 lblModificar.Visibility = Visibility.Collapsed;
-                return;
+                bbConfirma.Visibility = Visibility.Visible;
+                bbContrasena.Visibility = Visibility.Visible;
+                txbConfirmaContrasena.Visibility = Visibility.Visible;
+                txbContrasena.Visibility = Visibility.Visible;
+                lbConfirmaContrasena.Visibility = Visibility.Visible;
+                lbContrasena.Visibility = Visibility.Visible;
             }
 
-            btnRegistrar.Visibility = Visibility.Collapsed;
-            lblRegistrar.Visibility = Visibility.Collapsed;
-            btnModificar.Visibility = Visibility.Visible;
-            lblModificar.Visibility = Visibility.Visible;
-
-            try
+            else
             {
-                Console.WriteLine(usuario);
+                btnRegistrar.Visibility = Visibility.Collapsed;
+                lblRegistrar.Visibility = Visibility.Collapsed;
+                btnModificar.Visibility = Visibility.Visible;
+                lblModificar.Visibility = Visibility.Visible;
 
-                DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
-                DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
-                
+                bbConfirma.Visibility = Visibility.Collapsed;
+                bbContrasena.Visibility = Visibility.Collapsed;
+                txbConfirmaContrasena.Visibility = Visibility.Collapsed;
+                txbContrasena.Visibility = Visibility.Collapsed;
+                lbConfirmaContrasena.Visibility = Visibility.Collapsed;
+                lbContrasena.Visibility = Visibility.Collapsed;
 
-                empleado =  cliente.BuscarEmpleado(usuario);
 
 
-                if (empleado != null)
+
+                try
                 {
-                    txbPaterno.Text = empleado.Paterno;
-                    txbMaterno.Text = empleado.Materno;
-                    txbTelefono.Text = empleado.Telefono;
-                    txbDireccion.Text = empleado.Direccion;
-                    txbCorreo.Text = empleado.Correo;
-                    txbNombre.Text = empleado.Nombre;
-                    txbUsuario.Text = empleado.Usuario;
-                    txbContrasena.Password = empleado.Contraseña;
-                    txbConfirmaContrasena.Password = empleado.Contraseña;
-                    Console.WriteLine(empleado.IdPuesto);
+                    Console.WriteLine(usuario);
 
-                    switch (empleado.IdPuesto)
+                    DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
+                    DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
+
+                    empleado = cliente.BuscarEmpleado(usuario);
+
+                    if (empleado != null)
                     {
-                        case 1:
-                            cbPuesto.SelectedIndex = 0; 
-                            break;
-                        case 2:
-                            cbPuesto.SelectedIndex = 1;
+                        txbPaterno.Text = empleado.Paterno;
+                        txbMaterno.Text = empleado.Materno;
+                        txbTelefono.Text = empleado.Telefono;
+                        txbDireccion.Text = empleado.Direccion;
+                        txbCorreo.Text = empleado.Correo;
+                        txbNombre.Text = empleado.Nombre;
+                        txbUsuario.Text = empleado.Usuario;
+                        txbContrasena.Password = empleado.Contraseña;
+                        txbConfirmaContrasena.Password = empleado.Contraseña;
+                        Console.WriteLine(empleado.IdPuesto);
 
-                            break;
-                        case 3:
-                            cbPuesto.SelectedIndex = 2;
-
-                            break;
-                        default:
-                            break;
+                        switch (empleado.IdPuesto)
+                        {
+                            case 1:
+                                cbPuesto.SelectedIndex = 0;
+                                break;
+                            case 2:
+                                cbPuesto.SelectedIndex = 1;
+                                break;
+                            case 3:
+                                cbPuesto.SelectedIndex = 2;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-
-
+                    else
+                    {
+                        MostrarMensajeSinConexionServidor();
+                    }
                 }
-                else
+                catch (TimeoutException ex)
                 {
                     MostrarMensajeSinConexionServidor();
                 }
-            }
-            catch (TimeoutException ex)
-            {
-                MostrarMensajeSinConexionServidor();
-            }
-            catch (CommunicationException ex)
-            {
-                Console.WriteLine("Error de comunicación al intentar recuperar el empleado. Detalles: " + ex.Message);
-                MostrarMensajeSinConexionServidor();
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine("Excepción al mostrar empleado: " + ex.Message);
+                catch (CommunicationException ex)
+                {
+                    Console.WriteLine("Error de comunicación al intentar recuperar el empleado. Detalles: " + ex.Message);
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Excepción al mostrar empleado: " + ex.Message);
+                }
             }
         }
+
 
 
         private void Registrar()
@@ -314,6 +328,20 @@ namespace DoughMinder___Client.Vista
 
             btnModificar.Visibility = Visibility.Collapsed;
             lblModificar.Visibility = Visibility.Collapsed;
+
+            bbConfirma.Visibility = Visibility.Visible;
+            bbContrasena.Visibility = Visibility.Visible;   
+
+            txbConfirmaContrasena.Visibility = Visibility.Visible;
+            txbContrasena.Visibility = Visibility.Visible;
+
+
+            lbConfirmaContrasena.Visibility = Visibility.Visible;
+            lbContrasena.Visibility = Visibility.Visible;
+
+
+
+
         }
 
         private void IrAtras(object sender, MouseButtonEventArgs e)

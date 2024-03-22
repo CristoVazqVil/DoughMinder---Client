@@ -12,7 +12,6 @@
 
     <Grid Background="White">
 
-        <!-- Grid de la columna -->
         <Grid x:Name="columna" Margin="0,0,622,0">
             <Image Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
             <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-31,7,-20,381"  />
@@ -66,7 +65,7 @@
         </Border>
 
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="530,311,0,0" VerticalAlignment="Top" Width="250" Height="35">
+        <Border x:Name="bbContrasena" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="530,311,0,0" VerticalAlignment="Top" Width="250" Height="35">
             <PasswordBox Name="txbContrasena" PasswordChar="♥" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
         </Border>
 
@@ -101,12 +100,12 @@
 
         <Label Content="Usuario" HorizontalAlignment="Left" Height="27" Margin="190,287,0,0" VerticalAlignment="Top" Width="168"/>
 
-        <Label Content="Contraseña" HorizontalAlignment="Left" Height="27" Margin="530,288,0,0" VerticalAlignment="Top" Width="168"/>
+        <Label Name="lbContrasena" Content="Contraseña" HorizontalAlignment="Left" Height="27" Margin="530,288,0,0" VerticalAlignment="Top" Width="168"/>
 
-        <Label Content="Confirma Contraseña" HorizontalAlignment="Left" Height="27" Margin="189,354,0,0" VerticalAlignment="Top" Width="168"/>
+        <Label Name="lbConfirmaContrasena" Content="Confirma Contraseña" HorizontalAlignment="Left" Height="27" Margin="189,354,0,0" VerticalAlignment="Top" Width="168"/>
 
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,381,0,0" VerticalAlignment="Top" Width="250" Height="35">
+        <Border x:Name="bbConfirma" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,381,0,0" VerticalAlignment="Top" Width="250" Height="35">
             <PasswordBox Name="txbConfirmaContrasena" PasswordChar="♥" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0"/>
         </Border>
 

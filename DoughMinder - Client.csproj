@@ -111,6 +111,9 @@
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
@@ -223,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\MenuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -308,6 +315,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\logoBlack.png" />
+    <Resource Include="Recursos\MicrosoftTeams-image.png" />
     <Resource Include="Recursos\IconoSolicitudInsumo.png" />
     <Resource Include="Recursos\IconoMasAzul.png" />
     <Resource Include="Recursos\IconoMas.png">
@@ -355,7 +364,6 @@
     <Resource Include="Recursos\FlechaAtras.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Recursos\MicrosoftTeams-image.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\DoughMinderServicio\" />
