@@ -23,5 +23,21 @@ namespace DoughMinder___Client.Vista
         {
             InitializeComponent();
         }
+
+
+        private void CambiarEntrarAzul(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void CambiarEntrarVerde(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Entrar(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace DoughMinder___Client.Vista
         public VentanaPrincipal()
         {
             InitializeComponent();
+            framePage.Navigate(new Uri("/Vista/RegistroInsumos.xaml", UriKind.Relative));
         }
     }
 }

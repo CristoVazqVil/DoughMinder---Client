@@ -1343,6 +1343,83 @@ namespace DoughMinder___Client.DoughMinderServicio {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Login", Namespace="http://schemas.datacontract.org/2004/07/Clases.Contratos")]
+    [System.SerializableAttribute()]
+    public partial class Login : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsuarioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Puesto {
+            get {
+                return this.PuestoField;
+            }
+            set {
+                if ((this.PuestoField.Equals(value) != true)) {
+                    this.PuestoField = value;
+                    this.RaisePropertyChanged("Puesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Usuario {
+            get {
+                return this.UsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
+                    this.UsuarioField = value;
+                    this.RaisePropertyChanged("Usuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DoughMinderServicio.IInsumo")]
     public interface IInsumo {
@@ -1509,6 +1586,67 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> GuardarProductoAsync(DoughMinder___Client.DoughMinderServicio.Producto producto) {
             return base.Channel.GuardarProductoAsync(producto);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DoughMinderServicio.ILogin")]
+    public interface ILogin {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILogin/VerificarUsuario", ReplyAction="http://tempuri.org/ILogin/VerificarUsuarioResponse")]
+        int VerificarUsuario(string usuario, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILogin/VerificarUsuario", ReplyAction="http://tempuri.org/ILogin/VerificarUsuarioResponse")]
+        System.Threading.Tasks.Task<int> VerificarUsuarioAsync(string usuario, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILogin/RecuperarCuenta", ReplyAction="http://tempuri.org/ILogin/RecuperarCuentaResponse")]
+        DoughMinder___Client.DoughMinderServicio.Login RecuperarCuenta(string usuario, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILogin/RecuperarCuenta", ReplyAction="http://tempuri.org/ILogin/RecuperarCuentaResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Login> RecuperarCuentaAsync(string usuario, string contraseña);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILoginChannel : DoughMinder___Client.DoughMinderServicio.ILogin, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LoginClient : System.ServiceModel.ClientBase<DoughMinder___Client.DoughMinderServicio.ILogin>, DoughMinder___Client.DoughMinderServicio.ILogin {
+        
+        public LoginClient() {
+        }
+        
+        public LoginClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LoginClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LoginClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LoginClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int VerificarUsuario(string usuario, string contraseña) {
+            return base.Channel.VerificarUsuario(usuario, contraseña);
+        }
+        
+        public System.Threading.Tasks.Task<int> VerificarUsuarioAsync(string usuario, string contraseña) {
+            return base.Channel.VerificarUsuarioAsync(usuario, contraseña);
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Login RecuperarCuenta(string usuario, string contraseña) {
+            return base.Channel.RecuperarCuenta(usuario, contraseña);
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Login> RecuperarCuentaAsync(string usuario, string contraseña) {
+            return base.Channel.RecuperarCuentaAsync(usuario, contraseña);
         }
     }
 }

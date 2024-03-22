@@ -1,25 +1,25 @@
-﻿<Window x:Class="DoughMinder___Client.Vista.InicioSesion"
+﻿<Window x:Class="DoughMinder___Client.InicioSesion"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DoughMinder___Client.Vista"
+        xmlns:local="clr-namespace:DoughMinder___Client"
         mc:Ignorable="d"
-        Title="InicioSesion" Height="600" Width="360">
+        Title="InicioSesion" Height="620" Width="370" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Grid>
         <Image Source="/Vista/Login.png" Stretch="Fill" />
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="8" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" Width="234" Height="44">
-            <TextBox x:Name="txbUsuario" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" FontSize="18"/>
+            <TextBox x:Name="txbUsuario" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" FontSize="18" PreviewTextInput="EliminarCaracteresUsuario"/>
         </Border>
 
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="8" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Width="234" Height="44">
-            <PasswordBox x:Name="pwbContraseña" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" FontSize="18"/>
+            <PasswordBox x:Name="pwbContraseña" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" FontSize="18" PreviewTextInput="EliminarCaracteresContraseña"/>
         </Border>
 
         <Image x:Name="btnEntrar" Source="/Recursos/BotonVerde.png" Margin="104,356,119,174" MouseEnter="CambiarEntrarAzul" MouseLeave="CambiarEntrarVerde" MouseDown="Entrar" />
-        <Label Content="Ingresar" IsEnabled="False" HorizontalAlignment="Left" Height="32"  VerticalAlignment="Top" Width="70" Margin="138,367,0,0" FontSize="16" Foreground="White"/>
+        <Label Content="Ingresar" IsEnabled="False" IsHitTestVisible="False" HorizontalAlignment="Left" Height="32"  VerticalAlignment="Top" Width="70" Margin="138,367,0,0" FontSize="16" Foreground="White"/>
         <Label Content="Contraseña:" IsEnabled="False" HorizontalAlignment="Left" Height="32"  VerticalAlignment="Top" Width="136" Margin="63,248,0,0" FontSize="16" Foreground="Black"/>
         <Label Content="Usuario:" IsEnabled="False" HorizontalAlignment="Left" Height="32"  VerticalAlignment="Top" Width="136" Margin="63,165,0,0" FontSize="16" Foreground="Black"/>
 

@@ -47,7 +47,7 @@ namespace DoughMinder___Client.Vista
             if (!ValidarCamposVacios())
             {
                 CamposVacios camposVacios = new CamposVacios();
-                camposVacios.Show();
+                camposVacios.ShowDialog();
             }
             else
             {

@@ -24,12 +24,21 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILogin_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Clases" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Clases.Contratos" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IInsumo_GuardarInsumo_InputMessage">
@@ -62,6 +71,18 @@
   <wsdl:message name="IProducto_GuardarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:GuardarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="ILogin_VerificarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ILogin_VerificarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerificarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogin_RecuperarCuenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarCuenta" />
+  </wsdl:message>
+  <wsdl:message name="ILogin_RecuperarCuenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarCuentaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IInsumo">
     <wsdl:operation name="GuardarInsumo">
       <wsdl:input wsaw:Action="http://tempuri.org/IInsumo/GuardarInsumo" message="tns:IInsumo_GuardarInsumo_InputMessage" />
@@ -86,6 +107,16 @@
     <wsdl:operation name="GuardarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/GuardarProducto" message="tns:IProducto_GuardarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/GuardarProductoResponse" message="tns:IProducto_GuardarProducto_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILogin">
+    <wsdl:operation name="VerificarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogin/VerificarUsuario" message="tns:ILogin_VerificarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogin/VerificarUsuarioResponse" message="tns:ILogin_VerificarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarCuenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogin/RecuperarCuenta" message="tns:ILogin_RecuperarCuenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogin/RecuperarCuentaResponse" message="tns:ILogin_RecuperarCuenta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IInsumo" type="tns:IInsumo">
@@ -145,6 +176,28 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILogin" type="tns:ILogin">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILogin_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="VerificarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ILogin/VerificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarCuenta">
+      <soap12:operation soapAction="http://tempuri.org/ILogin/RecuperarCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="Servicio">
     <wsdl:port name="NetTcpBinding_IInsumo" binding="tns:NetTcpBinding_IInsumo">
       <soap12:address location="net.tcp://localhost:8081/Insumo" />
@@ -162,6 +215,12 @@
       <soap12:address location="net.tcp://localhost:8081/Producto" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Producto</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILogin" binding="tns:NetTcpBinding_ILogin">
+      <soap12:address location="net.tcp://localhost:8081/Login" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Login</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

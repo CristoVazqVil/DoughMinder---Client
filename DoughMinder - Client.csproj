@@ -78,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Recursos\Singleton\SesionSingleton.cs" />
     <Compile Include="Vista\Emergentes\CamposVacios.xaml.cs">
       <DependentUpon>CamposVacios.xaml</DependentUpon>
     </Compile>
@@ -101,6 +102,7 @@
     </Compile>
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
@@ -121,7 +123,7 @@
     <Compile Include="Vista\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="InicioSesion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -129,8 +131,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="InicioSesion.xaml.cs">
+      <DependentUpon>InicioSesion.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Recursos\Diccionarios\CheckboxStyle.xaml">
@@ -188,6 +190,7 @@
     <Page Include="Vista\InicioSesion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Vista\RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
@@ -233,6 +236,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Login.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\DoughMinderServicio\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -243,6 +249,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\DoughMinderServicio\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\DoughMinderServicio\Servicio.wsdl" />
