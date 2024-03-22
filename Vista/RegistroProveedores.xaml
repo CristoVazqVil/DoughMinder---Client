@@ -17,7 +17,7 @@
             <!-- Grid llamado "atrás" -->
             <Grid x:Name="atrás" Margin="0,65,0,323" >
                 <Image Source="/Recursos/FlechaAtras.png" Margin="-2,13,128,15" />
-                <Label Content="Ir atrás" VerticalAlignment="Top" Foreground="White" Margin="46,9,62,0" FontSize="20" />
+                <Label Content="Ir atrás" VerticalAlignment="Top" Foreground="White" Margin="46,9,62,0" FontSize="20" MouseDown="RegresarVentanaAnterior" />
             </Grid>
 
         </Grid>

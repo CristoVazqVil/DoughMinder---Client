@@ -85,11 +85,17 @@
     <Compile Include="Vista\Emergentes\ConexionFallidaBase.xaml.cs">
       <DependentUpon>ConexionFallidaBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Emergentes\EmpleadoExistente.xaml.cs">
+      <DependentUpon>EmpleadoExistente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
       <DependentUpon>InsumoExistente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\ProductoExistente.xaml.cs">
       <DependentUpon>ProductoExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\ProveedorExistente.xaml.cs">
+      <DependentUpon>ProveedorExistente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\RecetaExistente.xaml.cs">
       <DependentUpon>RecetaExistente.xaml</DependentUpon>
@@ -100,9 +106,15 @@
     <Compile Include="Vista\Emergentes\SinConexionServidor.xaml.cs">
       <DependentUpon>SinConexionServidor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Empleados.xaml.cs">
+      <DependentUpon>Empleados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Vista\MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
@@ -110,6 +122,12 @@
     <Compile Include="Vista\RegistroInsumos.xaml.cs">
       <DependentUpon>RegistroInsumos.xaml</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Vista\RegistroMovimiento.xaml.cs">
+      <DependentUpon>RegistroMovimiento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\RegistroPedido.xaml.cs">
+      <DependentUpon>RegistroPedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistroProductos.xaml.cs">
       <DependentUpon>RegistroProductos.xaml</DependentUpon>
@@ -119,6 +137,9 @@
     </Compile>
     <Compile Include="Vista\RegistroRecetas.xaml.cs">
       <DependentUpon>RegistroRecetas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SolicitudInsumo.xaml.cs">
+      <DependentUpon>SolicitudInsumo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
@@ -135,6 +156,10 @@
       <DependentUpon>InicioSesion.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Recursos\Diccionarios\AddFieldsButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Recursos\Diccionarios\CheckboxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,6 +173,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Recursos\Diccionarios\ContentLabelStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Recursos\Diccionarios\ErrorLabelStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -167,6 +196,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Emergentes\EmpleadoExistente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\Emergentes\InsumoExistente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +207,10 @@
     <Page Include="Vista\Emergentes\ProductoExistente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ProveedorExistente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\Emergentes\RecetaExistente.xaml">
       <SubType>Designer</SubType>
@@ -187,10 +224,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Empleados.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\InicioSesion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Vista\MenuPrincipal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
@@ -200,6 +245,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Vista\RegistroMovimiento.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\RegistroPedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\RegistroProductos.xaml">
       <SubType>Designer</SubType>
@@ -212,6 +265,10 @@
     <Page Include="Vista\RegistroRecetas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\SolicitudInsumo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\VentanaPrincipal.xaml">
       <SubType>Designer</SubType>
@@ -236,7 +293,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Empleado1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Insumo1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Login.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Producto1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Proveedor1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\item.xsd">
@@ -268,6 +337,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\logoBlack.png" />
+    <Resource Include="Recursos\IconoSolicitudInsumo.png" />
     <Resource Include="Recursos\IconoMasAzul.png" />
     <Resource Include="Recursos\IconoMas.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

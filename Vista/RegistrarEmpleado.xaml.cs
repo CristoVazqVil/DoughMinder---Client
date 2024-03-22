@@ -43,8 +43,6 @@ namespace DoughMinder___Client.Vista
 
         private void NoModificar(bool permitirModificacion)
         {
-          
-
 
             if (!permitirModificacion)
             {
@@ -67,7 +65,6 @@ namespace DoughMinder___Client.Vista
         {
             if (usuario == "")
             {
-                // Show password fields for new user registration
                 btnModificar.Visibility = Visibility.Collapsed;
                 lblModificar.Visibility = Visibility.Collapsed;
                 bbConfirma.Visibility = Visibility.Visible;

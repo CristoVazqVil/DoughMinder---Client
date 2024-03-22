@@ -123,6 +123,9 @@ namespace DoughMinder___Client.Vista
             e.Handled = regex.IsMatch(e.Text);
         }
 
-
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

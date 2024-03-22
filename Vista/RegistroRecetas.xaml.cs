@@ -268,5 +268,10 @@ namespace DoughMinder___Client.Vista
                 e.Handled = true;
             }
         }
+
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

@@ -111,5 +111,10 @@ namespace DoughMinder___Client.Vista
             RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(true,"");
             NavigationService.Navigate(registrarEmpleadoPage);
         }
+
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

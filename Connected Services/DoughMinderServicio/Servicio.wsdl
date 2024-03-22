@@ -16,7 +16,47 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMovimiento_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IProducto_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IEmpleado_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProveedor_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ISolicitud_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IPedido_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -53,6 +93,12 @@
   <wsdl:message name="IInsumo_RecuperarInsumos_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarInsumosResponse" />
   </wsdl:message>
+  <wsdl:message name="IInsumo_RecuperarTodosInsumos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarTodosInsumos" />
+  </wsdl:message>
+  <wsdl:message name="IInsumo_RecuperarTodosInsumos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarTodosInsumosResponse" />
+  </wsdl:message>
   <wsdl:message name="IReceta_GuardarReceta_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarReceta" />
   </wsdl:message>
@@ -65,11 +111,77 @@
   <wsdl:message name="IReceta_RecuperarRecetas_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarRecetasResponse" />
   </wsdl:message>
+  <wsdl:message name="IMovimiento_RegistrarMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IMovimiento_RegistrarMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarMovimientoResponse" />
+  </wsdl:message>
   <wsdl:message name="IProducto_GuardarProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarProducto" />
   </wsdl:message>
   <wsdl:message name="IProducto_GuardarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:GuardarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductosSinReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosSinReceta" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductosSinReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosSinRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductosParaPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosParaPedido" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductosParaPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosParaPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_GuardarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_GuardarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_ReemplazarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_ReemplazarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_BuscarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_BuscarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_RecuperarEmpleados_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarEmpleados" />
+  </wsdl:message>
+  <wsdl:message name="IEmpleado_RecuperarEmpleados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarEmpleadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_GuardarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_GuardarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_RecuperarProveedores_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProveedores" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_RecuperarProveedores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProveedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISolicitud_RegistrarSolicitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="ISolicitud_RegistrarSolicitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RegistrarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RegistrarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarPedidoResponse" />
   </wsdl:message>
   <wsdl:message name="ILogin_VerificarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:VerificarUsuario" />
@@ -92,6 +204,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IInsumo/RecuperarInsumos" message="tns:IInsumo_RecuperarInsumos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInsumo/RecuperarInsumosResponse" message="tns:IInsumo_RecuperarInsumos_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecuperarTodosInsumos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumo/RecuperarTodosInsumos" message="tns:IInsumo_RecuperarTodosInsumos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumo/RecuperarTodosInsumosResponse" message="tns:IInsumo_RecuperarTodosInsumos_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IReceta">
     <wsdl:operation name="GuardarReceta">
@@ -103,10 +219,64 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasResponse" message="tns:IReceta_RecuperarRecetas_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IMovimiento">
+    <wsdl:operation name="RegistrarMovimiento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMovimiento/RegistrarMovimiento" message="tns:IMovimiento_RegistrarMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMovimiento/RegistrarMovimientoResponse" message="tns:IMovimiento_RegistrarMovimiento_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IProducto">
     <wsdl:operation name="GuardarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/GuardarProducto" message="tns:IProducto_GuardarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/GuardarProductoResponse" message="tns:IProducto_GuardarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductosSinReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosSinReceta" message="tns:IProducto_RecuperarProductosSinReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosSinRecetaResponse" message="tns:IProducto_RecuperarProductosSinReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductosParaPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosParaPedido" message="tns:IProducto_RecuperarProductosParaPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosParaPedidoResponse" message="tns:IProducto_RecuperarProductosParaPedido_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IEmpleado">
+    <wsdl:operation name="GuardarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/GuardarEmpleado" message="tns:IEmpleado_GuardarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/GuardarEmpleadoResponse" message="tns:IEmpleado_GuardarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/ReemplazarEmpleado" message="tns:IEmpleado_ReemplazarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/ReemplazarEmpleadoResponse" message="tns:IEmpleado_ReemplazarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/BuscarEmpleado" message="tns:IEmpleado_BuscarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/BuscarEmpleadoResponse" message="tns:IEmpleado_BuscarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarEmpleados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmpleado/RecuperarEmpleados" message="tns:IEmpleado_RecuperarEmpleados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmpleado/RecuperarEmpleadosResponse" message="tns:IEmpleado_RecuperarEmpleados_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProveedor">
+    <wsdl:operation name="GuardarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProveedor/GuardarProveedor" message="tns:IProveedor_GuardarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProveedor/GuardarProveedorResponse" message="tns:IProveedor_GuardarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProveedores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProveedor/RecuperarProveedores" message="tns:IProveedor_RecuperarProveedores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProveedor/RecuperarProveedoresResponse" message="tns:IProveedor_RecuperarProveedores_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISolicitud">
+    <wsdl:operation name="RegistrarSolicitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISolicitud/RegistrarSolicitud" message="tns:ISolicitud_RegistrarSolicitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISolicitud/RegistrarSolicitudResponse" message="tns:ISolicitud_RegistrarSolicitud_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IPedido">
+    <wsdl:operation name="RegistrarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RegistrarPedido" message="tns:IPedido_RegistrarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RegistrarPedidoResponse" message="tns:IPedido_RegistrarPedido_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILogin">
@@ -140,6 +310,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarTodosInsumos">
+      <soap12:operation soapAction="http://tempuri.org/IInsumo/RecuperarTodosInsumos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IReceta" type="tns:IReceta">
     <wsp:PolicyReference URI="#NetTcpBinding_IReceta_policy" />
@@ -163,11 +342,130 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMovimiento" type="tns:IMovimiento">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMovimiento_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarMovimiento">
+      <soap12:operation soapAction="http://tempuri.org/IMovimiento/RegistrarMovimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IProducto" type="tns:IProducto">
     <wsp:PolicyReference URI="#NetTcpBinding_IProducto_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GuardarProducto">
       <soap12:operation soapAction="http://tempuri.org/IProducto/GuardarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductosSinReceta">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductosSinReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductosParaPedido">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductosParaPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IEmpleado" type="tns:IEmpleado">
+    <wsp:PolicyReference URI="#NetTcpBinding_IEmpleado_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GuardarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IEmpleado/GuardarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IEmpleado/ReemplazarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IEmpleado/BuscarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarEmpleados">
+      <soap12:operation soapAction="http://tempuri.org/IEmpleado/RecuperarEmpleados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProveedor" type="tns:IProveedor">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProveedor_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GuardarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/IProveedor/GuardarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProveedores">
+      <soap12:operation soapAction="http://tempuri.org/IProveedor/RecuperarProveedores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ISolicitud" type="tns:ISolicitud">
+    <wsp:PolicyReference URI="#NetTcpBinding_ISolicitud_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarSolicitud">
+      <soap12:operation soapAction="http://tempuri.org/ISolicitud/RegistrarSolicitud" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IPedido" type="tns:IPedido">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPedido_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarPedido">
+      <soap12:operation soapAction="http://tempuri.org/IPedido/RegistrarPedido" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -211,10 +509,40 @@
         <wsa10:Address>net.tcp://localhost:8081/Receta</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMovimiento" binding="tns:NetTcpBinding_IMovimiento">
+      <soap12:address location="net.tcp://localhost:8081/Movimiento" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Movimiento</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProducto" binding="tns:NetTcpBinding_IProducto">
       <soap12:address location="net.tcp://localhost:8081/Producto" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Producto</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IEmpleado" binding="tns:NetTcpBinding_IEmpleado">
+      <soap12:address location="net.tcp://localhost:8081/Empleado" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Empleado</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProveedor" binding="tns:NetTcpBinding_IProveedor">
+      <soap12:address location="net.tcp://localhost:8081/Proveedor" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Proveedor</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ISolicitud" binding="tns:NetTcpBinding_ISolicitud">
+      <soap12:address location="net.tcp://localhost:8081/Solicitud" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Solicitud</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IPedido" binding="tns:NetTcpBinding_IPedido">
+      <soap12:address location="net.tcp://localhost:8081/Pedido" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Pedido</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILogin" binding="tns:NetTcpBinding_ILogin">
