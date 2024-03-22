@@ -1,0 +1,196 @@
+﻿<Page x:Class="DoughMinder___Client.Vista.RegistroPedido"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegistroPedido">
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="gpColumna" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Source="/Recursos/MicrosoftTeams-image.png"/>
+            <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png"/>
+            <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
+            <Image Grid.Column="0" Grid.Row="2" Width="40" Source="/Recursos/Agregar.png"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="Realizar &#xD;&#xA;Pedido" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
+        </Grid>
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="10,0,0,0">
+            <Grid Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelTitleStyle}" VerticalAlignment="Bottom" Content="Pedido" Height="40" Width="250"/>
+
+                <Label Name="lblProducto" Grid.Row="1" Grid.Column="0" Content="Producto:" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="215"/>
+                <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Name="lblProductoError" Content="error" Visibility="Collapsed"/>
+
+                <Label x:Name="lblCantidad" Grid.Column="1" Grid.Row="1" Content="Cantidad:" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="214"/>
+
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ComboBox Name="cmbProducto0" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" SelectionChanged="CmbProducto0_SelectionChanged">
+                    </ComboBox>
+                    <ComboBox x:Name="cmbCantidad0" Grid.Column="1" Grid.Row="0" Margin="0,0,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" SelectionChanged="CmbCantidad0_SelectionChanged"/>
+
+                    <ComboBox Name="cmbProducto1" Grid.Row="1" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto1_SelectionChanged">
+                    </ComboBox>
+                    <ComboBox x:Name="cmbCantidad1" Grid.Column="1" Grid.Row="1" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad1_SelectionChanged"/>
+
+                    <ComboBox Name="cmbProducto2" Grid.Row="2" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto2_SelectionChanged"  >
+                    </ComboBox>
+                    <ComboBox x:Name="cmbCantidad2" Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad2_SelectionChanged"/>
+
+                    <ComboBox Name="cmbProducto3" Grid.Row="3" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto3_SelectionChanged">
+                    </ComboBox>
+                    <ComboBox x:Name="cmbCantidad3" Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad3_SelectionChanged"/>
+
+                    <ComboBox Name="cmbProducto4" Grid.Row="4" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto4_SelectionChanged">
+                    </ComboBox>
+                    
+                    <ComboBox x:Name="cmbCantidad4" Grid.Column="1" Grid.Row="4" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad4_SelectionChanged"/>
+
+                    <Label x:Name="lblCosto0" Grid.Row="0" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Label x:Name="lblCosto1" Grid.Row="1" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto2" Grid.Row="2" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto3" Grid.Row="3" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto4" Grid.Row="4" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+
+                </Grid>
+                <Image Source="/Recursos/IconoMas.png" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Width="27" Margin="10"/>
+                <Button Style="{DynamicResource ButtonStyle1}" Content="Agregar" x:Name="btnAgregarProducto" Grid.Column="0" Grid.Row="4" Margin="0,10,60,10" Height="35" Click="BtnAgregarProducto_Click"/>
+
+                <CheckBox Grid.Row="5" Grid.Column="0" Style="{DynamicResource CheckBoxStyle1}" FontSize="16" Content="¿Es a domicilio?" HorizontalAlignment="Left" VerticalAlignment="Center" Height="28" Width="228" x:Name="chxDomicilio" Checked="ChxDomicilio_Checked" Unchecked="ChxDomicilio_Unchecked"/>
+
+                <Label Grid.Row="5" Grid.Column="1" Name="lblTipoPago" Content="Tipo de pago:" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="215"/>
+
+                <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Name="lblTipoPagoError" Content="error" Visibility="Collapsed"/>
+                
+                <ComboBox Name="cmbTipoPago" Margin="0,0,10,0" Grid.Column="1" Grid.Row="7" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Height="35" SelectionChanged="CmbTipoPago_SelectionChanged"/>
+
+                <Image Height="30" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Name="btnPagar" Source="/Recursos/BotonVerde.png" MouseLeftButtonDown="BtnPagar_MouseLeftButtonDown"/>
+
+                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Content="Pagar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Foreground="White"/>
+
+                <Grid Visibility="Collapsed" x:Name="gpDomicilio" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Nombre del cliente:" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+
+                    <TextBox TextChanged="TxtbCliente_TextChanged" MaxLength="49" x:Name="txtbCliente" Grid.Row="1" Grid.Column="0" Style="{DynamicResource TextBoxStyle1}" Height="30" Margin="0,0,10,0"/>
+                    
+                    <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Name="lblNombreClienteError" Content="error" Visibility="Collapsed"/>
+
+                    <Label Grid.Row="0" Grid.Column="1" Content="Dirección:" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+
+                    <TextBox TextChanged="TxtbDireccion_TextChanged" MaxLength="100" x:Name="txtbDireccion" Grid.Row="1" Grid.Column="1" Style="{DynamicResource TextBoxStyle1}" Height="30" Margin="0,0,10,0"/>
+
+                    <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="lblDireccionError" Content="error" Visibility="Collapsed"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="Teléfono:" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+
+                    <TextBox MaxLength="12" TextChanged="TxtbTelefono_TextChanged" x:Name="txtbTelefono" Grid.Row="4" Grid.Column="0" Style="{DynamicResource TextBoxStyle1}" Height="30" Margin="0,0,10,0"/>
+
+                    <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Name="lblTelefonoError" Content="error" Visibility="Collapsed"/>
+                    
+                    <Label Grid.Row="3" Grid.Column="1" Content="Número de tarjeta:" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+
+                    <TextBox MaxLength="16" TextChanged="TxtbTarjeta_TextChanged" x:Name="txtbTarjeta" Grid.Row="4" Grid.Column="1" Style="{DynamicResource TextBoxStyle1}" Height="30" Margin="0,0,10,0"/>
+
+                    <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Name="lblTarjetaError" Content="error" Visibility="Collapsed"/>
+                    
+                    <Label x:Name="lblCostoTotalDomicilio" Grid.Row="6" Grid.Column="0" Content="Costo total: $0" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+                </Grid>
+
+                <Grid x:Name="gpSitio" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Visible">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Name="lblCostoTotalSitio" Grid.Row="1" Grid.Column="0" Content="Costo total: $0" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+
+                    <Label Name="lblCantidadIngresada" Grid.Row="2" Grid.Column="0" Content="Tarjeta:" Style="{DynamicResource LabelContentStyle}" FontSize="16"/>
+
+                    <TextBox MaxLength="16" x:Name="txtbCantidadIngresada" Grid.Row="3" Grid.Column="0" Style="{DynamicResource TextBoxStyle1}" Height="30" Margin="0,0,10,0" TextChanged="TxtbCantidadIngresada_TextChanged"/>
+
+                    <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Name="lblCantidadIngresadaError" Content="error" Visibility="Collapsed"/>
+                </Grid>
+
+                <Label Grid.Row="0" Grid.Column="1" x:Name="lblFecha" Content="Fecha: 03/03/2024 a las 15:40" FontSize="17" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Bottom"/>
+
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
