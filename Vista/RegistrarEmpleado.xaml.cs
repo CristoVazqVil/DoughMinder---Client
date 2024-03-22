@@ -23,22 +23,141 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class RegistrarEmpleado : Page
     {
-        public RegistrarEmpleado()
+
+        
+        public RegistrarEmpleado(bool modificar,string usuario)
         {
             InitializeComponent();
 
-            //TODO: PERMITIR SOLO LETRAS EN TODOS LOS CAMPOS Y PERMITIR SOLO NÚMEROS EN TELEFONO
-            //DESHABILITAR BOTÓN ACTIVO
+            MostrarEmpleado(usuario);
 
             txbNombre.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbPaterno.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbMaterno.PreviewTextInput += TextBoxSoloLetras_PreviewTextInput;
             txbTelefono.PreviewTextInput += TextBoxSoloNumeros_PreviewTextInput;
-          
+
+
+            NoModificar(modificar);
         }
 
-        private void Registrar(object sender, MouseButtonEventArgs e)
+
+        private void NoModificar(bool permitirModificacion)
         {
+          
+
+
+            if (!permitirModificacion)
+            {
+                txbNombre.IsEnabled = false;
+                txbPaterno.IsEnabled = false;
+                txbMaterno.IsEnabled = false;
+                txbTelefono.IsEnabled = false;
+                txbDireccion.IsEnabled = false;
+                txbCorreo.IsEnabled = false;
+                txbUsuario.IsEnabled = false;
+                txbContrasena.IsEnabled = false;
+                txbConfirmaContrasena.IsEnabled = false;
+                cbPuesto.IsEnabled = false;
+            }
+        }
+
+
+
+        private void MostrarEmpleado(string usuario)
+        {
+            if (usuario == "")
+            {
+                // Show password fields for new user registration
+                btnModificar.Visibility = Visibility.Collapsed;
+                lblModificar.Visibility = Visibility.Collapsed;
+                bbConfirma.Visibility = Visibility.Visible;
+                bbContrasena.Visibility = Visibility.Visible;
+                txbConfirmaContrasena.Visibility = Visibility.Visible;
+                txbContrasena.Visibility = Visibility.Visible;
+                lbConfirmaContrasena.Visibility = Visibility.Visible;
+                lbContrasena.Visibility = Visibility.Visible;
+            }
+
+            else
+            {
+                btnRegistrar.Visibility = Visibility.Collapsed;
+                lblRegistrar.Visibility = Visibility.Collapsed;
+                btnModificar.Visibility = Visibility.Visible;
+                lblModificar.Visibility = Visibility.Visible;
+
+                bbConfirma.Visibility = Visibility.Collapsed;
+                bbContrasena.Visibility = Visibility.Collapsed;
+                txbConfirmaContrasena.Visibility = Visibility.Collapsed;
+                txbContrasena.Visibility = Visibility.Collapsed;
+                lbConfirmaContrasena.Visibility = Visibility.Collapsed;
+                lbContrasena.Visibility = Visibility.Collapsed;
+
+
+
+
+                try
+                {
+                    Console.WriteLine(usuario);
+
+                    DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
+                    DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
+
+                    empleado = cliente.BuscarEmpleado(usuario);
+
+                    if (empleado != null)
+                    {
+                        txbPaterno.Text = empleado.Paterno;
+                        txbMaterno.Text = empleado.Materno;
+                        txbTelefono.Text = empleado.Telefono;
+                        txbDireccion.Text = empleado.Direccion;
+                        txbCorreo.Text = empleado.Correo;
+                        txbNombre.Text = empleado.Nombre;
+                        txbUsuario.Text = empleado.Usuario;
+                        txbContrasena.Password = empleado.Contraseña;
+                        txbConfirmaContrasena.Password = empleado.Contraseña;
+                        Console.WriteLine(empleado.IdPuesto);
+
+                        switch (empleado.IdPuesto)
+                        {
+                            case 1:
+                                cbPuesto.SelectedIndex = 0;
+                                break;
+                            case 2:
+                                cbPuesto.SelectedIndex = 1;
+                                break;
+                            case 3:
+                                cbPuesto.SelectedIndex = 2;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        MostrarMensajeSinConexionServidor();
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    Console.WriteLine("Error de comunicación al intentar recuperar el empleado. Detalles: " + ex.Message);
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Excepción al mostrar empleado: " + ex.Message);
+                }
+            }
+        }
+
+
+
+        private void Registrar()
+        {
+
             if (!ValidarCamposVacios())
             {
                 CamposVacios camposVacios = new CamposVacios();
@@ -54,6 +173,7 @@ namespace DoughMinder___Client.Vista
                 {
                     try
                     {
+
                         DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
                         DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
 
@@ -64,6 +184,7 @@ namespace DoughMinder___Client.Vista
                         empleado.Telefono = txbTelefono.Text;
                         empleado.Usuario = txbUsuario.Text;
                         empleado.Contraseña = txbContrasena.Password;
+                        empleado.Correo = txbCorreo.Text;
                         empleado.Estado = true;
 
                         ComboBoxItem item = (ComboBoxItem)cbPuesto.SelectedItem;
@@ -84,12 +205,13 @@ namespace DoughMinder___Client.Vista
 
                                 break;
                         }
-
                         int codigo = cliente.GuardarEmpleado(empleado);
 
                         if (codigo == 1)
                         {
                             MostrarMensajeRegistroExitoso();
+                            NavigationService.GoBack();
+
                         }
                         else
                         {
@@ -102,6 +224,7 @@ namespace DoughMinder___Client.Vista
                                 MostrarMensajeSinConexionBase();
                             }
                         }
+
                     }
                     catch (TimeoutException ex)
                     {
@@ -114,6 +237,10 @@ namespace DoughMinder___Client.Vista
                 }
             }
         }
+
+
+
+      
 
 
         private bool ValidarCamposVacios()
@@ -146,11 +273,10 @@ namespace DoughMinder___Client.Vista
             registroExitoso.Show();
         }
 
-        //CORREGIR
         private void MostrarMensajeInsumoExistente()
         {
-            InsumoExistente insumoExistente = new InsumoExistente();
-            insumoExistente.Show();
+            EmpleadoExistente empleadoExistente = new EmpleadoExistente();
+            empleadoExistente.Show();
         }
 
         private void MostrarMensajeSinConexionBase()
@@ -185,8 +311,84 @@ namespace DoughMinder___Client.Vista
             return true; 
         }
 
+        private void PermitirModificar(object sender, MouseButtonEventArgs e)
+        {
+            txbNombre.IsEnabled = true;
+            txbPaterno.IsEnabled = true;
+            txbMaterno.IsEnabled = true;
+            txbTelefono.IsEnabled = true;
+            txbDireccion.IsEnabled = true;
+            txbCorreo.IsEnabled = true;
+            txbContrasena.IsEnabled = true;
+            txbConfirmaContrasena.IsEnabled = true;
+            cbPuesto.IsEnabled = true;
+
+            btnAceptarModificacion.Visibility = Visibility.Visible;
+            lblAceptarModificacion.Visibility = Visibility.Visible;
+
+            btnModificar.Visibility = Visibility.Collapsed;
+            lblModificar.Visibility = Visibility.Collapsed;
+
+            bbConfirma.Visibility = Visibility.Visible;
+            bbContrasena.Visibility = Visibility.Visible;   
+
+            txbConfirmaContrasena.Visibility = Visibility.Visible;
+            txbContrasena.Visibility = Visibility.Visible;
 
 
+            lbConfirmaContrasena.Visibility = Visibility.Visible;
+            lbContrasena.Visibility = Visibility.Visible;
+
+
+
+
+        }
+
+        private void IrAtras(object sender, MouseButtonEventArgs e)
+        {
+             NavigationService.GoBack();
+        }
+
+        private void ModificarEmpleado(object sender, MouseButtonEventArgs e)
+        {
+
+            if (!ValidarCamposVacios())
+            {
+                CamposVacios camposVacios = new CamposVacios();
+                camposVacios.Show();
+            }
+            else
+            {
+
+                try
+                {
+                    DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
+                    DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
+                    int codigo = cliente.ReemplazarEmpleado(txbUsuario.Text);
+
+                    if (codigo == 1)
+                    {
+                        Registrar();
+                    }
+                }
+
+
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+
+            }
+        }
+
+        private void ConfirmaRegistro(object sender, MouseButtonEventArgs e)
+        {
+            Registrar();
+        }
     }
 }
 

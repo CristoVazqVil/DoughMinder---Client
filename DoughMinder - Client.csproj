@@ -84,6 +84,12 @@
     <Compile Include="Vista\Emergentes\ConexionFallidaBase.xaml.cs">
       <DependentUpon>ConexionFallidaBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Emergentes\ProveedorExistente.xaml.cs">
+      <DependentUpon>ProveedorExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\EmpleadoExistente.xaml.cs">
+      <DependentUpon>EmpleadoExistente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
       <DependentUpon>InsumoExistente.xaml</DependentUpon>
     </Compile>
@@ -99,8 +105,14 @@
     <Compile Include="Vista\Emergentes\SinConexionServidor.xaml.cs">
       <DependentUpon>SinConexionServidor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Empleados.xaml.cs">
+      <DependentUpon>Empleados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
@@ -162,10 +174,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Recursos\Diccionarios\ErrorLabelStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Recursos\Diccionarios\TextboxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +189,14 @@
     <Page Include="Vista\Emergentes\ConexionFallidaBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ProveedorExistente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\Emergentes\EmpleadoExistente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\Emergentes\InsumoExistente.xaml">
       <SubType>Designer</SubType>
@@ -202,7 +218,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Empleados.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\InicioSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\MenuPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,13 +286,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Insumo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Producto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Proveedor.datasource">
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\item.xsd">
@@ -297,6 +315,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\logoBlack.png" />
+    <Resource Include="Recursos\MicrosoftTeams-image.png" />
     <Resource Include="Recursos\IconoSolicitudInsumo.png" />
     <Resource Include="Recursos\IconoMasAzul.png" />
     <Resource Include="Recursos\IconoMas.png">
@@ -344,7 +364,6 @@
     <Resource Include="Recursos\FlechaAtras.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Recursos\MicrosoftTeams-image.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\DoughMinderServicio\" />
