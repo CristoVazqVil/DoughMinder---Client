@@ -386,6 +386,24 @@ namespace DoughMinder___Client.Vista
         {
             Registrar();
         }
+
+       
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            
+            if (textBox.Text.Length > 20)
+            {
+                textBox.Text = textBox.Text.Substring(0, 20);
+
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
     }
+    
+
+
 }
 

@@ -39,7 +39,7 @@
 
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,102,0,0" VerticalAlignment="Top" Width="526" Height="35">
-            <TextBox TextWrapping="Wrap" x:Name="txbNombre" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+            <TextBox TextWrapping="Wrap" x:Name="txbNombre" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,188,0,0" VerticalAlignment="Top" Width="526" Height="34">
@@ -47,7 +47,7 @@
         </Border>
 
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,275,0,0" VerticalAlignment="Top" Width="526" Height="35">
-            <TextBox TextWrapping="Wrap" x:Name="txbTelefono" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
+            <TextBox TextWrapping="Wrap" x:Name="txbTelefono" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
         <CheckBox Content="Activo" HorizontalAlignment="Left" Margin="190,357,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Background="#FF527243" Visibility="Collapsed"/>
