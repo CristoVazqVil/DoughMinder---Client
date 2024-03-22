@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoughMinder___Client.Vista"
         mc:Ignorable="d"
-        Title="VentanaPrincipal" Height="487" Width="815" WindowStartupLocation="CenterScreen">
+        Title="VentanaPrincipal" Height="487" Width="815" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <Grid>
         <Frame x:Name="framePage" NavigationUIVisibility="Hidden"/>
     </Grid>

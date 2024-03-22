@@ -54,5 +54,23 @@ namespace DoughMinder___Client.Vista
             RegistroProveedores proveedores = new RegistroProveedores();
             this.NavigationService.Navigate(proveedores);
         }
+
+        private void AbrirRegistroPedido(object sender, RoutedEventArgs e)
+        {
+            RegistroPedido pedido = new RegistroPedido();
+            this.NavigationService.Navigate(pedido);
+        }
+
+        private void AbrirSolicitudInsumo(object sender, RoutedEventArgs e)
+        {
+            SolicitudInsumo solicitudInsumo = new SolicitudInsumo();
+            this.NavigationService.Navigate(solicitudInsumo);
+        }
+
+        private void AbrirRegistroMovimiento(object sender, RoutedEventArgs e)
+        {
+            RegistroMovimiento registroMovimiento = new RegistroMovimiento();
+            this.NavigationService.Navigate(registroMovimiento);
+        }
     }
 }

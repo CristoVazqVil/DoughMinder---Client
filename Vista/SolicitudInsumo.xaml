@@ -31,7 +31,7 @@
 
             <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
             <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Source="/Recursos/MicrosoftTeams-image.png"/>
-            <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png"/>
+            <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png" MouseDown="RegresarVentanaAnterior"/>
             <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
             <Image Grid.Column="0" Grid.Row="2" Width="40" Source="/Recursos/Agregar.png"/>
             <Label Grid.Column="1" Grid.Row="2" Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />

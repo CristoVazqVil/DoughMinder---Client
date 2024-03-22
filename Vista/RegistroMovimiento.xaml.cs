@@ -170,6 +170,11 @@ namespace DoughMinder___Client.Vista
         {
             lblCostoError.Visibility = Visibility.Collapsed;
         }
+
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
 

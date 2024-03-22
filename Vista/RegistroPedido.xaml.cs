@@ -561,5 +561,10 @@ namespace DoughMinder___Client.Vista
 
             return pedidoProducto;
         }
+
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

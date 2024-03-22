@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoughMinder___Client.Vista"
         mc:Ignorable="d"
-        Title="InicioSesion" Height="600" Width="360">
+        Title="InicioSesion" Height="600" Width="360" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
 
     <Grid>
         <Image Source="/Vista/Login.png" Stretch="Fill" />

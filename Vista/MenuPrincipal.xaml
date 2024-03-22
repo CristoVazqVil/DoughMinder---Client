@@ -48,13 +48,11 @@
             <Label Content="Registrar &#xD;&#xA;Proveedor" MouseDown="AbrirProveedores" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
 
-        <Button Content="Pedidos" HorizontalAlignment="Left" Margin="206,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045"/>
+        <Button Content="Pedidos" HorizontalAlignment="Left" Margin="206,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045" Click="AbrirRegistroPedido"/>
 
+        <Button Content="Insumos" HorizontalAlignment="Left" Margin="273,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045" Click="AbrirSolicitudInsumo"/>
 
-
-        <Button Content="Insumos" HorizontalAlignment="Left" Margin="273,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045"/>
-
-        <Button Content="Finanzas" HorizontalAlignment="Left" Margin="351,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045"/>
+        <Button Content="Finanzas" HorizontalAlignment="Left" Margin="351,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045" Click="AbrirRegistroMovimiento"/>
 
     </Grid>
 
