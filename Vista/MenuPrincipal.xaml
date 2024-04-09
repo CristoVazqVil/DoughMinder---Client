@@ -9,52 +9,136 @@
       Title="MenuPrincipal">
 
     <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Image Source="/Recursos/logoBlack.png" Margin="220,117,64,118" Opacity="0.6" />
+        <Grid x:Name="gpColumna" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Image Source="/Recursos/FondoVerde.png" Grid.Row="0" Grid.RowSpan="9" Grid.Column="0" Width="300" HorizontalAlignment="Left"/>
 
+            <Image Source="/Recursos/MicrosoftTeams-image.png" Grid.Row="0" Height="50"/>
 
-        <Grid x:Name="columna" Margin="0,0,622,0">
-            <Image Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Grid x:Name="gpProductos" MouseDown="AbrirProductos" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid x:Name="Productos" Margin="0,65,0,323" MouseDown="AbrirProductos" >
-                <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-                <Label Style="{DynamicResource LabelColumnStyle}" Content="Productos" Margin="46,9,0,0" Width="132" />
+                <Image Source="/Recursos/ProductosIcon.png" Grid.Column="0" Width="40"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Content="Productos" Grid.Column="1" VerticalAlignment="Center"/>
             </Grid>
 
-            <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-30,-3,-22,364" IsHitTestVisible="False"  />
+            <Grid x:Name="gpEmpleados" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
+                <Image Source="/Recursos/EmpleadosIcon.png" Grid.Column="0" Width="40"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Empleados" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid x:Name="gpInsumo" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Recursos/InsumosIcon.png" Grid.Column="0" Width="40"/>
+                <Label Content="Insumos" Grid.Column="1" MouseDown="AbrirInsumos" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20" />
+            </Grid>
+
+
+            <Grid x:Name="gpReceta" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Recursos/Agregar.png" Grid.Column="0" Width="40"/>
+                <Label Content="Recetas" Grid.Column="1" MouseDown="AbrirRecetas" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
+            </Grid>
+
+            <Grid x:Name="gpProveedor" Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Recursos/ProveedoresIcon.png" Grid.Column="0" Width="40"/>
+                <Label Content="Proveedores" Grid.Column="1" MouseDown="AbrirProveedores" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
+            </Grid>
+
+            <Grid x:Name="gpFinanzas" Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Recursos/FinanzasIcon.png" Grid.Column="0" Width="40"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Finanzas" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid x:Name="gpPedidos" Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Recursos/PedidosIcon.png" Grid.Column="0" Width="40"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Pedidos" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid x:Name="gpSalir" Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Recursos/SalirIcon.png" Grid.Column="0" Width="25"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
+            </Grid>
         </Grid>
 
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Grid x:Name="Empleados" Margin="0,129,622,261"  >
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Empleados" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="51"  />
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="lblBienvenido" Content="Bienvenido" Style="{DynamicResource LabelTitleStyle}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label Content="Menú" Style="{DynamicResource LabelTitleStyle}" Grid.Column="1" VerticalAlignment="Center"/>
+            </Grid>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <Grid x:Name="gpVistaProductos">
+                    
+                </Grid>
+            </ScrollViewer>
         </Grid>
-
-        <Grid x:Name="Insumo" Margin="0,195,622,195" >
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Insumo" MouseDown="AbrirInsumos" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
-        </Grid>
-
-
-        <Grid x:Name="Receta" Margin="0,260,622,130" >
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Receta" MouseDown="AbrirRecetas" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
-        </Grid>
-
-        <Grid x:Name="Proveedor" Margin="0,325,622,65" >
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Proveedor" MouseDown="AbrirProveedores" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
-        </Grid>
-
-        <Button Content="Pedidos" HorizontalAlignment="Left" Margin="206,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045" Click="AbrirRegistroPedido"/>
-
-        <Button Content="Insumos" HorizontalAlignment="Left" Margin="273,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045" Click="AbrirSolicitudInsumo"/>
-
-        <Button Content="Finanzas" HorizontalAlignment="Left" Margin="351,415,0,0" VerticalAlignment="Top" BorderBrush="#FF598045" Click="AbrirRegistroMovimiento"/>
-
+        
     </Grid>
-
-
 </Page>

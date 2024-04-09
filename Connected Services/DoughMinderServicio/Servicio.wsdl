@@ -135,6 +135,12 @@
   <wsdl:message name="IProducto_RecuperarProductosParaPedido_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProductosParaPedidoResponse" />
   </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmpleado_GuardarEmpleado_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleado" />
   </wsdl:message>
@@ -237,6 +243,10 @@
     <wsdl:operation name="RecuperarProductosParaPedido">
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosParaPedido" message="tns:IProducto_RecuperarProductosParaPedido_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosParaPedidoResponse" message="tns:IProducto_RecuperarProductosParaPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductos" message="tns:IProducto_RecuperarProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosResponse" message="tns:IProducto_RecuperarProductos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmpleado">
@@ -378,6 +388,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarProductosParaPedido">
       <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductosParaPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
