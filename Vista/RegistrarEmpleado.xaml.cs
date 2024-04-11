@@ -401,9 +401,8 @@ namespace DoughMinder___Client.Vista
                 textBox.SelectionStart = textBox.Text.Length;
             }
         }
+
+       
     }
-    
-
-
 }
 

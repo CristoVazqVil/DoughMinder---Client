@@ -1333,6 +1333,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private string NombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DoughMinder___Client.DoughMinderServicio.Solicitud[] SolicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1383,6 +1386,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.NombreField, value) != true)) {
                     this.NombreField = value;
                     this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
                 }
             }
         }
@@ -1537,6 +1553,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private DoughMinder___Client.DoughMinderServicio.Puesto PuestoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefonoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1665,6 +1684,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.PuestoField, value) != true)) {
                     this.PuestoField = value;
                     this.RaisePropertyChanged("Puesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
                 }
             }
         }
