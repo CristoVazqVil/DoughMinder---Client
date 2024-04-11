@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="UvoC74PMcADQBZkNcUD+D7CLSy22C9uFdm9zp3hw8/o=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="C1IcX9k1qGq1V7KrRtGFprWagoaFn8iw6NlrsCjxVdo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IInsumo">
       <properties>
@@ -1065,10 +1065,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IInsumo" contract="DoughMinderServicio.IInsumo" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Insumo" bindingConfiguration="NetTcpBinding_IInsumo">
+    <endpoint name="NetTcpBinding_IInsumo" contract="DoughMinderServicio.IInsumo" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Insumo" bindingConfiguration="NetTcpBinding_IInsumo">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Insumo</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Insumo</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1150,10 +1150,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IReceta" contract="DoughMinderServicio.IReceta" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Receta" bindingConfiguration="NetTcpBinding_IReceta">
+    <endpoint name="NetTcpBinding_IReceta" contract="DoughMinderServicio.IReceta" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Receta" bindingConfiguration="NetTcpBinding_IReceta">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Receta</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Receta</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1235,10 +1235,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IMovimiento" contract="DoughMinderServicio.IMovimiento" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Movimiento" bindingConfiguration="NetTcpBinding_IMovimiento">
+    <endpoint name="NetTcpBinding_IMovimiento" contract="DoughMinderServicio.IMovimiento" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Movimiento" bindingConfiguration="NetTcpBinding_IMovimiento">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Movimiento</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Movimiento</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1320,10 +1320,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IProducto" contract="DoughMinderServicio.IProducto" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Producto" bindingConfiguration="NetTcpBinding_IProducto">
+    <endpoint name="NetTcpBinding_IProducto" contract="DoughMinderServicio.IProducto" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Producto" bindingConfiguration="NetTcpBinding_IProducto">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Producto</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Producto</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1405,10 +1405,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IEmpleado" contract="DoughMinderServicio.IEmpleado" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Empleado" bindingConfiguration="NetTcpBinding_IEmpleado">
+    <endpoint name="NetTcpBinding_IEmpleado" contract="DoughMinderServicio.IEmpleado" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Empleado" bindingConfiguration="NetTcpBinding_IEmpleado">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Empleado</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Empleado</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1490,10 +1490,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IProveedor" contract="DoughMinderServicio.IProveedor" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Proveedor" bindingConfiguration="NetTcpBinding_IProveedor">
+    <endpoint name="NetTcpBinding_IProveedor" contract="DoughMinderServicio.IProveedor" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Proveedor" bindingConfiguration="NetTcpBinding_IProveedor">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Proveedor</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Proveedor</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1575,10 +1575,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ISolicitud" contract="DoughMinderServicio.ISolicitud" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Solicitud" bindingConfiguration="NetTcpBinding_ISolicitud">
+    <endpoint name="NetTcpBinding_ISolicitud" contract="DoughMinderServicio.ISolicitud" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Solicitud" bindingConfiguration="NetTcpBinding_ISolicitud">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Solicitud</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Solicitud</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1660,10 +1660,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IPedido" contract="DoughMinderServicio.IPedido" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Pedido" bindingConfiguration="NetTcpBinding_IPedido">
+    <endpoint name="NetTcpBinding_IPedido" contract="DoughMinderServicio.IPedido" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Pedido" bindingConfiguration="NetTcpBinding_IPedido">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Pedido</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Pedido</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1745,10 +1745,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILogin" contract="DoughMinderServicio.ILogin" bindingType="netTcpBinding" address="net.tcp://192.168.27.196:8081/Login" bindingConfiguration="NetTcpBinding_ILogin">
+    <endpoint name="NetTcpBinding_ILogin" contract="DoughMinderServicio.ILogin" bindingType="netTcpBinding" address="net.tcp://localhost:8081/Login" bindingConfiguration="NetTcpBinding_ILogin">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.27.196:8081/Login</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/Login</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

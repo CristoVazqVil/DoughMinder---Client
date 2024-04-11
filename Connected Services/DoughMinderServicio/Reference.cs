@@ -26,6 +26,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private System.Nullable<double> CantidadKiloLitroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -65,6 +68,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((this.CantidadKiloLitroField.Equals(value) != true)) {
                     this.CantidadKiloLitroField = value;
                     this.RaisePropertyChanged("CantidadKiloLitro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoField, value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
                 }
             }
         }
@@ -462,6 +478,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -486,6 +505,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Codigo {
+            get {
+                return this.CodigoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoField, value) != true)) {
+                    this.CodigoField = value;
+                    this.RaisePropertyChanged("Codigo");
+                }
             }
         }
         

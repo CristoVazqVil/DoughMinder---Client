@@ -74,11 +74,11 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://192.168.27.196:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://192.168.27.196:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://192.168.27.196:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Clases" />
-      <xsd:import schemaLocation="http://192.168.27.196:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://192.168.27.196:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Clases.Contratos" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Clases" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Clases.Contratos" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IInsumo_GuardarInsumo_InputMessage">
@@ -498,57 +498,57 @@
   </wsdl:binding>
   <wsdl:service name="Servicio">
     <wsdl:port name="NetTcpBinding_IInsumo" binding="tns:NetTcpBinding_IInsumo">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Insumo" />
+      <soap12:address location="net.tcp://localhost:8081/Insumo" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Insumo</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Insumo</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IReceta" binding="tns:NetTcpBinding_IReceta">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Receta" />
+      <soap12:address location="net.tcp://localhost:8081/Receta" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Receta</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Receta</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IMovimiento" binding="tns:NetTcpBinding_IMovimiento">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Movimiento" />
+      <soap12:address location="net.tcp://localhost:8081/Movimiento" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Movimiento</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Movimiento</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProducto" binding="tns:NetTcpBinding_IProducto">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Producto" />
+      <soap12:address location="net.tcp://localhost:8081/Producto" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Producto</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Producto</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IEmpleado" binding="tns:NetTcpBinding_IEmpleado">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Empleado" />
+      <soap12:address location="net.tcp://localhost:8081/Empleado" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Empleado</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Empleado</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProveedor" binding="tns:NetTcpBinding_IProveedor">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Proveedor" />
+      <soap12:address location="net.tcp://localhost:8081/Proveedor" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Proveedor</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Proveedor</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ISolicitud" binding="tns:NetTcpBinding_ISolicitud">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Solicitud" />
+      <soap12:address location="net.tcp://localhost:8081/Solicitud" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Solicitud</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Solicitud</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IPedido" binding="tns:NetTcpBinding_IPedido">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Pedido" />
+      <soap12:address location="net.tcp://localhost:8081/Pedido" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Pedido</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Pedido</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILogin" binding="tns:NetTcpBinding_ILogin">
-      <soap12:address location="net.tcp://192.168.27.196:8081/Login" />
+      <soap12:address location="net.tcp://localhost:8081/Login" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.27.196:8081/Login</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8081/Login</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

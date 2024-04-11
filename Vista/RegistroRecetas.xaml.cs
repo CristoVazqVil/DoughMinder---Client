@@ -83,6 +83,7 @@ namespace DoughMinder___Client.Vista
                     DoughMinderServicio.Receta receta = new DoughMinderServicio.Receta();
 
                     receta.Nombre = txbNombreReceta.Text;
+                    receta.Codigo = txbCodigoReceta.Text;
                     receta.Descripcion = txbProcedimientoReceta.Text;
                     receta.Estado = true;
 
@@ -91,6 +92,7 @@ namespace DoughMinder___Client.Vista
                     if (codigo > 1)
                     {
                         MostrarMensajeRegistroExitoso();
+                        NavigationService.GoBack();
                     }
                     else
                     {
@@ -122,6 +124,12 @@ namespace DoughMinder___Client.Vista
             if (string.IsNullOrEmpty(txbNombreReceta.Text))
             {
                 lblNombreReceta.Foreground = Brushes.Red;
+                camposValidos = false;
+            }
+
+            if (string.IsNullOrEmpty(txbCodigoReceta.Text))
+            {
+                lblCodigoReceta.Foreground = Brushes.Red;
                 camposValidos = false;
             }
 
@@ -181,11 +189,10 @@ namespace DoughMinder___Client.Vista
                 {
                     if (float.TryParse(item.Cantidad, out float cantidad))
                     {
-                        insumosSeleccionados.Add(item.IdInsumo, cantidad);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error al convertir la cantidad del insumo con ID {item.IdInsumo}");
+                        if (cantidad > 0)
+                        {
+                            insumosSeleccionados.Add(item.IdInsumo, cantidad);
+                        }
                     }
                 }
             }
@@ -197,6 +204,7 @@ namespace DoughMinder___Client.Vista
         {
             lblProcedimiento.Foreground = Brushes.Black;
             lblNombreReceta.Foreground = Brushes.Black;
+            lblCodigoReceta.Foreground = Brushes.Black;
             lblInsumos.Foreground = Brushes.Black;
             lblInsumos2.Foreground = Brushes.Black;
         }
@@ -223,6 +231,33 @@ namespace DoughMinder___Client.Vista
         {
             ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
             conexionFallidaBase.ShowDialog();
+        }
+
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void LimpiarCampos(object sender, MouseButtonEventArgs e)
+        {
+            ReiniciarMarcadores();
+            txbCodigoReceta.Clear();
+            txbNombreReceta.Clear();
+            txbProcedimientoReceta.Clear();
+            drgTablaInsumos.ItemsSource = null;
+            drgTablaInsumos.Items.Clear();
+            RecuperarInsumos();
+        }
+
+        //Validaciones de entradas y cambios gráficos
+        private void CambiarLimpiarAzul(object sender, MouseEventArgs e)
+        {
+            btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarLimpiarVerde(object sender, MouseEventArgs e)
+        {
+            btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
         }
 
         private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
@@ -269,9 +304,27 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        private void EliminarCaracteresCodigo(object sender, TextCompositionEventArgs e)
         {
-            NavigationService.GoBack();
+            TextBox textBox = sender as TextBox;
+
+            Regex regex = new Regex(@"^[a-zA-Z0-9\-]*$");
+
+            if (textBox != null && textBox.Text.Length < 10)
+            {
+                if (regex.IsMatch(e.Text))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

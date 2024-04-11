@@ -29,7 +29,7 @@
         </Grid>
 
 
-        <Label Style="{DynamicResource LabelTitleStyle}" Content="Receta" Height="40" Margin="195,31,0,0" Width="125"/>
+        <Label Style="{DynamicResource LabelTitleStyle}" Content="Receta" Height="40" Margin="195,10,0,0" Width="125"/>
 
         <TextBox Name="txbNombreReceta" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="195,108,314,0" PreviewTextInput="EliminarCaracteresNombre"/>
 
@@ -39,11 +39,11 @@
 
         <Label Name="lblNombreReceta" Content="Nombre de la receta:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="195,76,0,0" VerticalAlignment="Top" Width="178"/>
 
-        <TextBox Name="txbProcedimientoReceta" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="204" TextWrapping="Wrap" Padding="5" Margin="195,175,314,0" PreviewTextInput="EliminarCaracteresProcedimiento"/>
+        <TextBox Name="txbProcedimientoReceta" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="120" TextWrapping="Wrap" Padding="5" Margin="195,246,314,0" PreviewTextInput="EliminarCaracteresProcedimiento"/>
 
-        <Label Name="lblProcedimiento" Content="Procedimiento:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="195,143,0,0" VerticalAlignment="Top" Width="129"/>
+        <Label Name="lblProcedimiento" Content="Procedimiento:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="195,214,0,0" VerticalAlignment="Top" Width="129"/>
 
-        <DataGrid Name="drgTablaInsumos" AutoGenerateColumns="False" SelectionMode="Extended" Margin="499,136,10,71" CanUserAddRows="False">
+        <DataGrid Name="drgTablaInsumos" AutoGenerateColumns="False" SelectionMode="Extended" Margin="499,136,10,84" CanUserAddRows="False">
             <DataGrid.Style>
                 <Style TargetType="DataGrid">
                     <Setter Property="Foreground" Value="Black"/>
@@ -82,8 +82,13 @@
         </DataGrid>
 
         <Label Name="lblInsumos" Content="Seleccione los insumos requeridos" FontSize="17" HorizontalAlignment="Left" Height="39" Margin="499,69,0,0" VerticalAlignment="Top" Width="268"/>
-        
+
         <Label Name="lblInsumos2" Content="e ingrese cantidad:" FontSize="17" HorizontalAlignment="Left" Height="39" Margin="499,104,0,0" VerticalAlignment="Top" Width="268"/>
+        <Label Content="*Los insumos con cantidad igual a 0 no serán contemplados." FontSize="10" Foreground="Gray" HorizontalAlignment="Left" Height="24" Margin="499,366,0,0" VerticalAlignment="Top" Width="278"/>
+        <TextBox x:Name="txbCodigoReceta" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="195,175,314,0" PreviewTextInput="EliminarCaracteresCodigo"/>
+        <Label Name="lblCodigoReceta" Content="Código de la receta:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="195,143,0,0" VerticalAlignment="Top" Width="178"/>
+        <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="669,13,21,385" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
+        <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="692,21,44,400" VerticalContentAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Page>

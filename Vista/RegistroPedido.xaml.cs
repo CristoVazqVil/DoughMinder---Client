@@ -504,7 +504,7 @@ namespace DoughMinder___Client.Vista
             decimal costoTotal = decimal.Parse(costoString);
             pedido.CostoTotal = costoTotal;
 
-            pedido.IdEstadoPedido = 1;
+            //pedido.IdEstadoPedido = 1;
 
             if (chxDomicilio.IsChecked == true)
             {
