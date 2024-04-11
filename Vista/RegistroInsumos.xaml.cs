@@ -52,6 +52,7 @@ namespace DoughMinder___Client.Vista
                     decimal.TryParse(txbPrecioInsumo.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out precio);
 
                     insumo.Nombre = txbNombreInsumo.Text;
+                    insumo.Codigo = txbCodigoInsumo.Text;
                     insumo.CantidadKiloLitro = double.Parse(txbCantidadInsumo.Text);
                     insumo.PrecioKiloLitro = precio;
                     insumo.RutaFoto = txbNombreInsumo.Text;
@@ -62,6 +63,7 @@ namespace DoughMinder___Client.Vista
                     if (codigo == 1)
                     {
                         MostrarMensajeRegistroExitoso();
+                        NavigationService.GoBack();
                     }
                     else
                     {
@@ -102,6 +104,12 @@ namespace DoughMinder___Client.Vista
                 camposValidos = false;
             }
 
+            if (string.IsNullOrEmpty(txbCodigoInsumo.Text))
+            {
+                lblCodigoInsumo.Foreground = Brushes.Red;
+                camposValidos = false;
+            }
+
             if (string.IsNullOrEmpty(txbPrecioInsumo.Text))
             {
                 lblPrecio.Foreground = Brushes.Red;
@@ -115,27 +123,6 @@ namespace DoughMinder___Client.Vista
             }
 
             return camposValidos;
-        }
-
-
-        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
-        {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
-        }
-
-        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
-        {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
-        }
-
-        private void CambiarAdjuntarAzul(object sender, MouseEventArgs e)
-        {
-            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMasAzul.png", UriKind.Relative));
-        }
-
-        private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
-        {
-            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
         }
 
         private void AdjuntarImagen(object sender, MouseButtonEventArgs e)
@@ -159,6 +146,7 @@ namespace DoughMinder___Client.Vista
         {
             lblCantidad.Foreground = Brushes.Black;
             lblNombre.Foreground = Brushes.Black;
+            lblCodigoInsumo.Foreground = Brushes.Black;
             lblPrecio.Foreground = Brushes.Black;
             lblImagen.Foreground = Brushes.Black;
         }
@@ -187,6 +175,22 @@ namespace DoughMinder___Client.Vista
             conexionFallidaBase.ShowDialog();
         }
 
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void LimpiarCampos(object sender, MouseButtonEventArgs e)
+        {
+            ReiniciarMarcadores();
+            txbNombreInsumo.Clear();
+            txbImagenInsumo.Text = "Sin imagen adjunta...";
+            txbCodigoInsumo.Clear();
+            txbCantidadInsumo.Clear();
+            txbPrecioInsumo.Clear();
+        }
+
+        //Validaciones de entradas y cambios gráficos
         private void EliminarCaracteresPrecio(object sender, TextCompositionEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -226,9 +230,57 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        private void EliminarCaracteresCodigo(object sender, TextCompositionEventArgs e)
         {
-            NavigationService.GoBack();
+            TextBox textBox = sender as TextBox;
+
+            Regex regex = new Regex(@"^[a-zA-Z0-9\-]*$");
+
+            if (textBox != null && textBox.Text.Length < 10)
+            {
+                if (regex.IsMatch(e.Text))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
+        {
+            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
+        {
+            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+        }
+
+        private void CambiarLimpiarAzul(object sender, MouseEventArgs e)
+        {
+            btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarLimpiarVerde(object sender, MouseEventArgs e)
+        {
+            btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+        }
+
+        private void CambiarAdjuntarAzul(object sender, MouseEventArgs e)
+        {
+            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMasAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
+        {
+            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
         }
     }
 }

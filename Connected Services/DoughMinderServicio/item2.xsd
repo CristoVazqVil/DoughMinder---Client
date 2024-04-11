@@ -3,6 +3,7 @@
   <xs:complexType name="Insumo">
     <xs:sequence>
       <xs:element minOccurs="0" name="CantidadKiloLitro" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IdInsumo" type="xs:int" />
       <xs:element minOccurs="0" name="InsumoReceta" nillable="true" type="tns:ArrayOfInsumoReceta" />
@@ -32,6 +33,7 @@
   <xs:element name="InsumoReceta" nillable="true" type="tns:InsumoReceta" />
   <xs:complexType name="Receta">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IdReceta" type="xs:int" />
@@ -145,7 +147,6 @@
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdProveedor" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Solicitud" nillable="true" type="tns:ArrayOfSolicitud" />
       <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -182,7 +183,6 @@
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Paterno" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Puesto" nillable="true" type="tns:Puesto" />
-      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>

@@ -83,6 +83,7 @@ namespace DoughMinder___Client.Vista
                     if (codigo == 1)
                     {
                         MostrarMensajeRegistroExitoso();
+                        NavigationService.GoBack();
                     }
                     else
                     {
@@ -225,26 +226,6 @@ namespace DoughMinder___Client.Vista
             lblRecetas.Foreground = Brushes.Black;
         }
 
-        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
-        {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
-        }
-
-        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
-        {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
-        }
-
-        private void CambiarAdjuntarAzul(object sender, MouseEventArgs e)
-        {
-            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMasAzul.png", UriKind.Relative));
-        }
-
-        private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
-        {
-            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
-        }
-
         private void AdjuntarImagen(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -286,7 +267,27 @@ namespace DoughMinder___Client.Vista
             conexionFallidaBase.ShowDialog();
         }
 
-        //Validaciones de entradas
+        private void LimpiarCampos(object sender, MouseButtonEventArgs e)
+        {
+            ReiniciarMarcadores();
+            txbNombreProducto.Clear();
+            txbCodigoProducto.Clear();
+            txbPrecioProducto.Clear();
+            txbDescripcionProducto.Clear();
+            txbRestriccionesProducto.Clear();
+            txbCantidadProducto.Clear();
+            txbImagenProducto.Text = "Sin imagen adjunta...";
+            dtgTablaRecetas.ItemsSource = null;
+            dtgTablaRecetas.Items.Clear();
+            RecuperarRecetas();
+        }
+
+        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        //Validaciones de entradas y cambios gráficos
 
         private void EliminarCaracteresNombre(object sender, TextCompositionEventArgs e)
         {
@@ -397,9 +398,34 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
+        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
         {
-            NavigationService.GoBack();
+            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
+        {
+            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+        }
+
+        private void CambiarAdjuntarAzul(object sender, MouseEventArgs e)
+        {
+            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMasAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
+        {
+            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
+        }
+
+        private void CambiarLimpiarAzul(object sender, MouseEventArgs e)
+        {
+            btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarLimpiarVerde(object sender, MouseEventArgs e)
+        {
+            btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
         }
     }
 }
