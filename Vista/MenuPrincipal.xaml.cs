@@ -27,7 +27,7 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirProductos(object sender, MouseButtonEventArgs e)
         {
-            RegistroProductos productos = new RegistroProductos();
+            Productos productos = new Productos();
             this.NavigationService.Navigate(productos);
         }
 

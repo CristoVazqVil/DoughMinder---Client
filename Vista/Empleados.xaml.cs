@@ -54,6 +54,8 @@ namespace DoughMinder___Client.Vista
             lstEmpleados.ItemsSource = listaEmpleadosCompleta;
         }
 
+
+
         private Dictionary<string, string> RecuperarEmpleados()
         {
             Dictionary<string, string> listaEmpleados = new Dictionary<string, string>();
@@ -78,6 +80,8 @@ namespace DoughMinder___Client.Vista
 
             return listaEmpleados;
         }
+
+
 
 
 

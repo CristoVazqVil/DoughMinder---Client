@@ -1,0 +1,93 @@
+﻿using DoughMinder___Client.DoughMinderServicio;
+using DoughMinder___Client.Vista.Emergentes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace DoughMinder___Client.Vista
+{
+    /// <summary>
+    /// Interaction logic for Productos.xaml
+    /// </summary>
+    public partial class Productos : Page
+    {
+        public Productos()
+        {
+            InitializeComponent();
+            CargarProductosParaPedido();
+        }
+
+
+        public List<Producto> listaProductos { get; set; }
+
+        private void CargarProductosParaPedido()
+        {
+            listaProductos = RecuperarProductosParaPedido();
+
+            if (listaProductos != null && listaProductos.Count > 0)
+            {
+                lstProductos.ItemsSource = listaProductos;
+            }
+            else
+            {
+                Console.WriteLine("La lista de productos está vacía.");
+            }
+        }
+
+
+        private List<Producto> RecuperarProductosParaPedido()
+        {
+            List<Producto> productos = new List<Producto>();
+
+            try
+            {
+                DoughMinderServicio.ProductoClient cliente = new DoughMinderServicio.ProductoClient();
+                productos = cliente.RecuperarProductosParaPedido().ToList();
+
+
+                if (productos == null)
+                {
+                    MostrarMensajeSinConexionBase();
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+            catch (CommunicationException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+
+            return productos;
+        }
+
+
+        private void MostrarMensajeSinConexionServidor()
+        {
+            SinConexionServidor sinConexionServidor = new SinConexionServidor();
+            sinConexionServidor.Show();
+        }
+
+
+        private void MostrarMensajeSinConexionBase()
+        {
+            ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
+            conexionFallidaBase.Show();
+        }
+
+
+    }
+}
