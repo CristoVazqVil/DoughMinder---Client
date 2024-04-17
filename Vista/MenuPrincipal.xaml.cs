@@ -45,7 +45,7 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirRecetas(object sender, MouseButtonEventArgs e)
         {
-            RegistroRecetas recetas = new RegistroRecetas();
+            Recetas recetas = new Recetas();
             this.NavigationService.Navigate(recetas);
         }
 

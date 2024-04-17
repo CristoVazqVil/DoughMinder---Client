@@ -2013,6 +2013,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RecuperarRecetasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse")]
+        DoughMinder___Client.DoughMinderServicio.Receta[] RecuperarRecetasCompletas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta[]> RecuperarRecetasCompletasAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2056,6 +2062,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RecuperarRecetasAsync() {
             return base.Channel.RecuperarRecetasAsync();
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Receta[] RecuperarRecetasCompletas() {
+            return base.Channel.RecuperarRecetasCompletas();
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta[]> RecuperarRecetasCompletasAsync() {
+            return base.Channel.RecuperarRecetasCompletasAsync();
         }
     }
     

@@ -111,6 +111,12 @@
   <wsdl:message name="IReceta_RecuperarRecetas_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarRecetasResponse" />
   </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarRecetasCompletas_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarRecetasCompletas" />
+  </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarRecetasCompletas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarRecetasCompletasResponse" />
+  </wsdl:message>
   <wsdl:message name="IMovimiento_RegistrarMovimiento_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarMovimiento" />
   </wsdl:message>
@@ -223,6 +229,10 @@
     <wsdl:operation name="RecuperarRecetas">
       <wsdl:input wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetas" message="tns:IReceta_RecuperarRecetas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasResponse" message="tns:IReceta_RecuperarRecetas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarRecetasCompletas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas" message="tns:IReceta_RecuperarRecetasCompletas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse" message="tns:IReceta_RecuperarRecetasCompletas_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IMovimiento">
@@ -344,6 +354,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarRecetas">
       <soap12:operation soapAction="http://tempuri.org/IReceta/RecuperarRecetas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarRecetasCompletas">
+      <soap12:operation soapAction="http://tempuri.org/IReceta/RecuperarRecetasCompletas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
