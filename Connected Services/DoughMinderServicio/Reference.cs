@@ -2127,6 +2127,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductosParaPedido", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosParaPedidoResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosParaPedidoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductos", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosResponse")]
+        DoughMinder___Client.DoughMinderServicio.Producto[] RecuperarProductos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductos", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2178,6 +2184,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosParaPedidoAsync() {
             return base.Channel.RecuperarProductosParaPedidoAsync();
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Producto[] RecuperarProductos() {
+            return base.Channel.RecuperarProductos();
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosAsync() {
+            return base.Channel.RecuperarProductosAsync();
         }
     }
     

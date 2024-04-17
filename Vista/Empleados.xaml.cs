@@ -130,12 +130,9 @@ namespace DoughMinder___Client.Vista
         {
             string textoBusqueda = tbBusqueda.Text.ToLower();
 
-            if (listaEmpleadosCompleta != null) // Verificamos que la lista completa de empleados no sea nula
+            if (listaEmpleadosCompleta != null) 
             {
-                // Filtramos los empleados cuyo nombre o RFC contenga el texto de búsqueda
                 var empleadosFiltrados = listaEmpleadosCompleta.Where(emp => emp.Nombre.ToLower().Contains(textoBusqueda) || emp.RFC.ToLower().Contains(textoBusqueda)).ToList();
-
-                // Actualizamos la lista de empleados mostrada en el ListBox con los empleados filtrados
                 lstEmpleados.ItemsSource = empleadosFiltrados;
             }
         }

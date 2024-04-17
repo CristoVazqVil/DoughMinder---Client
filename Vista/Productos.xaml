@@ -17,7 +17,7 @@
             <Image Source="/Recursos/MicrosoftTeams-image.png" Margin="-31,7,-20,381"  />
 
             <!-- Grid llamado "atrás" -->
-            <Grid x:Name="atrás" Margin="0,65,0,323" >
+            <Grid x:Name="atrás" Margin="0,65,0,323" MouseDown="IrAtras" >
                 <Image Source="/Recursos/FlechaAtras.png" Margin="-2,13,128,15" />
                 <Label Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás" Margin="46,9,62,0" />
             </Grid>
@@ -25,9 +25,9 @@
         </Grid>
 
 
-        <Grid x:Name="registrar" Margin="0,129,622,261" >
+        <Grid x:Name="registrar" Margin="0,129,622,261" MouseDown="AbrirRegistroProductos" >
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Empleado" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+            <Label Content="Registrar &#xD;&#xA;Producto" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
 
 
@@ -46,11 +46,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-
-
-
-
-
         <TextBox x:Name="tbBusqueda" 
              HorizontalAlignment="Left" 
              Height="20" 
@@ -58,7 +53,7 @@
              TextWrapping="Wrap"  
              VerticalAlignment="Top" 
              Width="195" 
-              BorderBrush="#FF567F47"/>
+              BorderBrush="#FF567F47" TextChanged="BuscarProducto"/>
 
         <Label Content="Buscar por nombre o Código" 
            Foreground="#FF4A5A43" 

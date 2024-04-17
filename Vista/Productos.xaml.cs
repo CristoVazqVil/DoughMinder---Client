@@ -54,8 +54,7 @@ namespace DoughMinder___Client.Vista
             try
             {
                 DoughMinderServicio.ProductoClient cliente = new DoughMinderServicio.ProductoClient();
-                productos = cliente.RecuperarProductosParaPedido().ToList();
-
+                productos = cliente.RecuperarProductos().ToList();
 
                 if (productos == null)
                 {
@@ -89,5 +88,28 @@ namespace DoughMinder___Client.Vista
         }
 
 
+        private void BuscarProducto(object sender, TextChangedEventArgs e)
+        { 
+            string textoBusqueda = tbBusqueda.Text.ToLower();
+
+            if (listaProductos != null) 
+            {
+                var productosFiltrados = listaProductos.Where(emp => emp.Nombre.ToLower().Contains(textoBusqueda) || emp.CodigoProducto.ToLower().Contains(textoBusqueda)).ToList();
+                lstProductos.ItemsSource = productosFiltrados;
+            }
+            
+        }
+          
+
+        private void AbrirRegistroProductos(object sender, MouseButtonEventArgs e)
+        {
+            RegistroProductos registroProductosPage = new RegistroProductos();
+            NavigationService.Navigate(registroProductosPage);
+        }
+
+        private void IrAtras(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
