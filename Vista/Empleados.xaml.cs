@@ -43,14 +43,13 @@ namespace DoughMinder___Client.Vista
         {
             Dictionary<string, string> dictEmpleados = RecuperarEmpleados();
 
-            listaEmpleadosCompleta = new List<EmpleadoItem>(); // Inicializamos la lista completa de empleados
+            listaEmpleadosCompleta = new List<EmpleadoItem>(); 
 
             foreach (var empleado in dictEmpleados)
             {
                 listaEmpleadosCompleta.Add(new EmpleadoItem { Nombre = empleado.Key, RFC = empleado.Value });
             }
 
-            // Mostramos la lista completa de empleados en el ListBox
             lstEmpleados.ItemsSource = listaEmpleadosCompleta;
         }
 

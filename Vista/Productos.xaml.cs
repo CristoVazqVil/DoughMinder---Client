@@ -34,7 +34,7 @@ namespace DoughMinder___Client.Vista
 
         private void CargarProductosParaPedido()
         {
-            listaProductos = RecuperarProductosParaPedido();
+            listaProductos = RecuperarProductos();
 
             if (listaProductos != null && listaProductos.Count > 0)
             {
@@ -47,7 +47,7 @@ namespace DoughMinder___Client.Vista
         }
 
 
-        private List<Producto> RecuperarProductosParaPedido()
+        private List<Producto> RecuperarProductos()
         {
             List<Producto> productos = new List<Producto>();
 

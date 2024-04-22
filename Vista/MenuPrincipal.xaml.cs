@@ -51,7 +51,7 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirProveedores(object sender, MouseButtonEventArgs e)
         {
-            RegistroProveedores proveedores = new RegistroProveedores();
+            Proveedores proveedores = new Proveedores();
             this.NavigationService.Navigate(proveedores);
         }
 

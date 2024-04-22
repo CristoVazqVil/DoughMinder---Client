@@ -183,6 +183,12 @@
   <wsdl:message name="IProveedor_RecuperarProveedores_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProveedoresResponse" />
   </wsdl:message>
+  <wsdl:message name="IProveedor_ReemplazarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_ReemplazarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarProveedorResponse" />
+  </wsdl:message>
   <wsdl:message name="ISolicitud_RegistrarSolicitud_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarSolicitud" />
   </wsdl:message>
@@ -285,6 +291,10 @@
     <wsdl:operation name="RecuperarProveedores">
       <wsdl:input wsaw:Action="http://tempuri.org/IProveedor/RecuperarProveedores" message="tns:IProveedor_RecuperarProveedores_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProveedor/RecuperarProveedoresResponse" message="tns:IProveedor_RecuperarProveedores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProveedor/ReemplazarProveedor" message="tns:IProveedor_ReemplazarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProveedor/ReemplazarProveedorResponse" message="tns:IProveedor_ReemplazarProveedor_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISolicitud">
@@ -478,6 +488,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarProveedores">
       <soap12:operation soapAction="http://tempuri.org/IProveedor/RecuperarProveedores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/IProveedor/ReemplazarProveedor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -24,14 +24,61 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class RegistroProveedores : Page
     {
-        public RegistroProveedores()
+
+        private Proveedor proveedor;
+
+        public RegistroProveedores(Proveedor proveedor)
         {
             InitializeComponent();
             txbTelefono.PreviewTextInput += TextBoxSoloNumeros_PreviewTextInput;
 
+            // Asigna el proveedor pasado como argumento al campo de la clase
+            this.proveedor = proveedor;
+
+            // Mostrar la información del proveedor en los campos correspondientes
+            txbNombre.Text = proveedor.Nombre;
+            txbCorreo.Text = proveedor.Email;
+            txbTelefono.Text = proveedor.Telefono;
+            txbRFC.Text = proveedor.RFC;
+
+
+            // Verificar si se está cargando un proveedor
+            if (!string.IsNullOrEmpty(proveedor.Nombre))
+            {
+                ProveedorCargado();
+            }
         }
 
-        private void Registrar(object sender, MouseButtonEventArgs e)
+
+        public void ProveedorCargado()
+        {
+            txbNombre.IsEnabled = false;
+            txbCorreo.IsEnabled = false;
+            txbTelefono.IsEnabled = false;
+            txbRFC.IsEnabled = false;
+            btnRegistro.IsEnabled = false;
+            btnRegistro.Visibility = Visibility.Collapsed;
+            btnModificar.Visibility = Visibility.Visible;
+
+        }
+
+
+
+
+
+        public void InformacionProveedor(Proveedor proveedor)
+        {
+            InitializeComponent();
+            this.proveedor = proveedor;
+
+            // Mostrar la información del proveedor en los campos correspondientes
+            txbNombre.Text = proveedor.Nombre;
+            txbCorreo.Text = proveedor.Email;
+            txbTelefono.Text = proveedor.Telefono;
+            txbRFC.Text = proveedor.RFC;
+        }
+
+        private void RegistrarProveedor()
         {
             if (!ValidarCamposVacios())
             {
@@ -48,6 +95,7 @@ namespace DoughMinder___Client.Vista
                     proveedor.Nombre = txbNombre.Text;
                     proveedor.Email = txbCorreo.Text;
                     proveedor.Telefono = txbTelefono.Text;
+                    proveedor.RFC = txbRFC.Text;
 
                     int codigo = cliente.GuardarProveedor(proveedor);
 
@@ -55,6 +103,10 @@ namespace DoughMinder___Client.Vista
                     if (codigo == 1)
                     {
                         MostrarMensajeRegistroExitoso();
+
+                        Proveedores proveedores = new Proveedores();
+                        this.NavigationService.Navigate(proveedores);
+
                     }
                     else
                     {
@@ -77,14 +129,14 @@ namespace DoughMinder___Client.Vista
                     MostrarMensajeSinConexionServidor();
                 }
             }
-            
         }
 
         private bool ValidarCamposVacios()
         {
             if (string.IsNullOrWhiteSpace(txbNombre.Text) ||
                 string.IsNullOrWhiteSpace(txbTelefono.Text) ||
-                string.IsNullOrWhiteSpace(txbCorreo.Text))
+                string.IsNullOrWhiteSpace(txbCorreo.Text) ||
+                string.IsNullOrWhiteSpace(txbRFC.Text))
             {
                 return false;
             }
@@ -104,7 +156,7 @@ namespace DoughMinder___Client.Vista
             registroExitoso.Show();
         }
 
-        
+
         private void MostrarMensaProveedorExistente()
         {
             ProveedorExistente proveedorExistente = new ProveedorExistente();
@@ -136,9 +188,67 @@ namespace DoughMinder___Client.Vista
             if (textBox.Text.Length > 20)
             {
                 textBox.Text = textBox.Text.Substring(0, 20);
-
                 textBox.SelectionStart = textBox.Text.Length;
             }
         }
+
+        private void Modificar(object sender, MouseButtonEventArgs e)
+        {
+            txbNombre.IsEnabled = true;
+            txbCorreo.IsEnabled = true;
+            txbTelefono.IsEnabled = true;
+            txbRFC.IsEnabled = true;
+            btnRegistro.IsEnabled = false;
+            btnModificar.Visibility = Visibility.Collapsed;
+
+            btnActualizarProveedor.Visibility = Visibility.Visible;
+            btnActualizarProveedor.IsEnabled = true;
+
+        }
+
+        private void ActualizarProveedor(object sender, MouseButtonEventArgs e)
+        {
+            if (!ValidarCamposVacios())
+            {
+                CamposVacios camposVacios = new CamposVacios();
+                camposVacios.Show();
+            }
+            else
+            {
+
+                try
+                {
+                    DoughMinderServicio.ProveedorClient cliente = new DoughMinderServicio.ProveedorClient();
+                    DoughMinderServicio.Proveedor proveedor = new DoughMinderServicio.Proveedor();
+                    int codigo = cliente.ReemplazarProveedor(txbRFC.Text);
+
+                    if (codigo == 1)
+                    {
+                        RegistrarProveedor();
+                    }
+                }
+
+
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+
+            }
+        }
+
+        private void ClickRegistrar(object sender, MouseButtonEventArgs e)
+        {
+            RegistrarProveedor();
+            
+        }
+
     }
+
 }
+
+    

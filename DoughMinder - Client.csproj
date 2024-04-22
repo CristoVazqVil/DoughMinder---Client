@@ -119,6 +119,9 @@
     <Compile Include="Vista\Productos.xaml.cs">
       <DependentUpon>Productos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Proveedores.xaml.cs">
+      <DependentUpon>Proveedores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Recetas.xaml.cs">
       <DependentUpon>Recetas.xaml</DependentUpon>
     </Compile>
@@ -244,6 +247,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\Productos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Proveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

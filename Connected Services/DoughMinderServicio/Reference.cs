@@ -2313,6 +2313,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/RecuperarProveedores", ReplyAction="http://tempuri.org/IProveedor/RecuperarProveedoresResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Proveedor[]> RecuperarProveedoresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/ReemplazarProveedor", ReplyAction="http://tempuri.org/IProveedor/ReemplazarProveedorResponse")]
+        int ReemplazarProveedor(string RFC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/ReemplazarProveedor", ReplyAction="http://tempuri.org/IProveedor/ReemplazarProveedorResponse")]
+        System.Threading.Tasks.Task<int> ReemplazarProveedorAsync(string RFC);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2356,6 +2362,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Proveedor[]> RecuperarProveedoresAsync() {
             return base.Channel.RecuperarProveedoresAsync();
+        }
+        
+        public int ReemplazarProveedor(string RFC) {
+            return base.Channel.ReemplazarProveedor(RFC);
+        }
+        
+        public System.Threading.Tasks.Task<int> ReemplazarProveedorAsync(string RFC) {
+            return base.Channel.ReemplazarProveedorAsync(RFC);
         }
     }
     
