@@ -24,8 +24,8 @@ namespace DoughMinder___Client.Vista
     public partial class RegistroEmpleado : Page
     {
 
-        
-        public RegistroEmpleado(bool modificar,string usuario)
+
+        public RegistroEmpleado(bool modificar, string usuario)
         {
             InitializeComponent();
 
@@ -237,7 +237,7 @@ namespace DoughMinder___Client.Vista
 
 
 
-      
+
 
 
         private bool ValidarCamposVacios()
@@ -305,7 +305,7 @@ namespace DoughMinder___Client.Vista
                 return false;
             }
 
-            return true; 
+            return true;
         }
 
         private void PermitirModificar(object sender, MouseButtonEventArgs e)
@@ -327,7 +327,7 @@ namespace DoughMinder___Client.Vista
             lblModificar.Visibility = Visibility.Collapsed;
 
             bbConfirma.Visibility = Visibility.Visible;
-            bbContrasena.Visibility = Visibility.Visible;   
+            bbContrasena.Visibility = Visibility.Visible;
 
             txbConfirmaContrasena.Visibility = Visibility.Visible;
             txbContrasena.Visibility = Visibility.Visible;
@@ -343,7 +343,7 @@ namespace DoughMinder___Client.Vista
 
         private void IrAtras(object sender, MouseButtonEventArgs e)
         {
-             NavigationService.GoBack();
+            NavigationService.GoBack();
         }
 
         private void ModificarEmpleado(object sender, MouseButtonEventArgs e)
@@ -387,13 +387,13 @@ namespace DoughMinder___Client.Vista
             Registrar();
         }
 
-       
+
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
 
-            
+
             if (textBox.Text.Length > 20)
             {
                 textBox.Text = textBox.Text.Substring(0, 20);
@@ -402,7 +402,6 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-       
+
     }
 }
-

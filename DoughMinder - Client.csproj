@@ -129,6 +129,9 @@
       <DependentUpon>InicioSesion.xaml</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Vista\MenuInsumos.xaml.cs">
+      <DependentUpon>MenuInsumos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
@@ -286,6 +289,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Vista\MenuInsumos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\MenuPrincipal.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -89,7 +89,7 @@
         <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="669,13,21,385" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
         <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="692,21,44,400" VerticalContentAlignment="Top" Foreground="White"/>
         <Label Content="Para cancelar la modificación de la receta, presione regresar" FontSize="8" HorizontalAlignment="Left" Height="24" Margin="374,426,0,0" VerticalAlignment="Top" Foreground="Gray" Width="220"/>
-        <Label x:Name="lblCodigo" Content="RC-58" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="446,18,0,0" VerticalAlignment="Top" Width="177"/>
+        <Label x:Name="lblCodigo" Content="" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="446,18,0,0" VerticalAlignment="Top" Width="177"/>
         <Image x:Name="btnDeshabilitar" Source="/Recursos/BotonRojo.png" Margin="653,399,9,27" MouseEnter="CambiarDeshabilitarAzul" MouseLeave="CambiarDeshabilitarRojo" MouseDown="Deshabilitar" />
         <Label Content="Deshabilitar" FontSize="14" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="682,395,34,29" VerticalContentAlignment="Top" Foreground="White"/>
 

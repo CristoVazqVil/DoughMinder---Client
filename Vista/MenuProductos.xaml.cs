@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static DoughMinder___Client.Vista.MenuEmpleados;
 
 namespace DoughMinder___Client.Vista
 {
@@ -110,6 +111,19 @@ namespace DoughMinder___Client.Vista
         private void IrAtras(object sender, MouseButtonEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void ModificarProducto(object sender, MouseButtonEventArgs e)
+        {
+            Producto productoSeleccionado = (Producto)lstProductos.SelectedItem;
+
+            string codigoProducto = productoSeleccionado.CodigoProducto;
+
+            if (productoSeleccionado != null)
+            {
+                ModificacionProductos modificacionProductos = new ModificacionProductos(codigoProducto);
+                NavigationService.Navigate(modificacionProductos);
+            }
         }
     }
 }

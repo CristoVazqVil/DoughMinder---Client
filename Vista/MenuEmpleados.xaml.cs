@@ -80,10 +80,6 @@ namespace DoughMinder___Client.Vista
             return listaEmpleados;
         }
 
-
-
-
-
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();

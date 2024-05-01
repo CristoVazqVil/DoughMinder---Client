@@ -25,12 +25,13 @@ namespace DoughMinder___Client.Vista
     public partial class ModificacionInsumos : Page
     {
         private string rutaImagenSeleccionada;
-        private String codigoInsumo = "IN-45";
+        private String codigoInsumo;
         private DoughMinderServicio.Insumo insumo;
 
-        public ModificacionInsumos()
+        public ModificacionInsumos(String codigo)
         {
             InitializeComponent();
+            codigoInsumo = codigo;
             RecuperarInsumo();
             ColocarInsumoEnCampos();
         }

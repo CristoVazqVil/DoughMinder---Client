@@ -19,26 +19,26 @@ using System.Windows.Shapes;
 namespace DoughMinder___Client.Vista
 {
     /// <summary>
-    /// Interaction logic for Recetas.xaml
+    /// Interaction logic for MenuInsumos.xaml
     /// </summary>
-    public partial class MenuRecetas : Page
+    public partial class MenuInsumos : Page
     {
-        public MenuRecetas()
+        public MenuInsumos()
         {
             InitializeComponent();
-            CargarRecetas();
+            CargarInsumos();
         }
 
-        public List<Receta> listaRecetas { get; set; }
+        public List<Insumo> listaInsumos { get; set; }
 
 
-        private void CargarRecetas()
+        private void CargarInsumos()
         {
-            listaRecetas = RecuperarReceta();
+            listaInsumos = RecuperarInsumos();
 
-            if (listaRecetas != null && listaRecetas.Count > 0)
+            if (listaInsumos != null && listaInsumos.Count > 0)
             {
-                lstRecetas.ItemsSource = listaRecetas;
+                lstInsumos.ItemsSource = listaInsumos;
             }
             else
             {
@@ -46,16 +46,16 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private List<Receta> RecuperarReceta()
+        private List<Insumo> RecuperarInsumos()
         {
-            List<Receta> recetas = new List<Receta>();
+            List<Insumo> insumos = new List<Insumo>();
 
             try
             {
-                DoughMinderServicio.RecetaClient cliente = new DoughMinderServicio.RecetaClient();
-                recetas = cliente.RecuperarRecetasCompletas().ToList();
+                DoughMinderServicio.InsumoClient cliente = new DoughMinderServicio.InsumoClient();
+                insumos = cliente.RecuperarTodosInsumos().ToList();
 
-                if (recetas == null)
+                if (insumos == null)
                 {
                     MostrarMensajeSinConexionBase();
                 }
@@ -69,7 +69,7 @@ namespace DoughMinder___Client.Vista
                 MostrarMensajeSinConexionServidor();
             }
 
-            return recetas;
+            return insumos;
         }
 
 
@@ -91,33 +91,33 @@ namespace DoughMinder___Client.Vista
             NavigationService.GoBack();
         }
 
-        private void AbrirRegistrarReceta(object sender, MouseButtonEventArgs e)
+        private void AbrirRegistrarInsumo(object sender, MouseButtonEventArgs e)
         {
-            RegistroRecetas registroRecetasPage = new RegistroRecetas();
-            NavigationService.Navigate(registroRecetasPage);
+            RegistroInsumos registroInsumos = new RegistroInsumos();
+            NavigationService.Navigate(registroInsumos);
         }
 
-        private void BuscarReceta(object sender, TextChangedEventArgs e)
+        private void BuscarInsumo(object sender, TextChangedEventArgs e)
         {
             string textoBusqueda = tbBusqueda.Text.ToLower();
 
-            if (listaRecetas != null)
+            if (listaInsumos != null)
             {
-                var productosFiltrados = listaRecetas.Where(emp => emp.Nombre.ToLower().Contains(textoBusqueda) || emp.Codigo.ToLower().Contains(textoBusqueda)).ToList();
-                lstRecetas.ItemsSource = productosFiltrados;
+                var insumosFiltrados = listaInsumos.Where(emp => emp.Nombre.ToLower().Contains(textoBusqueda) || emp.Codigo.ToLower().Contains(textoBusqueda)).ToList();
+                lstInsumos.ItemsSource = insumosFiltrados;
             }
         }
 
-        private void ModificarReceta(object sender, MouseButtonEventArgs e)
+        private void ModificarInsumo(object sender, MouseButtonEventArgs e)
         {
-            Receta recetaSeleccionada = (Receta)lstRecetas.SelectedItem;
+            Insumo insumoSeleccionado = (Insumo)lstInsumos.SelectedItem;
 
-            string codigoReceta = recetaSeleccionada.Codigo;
+            string codigoInsumo = insumoSeleccionado.Codigo;
 
-            if (recetaSeleccionada != null)
+            if (insumoSeleccionado != null)
             {
-                ModificacionRecetas modificacionRecetas = new ModificacionRecetas(codigoReceta);
-                NavigationService.Navigate(modificacionRecetas);
+                ModificacionInsumos modificacionInsumos = new ModificacionInsumos(codigoInsumo);
+                NavigationService.Navigate(modificacionInsumos);
             }
         }
     }

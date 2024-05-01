@@ -26,12 +26,13 @@ namespace DoughMinder___Client.Vista
     public partial class ModificacionProductos : Page
     {
         private string rutaImagenSeleccionada;
-        private String codigoProducto = "485bjdfj";
+        private String codigoProducto;
         private DoughMinderServicio.Producto producto;
 
-        public ModificacionProductos()
+        public ModificacionProductos(String codigo)
         {
             InitializeComponent();
+            codigoProducto = codigo;
             RecuperarRecetas();
             RecuperarProducto();
             ColocarProductoEnCampos();

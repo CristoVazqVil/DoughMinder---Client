@@ -25,12 +25,13 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class ModificacionRecetas : Page
     {
-        private String codigoReceta = "RE-56";
+        private String codigoReceta;
         private DoughMinderServicio.Receta receta;
 
-        public ModificacionRecetas()
+        public ModificacionRecetas(String codigo)
         {
             InitializeComponent();
+            codigoReceta = codigo;
             RecuperarInsumos();
             RecuperarReceta();
             ColocarRecetaEnCampos();

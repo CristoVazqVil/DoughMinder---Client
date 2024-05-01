@@ -89,7 +89,7 @@
         <CheckBox Name="ckbSinReceta" Style="{DynamicResource CheckBoxStyle1}" Content="Sin receta" HorizontalAlignment="Left" Margin="709,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81"/>
         <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="677,388,13,10" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
         <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="700,396,36,26" VerticalContentAlignment="Top" Foreground="White"/>
-        <Label Name="lblCodigo" Content="PR-58" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="464,7,0,0" VerticalAlignment="Top" Width="178"/>
+        <Label Name="lblCodigo" Content="" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="464,7,0,0" VerticalAlignment="Top" Width="178"/>
         <Image x:Name="btnDeshabilitar" Source="/Recursos/BotonRojo.png" Margin="188,402,474,24" MouseEnter="CambiarDeshabilitarAzul" MouseLeave="CambiarDeshabilitarRojo" MouseDown="Deshabilitar" />
         <Label Content="Deshabilitar" FontSize="14" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="217,398,499,26" VerticalContentAlignment="Top" Foreground="White"/>
         <Label Content="Para cancelar la modificación del producto, presione regresar" FontSize="8" HorizontalAlignment="Left" Height="24" Margin="371,426,0,0" VerticalAlignment="Top" Foreground="Gray" Width="229"/>

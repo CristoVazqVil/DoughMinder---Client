@@ -54,7 +54,7 @@
         <Label Name="lblCodigoInsumo" Content="Código del insumo:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="292,23,0,0" VerticalAlignment="Top" Foreground="Gray" Width="178"/>
         <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="669,13,21,385" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
         <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="692,21,44,400" VerticalContentAlignment="Top" Foreground="White"/>
-        <Label Name="lblCodigo" Content="IN-58" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="449,23,0,0" VerticalAlignment="Top" Width="177"/>
+        <Label Name="lblCodigo" Content="" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="449,23,0,0" VerticalAlignment="Top" Width="177"/>
         <Image x:Name="btnDeshabilitar" Source="/Recursos/BotonRojo.png" Margin="630,375,32,51" MouseEnter="CambiarDeshabilitarAzul" MouseLeave="CambiarDeshabilitarRojo" MouseDown="Deshabilitar" />
         <Label Content="Deshabilitar" FontSize="14" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="658,371,60,53" VerticalContentAlignment="Top" Foreground="White"/>
         <Label Content="Para cancelar la modificación del insumo, presione regresar" FontSize="8" HorizontalAlignment="Left" Height="24" Margin="373,399,0,0" VerticalAlignment="Top" Foreground="Gray" Width="220"/>

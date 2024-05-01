@@ -96,7 +96,7 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirInsumos(object sender, MouseButtonEventArgs e)
         {
-            ModificacionInsumos insumos = new ModificacionInsumos();
+            MenuInsumos insumos = new MenuInsumos();
             this.NavigationService.Navigate(insumos);
         }
 

@@ -35,7 +35,7 @@
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Productos" Height="40" Margin="185,14,0,0" Width="125"/>
 
 
-        <ListBox x:Name="lstProductos" Margin="207,84,41,43" ItemsSource="{Binding listaProductos}">
+        <ListBox x:Name="lstProductos" Margin="207,84,41,43" ItemsSource="{Binding listaProductos}" MouseDoubleClick="ModificarProducto">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
