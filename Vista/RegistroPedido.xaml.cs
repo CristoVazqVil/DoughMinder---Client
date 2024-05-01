@@ -503,8 +503,7 @@ namespace DoughMinder___Client.Vista
             string costoString = lblCostoTotalSitio.Content.ToString().Substring(14);
             decimal costoTotal = decimal.Parse(costoString);
             pedido.CostoTotal = costoTotal;
-
-            pedido.IdEstadoPedido = 1;
+            pedido.Estado = "Ordenado";
 
             if (chxDomicilio.IsChecked == true)
             {

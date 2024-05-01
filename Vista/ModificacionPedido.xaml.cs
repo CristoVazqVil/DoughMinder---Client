@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DoughMinder___Client.Vista
 {
     /// <summary>
-    /// Interaction logic for VentanaPrincipal.xaml
+    /// Lógica de interacción para ModificacionPedido.xaml
     /// </summary>
-    public partial class VentanaPrincipal : Window
+    public partial class ModificacionPedido : Page
     {
-        public VentanaPrincipal()
+        public ModificacionPedido()
         {
             InitializeComponent();
-            framePage.Navigate(new Uri("/Vista/MenuPedidos.xaml", UriKind.Relative));
         }
     }
 }

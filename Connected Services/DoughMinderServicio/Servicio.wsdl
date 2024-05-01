@@ -117,6 +117,12 @@
   <wsdl:message name="IMovimiento_RegistrarMovimiento_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarMovimientoResponse" />
   </wsdl:message>
+  <wsdl:message name="IMovimiento_RecuperarMovimientos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarMovimientos" />
+  </wsdl:message>
+  <wsdl:message name="IMovimiento_RecuperarMovimientos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarMovimientosResponse" />
+  </wsdl:message>
   <wsdl:message name="IProducto_GuardarProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarProducto" />
   </wsdl:message>
@@ -183,11 +189,29 @@
   <wsdl:message name="ISolicitud_RegistrarSolicitud_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarSolicitudResponse" />
   </wsdl:message>
+  <wsdl:message name="ISolicitud_RecuperarSolicitudes_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarSolicitudes" />
+  </wsdl:message>
+  <wsdl:message name="ISolicitud_RecuperarSolicitudes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarSolicitudesResponse" />
+  </wsdl:message>
   <wsdl:message name="IPedido_RegistrarPedido_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarPedido" />
   </wsdl:message>
   <wsdl:message name="IPedido_RegistrarPedido_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RecuperarPedidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPedidos" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RecuperarPedidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPedidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RecuperarPedidosNoCancelados_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPedidosNoCancelados" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RecuperarPedidosNoCancelados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPedidosNoCanceladosResponse" />
   </wsdl:message>
   <wsdl:message name="ILogin_VerificarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:VerificarUsuario" />
@@ -229,6 +253,10 @@
     <wsdl:operation name="RegistrarMovimiento">
       <wsdl:input wsaw:Action="http://tempuri.org/IMovimiento/RegistrarMovimiento" message="tns:IMovimiento_RegistrarMovimiento_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMovimiento/RegistrarMovimientoResponse" message="tns:IMovimiento_RegistrarMovimiento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarMovimientos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMovimiento/RecuperarMovimientos" message="tns:IMovimiento_RecuperarMovimientos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMovimiento/RecuperarMovimientosResponse" message="tns:IMovimiento_RecuperarMovimientos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProducto">
@@ -282,11 +310,23 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISolicitud/RegistrarSolicitud" message="tns:ISolicitud_RegistrarSolicitud_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISolicitud/RegistrarSolicitudResponse" message="tns:ISolicitud_RegistrarSolicitud_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecuperarSolicitudes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISolicitud/RecuperarSolicitudes" message="tns:ISolicitud_RecuperarSolicitudes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISolicitud/RecuperarSolicitudesResponse" message="tns:ISolicitud_RecuperarSolicitudes_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPedido">
     <wsdl:operation name="RegistrarPedido">
       <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RegistrarPedido" message="tns:IPedido_RegistrarPedido_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RegistrarPedidoResponse" message="tns:IPedido_RegistrarPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPedidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidos" message="tns:IPedido_RecuperarPedidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidosResponse" message="tns:IPedido_RecuperarPedidos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPedidosNoCancelados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidosNoCancelados" message="tns:IPedido_RecuperarPedidosNoCancelados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidosNoCanceladosResponse" message="tns:IPedido_RecuperarPedidosNoCancelados_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILogin">
@@ -357,6 +397,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="RegistrarMovimiento">
       <soap12:operation soapAction="http://tempuri.org/IMovimiento/RegistrarMovimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarMovimientos">
+      <soap12:operation soapAction="http://tempuri.org/IMovimiento/RecuperarMovimientos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -479,12 +528,39 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarSolicitudes">
+      <soap12:operation soapAction="http://tempuri.org/ISolicitud/RecuperarSolicitudes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IPedido" type="tns:IPedido">
     <wsp:PolicyReference URI="#NetTcpBinding_IPedido_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="RegistrarPedido">
       <soap12:operation soapAction="http://tempuri.org/IPedido/RegistrarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPedidos">
+      <soap12:operation soapAction="http://tempuri.org/IPedido/RecuperarPedidos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPedidosNoCancelados">
+      <soap12:operation soapAction="http://tempuri.org/IPedido/RecuperarPedidosNoCancelados" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
