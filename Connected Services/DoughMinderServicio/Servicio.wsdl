@@ -147,6 +147,12 @@
   <wsdl:message name="IReceta_DeshabilitarReceta_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeshabilitarRecetaResponse" />
   </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarRecetasCompletas_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarRecetasCompletas" />
+  </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarRecetasCompletas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarRecetasCompletasResponse" />
+  </wsdl:message>
   <wsdl:message name="IMovimiento_RegistrarMovimiento_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarMovimiento" />
   </wsdl:message>
@@ -189,6 +195,12 @@
   <wsdl:message name="IProducto_DeshabilitarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeshabilitarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmpleado_GuardarEmpleado_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleado" />
   </wsdl:message>
@@ -224,6 +236,12 @@
   </wsdl:message>
   <wsdl:message name="IProveedor_RecuperarProveedores_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProveedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_ReemplazarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IProveedor_ReemplazarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReemplazarProveedorResponse" />
   </wsdl:message>
   <wsdl:message name="ISolicitud_RegistrarSolicitud_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarSolicitud" />
@@ -296,6 +314,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReceta/DeshabilitarReceta" message="tns:IReceta_DeshabilitarReceta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReceta/DeshabilitarRecetaResponse" message="tns:IReceta_DeshabilitarReceta_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecuperarRecetasCompletas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas" message="tns:IReceta_RecuperarRecetasCompletas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse" message="tns:IReceta_RecuperarRecetasCompletas_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IMovimiento">
     <wsdl:operation name="RegistrarMovimiento">
@@ -328,6 +350,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/DeshabilitarProducto" message="tns:IProducto_DeshabilitarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/DeshabilitarProductoResponse" message="tns:IProducto_DeshabilitarProducto_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecuperarProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductos" message="tns:IProducto_RecuperarProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosResponse" message="tns:IProducto_RecuperarProductos_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmpleado">
     <wsdl:operation name="GuardarEmpleado">
@@ -355,6 +381,10 @@
     <wsdl:operation name="RecuperarProveedores">
       <wsdl:input wsaw:Action="http://tempuri.org/IProveedor/RecuperarProveedores" message="tns:IProveedor_RecuperarProveedores_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProveedor/RecuperarProveedoresResponse" message="tns:IProveedor_RecuperarProveedores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProveedor/ReemplazarProveedor" message="tns:IProveedor_ReemplazarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProveedor/ReemplazarProveedorResponse" message="tns:IProveedor_ReemplazarProveedor_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISolicitud">
@@ -485,6 +515,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarRecetasCompletas">
+      <soap12:operation soapAction="http://tempuri.org/IReceta/RecuperarRecetasCompletas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IMovimiento" type="tns:IMovimiento">
     <wsp:PolicyReference URI="#NetTcpBinding_IMovimiento_policy" />
@@ -556,6 +595,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IEmpleado" type="tns:IEmpleado">
     <wsp:PolicyReference URI="#NetTcpBinding_IEmpleado_policy" />
@@ -611,6 +659,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarProveedores">
       <soap12:operation soapAction="http://tempuri.org/IProveedor/RecuperarProveedores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReemplazarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/IProveedor/ReemplazarProveedor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -54,7 +54,7 @@ namespace DoughMinder___Client.Vista
             try
             {
                 DoughMinderServicio.ProductoClient cliente = new DoughMinderServicio.ProductoClient();
-                productos = cliente.RecuperarProductos().ToList();
+                 productos = cliente.RecuperarProductos().ToList();
 
                 if (productos == null)
                 {

@@ -1359,10 +1359,16 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdProveedorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DoughMinder___Client.DoughMinderServicio.Solicitud[] SolicitudField;
@@ -1394,6 +1400,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int IdProveedor {
             get {
                 return this.IdProveedorField;
@@ -1415,6 +1434,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.NombreField, value) != true)) {
                     this.NombreField = value;
                     this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
                 }
             }
         }
@@ -1569,6 +1601,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private DoughMinder___Client.DoughMinderServicio.Puesto PuestoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefonoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1697,6 +1732,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.PuestoField, value) != true)) {
                     this.PuestoField = value;
                     this.RaisePropertyChanged("Puesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
                 }
             }
         }
@@ -2041,6 +2089,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/DeshabilitarReceta", ReplyAction="http://tempuri.org/IReceta/DeshabilitarRecetaResponse")]
         System.Threading.Tasks.Task<int> DeshabilitarRecetaAsync(string codigoReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse")]
+        DoughMinder___Client.DoughMinderServicio.Receta[] RecuperarRecetasCompletas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta[]> RecuperarRecetasCompletasAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2108,6 +2162,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> DeshabilitarRecetaAsync(string codigoReceta) {
             return base.Channel.DeshabilitarRecetaAsync(codigoReceta);
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Receta[] RecuperarRecetasCompletas() {
+            return base.Channel.RecuperarRecetasCompletas();
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta[]> RecuperarRecetasCompletasAsync() {
+            return base.Channel.RecuperarRecetasCompletasAsync();
         }
     }
     
@@ -2197,6 +2259,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/DeshabilitarProducto", ReplyAction="http://tempuri.org/IProducto/DeshabilitarProductoResponse")]
         System.Threading.Tasks.Task<int> DeshabilitarProductoAsync(string codigoProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductos", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosResponse")]
+        DoughMinder___Client.DoughMinderServicio.Producto[] RecuperarProductos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductos", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2272,6 +2340,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> DeshabilitarProductoAsync(string codigoProducto) {
             return base.Channel.DeshabilitarProductoAsync(codigoProducto);
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Producto[] RecuperarProductos() {
+            return base.Channel.RecuperarProductos();
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosAsync() {
+            return base.Channel.RecuperarProductosAsync();
         }
     }
     
@@ -2379,6 +2455,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/RecuperarProveedores", ReplyAction="http://tempuri.org/IProveedor/RecuperarProveedoresResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Proveedor[]> RecuperarProveedoresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/ReemplazarProveedor", ReplyAction="http://tempuri.org/IProveedor/ReemplazarProveedorResponse")]
+        int ReemplazarProveedor(string RFC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProveedor/ReemplazarProveedor", ReplyAction="http://tempuri.org/IProveedor/ReemplazarProveedorResponse")]
+        System.Threading.Tasks.Task<int> ReemplazarProveedorAsync(string RFC);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2422,6 +2504,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Proveedor[]> RecuperarProveedoresAsync() {
             return base.Channel.RecuperarProveedoresAsync();
+        }
+        
+        public int ReemplazarProveedor(string RFC) {
+            return base.Channel.ReemplazarProveedor(RFC);
+        }
+        
+        public System.Threading.Tasks.Task<int> ReemplazarProveedorAsync(string RFC) {
+            return base.Channel.ReemplazarProveedorAsync(RFC);
         }
     }
     
