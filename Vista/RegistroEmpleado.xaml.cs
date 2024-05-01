@@ -21,11 +21,11 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for RegistrarEmpleado.xaml
     /// </summary>
-    public partial class RegistrarEmpleado : Page
+    public partial class RegistroEmpleado : Page
     {
 
         
-        public RegistrarEmpleado(bool modificar,string usuario)
+        public RegistroEmpleado(bool modificar,string usuario)
         {
             InitializeComponent();
 
@@ -61,9 +61,9 @@ namespace DoughMinder___Client.Vista
 
 
 
-        private void MostrarEmpleado(string usuario)
+        private void MostrarEmpleado(string RFC)
         {
-            if (usuario == "")
+            if (RFC == "")
             {
                 btnModificar.Visibility = Visibility.Collapsed;
                 lblModificar.Visibility = Visibility.Collapsed;
@@ -94,12 +94,12 @@ namespace DoughMinder___Client.Vista
 
                 try
                 {
-                    Console.WriteLine(usuario);
+                    Console.WriteLine(RFC);
 
                     DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
                     DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
 
-                    empleado = cliente.BuscarEmpleado(usuario);
+                    empleado = cliente.BuscarEmpleado(RFC);
 
                     if (empleado != null)
                     {
@@ -402,8 +402,7 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        
+       
     }
-    
 }
 

@@ -20,9 +20,11 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for Empleados.xaml
     /// </summary>
-    public partial class Empleados : Page
+    public partial class MenuEmpleados : Page
     {
-        public Empleados()
+        private List<EmpleadoItem> listaEmpleadosCompleta;
+
+        public MenuEmpleados()
         {
             InitializeComponent();
             CargarEmpleados();
@@ -32,22 +34,26 @@ namespace DoughMinder___Client.Vista
         public class EmpleadoItem
         {
             public string Nombre { get; set; }
-            public string Usuario { get; set; }
-           
+            public string RFC { get; set; }
+
         }
 
 
         private void CargarEmpleados()
         {
-            Dictionary<string, string> listaEmpleados = RecuperarEmpleados();
+            Dictionary<string, string> dictEmpleados = RecuperarEmpleados();
 
-            List<EmpleadoItem> empleados = new List<EmpleadoItem>();
-            foreach (var empleado in listaEmpleados)
+            listaEmpleadosCompleta = new List<EmpleadoItem>(); 
+
+            foreach (var empleado in dictEmpleados)
             {
-                empleados.Add(new EmpleadoItem { Nombre = empleado.Key, Usuario = empleado.Value});
+                listaEmpleadosCompleta.Add(new EmpleadoItem { Nombre = empleado.Key, RFC = empleado.Value });
             }
-            lstEmpleados.ItemsSource = empleados;
+
+            lstEmpleados.ItemsSource = listaEmpleadosCompleta;
         }
+
+
 
         private Dictionary<string, string> RecuperarEmpleados()
         {
@@ -76,6 +82,8 @@ namespace DoughMinder___Client.Vista
 
 
 
+
+
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();
@@ -101,14 +109,14 @@ namespace DoughMinder___Client.Vista
 
             if (empleadoSeleccionado != null)
             {
-                RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(false, empleadoSeleccionado.Usuario);
+                RegistroEmpleado registrarEmpleadoPage = new RegistroEmpleado(false, empleadoSeleccionado.RFC);
                 NavigationService.Navigate(registrarEmpleadoPage);
             }
         }
 
         private void AbrirRegistrarEmpleado(object sender, MouseButtonEventArgs e)
         {
-            RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(true,"");
+            RegistroEmpleado registrarEmpleadoPage = new RegistroEmpleado(true, "");
             NavigationService.Navigate(registrarEmpleadoPage);
         }
 
@@ -116,5 +124,17 @@ namespace DoughMinder___Client.Vista
         {
             NavigationService.GoBack();
         }
+
+        private void BuscarEnLista(object sender, TextChangedEventArgs e)
+        {
+            string textoBusqueda = tbBusqueda.Text.ToLower();
+
+            if (listaEmpleadosCompleta != null) 
+            {
+                var empleadosFiltrados = listaEmpleadosCompleta.Where(emp => emp.Nombre.ToLower().Contains(textoBusqueda) || emp.RFC.ToLower().Contains(textoBusqueda)).ToList();
+                lstEmpleados.ItemsSource = empleadosFiltrados;
+            }
+        }
+
     }
 }
