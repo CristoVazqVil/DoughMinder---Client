@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoughMinder___Client.DoughMinderServicio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,62 @@ namespace DoughMinder___Client.Vista
         public MenuPrincipal()
         {
             InitializeComponent();
+            SetProductos();
+        }
+
+        private void SetProductos()
+        {
+            DoughMinderServicio.ProductoClient productoClient = new DoughMinderServicio.ProductoClient();
+            List<Producto> productos = new List<Producto>();
+            productos = productoClient.RecuperarProductos().ToList();
+
+            int maxColumn = 3;
+            int row = 0;
+            int column = 0;
+
+            gpVistaProductos.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+
+            foreach (Producto producto in productos)
+            {
+                if (producto.RutaFoto == null)
+                {
+                    producto.RutaFoto = "/Recursos/ProductosBlack.png";
+                }
+
+                Image image = new Image();
+                BitmapImage bitmapImage = new BitmapImage(new Uri(producto.RutaFoto, UriKind.Relative));
+
+                image.Source = bitmapImage;
+                image.Tag = producto.RutaFoto;
+                image.Width = 80;
+
+                Label lblDescripcion = new Label();
+                lblDescripcion.Content = producto.Nombre + "  $" + producto.Precio;
+
+                Grid gpProductoItem = new Grid();
+                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
+                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
+                gpProductoItem.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+
+                Grid.SetRow(image, 0);
+                Grid.SetRow(lblDescripcion, 1);
+                gpProductoItem.Children.Add(image);
+                gpProductoItem.Children.Add(lblDescripcion);
+
+                gpVistaProductos.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                Grid.SetColumn(gpProductoItem, column);
+                Grid.SetRow(gpProductoItem, row);
+                gpVistaProductos.Children.Add(gpProductoItem);
+
+                column++;
+
+                if (column >= maxColumn)
+                {
+                    gpVistaProductos.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                    column = 0;
+                    row++;
+                }
+            }
         }
 
         private void AbrirProductos(object sender, MouseButtonEventArgs e)
@@ -53,24 +110,6 @@ namespace DoughMinder___Client.Vista
         {
             RegistroProveedores proveedores = new RegistroProveedores();
             this.NavigationService.Navigate(proveedores);
-        }
-
-        private void AbrirRegistroPedido(object sender, RoutedEventArgs e)
-        {
-            RegistroPedido pedido = new RegistroPedido();
-            this.NavigationService.Navigate(pedido);
-        }
-
-        private void AbrirSolicitudInsumo(object sender, RoutedEventArgs e)
-        {
-            SolicitudInsumo solicitudInsumo = new SolicitudInsumo();
-            this.NavigationService.Navigate(solicitudInsumo);
-        }
-
-        private void AbrirRegistroMovimiento(object sender, RoutedEventArgs e)
-        {
-            RegistroMovimiento registroMovimiento = new RegistroMovimiento();
-            this.NavigationService.Navigate(registroMovimiento);
         }
     }
 }
