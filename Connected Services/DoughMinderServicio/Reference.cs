@@ -1912,6 +1912,24 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarTodosInsumos", ReplyAction="http://tempuri.org/IInsumo/RecuperarTodosInsumosResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Insumo[]> RecuperarTodosInsumosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumo", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumoResponse")]
+        DoughMinder___Client.DoughMinderServicio.Insumo RecuperarInsumo(string codigoInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumo", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumoResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Insumo> RecuperarInsumoAsync(string codigoInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/ModificarInsumo", ReplyAction="http://tempuri.org/IInsumo/ModificarInsumoResponse")]
+        int ModificarInsumo(DoughMinder___Client.DoughMinderServicio.Insumo insumo, string codigoInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/ModificarInsumo", ReplyAction="http://tempuri.org/IInsumo/ModificarInsumoResponse")]
+        System.Threading.Tasks.Task<int> ModificarInsumoAsync(DoughMinder___Client.DoughMinderServicio.Insumo insumo, string codigoInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/DeshabilitarInsumo", ReplyAction="http://tempuri.org/IInsumo/DeshabilitarInsumoResponse")]
+        int DeshabilitarInsumo(string codigoInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/DeshabilitarInsumo", ReplyAction="http://tempuri.org/IInsumo/DeshabilitarInsumoResponse")]
+        System.Threading.Tasks.Task<int> DeshabilitarInsumoAsync(string codigoInsumo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1964,6 +1982,30 @@ namespace DoughMinder___Client.DoughMinderServicio {
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Insumo[]> RecuperarTodosInsumosAsync() {
             return base.Channel.RecuperarTodosInsumosAsync();
         }
+        
+        public DoughMinder___Client.DoughMinderServicio.Insumo RecuperarInsumo(string codigoInsumo) {
+            return base.Channel.RecuperarInsumo(codigoInsumo);
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Insumo> RecuperarInsumoAsync(string codigoInsumo) {
+            return base.Channel.RecuperarInsumoAsync(codigoInsumo);
+        }
+        
+        public int ModificarInsumo(DoughMinder___Client.DoughMinderServicio.Insumo insumo, string codigoInsumo) {
+            return base.Channel.ModificarInsumo(insumo, codigoInsumo);
+        }
+        
+        public System.Threading.Tasks.Task<int> ModificarInsumoAsync(DoughMinder___Client.DoughMinderServicio.Insumo insumo, string codigoInsumo) {
+            return base.Channel.ModificarInsumoAsync(insumo, codigoInsumo);
+        }
+        
+        public int DeshabilitarInsumo(string codigoInsumo) {
+            return base.Channel.DeshabilitarInsumo(codigoInsumo);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeshabilitarInsumoAsync(string codigoInsumo) {
+            return base.Channel.DeshabilitarInsumoAsync(codigoInsumo);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1981,6 +2023,24 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RecuperarRecetasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarReceta", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetaResponse")]
+        DoughMinder___Client.DoughMinderServicio.Receta RecuperarReceta(string codigoReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarReceta", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetaResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta> RecuperarRecetaAsync(string codigoReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/ModificarReceta", ReplyAction="http://tempuri.org/IReceta/ModificarRecetaResponse")]
+        int ModificarReceta(DoughMinder___Client.DoughMinderServicio.Receta receta, string codigoReceta, System.Collections.Generic.Dictionary<int, float> listaInsumos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/ModificarReceta", ReplyAction="http://tempuri.org/IReceta/ModificarRecetaResponse")]
+        System.Threading.Tasks.Task<int> ModificarRecetaAsync(DoughMinder___Client.DoughMinderServicio.Receta receta, string codigoReceta, System.Collections.Generic.Dictionary<int, float> listaInsumos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/DeshabilitarReceta", ReplyAction="http://tempuri.org/IReceta/DeshabilitarRecetaResponse")]
+        int DeshabilitarReceta(string codigoReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/DeshabilitarReceta", ReplyAction="http://tempuri.org/IReceta/DeshabilitarRecetaResponse")]
+        System.Threading.Tasks.Task<int> DeshabilitarRecetaAsync(string codigoReceta);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2024,6 +2084,30 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RecuperarRecetasAsync() {
             return base.Channel.RecuperarRecetasAsync();
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Receta RecuperarReceta(string codigoReceta) {
+            return base.Channel.RecuperarReceta(codigoReceta);
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta> RecuperarRecetaAsync(string codigoReceta) {
+            return base.Channel.RecuperarRecetaAsync(codigoReceta);
+        }
+        
+        public int ModificarReceta(DoughMinder___Client.DoughMinderServicio.Receta receta, string codigoReceta, System.Collections.Generic.Dictionary<int, float> listaInsumos) {
+            return base.Channel.ModificarReceta(receta, codigoReceta, listaInsumos);
+        }
+        
+        public System.Threading.Tasks.Task<int> ModificarRecetaAsync(DoughMinder___Client.DoughMinderServicio.Receta receta, string codigoReceta, System.Collections.Generic.Dictionary<int, float> listaInsumos) {
+            return base.Channel.ModificarRecetaAsync(receta, codigoReceta, listaInsumos);
+        }
+        
+        public int DeshabilitarReceta(string codigoReceta) {
+            return base.Channel.DeshabilitarReceta(codigoReceta);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeshabilitarRecetaAsync(string codigoReceta) {
+            return base.Channel.DeshabilitarRecetaAsync(codigoReceta);
         }
     }
     
@@ -2095,6 +2179,24 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductosParaPedido", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosParaPedidoResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosParaPedidoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProducto", ReplyAction="http://tempuri.org/IProducto/RecuperarProductoResponse")]
+        DoughMinder___Client.DoughMinderServicio.Producto RecuperarProducto(string codigoProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProducto", ReplyAction="http://tempuri.org/IProducto/RecuperarProductoResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto> RecuperarProductoAsync(string codigoProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/ModificarProducto", ReplyAction="http://tempuri.org/IProducto/ModificarProductoResponse")]
+        int ModificarProducto(DoughMinder___Client.DoughMinderServicio.Producto producto, string codigoProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/ModificarProducto", ReplyAction="http://tempuri.org/IProducto/ModificarProductoResponse")]
+        System.Threading.Tasks.Task<int> ModificarProductoAsync(DoughMinder___Client.DoughMinderServicio.Producto producto, string codigoProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/DeshabilitarProducto", ReplyAction="http://tempuri.org/IProducto/DeshabilitarProductoResponse")]
+        int DeshabilitarProducto(string codigoProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/DeshabilitarProducto", ReplyAction="http://tempuri.org/IProducto/DeshabilitarProductoResponse")]
+        System.Threading.Tasks.Task<int> DeshabilitarProductoAsync(string codigoProducto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2146,6 +2248,30 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto[]> RecuperarProductosParaPedidoAsync() {
             return base.Channel.RecuperarProductosParaPedidoAsync();
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.Producto RecuperarProducto(string codigoProducto) {
+            return base.Channel.RecuperarProducto(codigoProducto);
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Producto> RecuperarProductoAsync(string codigoProducto) {
+            return base.Channel.RecuperarProductoAsync(codigoProducto);
+        }
+        
+        public int ModificarProducto(DoughMinder___Client.DoughMinderServicio.Producto producto, string codigoProducto) {
+            return base.Channel.ModificarProducto(producto, codigoProducto);
+        }
+        
+        public System.Threading.Tasks.Task<int> ModificarProductoAsync(DoughMinder___Client.DoughMinderServicio.Producto producto, string codigoProducto) {
+            return base.Channel.ModificarProductoAsync(producto, codigoProducto);
+        }
+        
+        public int DeshabilitarProducto(string codigoProducto) {
+            return base.Channel.DeshabilitarProducto(codigoProducto);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeshabilitarProductoAsync(string codigoProducto) {
+            return base.Channel.DeshabilitarProductoAsync(codigoProducto);
         }
     }
     

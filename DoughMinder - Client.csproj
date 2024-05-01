@@ -40,6 +40,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -85,20 +86,35 @@
     <Compile Include="Vista\Emergentes\ConexionFallidaBase.xaml.cs">
       <DependentUpon>ConexionFallidaBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Emergentes\DeshabilitacionExitosa.xaml.cs">
+      <DependentUpon>DeshabilitacionExitosa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Emergentes\EmpleadoExistente.xaml.cs">
       <DependentUpon>EmpleadoExistente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
       <DependentUpon>InsumoExistente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Emergentes\InsumoUtilizado.xaml.cs">
+      <DependentUpon>InsumoUtilizado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\ModificacionExitosa.xaml.cs">
+      <DependentUpon>ModificacionExitosa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Emergentes\ProductoExistente.xaml.cs">
       <DependentUpon>ProductoExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\ProductoUtilizado.xaml.cs">
+      <DependentUpon>ProductoUtilizado.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\ProveedorExistente.xaml.cs">
       <DependentUpon>ProveedorExistente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\RecetaExistente.xaml.cs">
       <DependentUpon>RecetaExistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Emergentes\RecetaUtilizada.xaml.cs">
+      <DependentUpon>RecetaUtilizada.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\RegistroExitoso.xaml.cs">
       <DependentUpon>RegistroExitoso.xaml</DependentUpon>
@@ -115,6 +131,15 @@
     </Compile>
     <Compile Include="Vista\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ModificacionInsumos.xaml.cs">
+      <DependentUpon>ModificacionInsumos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ModificacionProductos.xaml.cs">
+      <DependentUpon>ModificacionProductos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ModificacionRecetas.xaml.cs">
+      <DependentUpon>ModificacionRecetas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
@@ -196,6 +221,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Emergentes\DeshabilitacionExitosa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\Emergentes\EmpleadoExistente.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -204,7 +233,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Emergentes\InsumoUtilizado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ModificacionExitosa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\Emergentes\ProductoExistente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\ProductoUtilizado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,6 +254,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\Emergentes\RecetaExistente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Emergentes\RecetaUtilizada.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,6 +281,18 @@
     <Page Include="Vista\MenuPrincipal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\ModificacionInsumos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ModificacionProductos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ModificacionRecetas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
@@ -306,6 +363,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Proveedor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Receta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\item.xsd">
