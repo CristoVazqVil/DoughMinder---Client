@@ -21,9 +21,9 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for Proveedores.xaml
     /// </summary>
-    public partial class Proveedores : Page
+    public partial class MenuProveedores : Page
     {
-        public Proveedores()
+        public MenuProveedores()
         {
             InitializeComponent();
             CargarProveedores();

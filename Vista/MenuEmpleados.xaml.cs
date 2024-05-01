@@ -20,11 +20,11 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for Empleados.xaml
     /// </summary>
-    public partial class Empleados : Page
+    public partial class MenuEmpleados : Page
     {
         private List<EmpleadoItem> listaEmpleadosCompleta;
 
-        public Empleados()
+        public MenuEmpleados()
         {
             InitializeComponent();
             CargarEmpleados();
@@ -109,14 +109,14 @@ namespace DoughMinder___Client.Vista
 
             if (empleadoSeleccionado != null)
             {
-                RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(false, empleadoSeleccionado.RFC);
+                RegistroEmpleado registrarEmpleadoPage = new RegistroEmpleado(false, empleadoSeleccionado.RFC);
                 NavigationService.Navigate(registrarEmpleadoPage);
             }
         }
 
         private void AbrirRegistrarEmpleado(object sender, MouseButtonEventArgs e)
         {
-            RegistrarEmpleado registrarEmpleadoPage = new RegistrarEmpleado(true, "");
+            RegistroEmpleado registrarEmpleadoPage = new RegistroEmpleado(true, "");
             NavigationService.Navigate(registrarEmpleadoPage);
         }
 

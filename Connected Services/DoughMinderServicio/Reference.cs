@@ -1359,6 +1359,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdProveedorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1392,6 +1395,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
                 }
             }
         }

@@ -21,9 +21,9 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for Productos.xaml
     /// </summary>
-    public partial class Productos : Page
+    public partial class MenuProductos : Page
     {
-        public Productos()
+        public MenuProductos()
         {
             InitializeComponent();
             CargarProductosParaPedido();

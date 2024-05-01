@@ -145,6 +145,7 @@
   <xs:complexType name="Proveedor">
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IdProveedor" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />

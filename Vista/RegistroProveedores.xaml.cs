@@ -32,17 +32,14 @@ namespace DoughMinder___Client.Vista
             InitializeComponent();
             txbTelefono.PreviewTextInput += TextBoxSoloNumeros_PreviewTextInput;
 
-            // Asigna el proveedor pasado como argumento al campo de la clase
             this.proveedor = proveedor;
 
-            // Mostrar la información del proveedor en los campos correspondientes
             txbNombre.Text = proveedor.Nombre;
             txbCorreo.Text = proveedor.Email;
             txbTelefono.Text = proveedor.Telefono;
             txbRFC.Text = proveedor.RFC;
+            
 
-
-            // Verificar si se está cargando un proveedor
             if (!string.IsNullOrEmpty(proveedor.Nombre))
             {
                 ProveedorCargado();
@@ -71,11 +68,11 @@ namespace DoughMinder___Client.Vista
             InitializeComponent();
             this.proveedor = proveedor;
 
-            // Mostrar la información del proveedor en los campos correspondientes
             txbNombre.Text = proveedor.Nombre;
             txbCorreo.Text = proveedor.Email;
             txbTelefono.Text = proveedor.Telefono;
             txbRFC.Text = proveedor.RFC;
+            
         }
 
         private void RegistrarProveedor()
@@ -96,6 +93,8 @@ namespace DoughMinder___Client.Vista
                     proveedor.Email = txbCorreo.Text;
                     proveedor.Telefono = txbTelefono.Text;
                     proveedor.RFC = txbRFC.Text;
+                    proveedor.Estado = true;
+
 
                     int codigo = cliente.GuardarProveedor(proveedor);
 
@@ -104,8 +103,8 @@ namespace DoughMinder___Client.Vista
                     {
                         MostrarMensajeRegistroExitoso();
 
-                        Proveedores proveedores = new Proveedores();
-                        this.NavigationService.Navigate(proveedores);
+                        MenuProveedores proveedores = new MenuProveedores();
+                        this.NavigationService.Navigate(proveedores); 
 
                     }
                     else
@@ -140,8 +139,17 @@ namespace DoughMinder___Client.Vista
             {
                 return false;
             }
+
+            
+            if (!txbCorreo.Text.Contains("@"))
+            {
+                MessageBox.Show("El correo electrónico debe contener un '@'.", "Correo Inválido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
             return true;
         }
+
 
 
         private void MostrarMensajeSinConexionServidor()

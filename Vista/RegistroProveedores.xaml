@@ -38,6 +38,8 @@
         <Label Content="Número" HorizontalAlignment="Left" Height="26" Margin="188,223,0,0" VerticalAlignment="Top" Width="168"/>
 
 
+        <CheckBox Content="Activo" x:Name="chkActivo" HorizontalAlignment="Left" Margin="190,357,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Background="#FF527243"/>
+        
         <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,86,0,0" VerticalAlignment="Top" Width="526" Height="34">
             <TextBox TextWrapping="Wrap" x:Name="txbNombre" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>

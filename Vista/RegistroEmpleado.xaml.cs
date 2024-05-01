@@ -21,11 +21,11 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for RegistrarEmpleado.xaml
     /// </summary>
-    public partial class RegistrarEmpleado : Page
+    public partial class RegistroEmpleado : Page
     {
 
         
-        public RegistrarEmpleado(bool modificar,string usuario)
+        public RegistroEmpleado(bool modificar,string usuario)
         {
             InitializeComponent();
 

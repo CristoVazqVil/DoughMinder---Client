@@ -27,13 +27,13 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirProductos(object sender, MouseButtonEventArgs e)
         {
-            Productos productos = new Productos();
+            MenuProductos productos = new MenuProductos();
             this.NavigationService.Navigate(productos);
         }
 
         private void AbrirEmpleados(object sender, MouseButtonEventArgs e)
         {
-            Empleados empleados = new Empleados();
+            MenuEmpleados empleados = new MenuEmpleados();
             this.NavigationService.Navigate(empleados);
         }
 
@@ -45,13 +45,13 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirRecetas(object sender, MouseButtonEventArgs e)
         {
-            Recetas recetas = new Recetas();
+            MenuRecetas recetas = new MenuRecetas();
             this.NavigationService.Navigate(recetas);
         }
 
         private void AbrirProveedores(object sender, MouseButtonEventArgs e)
         {
-            Proveedores proveedores = new Proveedores();
+            MenuProveedores proveedores = new MenuProveedores();
             this.NavigationService.Navigate(proveedores);
         }
 

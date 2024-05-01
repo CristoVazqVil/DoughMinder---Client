@@ -21,9 +21,9 @@ namespace DoughMinder___Client.Vista
     /// <summary>
     /// Interaction logic for Recetas.xaml
     /// </summary>
-    public partial class Recetas : Page
+    public partial class MenuRecetas : Page
     {
-        public Recetas()
+        public MenuRecetas()
         {
             InitializeComponent();
             CargarRecetas();

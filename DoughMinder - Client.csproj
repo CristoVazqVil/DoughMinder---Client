@@ -106,8 +106,8 @@
     <Compile Include="Vista\Emergentes\SinConexionServidor.xaml.cs">
       <DependentUpon>SinConexionServidor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Empleados.xaml.cs">
-      <DependentUpon>Empleados.xaml</DependentUpon>
+    <Compile Include="Vista\MenuEmpleados.xaml.cs">
+      <DependentUpon>MenuEmpleados.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
@@ -116,17 +116,17 @@
     <Compile Include="Vista\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Productos.xaml.cs">
-      <DependentUpon>Productos.xaml</DependentUpon>
+    <Compile Include="Vista\MenuProductos.xaml.cs">
+      <DependentUpon>MenuProductos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Proveedores.xaml.cs">
-      <DependentUpon>Proveedores.xaml</DependentUpon>
+    <Compile Include="Vista\MenuProveedores.xaml.cs">
+      <DependentUpon>MenuProveedores.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Recetas.xaml.cs">
-      <DependentUpon>Recetas.xaml</DependentUpon>
+    <Compile Include="Vista\MenuRecetas.xaml.cs">
+      <DependentUpon>MenuRecetas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
-      <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
+    <Compile Include="Vista\RegistroEmpleado.xaml.cs">
+      <DependentUpon>RegistroEmpleado.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistroInsumos.xaml.cs">
       <DependentUpon>RegistroInsumos.xaml</DependentUpon>
@@ -233,7 +233,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vista\Empleados.xaml">
+    <Page Include="Vista\MenuEmpleados.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -246,19 +246,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Vista\Productos.xaml">
+    <Page Include="Vista\MenuProductos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vista\Proveedores.xaml">
+    <Page Include="Vista\MenuProveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vista\Recetas.xaml">
+    <Page Include="Vista\MenuRecetas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vista\RegistrarEmpleado.xaml">
+    <Page Include="Vista\RegistroEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
