@@ -425,6 +425,12 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\InsumosIcon.png" />
+    <Resource Include="Recursos\PedidosIcon.png" />
+    <Resource Include="Recursos\ProductosBlack.png" />
+    <Resource Include="Recursos\ProductosIcon.png" />
+    <Resource Include="Recursos\ProveedoresIcon.png" />
+    <Resource Include="Recursos\SalirIcon.png" />
     <Resource Include="Recursos\logoBlack.png" />
     <Resource Include="Recursos\IconoSolicitudInsumo.png" />
     <Resource Include="Recursos\IconoMasAzul.png" />
@@ -467,6 +473,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Recursos\FinanzasIcon.png" />
+    <Resource Include="Recursos\EmpleadosIcon.png" />
     <Content Include="Recursos\FondoVerde.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

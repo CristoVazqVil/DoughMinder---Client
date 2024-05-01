@@ -29,6 +29,11 @@
             <Label Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
 
+        <Grid x:Name="solcitar" Margin="0,193,622,197" MouseDown="AbrirSolicitarInsumos" >
+            <Image Source="/Recursos/IconoSolicitudInsumo.png" Margin="-2,13,128,15" />
+            <Label Content="Solicitar &#xD;&#xA;Insumos" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+        </Grid>
+
 
 
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Insumos" Height="40" Margin="185,14,0,0" Width="125"/>

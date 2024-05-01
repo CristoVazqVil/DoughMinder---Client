@@ -97,6 +97,12 @@ namespace DoughMinder___Client.Vista
             NavigationService.Navigate(registroInsumos);
         }
 
+        private void AbrirSolicitarInsumos(object sender, MouseButtonEventArgs e)
+        {
+            SolicitudInsumo solicitudInsumo = new SolicitudInsumo();
+            NavigationService.Navigate(solicitudInsumo);
+        }
+
         private void BuscarInsumo(object sender, TextChangedEventArgs e)
         {
             string textoBusqueda = tbBusqueda.Text.ToLower();
