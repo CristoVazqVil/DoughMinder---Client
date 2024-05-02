@@ -147,6 +147,12 @@
   <wsdl:message name="IProducto_RecuperarProductos_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProductosResponse" />
   </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductosPorPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosPorPedido" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_RecuperarProductosPorPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductosPorPedidoResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmpleado_GuardarEmpleado_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleado" />
   </wsdl:message>
@@ -213,6 +219,12 @@
   <wsdl:message name="IPedido_RecuperarPedidosNoCancelados_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarPedidosNoCanceladosResponse" />
   </wsdl:message>
+  <wsdl:message name="IPedido_RecuperarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_RecuperarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarPedidoResponse" />
+  </wsdl:message>
   <wsdl:message name="ILogin_VerificarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:VerificarUsuario" />
   </wsdl:message>
@@ -276,6 +288,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductos" message="tns:IProducto_RecuperarProductos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosResponse" message="tns:IProducto_RecuperarProductos_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RecuperarProductosPorPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosPorPedido" message="tns:IProducto_RecuperarProductosPorPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosPorPedidoResponse" message="tns:IProducto_RecuperarProductosPorPedido_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmpleado">
     <wsdl:operation name="GuardarEmpleado">
@@ -327,6 +343,10 @@
     <wsdl:operation name="RecuperarPedidosNoCancelados">
       <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidosNoCancelados" message="tns:IPedido_RecuperarPedidosNoCancelados_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidosNoCanceladosResponse" message="tns:IPedido_RecuperarPedidosNoCancelados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RecuperarPedido" message="tns:IPedido_RecuperarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidoResponse" message="tns:IPedido_RecuperarPedido_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILogin">
@@ -453,6 +473,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecuperarProductosPorPedido">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductosPorPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IEmpleado" type="tns:IEmpleado">
     <wsp:PolicyReference URI="#NetTcpBinding_IEmpleado_policy" />
@@ -561,6 +590,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarPedidosNoCancelados">
       <soap12:operation soapAction="http://tempuri.org/IPedido/RecuperarPedidosNoCancelados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarPedido">
+      <soap12:operation soapAction="http://tempuri.org/IPedido/RecuperarPedido" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

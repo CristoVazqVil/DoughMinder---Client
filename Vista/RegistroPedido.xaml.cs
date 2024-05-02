@@ -515,6 +515,12 @@ namespace DoughMinder___Client.Vista
 
                 string telefono = txtbTelefono.Text;
                 pedido.TelefonoCliente = telefono;
+
+                pedido.TipoEntrega = "Domicilio";
+            }
+            else
+            {
+                pedido.TipoEntrega = "En sitio";
             }
 
             try

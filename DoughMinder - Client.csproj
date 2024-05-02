@@ -138,6 +138,9 @@
     <Compile Include="Vista\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\ModificacionPedido.xaml.cs">
+      <DependentUpon>ModificacionPedido.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Vista\ModificacionPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -344,6 +351,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Pedido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.PedidoProducto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Producto1.datasource">

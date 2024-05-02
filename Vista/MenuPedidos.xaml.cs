@@ -93,18 +93,7 @@ namespace DoughMinder___Client.Vista
             return pedidos;
         }
 
-        private void MostrarMensajeSinConexionServidor()
-        {
-            SinConexionServidor sinConexionServidor = new SinConexionServidor();
-            sinConexionServidor.Show();
-        }
-
-
-        private void MostrarMensajeSinConexionBase()
-        {
-            ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
-            conexionFallidaBase.Show();
-        }
+        
 
         private void TxtbBuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -159,7 +148,17 @@ namespace DoughMinder___Client.Vista
 
         private void BtnModificar_Click(object sender, RoutedEventArgs e)
         {
+            Button btnModificar = sender as Button;
 
+            if (btnModificar != null)
+            {
+                Pedido pedido = btnModificar.DataContext as Pedido;
+
+                if (pedido != null)
+                {
+                    MostrarVentanaModificacionPedido(pedido.Clave);
+                }
+            }
         }
 
         private void CmbEstado_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -222,6 +221,25 @@ namespace DoughMinder___Client.Vista
             }
 
             return pedidos;
+        }
+
+        private void MostrarMensajeSinConexionServidor()
+        {
+            SinConexionServidor sinConexionServidor = new SinConexionServidor();
+            sinConexionServidor.Show();
+        }
+
+
+        private void MostrarMensajeSinConexionBase()
+        {
+            ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
+            conexionFallidaBase.Show();
+        }
+
+        private void MostrarVentanaModificacionPedido(string clave)
+        {
+            ModificacionPedido modificacionPedido = new ModificacionPedido(clave);          
+            NavigationService.Navigate(modificacionPedido);
         }
     }
 }
