@@ -16,18 +16,164 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static DoughMinder___Client.Vista.RegistroRecetas;
 
 namespace DoughMinder___Client.Vista
 {
     /// <summary>
-    /// Interaction logic for RegistroRecetas.xaml
+    /// Interaction logic for ModificacionRecetas.xaml
     /// </summary>
-    public partial class RegistroRecetas : Page
+    public partial class ModificacionRecetas : Page
     {
-        public RegistroRecetas()
+        private String codigoReceta;
+        private DoughMinderServicio.Receta receta;
+
+        public ModificacionRecetas(String codigo)
         {
             InitializeComponent();
+            codigoReceta = codigo;
             RecuperarInsumos();
+            RecuperarReceta();
+            ColocarRecetaEnCampos();
+        }
+
+        private void Deshabilitar(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.DialogResult resultado = System.Windows.Forms.MessageBox.Show("¿Estás seguro de deshabilitar esta receta?", "Confirmación deshabilitar", System.Windows.Forms.MessageBoxButtons.YesNo);
+
+            if (resultado == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    DoughMinderServicio.RecetaClient cliente = new DoughMinderServicio.RecetaClient();
+
+                    int codigo = cliente.DeshabilitarReceta(codigoReceta);
+
+                    if (codigo > 0)
+                    {
+                        MostrarMensajeDeshabilitacionExitosa();
+                        NavigationService.GoBack();
+                    }
+                    else
+                    {
+                        if (codigo == 0)
+                        {
+                            MostrarMensajeRecetaExistente();
+                        }
+                        else
+                        {
+                            if (codigo == -5)
+                            {
+                                MostrarMensajeRecetaUtilizada();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
+                        }
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+        }
+
+
+        private void Modificar(object sender, MouseButtonEventArgs e)
+        {
+            ReiniciarMarcadores();
+
+            if (!ValidarCamposVacios())
+            {
+                CamposVacios camposVacios = new CamposVacios();
+                camposVacios.Show();
+            }
+            else
+            {
+                try
+                {
+                    DoughMinderServicio.RecetaClient cliente = new DoughMinderServicio.RecetaClient();
+                    DoughMinderServicio.Receta receta = new DoughMinderServicio.Receta();
+
+                    receta.Nombre = txbNombreReceta.Text;
+                    receta.Descripcion = txbProcedimientoReceta.Text;
+                    receta.Estado = true;
+
+                    int codigo = cliente.ModificarReceta(receta, codigoReceta, CrearListaInsumos());
+
+                    if (codigo > 0)
+                    {
+                        MostrarMensajeModificacionExitosa();
+                        NavigationService.GoBack();
+                    }
+                    else
+                    {
+                        if (codigo == 0)
+                        {
+                            MostrarMensajeRecetaExistente();
+                        }
+                        else
+                        {
+                            if (codigo == -5)
+                            {
+                                MostrarMensajeRecetaUtilizada();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
+                        }
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+        }
+
+        public void RecuperarReceta()
+        {
+            if (codigoReceta != null)
+            {
+                try
+                {
+                    DoughMinderServicio.RecetaClient cliente = new DoughMinderServicio.RecetaClient();
+                    receta = cliente.RecuperarReceta(codigoReceta);
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+            else
+            {
+                MostrarMensajeSinConexionBase();
+            }
+        }
+
+        private void ColocarRecetaEnCampos()
+        {
+            if (receta != null)
+            {
+                lblCodigo.Content = receta.Codigo;
+                txbNombreReceta.Text = receta.Nombre;
+                txbProcedimientoReceta.Text = receta.Descripcion;
+            }
         }
 
         public class InsumoItem
@@ -66,57 +212,6 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private void Registrar(object sender, MouseButtonEventArgs e)
-        {
-            ReiniciarMarcadores();
-
-            if (!ValidarCamposVacios())
-            {
-                CamposVacios camposVacios = new CamposVacios();
-                camposVacios.Show();
-            }
-            else
-            {
-                try
-                {
-                    DoughMinderServicio.RecetaClient cliente = new DoughMinderServicio.RecetaClient();
-                    DoughMinderServicio.Receta receta = new DoughMinderServicio.Receta();
-
-                    receta.Nombre = txbNombreReceta.Text;
-                    receta.Codigo = txbCodigoReceta.Text;
-                    receta.Descripcion = txbProcedimientoReceta.Text;
-                    receta.Estado = true;
-
-                    int codigo = cliente.GuardarReceta(receta, CrearListaInsumos());
-
-                    if (codigo > 1)
-                    {
-                        MostrarMensajeRegistroExitoso();
-                        NavigationService.GoBack();
-                    }
-                    else
-                    {
-                        if (codigo == 0)
-                        {
-                            MostrarMensajeRecetaExistente();
-                        }
-                        else
-                        {
-                            MostrarMensajeSinConexionBase();
-                        }
-                    }
-                }
-                catch (TimeoutException ex)
-                {
-                    MostrarMensajeSinConexionServidor();
-                }
-                catch (CommunicationException ex)
-                {
-                    MostrarMensajeSinConexionServidor();
-                }
-            }
-        }
-
         private bool ValidarCamposVacios()
         {
             bool camposValidos = true;
@@ -124,12 +219,6 @@ namespace DoughMinder___Client.Vista
             if (string.IsNullOrEmpty(txbNombreReceta.Text))
             {
                 lblNombreReceta.Foreground = Brushes.Red;
-                camposValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(txbCodigoReceta.Text))
-            {
-                lblCodigoReceta.Foreground = Brushes.Red;
                 camposValidos = false;
             }
 
@@ -215,16 +304,28 @@ namespace DoughMinder___Client.Vista
             sinConexionServidor.ShowDialog();
         }
 
-        private void MostrarMensajeRegistroExitoso()
+        private void MostrarMensajeModificacionExitosa()
         {
-            RegistroExitoso registroExitoso = new RegistroExitoso();
-            registroExitoso.ShowDialog();
+            ModificacionExitosa modificacionExitosa = new ModificacionExitosa();
+            modificacionExitosa.ShowDialog();
+        }
+
+        private void MostrarMensajeDeshabilitacionExitosa()
+        {
+            DeshabilitacionExitosa deshabilitacionExitosa = new DeshabilitacionExitosa();
+            deshabilitacionExitosa.ShowDialog();
         }
 
         private void MostrarMensajeRecetaExistente()
         {
             RecetaExistente recetaExistente = new RecetaExistente();
             recetaExistente.ShowDialog();
+        }
+
+        private void MostrarMensajeRecetaUtilizada()
+        {
+            RecetaUtilizada recetaUtilizada = new RecetaUtilizada();
+            recetaUtilizada.ShowDialog();
         }
 
         private void MostrarMensajeSinConexionBase()
@@ -241,7 +342,6 @@ namespace DoughMinder___Client.Vista
         private void LimpiarCampos(object sender, MouseButtonEventArgs e)
         {
             ReiniciarMarcadores();
-            txbCodigoReceta.Clear();
             txbNombreReceta.Clear();
             txbProcedimientoReceta.Clear();
             drgTablaInsumos.ItemsSource = null;
@@ -250,6 +350,17 @@ namespace DoughMinder___Client.Vista
         }
 
         //Validaciones de entradas y cambios gráficos
+
+        private void CambiarModificarAzul(object sender, MouseEventArgs e)
+        {
+            btnModificar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarModificarVerde(object sender, MouseEventArgs e)
+        {
+            btnModificar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+        }
+
         private void CambiarLimpiarAzul(object sender, MouseEventArgs e)
         {
             btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
@@ -260,14 +371,14 @@ namespace DoughMinder___Client.Vista
             btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
         }
 
-        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
+        private void CambiarDeshabilitarAzul(object sender, MouseEventArgs e)
         {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+            btnDeshabilitar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
         }
 
-        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
+        private void CambiarDeshabilitarRojo(object sender, MouseEventArgs e)
         {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+            btnDeshabilitar.Source = new BitmapImage(new Uri("/Recursos/BotonRojo.png", UriKind.Relative));
         }
 
         private void EliminarCaracteresNombre(object sender, TextCompositionEventArgs e)
@@ -297,29 +408,6 @@ namespace DoughMinder___Client.Vista
             if (texto.Length <= 1000)
             {
                 e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void EliminarCaracteresCodigo(object sender, TextCompositionEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-
-            Regex regex = new Regex(@"^[a-zA-Z0-9\-]*$");
-
-            if (textBox != null && textBox.Text.Length < 10)
-            {
-                if (regex.IsMatch(e.Text))
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                }
             }
             else
             {

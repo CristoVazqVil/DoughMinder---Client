@@ -1,9 +1,11 @@
-﻿using Microsoft.Win32;
+﻿using DoughMinder___Client.Vista.Emergentes;
+using Microsoft.Win32;
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,25 +16,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DoughMinder___Client.Vista.Emergentes;
-using System.ServiceModel;
-using System.Text.RegularExpressions;
 
 namespace DoughMinder___Client.Vista
 {
     /// <summary>
-    /// Interaction logic for RegistroInsumos.xaml
+    /// Interaction logic for ModificacionInsumos.xaml
     /// </summary>
-    public partial class RegistroInsumos : Page
+    public partial class ModificacionInsumos : Page
     {
         private string rutaImagenSeleccionada;
+        private String codigoInsumo;
+        private DoughMinderServicio.Insumo insumo;
 
-        public RegistroInsumos()
+        public ModificacionInsumos(String codigo)
         {
             InitializeComponent();
+            codigoInsumo = codigo;
+            RecuperarInsumo();
+            ColocarInsumoEnCampos();
         }
 
-        private void Registrar(object sender, MouseButtonEventArgs e)
+        private void Modificar(object sender, MouseButtonEventArgs e)
         {
             ReiniciarMarcadores();
 
@@ -40,7 +44,7 @@ namespace DoughMinder___Client.Vista
             {
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
-            } 
+            }
             else
             {
                 try
@@ -48,22 +52,21 @@ namespace DoughMinder___Client.Vista
                     DoughMinderServicio.InsumoClient cliente = new DoughMinderServicio.InsumoClient();
                     DoughMinderServicio.Insumo insumo = new DoughMinderServicio.Insumo();
 
-                    decimal precio; 
+                    decimal precio;
                     decimal.TryParse(txbPrecioInsumo.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out precio);
 
                     insumo.Nombre = txbNombreInsumo.Text;
-                    insumo.Codigo = txbCodigoInsumo.Text;
                     insumo.CantidadKiloLitro = double.Parse(txbCantidadInsumo.Text);
                     insumo.PrecioKiloLitro = precio;
-                    insumo.RutaFoto = txbImagenInsumo.Text;
+                    insumo.RutaFoto = txbNombreInsumo.Text;
                     insumo.Estado = true;
 
-                    int codigo = cliente.GuardarInsumo(insumo);
+                    int codigo = cliente.ModificarInsumo(insumo, codigoInsumo);
 
-                    if (codigo == 1)
+                    if (codigo > 0)
                     {
-                        MostrarMensajeRegistroExitoso();
-                        NavigationService.GoBack();
+                        MostrarMensajeModificacionExitosa();
+                        this.NavigationService.GoBack();
                     }
                     else
                     {
@@ -73,7 +76,14 @@ namespace DoughMinder___Client.Vista
                         }
                         else
                         {
-                            MostrarMensajeSinConexionBase();
+                            if (codigo == -5)
+                            {
+                                MostrarMensajeInsumoUtilizado();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
                         }
                     }
                 }
@@ -88,6 +98,89 @@ namespace DoughMinder___Client.Vista
             }
         }
 
+        private void Deshabilitar(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.DialogResult resultado = System.Windows.Forms.MessageBox.Show("¿Estás seguro de deshabilitar este insumo?", "Confirmación deshabilitar", System.Windows.Forms.MessageBoxButtons.YesNo);
+
+            if (resultado == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    DoughMinderServicio.InsumoClient cliente = new DoughMinderServicio.InsumoClient();
+
+                    int codigo = cliente.DeshabilitarInsumo(codigoInsumo);
+
+                    if (codigo > 0)
+                    {
+                        MostrarMensajeDeshabilitacionExitosa();
+                        this.NavigationService.GoBack();
+                    }
+                    else
+                    {
+                        if (codigo == 0)
+                        {
+                            MostrarMensajeInsumoExistente();
+                        }
+                        else
+                        {
+                            if (codigo == -5)
+                            {
+                                MostrarMensajeInsumoUtilizado();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
+                        }
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+        }
+
+        public void RecuperarInsumo()
+        {
+            if (codigoInsumo != null)
+            {
+                try
+                {
+                    DoughMinderServicio.InsumoClient cliente = new DoughMinderServicio.InsumoClient();
+                    insumo = cliente.RecuperarInsumo(codigoInsumo);
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+            else
+            {
+                MostrarMensajeSinConexionBase();
+            }
+        }
+
+        private void ColocarInsumoEnCampos()
+        {
+            if (insumo != null)
+            {
+                lblCodigo.Content = insumo.Codigo;
+                txbNombreInsumo.Text = insumo.Nombre;
+                txbCantidadInsumo.Text = insumo.CantidadKiloLitro.ToString();
+                txbPrecioInsumo.Text = insumo.PrecioKiloLitro.ToString();
+                txbImagenInsumo.Text = insumo.RutaFoto;
+            }
+        }
+
         private bool ValidarCamposVacios()
         {
             bool camposValidos = true;
@@ -95,18 +188,12 @@ namespace DoughMinder___Client.Vista
             if (string.IsNullOrEmpty(txbCantidadInsumo.Text))
             {
                 lblCantidad.Foreground = Brushes.Red;
-                camposValidos = false; 
+                camposValidos = false;
             }
 
             if (string.IsNullOrEmpty(txbNombreInsumo.Text))
             {
                 lblNombre.Foreground = Brushes.Red;
-                camposValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(txbCodigoInsumo.Text))
-            {
-                lblCodigoInsumo.Foreground = Brushes.Red;
                 camposValidos = false;
             }
 
@@ -157,16 +244,28 @@ namespace DoughMinder___Client.Vista
             sinConexionServidor.ShowDialog();
         }
 
-        private void MostrarMensajeRegistroExitoso()
+        private void MostrarMensajeModificacionExitosa()
         {
-            RegistroExitoso registroExitoso = new RegistroExitoso();
-            registroExitoso.ShowDialog();
+            ModificacionExitosa modificacionExitosa = new ModificacionExitosa();
+            modificacionExitosa.ShowDialog();
+        }
+
+        private void MostrarMensajeDeshabilitacionExitosa()
+        {
+            DeshabilitacionExitosa deshabilitacionExitosa = new DeshabilitacionExitosa();
+            deshabilitacionExitosa.ShowDialog();
         }
 
         private void MostrarMensajeInsumoExistente()
         {
             InsumoExistente insumoExistente = new InsumoExistente();
             insumoExistente.ShowDialog();
+        }
+
+        private void MostrarMensajeInsumoUtilizado()
+        {
+            InsumoUtilizado insumoUtilizado = new InsumoUtilizado();
+            insumoUtilizado.ShowDialog();
         }
 
         private void MostrarMensajeSinConexionBase()
@@ -185,7 +284,6 @@ namespace DoughMinder___Client.Vista
             ReiniciarMarcadores();
             txbNombreInsumo.Clear();
             txbImagenInsumo.Text = "Sin imagen adjunta...";
-            txbCodigoInsumo.Clear();
             txbCantidadInsumo.Clear();
             txbPrecioInsumo.Clear();
         }
@@ -229,38 +327,14 @@ namespace DoughMinder___Client.Vista
                 return;
             }
         }
-
-        private void EliminarCaracteresCodigo(object sender, TextCompositionEventArgs e)
+        private void CambiarModificarAzul(object sender, MouseEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-
-            Regex regex = new Regex(@"^[a-zA-Z0-9\-]*$");
-
-            if (textBox != null && textBox.Text.Length < 10)
-            {
-                if (regex.IsMatch(e.Text))
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            btnModificar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
         }
 
-        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
+        private void CambiarModificarVerde(object sender, MouseEventArgs e)
         {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
-        }
-
-        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
-        {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+            btnModificar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
         }
 
         private void CambiarLimpiarAzul(object sender, MouseEventArgs e)
@@ -281,6 +355,16 @@ namespace DoughMinder___Client.Vista
         private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
         {
             btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
+        }
+
+        private void CambiarDeshabilitarAzul(object sender, MouseEventArgs e)
+        {
+            btnDeshabilitar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarDeshabilitarRojo(object sender, MouseEventArgs e)
+        {
+            btnDeshabilitar.Source = new BitmapImage(new Uri("/Recursos/BotonRojo.png", UriKind.Relative));
         }
     }
 }

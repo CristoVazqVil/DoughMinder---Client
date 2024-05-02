@@ -84,32 +84,44 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirProductos(object sender, MouseButtonEventArgs e)
         {
-            RegistroProductos productos = new RegistroProductos();
+            MenuProductos productos = new MenuProductos();
             this.NavigationService.Navigate(productos);
         }
 
         private void AbrirEmpleados(object sender, MouseButtonEventArgs e)
         {
-            Empleados empleados = new Empleados();
+            MenuEmpleados empleados = new MenuEmpleados();
             this.NavigationService.Navigate(empleados);
         }
 
         private void AbrirInsumos(object sender, MouseButtonEventArgs e)
         {
-            RegistroInsumos insumos = new RegistroInsumos();
+            MenuInsumos insumos = new MenuInsumos();
             this.NavigationService.Navigate(insumos);
         }
 
         private void AbrirRecetas(object sender, MouseButtonEventArgs e)
         {
-            RegistroRecetas recetas = new RegistroRecetas();
+            MenuRecetas recetas = new MenuRecetas();
             this.NavigationService.Navigate(recetas);
         }
 
         private void AbrirProveedores(object sender, MouseButtonEventArgs e)
         {
-            RegistroProveedores proveedores = new RegistroProveedores();
+            MenuProveedores proveedores = new MenuProveedores();
             this.NavigationService.Navigate(proveedores);
+        }
+
+        private void AbrirPedidos(object sender, MouseButtonEventArgs e)
+        {
+            MenuPedidos pedidos = new MenuPedidos();
+            this.NavigationService.Navigate(pedidos);
+        }
+
+        private void AbrirFinanzas(object sender, MouseButtonEventArgs e)
+        {
+            HistorialMovimientos movimientos = new HistorialMovimientos();
+            this.NavigationService.Navigate(movimientos);
         }
     }
 }

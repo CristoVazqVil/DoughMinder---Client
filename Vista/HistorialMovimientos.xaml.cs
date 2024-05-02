@@ -262,6 +262,7 @@ namespace DoughMinder___Client.Vista
                 if (File.Exists(outputPath))
                 {
                     MostrarMensajeDescargaExitosa();
+                    this.NavigationService.GoBack();
                 }
                 else
                 {

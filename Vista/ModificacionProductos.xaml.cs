@@ -17,30 +17,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static DoughMinder___Client.Vista.RegistroRecetas;
 
 namespace DoughMinder___Client.Vista
 {
     /// <summary>
-    /// Interaction logic for RegistroProductos.xaml
+    /// Interaction logic for ModificacionProductos.xaml
     /// </summary>
-    public partial class RegistroProductos : Page
+    public partial class ModificacionProductos : Page
     {
         private string rutaImagenSeleccionada;
+        private String codigoProducto;
+        private DoughMinderServicio.Producto producto;
 
-        public RegistroProductos()
+        public ModificacionProductos(String codigo)
         {
             InitializeComponent();
+            codigoProducto = codigo;
             RecuperarRecetas();
+            RecuperarProducto();
+            ColocarProductoEnCampos();
         }
 
-        public class RecetaItem
-        {
-            public int IdReceta { get; set; }
-            public string Nombre { get; set; }
-        }
-
-        private void Registrar(object sender, MouseButtonEventArgs e)
+        private void Modificar(object sender, MouseButtonEventArgs e)
         {
             ReiniciarMarcadores();
 
@@ -59,7 +57,6 @@ namespace DoughMinder___Client.Vista
                     decimal precio;
                     decimal.TryParse(txbPrecioProducto.Text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out precio);
 
-                    producto.CodigoProducto = txbCodigoProducto.Text;
                     producto.Nombre = txbNombreProducto.Text;
                     producto.Precio = precio;
                     producto.Descripcion = txbDescripcionProducto.Text;
@@ -67,7 +64,6 @@ namespace DoughMinder___Client.Vista
                     producto.Restricciones = txbRestriccionesProducto.Text;
                     producto.RutaFoto = txbImagenProducto.Text;
                     producto.Estado = true;
-
 
                     if (ckbSinReceta.IsChecked == false)
                     {
@@ -78,11 +74,11 @@ namespace DoughMinder___Client.Vista
                         }
                     }
 
-                    int codigo = cliente.GuardarProducto(producto);
+                    int codigo = cliente.ModificarProducto(producto,codigoProducto);
 
-                    if (codigo == 1)
+                    if (codigo > 0)
                     {
-                        MostrarMensajeRegistroExitoso();
+                        MostrarMensajeModificacionExitosa();
                         NavigationService.GoBack();
                     }
                     else
@@ -93,7 +89,14 @@ namespace DoughMinder___Client.Vista
                         }
                         else
                         {
-                            MostrarMensajeSinConexionBase();
+                            if (codigo == -5)
+                            {
+                                MostrarMensajeProductoUtilizado();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
                         }
                     }
                 }
@@ -106,6 +109,97 @@ namespace DoughMinder___Client.Vista
                     MostrarMensajeSinConexionServidor();
                 }
             }
+        }
+
+        private void Deshabilitar(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.DialogResult resultado = System.Windows.Forms.MessageBox.Show("¿Estás seguro de deshabilitar este producto?", "Confirmación deshabilitar", System.Windows.Forms.MessageBoxButtons.YesNo);
+
+            if (resultado == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    DoughMinderServicio.ProductoClient cliente = new DoughMinderServicio.ProductoClient();
+
+                    int codigo = cliente.DeshabilitarProducto(codigoProducto);
+
+                    if (codigo > 0)
+                    {
+                        MostrarMensajeDeshabilitacionExitosa();
+                        NavigationService.GoBack();
+                    }
+                    else
+                    {
+                        if (codigo == 0)
+                        {
+                            MostrarMensajeProductoExistente();
+                        }
+                        else
+                        {
+                            if (codigo == -5)
+                            {
+                                MostrarMensajeProductoUtilizado();
+                            }
+                            else
+                            {
+                                MostrarMensajeSinConexionBase();
+                            }
+                        }
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+        }
+
+        private void RecuperarProducto()
+        {
+            if (codigoProducto != null)
+            {
+                try
+                {
+                    DoughMinderServicio.ProductoClient cliente = new DoughMinderServicio.ProductoClient();
+                    producto = cliente.RecuperarProducto(codigoProducto);
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+            else
+            {
+                MostrarMensajeSinConexionBase();
+            }
+        }
+
+        private void ColocarProductoEnCampos()
+        {
+            if (producto != null)
+            {
+                lblCodigo.Content = producto.CodigoProducto;
+                txbNombreProducto.Text = producto.Nombre;
+                txbDescripcionProducto.Text = producto.Descripcion;
+                txbPrecioProducto.Text = producto.Precio.ToString();
+                txbRestriccionesProducto.Text = producto.Restricciones;
+                txbCantidadProducto.Text = producto.Cantidad.ToString();
+                txbImagenProducto.Text = producto.RutaFoto;
+            }
+        }
+
+        public class RecetaItem
+        {
+            public int IdReceta { get; set; }
+            public string Nombre { get; set; }
         }
 
         private async void RecuperarRecetas()
@@ -176,12 +270,6 @@ namespace DoughMinder___Client.Vista
                 camposValidos = false;
             }
 
-            if (string.IsNullOrEmpty(txbCodigoProducto.Text))
-            {
-                lblCodigo.Foreground = Brushes.Red;
-                camposValidos = false;
-            }
-
             if (string.IsNullOrEmpty(txbRestriccionesProducto.Text))
             {
                 lblRestricciones.Foreground = Brushes.Red;
@@ -249,16 +337,28 @@ namespace DoughMinder___Client.Vista
             sinConexionServidor.ShowDialog();
         }
 
-        private void MostrarMensajeRegistroExitoso()
+        private void MostrarMensajeModificacionExitosa()
         {
-            RegistroExitoso registroExitoso = new RegistroExitoso();
-            registroExitoso.ShowDialog();
+            ModificacionExitosa modificacionExitosa = new ModificacionExitosa();
+            modificacionExitosa.ShowDialog();
+        }
+
+        private void MostrarMensajeDeshabilitacionExitosa()
+        {
+            DeshabilitacionExitosa deshabilitacionExitosa = new DeshabilitacionExitosa();
+            deshabilitacionExitosa.ShowDialog();
         }
 
         private void MostrarMensajeProductoExistente()
         {
             ProductoExistente productoExistente = new ProductoExistente();
             productoExistente.ShowDialog();
+        }
+
+        private void MostrarMensajeProductoUtilizado()
+        {
+            ProductoUtilizado productoUtilizado = new ProductoUtilizado();
+            productoUtilizado.ShowDialog();
         }
 
         private void MostrarMensajeSinConexionBase()
@@ -271,7 +371,6 @@ namespace DoughMinder___Client.Vista
         {
             ReiniciarMarcadores();
             txbNombreProducto.Clear();
-            txbCodigoProducto.Clear();
             txbPrecioProducto.Clear();
             txbDescripcionProducto.Clear();
             txbRestriccionesProducto.Clear();
@@ -296,29 +395,6 @@ namespace DoughMinder___Client.Vista
             Regex regex = new Regex(@"^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚüÜ., ]*$");
 
             if (textBox != null && textBox.Text.Length < 90)
-            {
-                if (regex.IsMatch(e.Text))
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void EliminarCaracteresCodigo(object sender, TextCompositionEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-
-            Regex regex = new Regex(@"^[a-zA-Z0-9]*$");
-
-            if (textBox != null && textBox.Text.Length < 10)
             {
                 if (regex.IsMatch(e.Text))
                 {
@@ -398,24 +474,14 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private void CambiarRegistrarAzul(object sender, MouseEventArgs e)
+        private void CambiarModificarAzul(object sender, MouseEventArgs e)
         {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+            btnModificar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
         }
 
-        private void CambiarRegistrarVerde(object sender, MouseEventArgs e)
+        private void CambiarModificarVerde(object sender, MouseEventArgs e)
         {
-            btnRegistrar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
-        }
-
-        private void CambiarAdjuntarAzul(object sender, MouseEventArgs e)
-        {
-            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMasAzul.png", UriKind.Relative));
-        }
-
-        private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
-        {
-            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
+            btnModificar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
         }
 
         private void CambiarLimpiarAzul(object sender, MouseEventArgs e)
@@ -426,6 +492,26 @@ namespace DoughMinder___Client.Vista
         private void CambiarLimpiarVerde(object sender, MouseEventArgs e)
         {
             btnLimpiar.Source = new BitmapImage(new Uri("/Recursos/BotonVerde.png", UriKind.Relative));
+        }
+
+        private void CambiarDeshabilitarAzul(object sender, MouseEventArgs e)
+        {
+            btnDeshabilitar.Source = new BitmapImage(new Uri("/Recursos/BotonAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarDeshabilitarRojo(object sender, MouseEventArgs e)
+        {
+            btnDeshabilitar.Source = new BitmapImage(new Uri("/Recursos/BotonRojo.png", UriKind.Relative));
+        }
+
+        private void CambiarAdjuntarAzul(object sender, MouseEventArgs e)
+        {
+            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMasAzul.png", UriKind.Relative));
+        }
+
+        private void CambiarAdjuntarVerde(object sender, MouseEventArgs e)
+        {
+            btnAdjuntarImagen.Source = new BitmapImage(new Uri("/Recursos/IconoMas.png", UriKind.Relative));
         }
     }
 }

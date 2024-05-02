@@ -1,4 +1,4 @@
-﻿<Page x:Class="DoughMinder___Client.Vista.RegistroProductos"
+﻿<Page x:Class="DoughMinder___Client.Vista.ModificacionProductos"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DoughMinder___Client.Vista"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegistroProductos">
+      Title="ModificacionProductos">
 
     <Grid Background="White">
 
@@ -22,9 +22,9 @@
         </Grid>
 
 
-        <Grid x:Name="registrar" Margin="0,129,622,261">
+        <Grid x:Name="modificar" Margin="0,129,622,261">
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Producto" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+            <Label Content="Modificar &#xD;&#xA;Producto" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
 
 
@@ -32,25 +32,23 @@
 
         <TextBox Name="txbNombreProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="185,71,356,0" PreviewTextInput="EliminarCaracteresNombre"/>
 
-        <TextBox Name="txbPrecioProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="632,72,10,0" PreviewTextInput="EliminarCaracteresPrecio"/>
+        <TextBox Name="txbPrecioProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="499,71,143,0" PreviewTextInput="EliminarCaracteresPrecio"/>
 
-        <TextBox Name="txbCodigoProducto" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="452,71,173,0" PreviewTextInput="EliminarCaracteresCodigo"/>
+        <TextBox Name="txbImagenProducto" IsEnabled="False"  Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="Sin imagen adjunta..." Padding="5" Margin="496,326,7,0"/>
 
-        <TextBox Name="txbImagenProducto" IsEnabled="False"  Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="Sin imagen adjunta..." Padding="5" Margin="493,330,10,0"/>
+        <Image Name="btnModificar" Source="/Recursos/BotonVerde.png" Margin="406,387,238,11" MouseEnter="CambiarModificarAzul" MouseLeave="CambiarModificarVerde" MouseDown="Modificar" />
 
-        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="407,396,237,2" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
-
-        <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="433,404,264,10" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
+        <Label Content="Modificar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="434,392,264,22" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
 
         <Label Name="lblNombre" Content="Nombre del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,39,0,0" VerticalAlignment="Top" Width="178"/>
 
         <Label Name="lblImagen" Content="Imagen del producto:" FontSize="17" HorizontalAlignment="Left" Height="37" Margin="493,293,0,0" VerticalAlignment="Top" Width="174"/>
 
-        <Label Name="lblCodigo" Content="Código:" FontSize="17" HorizontalAlignment="Left" Height="34" Margin="452,37,0,0" VerticalAlignment="Top" Width="69"/>
+        <Label Name="lblCodigoProducto" Foreground="Gray" Content="Código de producto:" FontSize="17" HorizontalAlignment="Left" Height="34" Margin="296,5,0,0" VerticalAlignment="Top" Width="167"/>
 
-        <Label Name="lblPrecio" Content="Precio (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="632,40,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label Name="lblPrecio" Content="Precio (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="499,39,0,0" VerticalAlignment="Top" Width="124"/>
 
-        <Image Name="btnAdjuntarImagen" Source="/Recursos/IconoMas.png" Margin="743,338,16,70" MouseEnter="CambiarAdjuntarAzul" MouseLeave="CambiarAdjuntarVerde" MouseDown="AdjuntarImagen" />
+        <Image Name="btnAdjuntarImagen" Source="/Recursos/IconoMas.png" Margin="746,334,13,74" MouseEnter="CambiarAdjuntarAzul" MouseLeave="CambiarAdjuntarVerde" MouseDown="AdjuntarImagen" />
 
         <TextBox Name="txbDescripcionProducto" Style="{DynamicResource TextBoxStyle1}" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top" Height="72" TextWrapping="Wrap" Padding="5" Margin="185,138,324,0" PreviewTextInput="EliminarCaracteresDescripcion"/>
 
@@ -64,7 +62,7 @@
 
         <Label Name="lblCantidad" Content="Cantidad:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="183,319,0,0" VerticalAlignment="Top" Width="215"/>
 
-        <DataGrid Name="dtgTablaRecetas" AutoGenerateColumns="False" Margin="499,141,10,157" SelectionMode="Single" CanUserAddRows="False">
+        <DataGrid Name="dtgTablaRecetas" AutoGenerateColumns="False" Margin="498,140,10,158" SelectionMode="Single" CanUserAddRows="False">
             <DataGrid.Style>
                 <Style TargetType="DataGrid">
                     <Setter Property="Foreground" Value="Black"/>
@@ -86,11 +84,15 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Name="lblRecetas" Content="Seleccione la receta del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="496,107,0,0" VerticalAlignment="Top" Width="268"/>
+        <Label Name="lblRecetas" Content="Seleccione la receta del producto:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="496,106,0,0" VerticalAlignment="Top" Width="268"/>
 
-        <CheckBox Name="ckbSinReceta" Style="{DynamicResource CheckBoxStyle1}" Content="Sin receta" HorizontalAlignment="Left" Margin="185,403,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81"/>
-        <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="677,399,13,-1" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
-        <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="700,407,36,14" VerticalContentAlignment="Top" Foreground="White"/>
+        <CheckBox Name="ckbSinReceta" Style="{DynamicResource CheckBoxStyle1}" Content="Sin receta" HorizontalAlignment="Left" Margin="709,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81"/>
+        <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="677,388,13,10" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
+        <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="700,396,36,26" VerticalContentAlignment="Top" Foreground="White"/>
+        <Label Name="lblCodigo" Content="" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="464,7,0,0" VerticalAlignment="Top" Width="178"/>
+        <Image x:Name="btnDeshabilitar" Source="/Recursos/BotonRojo.png" Margin="188,402,474,24" MouseEnter="CambiarDeshabilitarAzul" MouseLeave="CambiarDeshabilitarRojo" MouseDown="Deshabilitar" />
+        <Label Content="Deshabilitar" FontSize="14" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="217,398,499,26" VerticalContentAlignment="Top" Foreground="White"/>
+        <Label Content="Para cancelar la modificación del producto, presione regresar" FontSize="8" HorizontalAlignment="Left" Height="24" Margin="371,426,0,0" VerticalAlignment="Top" Foreground="Gray" Width="229"/>
 
     </Grid>
 </Page>

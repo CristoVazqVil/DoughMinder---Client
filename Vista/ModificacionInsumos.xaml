@@ -1,4 +1,4 @@
-﻿<Page x:Class="DoughMinder___Client.Vista.RegistroInsumos"
+﻿<Page x:Class="DoughMinder___Client.Vista.ModificacionInsumos"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DoughMinder___Client.Vista"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegistroInsumos">
+      Title="ModificacionInsumos">
 
     <Grid Background="White">
 
@@ -22,9 +22,9 @@
         </Grid>
 
 
-        <Grid x:Name="registrar" Margin="0,129,622,261">
+        <Grid x:Name="modificar" Margin="0,129,622,261">
             <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="46,0,0,0" FontSize="20" Width="113" Height="62" />
+            <Label Content="Modificar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="46,0,0,0" FontSize="20" Width="113" Height="62" />
         </Grid>
 
 
@@ -36,25 +36,28 @@
 
         <TextBox Name="txbCantidadInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Text="" Padding="5" Margin="185,203,313,0" PreviewTextInput="EliminarCaracteresCantidad"/>
 
-        <TextBox Name="txbImagenInsumo" IsEnabled="False" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="58" TextWrapping="Wrap" Text="Sin imagen adjunta..." Padding="5" Margin="510,261,17,0"/>
+        <TextBox Name="txbImagenInsumo" IsEnabled="False" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Center" Height="58" TextWrapping="Wrap" Text="Sin imagen adjunta..." Padding="5" Margin="502,0,25,0"/>
 
-        <Image Name="btnRegistrar" Source="/Recursos/BotonVerde.png" Margin="404,370,240,28" MouseEnter="CambiarRegistrarAzul" MouseLeave="CambiarRegistrarVerde" MouseDown="Registrar" />
+        <Image Name="btnModificar" Source="/Recursos/BotonVerde.png" Margin="405,358,239,40" MouseEnter="CambiarModificarAzul" MouseLeave="CambiarModificarVerde" MouseDown="Modificar" />
 
-        <Label Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="430,375,266,39" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
+        <Label Content="Modificar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="432,363,265,51" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
 
         <Label Name="lblNombre" Content="Nombre del insumo" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,76,0,0" VerticalAlignment="Top" Width="215"/>
 
-        <Label Name="lblImagen" Content="Imagen del insumo:" FontSize="17" HorizontalAlignment="Left" Height="37" Margin="510,224,0,0" VerticalAlignment="Top" Width="157"/>
+        <Label Name="lblImagen" Content="Imagen del insumo:" FontSize="17" HorizontalAlignment="Left" Height="38" Margin="502,158,0,0" VerticalAlignment="Top" Width="157"/>
 
         <Label Name="lblCantidad" Content="Cantidad actual (Kg/L):" FontSize="17" HorizontalAlignment="Left" Height="35" Margin="185,168,0,0" VerticalAlignment="Top" Width="175"/>
 
         <Label Name="lblPrecio" Content="Precio por kilo/litro:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="185,271,0,0" VerticalAlignment="Top" Width="177"/>
 
-        <Image Name="btnAdjuntarImagen" Source="/Recursos/IconoMas.png" Margin="732,270,27,139" MouseEnter="CambiarAdjuntarAzul" MouseLeave="CambiarAdjuntarVerde" MouseDown="AdjuntarImagen" />
-        <TextBox Name="txbCodigoInsumo" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Padding="5" Margin="510,161,17,0" PreviewTextInput="EliminarCaracteresCodigo"/>
-        <Label Name="lblCodigoInsumo" Content="Código del insumo:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="510,129,0,0" VerticalAlignment="Top" Width="178"/>
+        <Image Name="btnAdjuntarImagen" Source="/Recursos/IconoMas.png" Margin="724,204,35,204" MouseEnter="CambiarAdjuntarAzul" MouseLeave="CambiarAdjuntarVerde" MouseDown="AdjuntarImagen" />
+        <Label Name="lblCodigoInsumo" Content="Código del insumo:" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="292,23,0,0" VerticalAlignment="Top" Foreground="Gray" Width="178"/>
         <Image Name="btnLimpiar" Source="/Recursos/BotonVerde.png" Margin="669,13,21,385" MouseEnter="CambiarLimpiarAzul" MouseLeave="CambiarLimpiarVerde" MouseDown="LimpiarCampos"/>
         <Label Content="Limpiar" FontSize="16" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="692,21,44,400" VerticalContentAlignment="Top" Foreground="White"/>
+        <Label Name="lblCodigo" Content="" FontSize="17" HorizontalAlignment="Left" Height="32" Margin="449,23,0,0" VerticalAlignment="Top" Width="177"/>
+        <Image x:Name="btnDeshabilitar" Source="/Recursos/BotonRojo.png" Margin="630,375,32,51" MouseEnter="CambiarDeshabilitarAzul" MouseLeave="CambiarDeshabilitarRojo" MouseDown="Deshabilitar" />
+        <Label Content="Deshabilitar" FontSize="14" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="658,371,60,53" VerticalContentAlignment="Top" Foreground="White"/>
+        <Label Content="Para cancelar la modificación del insumo, presione regresar" FontSize="8" HorizontalAlignment="Left" Height="24" Margin="373,399,0,0" VerticalAlignment="Top" Foreground="Gray" Width="220"/>
 
     </Grid>
 </Page>

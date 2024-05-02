@@ -3,6 +3,7 @@ using DoughMinder___Client.Vista.Emergentes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace DoughMinder___Client.Vista
     public partial class ModificacionPedido : Page
     {
         private string clave;
+        private int id;
         private string[] estados =
             {
                 "Ordenado",
@@ -32,7 +34,7 @@ namespace DoughMinder___Client.Vista
                 "Entregado",
                 "Cancelado"
             };
-        private int ultimaFila = 1;
+        private int ultimaFila;
         private List<PedidoProducto> productosRecuperados = new List<PedidoProducto>();
 
         public ModificacionPedido(String clave)
@@ -41,6 +43,12 @@ namespace DoughMinder___Client.Vista
             this.clave = clave;
             SetProductos();
             SetPedido();
+            SetUltimaFila();
+        }
+
+        private void SetUltimaFila()
+        {
+            ultimaFila = productosRecuperados.Count;
         }
 
         private void SetPedido()
@@ -48,15 +56,25 @@ namespace DoughMinder___Client.Vista
             Pedido pedido = RecuperarPedido();
             productosRecuperados = RecuperarProductos(pedido.IdPedido);
             lblClave.Content = clave;
-            lblTipoEntrega.Content = pedido.TipoEntrega;
-            lblTotal.Content = pedido.CostoTotal.ToString();
+            id = pedido.IdPedido;
+            lblTipoEntrega.Content = "Tipo de entrega: " + pedido.TipoEntrega;
+            lblTotal.Content = "Costo total: $" + pedido.CostoTotal.ToString();
+            lblFecha.Content = "Fecha: " + pedido.Fecha.ToString();
 
-            if (pedido.TipoEntrega == "Domicilio")
+            if (pedido.TipoEntrega.Equals("Domicilio"))
             {
-                lblCliente.Content = pedido.NombreCliente;
-                lblTelefono.Content = pedido.TelefonoCliente;
-                lblDireccion.Text = pedido.Direccion;
+                lblCliente.Content = "Cliente: " + pedido.NombreCliente;
+                lblCliente.Visibility = Visibility.Visible;
+
+                lblTelefono.Content = "Teléfono: " + pedido.TelefonoCliente;
+                lblTelefono.Visibility = Visibility.Visible;
+
+                lblDireccion.Text = "Dirección: " + pedido.Direccion;
+                lblDireccion.Visibility = Visibility.Visible;
             }
+
+            SetEstado(pedido.Estado);
+            VerificarEstadoPedido(pedido.Estado);
 
             int totalProductos = productosRecuperados.Count;
 
@@ -65,29 +83,140 @@ namespace DoughMinder___Client.Vista
                 string nombreComboBoxProducto = "cmbProducto" + i;
                 ComboBox cmbProducto = FindName(nombreComboBoxProducto) as ComboBox;
 
+                string nombreComboBoxCantidad = "cmbCantidad" + i;
+                ComboBox cmbCantidad = FindName(nombreComboBoxCantidad) as ComboBox;
+
+                string nombreEliminar = "imgEliminar" + i;
+                Image imgEliminar = FindName(nombreEliminar) as Image;
+
+                string nombreCosto = "lblCosto" + i;
+                Label lblCosto = FindName(nombreCosto) as Label;
+
                 if (cmbProducto != null)
                 {
                     PedidoProducto productoActual = productosRecuperados[i];
                     cmbProducto.Visibility = Visibility.Visible;
-
+                    cmbCantidad.Visibility = Visibility.Visible;
 
                     if (productoActual != null)
                     {
-                        BuscarProducto(cmbProducto, productoActual.ClaveProducto);
+                        int posicionProducto = BuscarProducto(cmbProducto, productoActual.ClaveProducto);
+                        cmbProducto.SelectedIndex = posicionProducto;
+                        int posicionCantidad = BuscarCantidad(cmbCantidad, (int)productoActual.Cantidad);
+                        cmbCantidad.SelectedIndex = posicionCantidad;
                     }
+                }
+
+                if (i > 0)
+                {
+                    imgEliminar.Visibility = Visibility.Visible;
+                    lblCosto.Visibility = Visibility.Visible;
                 }
             }
         }
 
-        private void BuscarProducto(ComboBox comboBox, string claveProducto)
+        private int BuscarProducto(ComboBox comboBox, string claveProducto)
         {
+            int index = -1;
+
             for (int i = 0; i < comboBox.Items.Count; i++)
             {
                 var producto = comboBox.Items[i];
 
                 if (producto != null && producto.ToString().Contains(claveProducto))
                 {
-                    comboBox.SelectedIndex = i;
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+        private int BuscarCantidad(ComboBox comboBox, int cantidadProducto)
+        {
+            int index = -1;
+
+            for (int i = 0; i < comboBox.Items.Count ; i++)
+            {
+                var cantidad = comboBox.Items[i];
+
+                if (cantidad.ToString().Equals(cantidadProducto.ToString()))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+        private void VerificarEstadoPedido(string estado)
+        {
+            if (estado == "Cancelado" || estado == "Entregado")
+            {
+                btnModificar.IsEnabled = false;
+                btnAgregarProducto.IsEnabled = false;
+                cmbEstado.IsEnabled = false;
+
+                cmbCantidad0.IsEnabled = false;
+                cmbCantidad1.IsEnabled = false;
+                cmbCantidad2.IsEnabled = false;
+                cmbCantidad3.IsEnabled = false;
+                cmbCantidad4.IsEnabled = false;
+
+                cmbProducto0.IsEnabled = false;
+                cmbProducto1.IsEnabled = false;
+                cmbProducto2.IsEnabled = false;
+                cmbProducto3.IsEnabled = false;
+                cmbProducto4.IsEnabled = false;
+
+                imgEliminar1.IsEnabled = false;
+                imgEliminar2.IsEnabled = false;
+                imgEliminar3.IsEnabled = false;
+                imgEliminar4.IsEnabled = false;
+                imgEliminar1.Visibility = Visibility.Collapsed;
+                imgEliminar2.Visibility = Visibility.Collapsed;
+                imgEliminar3.Visibility = Visibility.Collapsed;
+                imgEliminar4.Visibility = Visibility.Collapsed;
+            } else if (estado == "En proceso" || estado == "Preparado")
+            {
+                btnAgregarProducto.IsEnabled = false;
+
+                cmbCantidad0.IsEnabled = false;
+                cmbCantidad1.IsEnabled = false;
+                cmbCantidad2.IsEnabled = false;
+                cmbCantidad3.IsEnabled = false;
+                cmbCantidad4.IsEnabled = false;
+
+                cmbProducto0.IsEnabled = false;
+                cmbProducto1.IsEnabled = false;
+                cmbProducto2.IsEnabled = false;
+                cmbProducto3.IsEnabled = false;
+                cmbProducto4.IsEnabled = false;
+
+                imgEliminar1.IsEnabled = false;
+                imgEliminar2.IsEnabled = false;
+                imgEliminar3.IsEnabled = false;
+                imgEliminar4.IsEnabled = false;
+                imgEliminar1.Visibility = Visibility.Collapsed;
+                imgEliminar2.Visibility = Visibility.Collapsed;
+                imgEliminar3.Visibility = Visibility.Collapsed;
+                imgEliminar4.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void SetEstado(string estado)
+        {
+            cmbEstado.ItemsSource = estados;
+
+            for (int i = 0; i < cmbEstado.Items.Count; i++)
+            {
+                var item = cmbEstado.Items[i];
+
+                if (item.ToString() == estado)
+                {
+                    cmbEstado.SelectedIndex = i;
                     break;
                 }
             }
@@ -321,10 +450,15 @@ namespace DoughMinder___Client.Vista
 
         private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
+            AgregarProducto();
+        }
+
+        private void AgregarProducto()
+        {
             if (ultimaFila < 5)
             {
-                string nombreInsumo = "cmbProducto" + ultimaFila.ToString();
-                ComboBox comboBox = this.FindName(nombreInsumo) as ComboBox;
+                string nombreProducto = "cmbProducto" + ultimaFila.ToString();
+                ComboBox comboBox = this.FindName(nombreProducto) as ComboBox;
 
                 if (comboBox != null)
                 {
@@ -337,6 +471,22 @@ namespace DoughMinder___Client.Vista
                 if (comboBox1 != null)
                 {
                     comboBox1.Visibility = Visibility.Visible;
+                }
+
+                string nombreEliminar = "imgEliminar" + ultimaFila.ToString();
+                Image image = this.FindName(nombreEliminar) as Image;
+
+                if (image != null)
+                {
+                    image.Visibility = Visibility.Visible;
+                }
+
+                string nombreCosto = "lblCosto" + ultimaFila.ToString();
+                Label label = FindName(nombreCosto) as Label;
+
+                if (label != null)
+                {
+                    label.Visibility = Visibility.Visible;
                 }
 
                 ultimaFila++;
@@ -384,9 +534,145 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblProductoError.Content = "Verifica los productos y la cantidad seleccionada";
                 lblProductoError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             return esValido;
+        }
+
+        private void CancelarPedido()
+        {
+            System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("¿Seguro que desea cancelar el pedido? \nNo se podrá revertir el cambio.", "Cancelar pedido", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                PedidoClient pedidoClient = new PedidoClient();
+                int codigo = 0;
+
+                try
+                {
+                    codigo = pedidoClient.CancelarPedido(clave);
+                    if (codigo > 0)
+                    {
+                        MostrarMensajeModificacionExitosa();
+                        MostrarMenuPedidos();
+                    }
+                    else
+                    {
+                        MostrarMensajeSinConexionBase();
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
+        }
+
+        private PedidoProducto RecuperarProducto(ComboBox cmbProducto, ComboBox cmbCantidad)
+        {
+            PedidoProducto pedidoProducto = null;
+
+            if (cmbProducto.SelectedItem != null && cmbCantidad.SelectedItem != null)
+            {
+                pedidoProducto = new PedidoProducto();
+
+                string productoItem = cmbProducto.SelectedItem.ToString();
+                int inicio = productoItem.IndexOf("(") + 1;
+                int fin = productoItem.IndexOf(")");
+                string codigoProducto = productoItem.Substring(inicio, fin - inicio);
+                pedidoProducto.ClaveProducto = codigoProducto;
+
+                string cantidadItem = cmbCantidad.SelectedItem.ToString();
+                int cantidad = int.Parse(cantidadItem);
+                pedidoProducto.Cantidad = cantidad;
+            }
+
+            return pedidoProducto;
+        }
+
+        private List<PedidoProducto> RecuperarProductosAgregados()
+        {
+            List<PedidoProducto> pedidosAgregados = new List<PedidoProducto>();
+
+            PedidoProducto producto0 = RecuperarProducto(cmbProducto0, cmbCantidad0);
+            PedidoProducto producto1 = RecuperarProducto(cmbProducto1, cmbCantidad1);
+            PedidoProducto producto2 = RecuperarProducto(cmbProducto2, cmbCantidad2);
+            PedidoProducto producto3 = RecuperarProducto(cmbProducto3, cmbCantidad3);
+            PedidoProducto producto4 = RecuperarProducto(cmbProducto4, cmbCantidad4);
+
+            if (producto0 != null)
+            {
+                pedidosAgregados.Add(producto0);
+            }
+
+            if (producto1 != null)
+            {
+                pedidosAgregados.Add(producto1);
+            }
+
+            if (producto2 != null)
+            {
+                pedidosAgregados.Add(producto2);
+            }
+
+            if (producto3 != null)
+            {
+                pedidosAgregados.Add(producto3);
+            }
+
+            if (producto4 != null)
+            {
+                pedidosAgregados.Add(producto4);
+            }
+
+            return pedidosAgregados;
+        }
+
+        private void ModificarPedido()
+        {
+            PedidoClient pedidoClient = new PedidoClient();
+            List<PedidoProducto> productosAgregados = RecuperarProductosAgregados();
+            int codigo = 0;
+            Pedido pedido = new Pedido();
+            pedido.Estado = cmbEstado.SelectedItem.ToString();
+
+            string costoString = lblTotal.Content.ToString().Substring(14);
+            decimal costoTotal = decimal.Parse(costoString);
+            pedido.CostoTotal = costoTotal;
+            pedido.IdPedido = id;
+
+            try
+            {
+                codigo = pedidoClient.ModificarPedido(pedido, productosAgregados.ToArray());
+                if (codigo > 0)
+                {
+                    MostrarMensajeModificacionExitosa();
+                    MostrarMenuPedidos();
+                }
+                else
+                {
+                    MostrarMensajeSinConexionBase();
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+            catch (CommunicationException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+        }
+
+        private void MostrarMenuPedidos()
+        {
+            MenuPedidos menuPedidos = new MenuPedidos();
+            NavigationService.Navigate(menuPedidos);
         }
 
         private void MostrarMensajeSinConexionServidor()
@@ -400,6 +686,161 @@ namespace DoughMinder___Client.Vista
         {
             ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
             conexionFallidaBase.Show();
+        }
+
+        private void MostrarMensajeCamposVacios()
+        {
+            CamposVacios camposVacios = new CamposVacios();
+            camposVacios.Show();
+        }
+
+        private void MostrarMensajeModificacionExitosa()
+        {
+            ModificacionExitosa modificacionExitosa = new ModificacionExitosa();
+            modificacionExitosa.Show();
+        }
+
+        private void BtnAtras_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("¿Seguro que desea cancelar la modificación?", "Cancelar modificación", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                NavigationService.GoBack();
+            }
+        }
+
+        private void BtnModificar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ValidarInformacion())
+            {
+                System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("¿Seguro que desea modificar el pedido?", "Confirmar modificación", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (cmbEstado.SelectedItem.Equals(estados[4]))
+                    {
+                        CancelarPedido();
+                    }
+                    else
+                    {
+                        ModificarPedido();
+                    }
+                }
+            }
+            
+        }
+
+        private void RecorrerProductos(ComboBox cmbProducto)
+        {
+            int num = ObtenerNumeroComboBox(cmbProducto);
+
+            for (int i = num + 1; i < 5; i++)
+            {
+                ComboBox cmbActual = ObtenerComboBoxProducto(i);
+                ComboBox cmbAnterior = ObtenerComboBoxProducto(i - 1);
+                ComboBox cmbCantidadAnterior = ObtenerComboBoxCantidad(i - 1);
+                ComboBox cmbCantidadActual = ObtenerComboBoxCantidad(i);
+
+                if (cmbActual != null && cmbActual.IsVisible)
+                {
+                    RecorrerInformacionProducto(cmbAnterior, cmbActual, cmbCantidadAnterior, cmbCantidadActual);
+
+                    Label lblCostoActual = ObtenerLabelProducto(i);
+                    lblCostoActual.Visibility = Visibility.Collapsed;
+
+                    Image imgEliminarActual = ObtenerImageEliminar(i);
+                    imgEliminarActual.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    cmbAnterior.Visibility = Visibility.Collapsed;
+                    cmbAnterior.SelectedIndex = -1;
+                    cmbCantidadAnterior.Visibility = Visibility.Collapsed;
+                    cmbCantidadAnterior.SelectedIndex = -1;
+
+                    Label lblCostoAnterior = ObtenerLabelProducto(i - 1);
+                    lblCostoAnterior.Visibility = Visibility.Collapsed;
+
+                    Image imgEliminarAnterior = ObtenerImageEliminar(i - 1);
+                    imgEliminarAnterior.Visibility = Visibility.Collapsed;
+                }
+            }
+
+            ultimaFila--;
+            lblProductoError.Visibility = Visibility.Collapsed;
+        }
+
+        private void RecorrerInformacionProducto(ComboBox cmbProductoAnterior, ComboBox cmbProductoActual, ComboBox cmbCantidadAnterior, ComboBox cmbCantidadActual)
+        {
+            cmbProductoAnterior.SelectedItem = cmbProductoActual.SelectedItem;
+            cmbCantidadAnterior.SelectedItem = cmbCantidadActual.SelectedItem;
+            cmbProductoAnterior.Visibility = Visibility.Visible;
+            cmbCantidadAnterior.Visibility = Visibility.Visible;
+
+            cmbCantidadActual.Visibility = Visibility.Collapsed;
+            cmbCantidadActual.SelectedIndex = -1;
+            cmbProductoActual.Visibility = Visibility.Collapsed;
+            cmbProductoActual.SelectedIndex = -1;
+        }
+
+        private Image ObtenerImageEliminar(int num)
+        {
+            string nombreImage = "imgEliminar" + num.ToString();
+            Image image = FindName(nombreImage) as Image;
+
+            return image;
+        }
+
+        private Label ObtenerLabelProducto(int num)
+        {
+            string nombreCosto = "lblCosto" + num.ToString();
+            Label label = FindName(nombreCosto) as Label;
+
+            return label;
+        }
+
+        private ComboBox ObtenerComboBoxProducto(int num)
+        {
+            string nombreProducto = "cmbProducto" + num.ToString();
+            ComboBox comboBox = this.FindName(nombreProducto) as ComboBox;
+
+            return comboBox;
+        }
+
+        private ComboBox ObtenerComboBoxCantidad(int num)
+        {
+            string nombreCantidad = "cmbCantidad" + num.ToString();
+            ComboBox comboBox = this.FindName(nombreCantidad) as ComboBox;
+
+            return comboBox;
+        }
+
+        private int ObtenerNumeroComboBox(ComboBox cmbProducto)
+        {
+            string nombreComboBox = cmbProducto.Name;
+            string numString = nombreComboBox.Substring(nombreComboBox.Length - 1);
+            return int.Parse(numString);
+        }
+
+        private void ImgEliminar1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RecorrerProductos(cmbProducto1);
+        }
+
+        private void ImgEliminar2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RecorrerProductos(cmbProducto2);
+        }
+
+        private void ImgEliminar3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RecorrerProductos(cmbProducto3);
+        }
+
+        private void ImgEliminar4_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RecorrerProductos(cmbProducto4);
         }
     }
 }
