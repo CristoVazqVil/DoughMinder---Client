@@ -93,7 +93,6 @@ namespace DoughMinder___Client.Vista
                     proveedor.Email = txbCorreo.Text;
                     proveedor.Telefono = txbTelefono.Text;
                     proveedor.RFC = txbRFC.Text;
-                    proveedor.Estado = true;
 
 
                     int codigo = cliente.GuardarProveedor(proveedor);
@@ -185,7 +184,8 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuProveedores proveedores = new MenuProveedores();
+            this.NavigationService.Navigate(proveedores);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

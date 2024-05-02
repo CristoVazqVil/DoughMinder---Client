@@ -387,6 +387,15 @@
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Login.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Movimiento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Pedido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.PedidoProducto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Producto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -394,6 +403,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Receta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Solicitud.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\item.xsd">

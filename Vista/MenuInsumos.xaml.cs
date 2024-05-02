@@ -88,7 +88,8 @@ namespace DoughMinder___Client.Vista
 
         private void IrAtras(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuPrincipal principal = new MenuPrincipal();
+            this.NavigationService.Navigate(principal);
         }
 
         private void AbrirRegistrarInsumo(object sender, MouseButtonEventArgs e)

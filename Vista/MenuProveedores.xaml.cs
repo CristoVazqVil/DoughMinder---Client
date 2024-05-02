@@ -119,7 +119,8 @@ namespace DoughMinder___Client.Vista
 
         private void clickIrAtrás(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuPrincipal principal = new MenuPrincipal();
+            this.NavigationService.Navigate(principal);
         }
     }
 }
