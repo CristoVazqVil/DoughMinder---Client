@@ -202,7 +202,7 @@ namespace DoughMinder___Client.Vista
             public string Nombre { get; set; }
         }
 
-        private async void RecuperarRecetas()
+        private async Task RecuperarRecetas()
         {
             await Task.Delay(200);
             Dictionary<int, string> listaRecetas = new Dictionary<int, string>();

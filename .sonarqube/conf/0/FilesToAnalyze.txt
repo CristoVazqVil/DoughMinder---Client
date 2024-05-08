@@ -1,0 +1,62 @@
+﻿D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Recursos\Singleton\SesionSingleton.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\CamposVacios.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\ConexionFallidaBase.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\DeshabilitacionExitosa.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\EmpleadoExistente.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\InsumoExistente.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\InsumoUtilizado.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\ModificacionExitosa.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\ProductoExistente.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\ProductoUtilizado.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\ProveedorExistente.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\RecetaExistente.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\RecetaUtilizada.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\RegistroExitoso.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\Emergentes\SinConexionServidor.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\MenuEmpleados.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\InicioSesion.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\MenuInsumos.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\MenuPrincipal.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\MenuProductos.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\MenuProveedores.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\MenuRecetas.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\ModificacionInsumos.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\ModificacionProductos.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\ModificacionRecetas.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroEmpleado.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroInsumos.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroMovimiento.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroPedido.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroProductos.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroProveedores.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\RegistroRecetas.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\SolicitudInsumo.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Vista\VentanaPrincipal.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\App.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\InicioSesion.xaml.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Properties\AssemblyInfo.cs
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Recursos\FondoVerde.png
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Properties\Resources.resx
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Empleado.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Insumo.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Login.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Movimiento.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Pedido.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.PedidoProducto.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Producto.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Proveedor.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Receta.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Solicitud.datasource
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\item.xsd
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\item1.xsd
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\item2.xsd
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\item3.xsd
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\item4.xsd
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\Servicio.wsdl
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\packages.config
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Properties\Settings.settings
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\App.config
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\item.disco
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\configuration91.svcinfo
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\configuration.svcinfo
+D:\UV\6° Semestre\Desarrollo de software\DoughMinder - Client\Connected Services\DoughMinderServicio\Reference.svcmap

@@ -108,7 +108,7 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-        private async void RecuperarRecetas()
+        private async Task RecuperarRecetas()
         {
             await Task.Delay(200);
             Dictionary<int, string> listaRecetas = new Dictionary<int, string>();

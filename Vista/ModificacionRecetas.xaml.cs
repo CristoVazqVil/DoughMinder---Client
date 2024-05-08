@@ -184,7 +184,7 @@ namespace DoughMinder___Client.Vista
             public string Cantidad { get; set; }
         }
 
-        private async void RecuperarInsumos()
+        private async Task RecuperarInsumos()
         {
             await Task.Delay(200);
             Dictionary<int, string> listaInsumos = new Dictionary<int, string>();
