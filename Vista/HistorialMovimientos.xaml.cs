@@ -33,7 +33,7 @@ namespace DoughMinder___Client.Vista
         public string Descripcion {  get; set; }
     }
 
-    
+
 
     public partial class HistorialMovimientos : Page
     {
@@ -120,7 +120,7 @@ namespace DoughMinder___Client.Vista
 
         private void VerificarExistenciaMovimientos()
         {
-            if(lstMovimientos == null || lstMovimientos.Items.IsEmpty)
+            if (lstMovimientos == null || lstMovimientos.Items.IsEmpty)
             {
                 lstMovimientos.Visibility = Visibility.Collapsed;
                 lblMovimientosError.Content = "No se han registrado movimientos";
@@ -262,7 +262,7 @@ namespace DoughMinder___Client.Vista
                 if (File.Exists(outputPath))
                 {
                     MostrarMensajeDescargaExitosa();
-                    this.NavigationService.GoBack();
+                    RecargarVentana();
                 }
                 else
                 {
@@ -308,9 +308,20 @@ namespace DoughMinder___Client.Vista
             descargaExitosa.Show();
         }
 
+        private void RecargarVentana()
+        {
+            NavigationService.Refresh();
+        }
+
+        private void MostrarMenuPrincipal()
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            NavigationService.Navigate(menuPrincipal);
+        }
+
         private void BtnAtras_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MostrarMenuPrincipal();
         }
 
         private void ImgRegistrarMovimiento_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

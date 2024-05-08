@@ -1,4 +1,5 @@
-﻿using DoughMinder___Client.Vista.Emergentes;
+﻿using DoughMinder___Client.DoughMinderServicio;
+using DoughMinder___Client.Vista.Emergentes;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -34,6 +35,7 @@ namespace DoughMinder___Client.Vista
         {
             InitializeComponent();
             SetTipoMovimiento();
+            SetFecha();
         }
 
         private void SetTipoMovimiento()
@@ -46,6 +48,12 @@ namespace DoughMinder___Client.Vista
             }
         }
 
+        private void SetFecha()
+        {
+            DateTime fechaActual = DateTime.Now;
+            lblFecha.Content = fechaActual.ToString();
+        }
+
         private bool ValidarInformacion()
         {
             bool esValido = true;
@@ -55,6 +63,7 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblTipoError.Content = "Este campo no puede estar vacío";
                 lblTipoError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             if (string.IsNullOrEmpty(txtbDescripcion.Text))
@@ -62,6 +71,7 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblDescripcionError.Content = "Este campo no puede estar vacío";
                 lblDescripcionError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             if (string.IsNullOrEmpty(txtbCostoTotal.Text))
@@ -69,9 +79,37 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblCostoError.Content = "Este campo no puede estar vacío";
                 lblCostoError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             return esValido;
+        }
+
+        private decimal RecuperarCostoTotal()
+        {
+            decimal costo = 0;
+            string costoString = txtbCostoTotal.Text;
+
+            if (cmbTipo.SelectedItem.ToString() == TipoMovimiento.Gastos.ToString())
+            {
+                string costoNegativo = "-" + costoString;
+                decimal costoDecimal = Convert.ToDecimal(costoNegativo);
+                costo = costoDecimal;
+            }
+            else
+            {
+                decimal costoDecimal = Convert.ToDecimal(costoString);
+                costo = costoDecimal;
+            }
+
+            return costo;
+        }
+
+        private DateTime RecuperarFecha()
+        {
+            string fechaString = lblFecha.Content.ToString();
+            DateTime fecha = DateTime.Parse(fechaString);
+            return fecha;
         }
 
         private void RegistrarMovimiento()
@@ -80,30 +118,19 @@ namespace DoughMinder___Client.Vista
             {
                 try
                 {
-                    DoughMinderServicio.MovimientoClient client = new DoughMinderServicio.MovimientoClient();
-                    DoughMinderServicio.Movimiento movimiento = new DoughMinderServicio.Movimiento();
+                    MovimientoClient client = new MovimientoClient();
+                    Movimiento movimiento = new Movimiento();
 
-                    if (cmbTipo.SelectedItem.ToString() == TipoMovimiento.Gastos.ToString())
-                    {
-                        string textoEnTextBox = txtbCostoTotal.Text;
-                        string costoString = "-" + textoEnTextBox;
-                        decimal costoDecimal = Convert.ToDecimal(costoString);
-                        movimiento.CostoTotal = costoDecimal;
-                    }
-                    else
-                    {
-                        string costoString = txtbCostoTotal.Text;
-                        decimal costoDecimal = Convert.ToDecimal(costoString);
-                        movimiento.CostoTotal = costoDecimal;
-                    }
-
+                    movimiento.CostoTotal = RecuperarCostoTotal();
                     movimiento.Descripcion = txtbDescripcion.Text;
+                    movimiento.Fecha = RecuperarFecha();
 
                     int codigo = client.RegistrarMovimiento(movimiento);
 
                     if (codigo == 1)
                     {
                         MostrarMensajeRegistroExitoso();
+                        MostrarHistorialMovimientos();
                     }
                     else
                     {
@@ -129,10 +156,11 @@ namespace DoughMinder___Client.Vista
 
         private void TxtbCostoTotal_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            string regexCosto = @"^\d*$";
+            string nuevoTexto = txtbCostoTotal.Text + e.Text;
+            string regexCosto = @"^\d*\.?\d*$";
             Regex regex = new Regex(regexCosto);
 
-            if (!regex.IsMatch(txtbCostoTotal.Text + e.Text))
+            if (!regex.IsMatch(nuevoTexto))
             {
                 e.Handled = true;
             }
@@ -163,7 +191,7 @@ namespace DoughMinder___Client.Vista
 
         private void TxtbDescripcion_TextChanged(object sender, TextChangedEventArgs e)
         {
-            lblDescripcionError.Visibility = Visibility.Collapsed;
+            lblDescripcionError.Visibility = Visibility.Collapsed;                                                                                                          
         }
 
         private void TxtbCostoTotal_TextChanged(object sender, TextChangedEventArgs e)
@@ -173,7 +201,19 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MostrarHistorialMovimientos();
+        }
+
+        private void MostrarHistorialMovimientos()
+        {
+            HistorialMovimientos historialMovimientos = new HistorialMovimientos();
+            NavigationService.Navigate(historialMovimientos);
+        }
+
+        private void MostrarMensajeCamposVacios()
+        {
+            CamposVacios camposVacios = new CamposVacios();
+            camposVacios.Show();
         }
     }
 }
