@@ -1,0 +1,79 @@
+﻿<Page x:Class="DoughMinder___Client.Vista.HistorialMovimientos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DoughMinder___Client.Vista"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HistorialMovimientos">
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="gpColumna" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Source="/Recursos/MicrosoftTeams-image.png"/>
+            <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png" Cursor="Hand" MouseLeftButtonDown="BtnAtras_MouseLeftButtonDown"/>
+            <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
+            <Image Grid.Column="0" Grid.Row="2" Name="imgRegistrarMovimiento" Width="40" Source="/Recursos/Agregar.png" Cursor="Hand" MouseLeftButtonDown="ImgRegistrarMovimiento_MouseLeftButtonDown"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="Registrar &#xD;&#xA;Movimiento" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
+        </Grid>
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="10,0,0,0">
+            <Grid Margin="10,20,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="170"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Movimientos del último mes" VerticalAlignment="Center"/>
+                <Image Grid.Column="2" Grid.Row="0" x:Name="btnGenerarReporte" Source="/Recursos/BotonVerde.png" Cursor="Hand" MouseLeftButtonDown="BtnGenerarReporte_MouseLeftButtonDown"/>
+                <Label Grid.Column="2" Grid.Row="0" Style="{DynamicResource LabelColumnStyle}" FontSize="16" Foreground="White" Content="Generar reporte" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" MouseLeftButtonDown="BtnGenerarReporte_MouseLeftButtonDown"/>
+                <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Fecha: 00/00/00 a las 00:00:00" x:Name="lblFecha"/>
+                <Label Grid.Column="1" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Total: $ 0000" x:Name="lblTotal"/>
+
+                <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" x:Name="lblMovimientosError" Style="{DynamicResource LabelContentStyle}" Content="No hay movimientos registrados" FontSize="18" FontWeight="Bold" Visibility="Collapsed"/>
+                
+                <ListBox x:Name="lstMovimientos" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" ItemsSource="{Binding listaMovimientos}" Visibility="Collapsed">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding CostoTotal}" Margin="0,0,50,0"/>
+                                <TextBlock Text="{Binding Descripcion}" Margin="0,0,50,0"/>
+                                <TextBlock Text="{Binding Fecha}" Margin="0,0,10,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
