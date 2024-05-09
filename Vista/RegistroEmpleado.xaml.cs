@@ -154,9 +154,12 @@ namespace DoughMinder___Client.Vista
 
         private void Registrar()
         {
+            ReiniciarColoresTextBox();
 
             if (!ValidarCamposVacios())
             {
+
+                MarcarCamposVacios();
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
             }
@@ -256,6 +259,80 @@ namespace DoughMinder___Client.Vista
 
             return true;
         }
+
+
+
+        private void MarcarCamposVacios()
+        {
+            if (string.IsNullOrWhiteSpace(txbNombre.Text))
+                brdrNombre.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbDireccion.Text))
+                brdrDireccion.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbMaterno.Text))
+                brdrMaterno.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbRFC.Text))
+                brdrRFC.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbPaterno.Text))
+                brdrPaterno.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbRFC.Text))
+                brdrRFC.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbTelefono.Text))
+                brdrTelefono.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbUsuario.Text))
+                brdrUsuario.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbConfirmaContrasena.Password))
+                bbConfirma.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbContrasena.Password))
+                bbContrasena.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbContrasena.Password))
+                bbContrasena.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbCorreo.Text))
+                brdrCorreo.BorderBrush = Brushes.Red;
+
+            if (cbPuesto.SelectedItem == null)
+            {
+                lblPuesto.Foreground = Brushes.Red;
+            }
+
+
+
+        }
+
+
+        private void ReiniciarColoresTextBox()
+        {
+            brdrTelefono.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrCorreo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrRFC.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrNombre.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrDireccion.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrRFC.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrUsuario.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrMaterno.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrPaterno.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            lblPuesto.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+        }
+
+
+
 
 
         private void MostrarMensajeSinConexionServidor()

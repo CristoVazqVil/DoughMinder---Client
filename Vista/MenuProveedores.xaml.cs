@@ -74,9 +74,6 @@ namespace DoughMinder___Client.Vista
         }
 
 
-
-
-
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();

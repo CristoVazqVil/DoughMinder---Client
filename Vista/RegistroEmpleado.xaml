@@ -32,25 +32,33 @@
 
         <Label Style="{DynamicResource LabelTitleStyle}" Content="Empleado" Height="40" Margin="185,14,0,0" Width="125"/>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,101,0,0" VerticalAlignment="Top" Width="234" Height="35">
+        <Border x:Name="brdrNombre" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,101,0,0" VerticalAlignment="Top" Width="234" Height="35">
             <TextBox Name="txbNombre" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="429,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
+        <Border x:Name="brdrRFC" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="546,28,0,0" VerticalAlignment="Top" Width="234" Height="35">
+            <TextBox Name="txbRFC" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
+        </Border>
+
+        <Border x:Name="brdrPaterno" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="429,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
             <TextBox Name="txbPaterno" TextWrapping="Wrap"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="607,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
+        <Border x:Name="brdrMaterno" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="607,101,0,0" VerticalAlignment="Top" Width="173" Height="35">
             <TextBox TextWrapping="Wrap" Name="txbMaterno" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,36,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
-        <TextBox Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Top" Height="35" TextWrapping="Wrap" Name="txbCorreo"  Padding="5" Margin="190,170,240,0" TextChanged="TextBox_TextChanged"/>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="565,170,0,0" VerticalAlignment="Top" Width="215" Height="35">
+
+        <Border x:Name="brdrCorreo" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,172,0,0" VerticalAlignment="Top" Width="370" Height="34">
+            <TextBox TextWrapping="Wrap" Name="txbCorreo"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
+        </Border>
+
+        <Border x:Name="brdrTelefono" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="565,170,0,0" VerticalAlignment="Top" Width="215" Height="35">
             <TextBox TextWrapping="Wrap" Name="txbTelefono" BorderThickness="0" Background="Transparent" Padding="5" Margin="9,-1,27,1" TextChanged="TextBox_TextChanged"/>
         </Border>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,244,0,0" VerticalAlignment="Top" Width="370" Height="34">
+        <Border x:Name="brdrDireccion" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,244,0,0" VerticalAlignment="Top" Width="370" Height="34">
             <TextBox TextWrapping="Wrap" Name="txbDireccion"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
@@ -60,7 +68,7 @@
             <ComboBoxItem Content="Cajero"/>
         </ComboBox>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,312,0,0" VerticalAlignment="Top" Width="335" Height="34">
+        <Border x:Name="brdrUsuario" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="190,312,0,0" VerticalAlignment="Top" Width="335" Height="34">
             <TextBox TextWrapping="Wrap" Name="txbUsuario" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
@@ -88,6 +96,9 @@
 
         <Label Content="A. Paterno" HorizontalAlignment="Left" Height="27" Margin="429,76,0,0" VerticalAlignment="Top" Width="168"/>
 
+        <Label Content="RFC" HorizontalAlignment="Left" Height="27" Margin="516,32,0,0" VerticalAlignment="Top" Width="30"/>
+
+
         <Label Content="A. Materno" HorizontalAlignment="Left" Height="27" Margin="607,76,0,0" VerticalAlignment="Top" Width="168"/>
 
         <Label Content="Correo Electrónico" HorizontalAlignment="Left" Height="27" Margin="190,145,0,0" VerticalAlignment="Top" Width="168"/>
@@ -96,7 +107,7 @@
 
         <Label Content="Dirección" HorizontalAlignment="Left" Height="27" Margin="190,219,0,0" VerticalAlignment="Top" Width="168"/>
 
-        <Label Content="Puesto" HorizontalAlignment="Left" Height="27" Margin="564,221,0,0" VerticalAlignment="Top" Width="168"/>
+        <Label x:Name="lblPuesto" Content="Puesto" HorizontalAlignment="Left" Height="27" Margin="564,221,0,0" VerticalAlignment="Top" Width="168"/>
 
         <Label Content="Usuario" HorizontalAlignment="Left" Height="27" Margin="190,287,0,0" VerticalAlignment="Top" Width="168"/>
 
