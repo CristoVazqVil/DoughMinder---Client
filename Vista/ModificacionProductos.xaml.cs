@@ -3,6 +3,7 @@ using DoughMinder___Client.Vista.Emergentes;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -25,7 +26,7 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class ModificacionProductos : Page
     {
-        private string rutaImagenSeleccionada;
+        private byte[] imagenProductoBytes;
         private String codigoProducto;
         private DoughMinderServicio.Producto producto;
 
@@ -62,7 +63,7 @@ namespace DoughMinder___Client.Vista
                     producto.Descripcion = txbDescripcionProducto.Text;
                     producto.Cantidad = int.Parse(txbCantidadProducto.Text);
                     producto.Restricciones = txbRestriccionesProducto.Text;
-                    producto.RutaFoto = txbImagenProducto.Text;
+                    producto.Foto = imagenProductoBytes;
                     producto.Estado = true;
 
                     if (ckbSinReceta.IsChecked == false)
@@ -192,7 +193,7 @@ namespace DoughMinder___Client.Vista
                 txbPrecioProducto.Text = producto.Precio.ToString();
                 txbRestriccionesProducto.Text = producto.Restricciones;
                 txbCantidadProducto.Text = producto.Cantidad.ToString();
-                txbImagenProducto.Text = producto.RutaFoto;
+                txbImagenProducto.Text = producto.Nombre;
             }
         }
 
@@ -323,10 +324,9 @@ namespace DoughMinder___Client.Vista
 
             if (openFileDialog.ShowDialog() == true)
             {
-                rutaImagenSeleccionada = openFileDialog.FileName;
+                imagenProductoBytes = File.ReadAllBytes(openFileDialog.FileName);
 
-                string nombreImagen = System.IO.Path.GetFileName(rutaImagenSeleccionada);
-
+                string nombreImagen = System.IO.Path.GetFileName(openFileDialog.FileName);
                 txbImagenProducto.Text = nombreImagen;
             }
         }

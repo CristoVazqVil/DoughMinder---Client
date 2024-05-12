@@ -475,6 +475,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\ImagenesProductos\ball.png" />
+    <Resource Include="Recursos\ImagenesProductos\south.png" />
+    <Resource Include="Recursos\ImagenesProductos\ty.png" />
+    <Resource Include="Recursos\ImagenesProductos\mapa.png" />
     <Resource Include="Recursos\InsumosIcon.png" />
     <Resource Include="Recursos\PedidosIcon.png" />
     <Resource Include="Recursos\ProductosBlack.png">
@@ -538,5 +542,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\DoughMinderServicio\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

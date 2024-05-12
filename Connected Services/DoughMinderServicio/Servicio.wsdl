@@ -291,6 +291,18 @@
   <wsdl:message name="IPedido_RecuperarPedido_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarPedidoResponse" />
   </wsdl:message>
+  <wsdl:message name="IPedido_CancelarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_CancelarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_ModificarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IPedido_ModificarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPedidoResponse" />
+  </wsdl:message>
   <wsdl:message name="ILogin_VerificarUsuario_InputMessage">
     <wsdl:part name="parameters" element="tns:VerificarUsuario" />
   </wsdl:message>
@@ -457,6 +469,14 @@
     <wsdl:operation name="RecuperarPedido">
       <wsdl:input wsaw:Action="http://tempuri.org/IPedido/RecuperarPedido" message="tns:IPedido_RecuperarPedido_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPedido/RecuperarPedidoResponse" message="tns:IPedido_RecuperarPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPedido/CancelarPedido" message="tns:IPedido_CancelarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPedido/CancelarPedidoResponse" message="tns:IPedido_CancelarPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPedido/ModificarPedido" message="tns:IPedido_ModificarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPedido/ModificarPedidoResponse" message="tns:IPedido_ModificarPedido_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILogin">
@@ -808,6 +828,24 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarPedido">
       <soap12:operation soapAction="http://tempuri.org/IPedido/RecuperarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarPedido">
+      <soap12:operation soapAction="http://tempuri.org/IPedido/CancelarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPedido">
+      <soap12:operation soapAction="http://tempuri.org/IPedido/ModificarPedido" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

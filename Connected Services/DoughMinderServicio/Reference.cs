@@ -631,6 +631,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private System.Nullable<bool> EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] FotoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> IdRecetaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -647,9 +650,6 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RestriccionesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RutaFotoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] SolicitudProductoField;
@@ -712,6 +712,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((this.EstadoField.Equals(value) != true)) {
                     this.EstadoField = value;
                     this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Foto {
+            get {
+                return this.FotoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FotoField, value) != true)) {
+                    this.FotoField = value;
+                    this.RaisePropertyChanged("Foto");
                 }
             }
         }
@@ -790,19 +803,6 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.RestriccionesField, value) != true)) {
                     this.RestriccionesField = value;
                     this.RaisePropertyChanged("Restricciones");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RutaFoto {
-            get {
-                return this.RutaFotoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RutaFotoField, value) != true)) {
-                    this.RutaFotoField = value;
-                    this.RaisePropertyChanged("RutaFoto");
                 }
             }
         }
@@ -2554,6 +2554,18 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/RecuperarPedido", ReplyAction="http://tempuri.org/IPedido/RecuperarPedidoResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Pedido> RecuperarPedidoAsync(string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/CancelarPedido", ReplyAction="http://tempuri.org/IPedido/CancelarPedidoResponse")]
+        int CancelarPedido(string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/CancelarPedido", ReplyAction="http://tempuri.org/IPedido/CancelarPedidoResponse")]
+        System.Threading.Tasks.Task<int> CancelarPedidoAsync(string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/ModificarPedido", ReplyAction="http://tempuri.org/IPedido/ModificarPedidoResponse")]
+        int ModificarPedido(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] productosAgregados);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/ModificarPedido", ReplyAction="http://tempuri.org/IPedido/ModificarPedidoResponse")]
+        System.Threading.Tasks.Task<int> ModificarPedidoAsync(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] productosAgregados);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2613,6 +2625,22 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Pedido> RecuperarPedidoAsync(string clave) {
             return base.Channel.RecuperarPedidoAsync(clave);
+        }
+        
+        public int CancelarPedido(string clave) {
+            return base.Channel.CancelarPedido(clave);
+        }
+        
+        public System.Threading.Tasks.Task<int> CancelarPedidoAsync(string clave) {
+            return base.Channel.CancelarPedidoAsync(clave);
+        }
+        
+        public int ModificarPedido(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] productosAgregados) {
+            return base.Channel.ModificarPedido(pedido, productosAgregados);
+        }
+        
+        public System.Threading.Tasks.Task<int> ModificarPedidoAsync(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] productosAgregados) {
+            return base.Channel.ModificarPedidoAsync(pedido, productosAgregados);
         }
     }
     

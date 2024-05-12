@@ -3,6 +3,7 @@ using DoughMinder___Client.Vista.Emergentes;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -26,7 +27,7 @@ namespace DoughMinder___Client.Vista
     /// </summary>
     public partial class RegistroProductos : Page
     {
-        private string rutaImagenSeleccionada;
+        private byte[] imagenProductoBytes;
 
         public RegistroProductos()
         {
@@ -65,7 +66,7 @@ namespace DoughMinder___Client.Vista
                     producto.Descripcion = txbDescripcionProducto.Text;
                     producto.Cantidad = int.Parse(txbCantidadProducto.Text);
                     producto.Restricciones = txbRestriccionesProducto.Text;
-                    producto.RutaFoto = txbImagenProducto.Text;
+                    producto.Foto = imagenProductoBytes;
                     producto.Estado = true;
 
 
@@ -99,10 +100,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine("Excepcioooooooooooooooooooon");
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine("Excepcioooooooooooooooooooon");
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -235,10 +238,9 @@ namespace DoughMinder___Client.Vista
 
             if (openFileDialog.ShowDialog() == true)
             {
-                rutaImagenSeleccionada = openFileDialog.FileName;
+                imagenProductoBytes = File.ReadAllBytes(openFileDialog.FileName);
 
-                string nombreImagen = System.IO.Path.GetFileName(rutaImagenSeleccionada);
-
+                string nombreImagen = System.IO.Path.GetFileName(openFileDialog.FileName);
                 txbImagenProducto.Text = nombreImagen;
             }
         }

@@ -55,13 +55,13 @@
       <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="IdReceta" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PedidoProducto" nillable="true" type="tns:ArrayOfPedidoProducto" />
       <xs:element minOccurs="0" name="Precio" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Receta" nillable="true" type="tns:Receta" />
       <xs:element minOccurs="0" name="Restricciones" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RutaFoto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SolicitudProducto" nillable="true" type="tns:ArrayOfSolicitudProducto" />
     </xs:sequence>
   </xs:complexType>

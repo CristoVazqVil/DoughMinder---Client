@@ -1,6 +1,7 @@
 ﻿using DoughMinder___Client.DoughMinderServicio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,24 +42,28 @@ namespace DoughMinder___Client.Vista
 
             foreach (Producto producto in productos)
             {
-                if (producto.RutaFoto == null)
+                /*if (producto.Foto == null)
                 {
-                    producto.RutaFoto = "/Recursos/ProductosBlack.png";
-                }
+                    producto.Foto = "/Recursos/ProductosBlack.png";
+                }*/
 
                 Image image = new Image();
-                BitmapImage bitmapImage = new BitmapImage(new Uri(producto.RutaFoto, UriKind.Relative));
+
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(producto.Foto);
+                bitmapImage.EndInit();
 
                 image.Source = bitmapImage;
-                image.Tag = producto.RutaFoto;
-                image.Width = 80;
+                image.Tag = producto.Nombre;
+                image.Width = 150;
 
                 Label lblDescripcion = new Label();
                 lblDescripcion.Content = producto.Nombre + "  $" + producto.Precio;
 
                 Grid gpProductoItem = new Grid();
-                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
-                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
+                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(120) });
+                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(120) });
                 gpProductoItem.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
                 Grid.SetRow(image, 0);
