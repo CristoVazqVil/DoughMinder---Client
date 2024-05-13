@@ -100,12 +100,10 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
-                    Console.WriteLine("Excepcioooooooooooooooooooon");
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
-                    Console.WriteLine("Excepcioooooooooooooooooooon");
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -290,7 +288,6 @@ namespace DoughMinder___Client.Vista
         }
 
         //Validaciones de entradas y cambios gráficos
-
         private void EliminarCaracteresNombre(object sender, TextCompositionEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -318,7 +315,7 @@ namespace DoughMinder___Client.Vista
         {
             TextBox textBox = sender as TextBox;
 
-            Regex regex = new Regex(@"^[a-zA-Z0-9]*$");
+            Regex regex = new Regex(@"^[a-zA-Z0-9\-]*$");
 
             if (textBox != null && textBox.Text.Length < 10)
             {

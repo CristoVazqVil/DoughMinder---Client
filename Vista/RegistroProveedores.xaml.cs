@@ -34,15 +34,17 @@ namespace DoughMinder___Client.Vista
 
             this.proveedor = proveedor;
 
-            txbNombre.Text = proveedor.Nombre;
-            txbCorreo.Text = proveedor.Email;
-            txbTelefono.Text = proveedor.Telefono;
-            txbRFC.Text = proveedor.RFC;
-            
-
-            if (!string.IsNullOrEmpty(proveedor.Nombre))
+            if (proveedor != null)
             {
-                ProveedorCargado();
+                txbNombre.Text = proveedor.Nombre;
+                txbCorreo.Text = proveedor.Email;
+                txbTelefono.Text = proveedor.Telefono;
+                txbRFC.Text = proveedor.RFC;
+
+                if (!string.IsNullOrEmpty(proveedor.Nombre))
+                {
+                    ProveedorCargado();
+                }
             }
         }
 

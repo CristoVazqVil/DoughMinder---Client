@@ -1901,6 +1901,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/DeshabilitarInsumo", ReplyAction="http://tempuri.org/IInsumo/DeshabilitarInsumoResponse")]
         System.Threading.Tasks.Task<int> DeshabilitarInsumoAsync(string codigoInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumosDeReceta", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumosDeRecetaResponse")]
+        System.Collections.Generic.Dictionary<string, float> RecuperarInsumosDeReceta(int idReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumosDeReceta", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumosDeRecetaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, float>> RecuperarInsumosDeRecetaAsync(int idReceta);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1976,6 +1982,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<int> DeshabilitarInsumoAsync(string codigoInsumo) {
             return base.Channel.DeshabilitarInsumoAsync(codigoInsumo);
+        }
+        
+        public System.Collections.Generic.Dictionary<string, float> RecuperarInsumosDeReceta(int idReceta) {
+            return base.Channel.RecuperarInsumosDeReceta(idReceta);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, float>> RecuperarInsumosDeRecetaAsync(int idReceta) {
+            return base.Channel.RecuperarInsumosDeRecetaAsync(idReceta);
         }
     }
     

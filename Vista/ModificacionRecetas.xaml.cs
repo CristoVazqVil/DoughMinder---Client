@@ -27,6 +27,7 @@ namespace DoughMinder___Client.Vista
     {
         private String codigoReceta;
         private DoughMinderServicio.Receta receta;
+        Dictionary<string, float> insumosDeReceta;
 
         public ModificacionRecetas(String codigo)
         {
@@ -149,7 +150,9 @@ namespace DoughMinder___Client.Vista
                 try
                 {
                     DoughMinderServicio.RecetaClient cliente = new DoughMinderServicio.RecetaClient();
+                    DoughMinderServicio.InsumoClient clienteI = new DoughMinderServicio.InsumoClient();
                     receta = cliente.RecuperarReceta(codigoReceta);
+                    insumosDeReceta = clienteI.RecuperarInsumosDeReceta(receta.IdReceta);
                 }
                 catch (TimeoutException ex)
                 {
@@ -168,11 +171,21 @@ namespace DoughMinder___Client.Vista
 
         private void ColocarRecetaEnCampos()
         {
-            if (receta != null)
+            if (receta != null && insumosDeReceta != null)
             {
                 lblCodigo.Content = receta.Codigo;
                 txbNombreReceta.Text = receta.Nombre;
                 txbProcedimientoReceta.Text = receta.Descripcion;
+
+                ltbInsumosActuales.Items.Clear();
+
+                foreach (var kvp in insumosDeReceta)
+                {
+                    string nombreInsumo = kvp.Key;
+                    float cantidad = kvp.Value;
+
+                    ltbInsumosActuales.Items.Add($"{nombreInsumo}: {cantidad} Kg/L");
+                }
             }
         }
 

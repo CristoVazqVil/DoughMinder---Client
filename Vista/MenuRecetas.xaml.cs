@@ -113,10 +113,9 @@ namespace DoughMinder___Client.Vista
         {
             Receta recetaSeleccionada = (Receta)lstRecetas.SelectedItem;
 
-            string codigoReceta = recetaSeleccionada.Codigo;
-
             if (recetaSeleccionada != null)
             {
+                string codigoReceta = recetaSeleccionada.Codigo;
                 ModificacionRecetas modificacionRecetas = new ModificacionRecetas(codigoReceta);
                 NavigationService.Navigate(modificacionRecetas);
             }

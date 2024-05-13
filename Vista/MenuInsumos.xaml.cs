@@ -119,10 +119,9 @@ namespace DoughMinder___Client.Vista
         {
             Insumo insumoSeleccionado = (Insumo)lstInsumos.SelectedItem;
 
-            string codigoInsumo = insumoSeleccionado.Codigo;
-
             if (insumoSeleccionado != null)
             {
+                string codigoInsumo = insumoSeleccionado.Codigo;
                 ModificacionInsumos modificacionInsumos = new ModificacionInsumos(codigoInsumo);
                 NavigationService.Navigate(modificacionInsumos);
             }

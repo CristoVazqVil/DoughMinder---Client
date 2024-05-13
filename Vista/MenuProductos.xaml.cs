@@ -118,10 +118,9 @@ namespace DoughMinder___Client.Vista
         {
             Producto productoSeleccionado = (Producto)lstProductos.SelectedItem;
 
-            string codigoProducto = productoSeleccionado.CodigoProducto;
-
             if (productoSeleccionado != null)
             {
+                string codigoProducto = productoSeleccionado.CodigoProducto;
                 ModificacionProductos modificacionProductos = new ModificacionProductos(codigoProducto);
                 NavigationService.Navigate(modificacionProductos);
             }
