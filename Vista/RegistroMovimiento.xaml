@@ -26,7 +26,7 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
             <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,10,0,0" Source="/Recursos/MicrosoftTeams-image.png"/>
 
@@ -57,6 +57,8 @@
 
                 <Label Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Movimiento" Height="40" Width="175"/>
 
+                <Label x:Name="lblFecha" Grid.Row="0" Content="Fecha: 00/00/00 a las 00:00:00" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+
                 <ComboBox Grid.Row="2" Name="cmbTipo" HorizontalAlignment="Left" Width="260" Style="{DynamicResource ComboBoxStyle1}" Height="40" SelectionChanged="CmbTipo_SelectionChanged"/>
 
                 <TextBox Grid.Row="8" Width="260" HorizontalAlignment="Left" Name="txtbCostoTotal" Style="{DynamicResource TextBoxStyle1}" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" TextWrapping="Wrap" Text="" Padding="5" MaxLength="7" PreviewTextInput="TxtbCostoTotal_PreviewTextInput" TextChanged="TxtbCostoTotal_TextChanged"/>
@@ -78,8 +80,12 @@
                 <Label Grid.Row="4" Name="lblDescripcion" Content="Descripción:" FontSize="17" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="175"/>
 
                 <Label Grid.Row="7" Name="lblCostoTotal" Content="Costo total (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="177"/>
+
+                <Image HorizontalAlignment="Left" Grid.Row="10" Height="30" VerticalAlignment="Center" Name="btnLimpiar" Source="/Recursos/BotonRojo.png" MouseLeftButtonDown="BtnLimpiar_MouseLeftButtonDown"/>
+
+                <Label HorizontalAlignment="Left" Grid.Row="10" Content="Limpiar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="103" Margin="25,0,0,0" Foreground="White"/>
             </Grid>
         </ScrollViewer>
-        
+
     </Grid>
 </Page>

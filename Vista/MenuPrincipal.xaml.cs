@@ -116,5 +116,17 @@ namespace DoughMinder___Client.Vista
             MenuProveedores proveedores = new MenuProveedores();
             this.NavigationService.Navigate(proveedores);
         }
+
+        private void AbrirFinanzas(object sender, MouseButtonEventArgs e)
+        {
+            HistorialMovimientos movimientos = new HistorialMovimientos();
+            this.NavigationService.Navigate(movimientos);
+        }
+
+        private void AbrirInventario(object sender, MouseButtonEventArgs e)
+        {
+            Inventario inventario = new Inventario();
+            this.NavigationService.Navigate(inventario);
+        }
     }
 }

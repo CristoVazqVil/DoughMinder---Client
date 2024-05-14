@@ -1,0 +1,76 @@
+﻿<Page x:Class="DoughMinder___Client.Vista.Inventario"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DoughMinder___Client.Vista"
+      mc:Ignorable="d"  
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Inventario">
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="gpColumna" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
+            <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Source="/Recursos/MicrosoftTeams-image.png"/>
+            <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png" Cursor="Hand" MouseLeftButtonDown="AbrirVentanaAnterior"/>
+            <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
+        </Grid>
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="10,0,0,0">
+            <Grid Margin="10,20,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="170"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Inventario" VerticalAlignment="Center"/>
+                <Image Grid.Column="2" Grid.Row="0" x:Name="btnGenerarReporte" Source="/Recursos/BotonVerde.png" Cursor="Hand" MouseLeftButtonDown="GenerarReporte" MouseEnter="CambiarGenerarAzul" MouseLeave="CambiarGenerarVerde"/>
+                <Label Grid.Column="2" Grid.Row="0" IsEnabled="False" IsHitTestVisible="False" Style="{DynamicResource LabelColumnStyle}" FontSize="16" Foreground="White" Content="Generar reporte" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand"/>
+                <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Se muestran los productos e insumos disponibles actualmente." x:Name="lblInfo" Grid.ColumnSpan="2" Width="343"/>
+
+                <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" x:Name="lblInventarioError" Style="{DynamicResource LabelContentStyle}" Content="No hay insumos o productos registrados" FontSize="18" FontWeight="Bold" Visibility="Collapsed"/>
+
+                <ListBox x:Name="lstInventario" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Collapsed">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Codigo}" Margin="0,0,50,0"/>
+                                <TextBlock Text="{Binding Nombre}" Margin="0,0,50,0"/>
+                                <TextBlock Text="{Binding Cantidad}" Margin="0,0,10,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
