@@ -33,7 +33,7 @@ namespace DoughMinder___Client.Vista
         {
             InitializeComponent();
             codigoReceta = codigo;
-            RecuperarInsumos();
+            _ = RecuperarInsumos();
             RecuperarReceta();
             ColocarRecetaEnCampos();
         }
@@ -76,10 +76,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -134,10 +136,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -156,10 +160,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -217,10 +223,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
         }
@@ -359,7 +367,7 @@ namespace DoughMinder___Client.Vista
             txbProcedimientoReceta.Clear();
             drgTablaInsumos.ItemsSource = null;
             drgTablaInsumos.Items.Clear();
-            RecuperarInsumos();
+            _ = RecuperarInsumos();
         }
 
         //Validaciones de entradas y cambios gráficos

@@ -32,7 +32,7 @@ namespace DoughMinder___Client.Vista
         public RegistroProductos()
         {
             InitializeComponent();
-            RecuperarRecetas();
+            _ = RecuperarRecetas();
         }
 
         public class RecetaItem
@@ -100,10 +100,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -129,10 +131,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
         }
@@ -279,7 +283,7 @@ namespace DoughMinder___Client.Vista
             txbImagenProducto.Text = "Sin imagen adjunta...";
             dtgTablaRecetas.ItemsSource = null;
             dtgTablaRecetas.Items.Clear();
-            RecuperarRecetas();
+            _ = RecuperarRecetas();
         }
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)

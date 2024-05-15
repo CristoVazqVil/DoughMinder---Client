@@ -64,10 +64,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
 

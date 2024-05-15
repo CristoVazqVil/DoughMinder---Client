@@ -118,10 +118,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (DocumentException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeErrorGenerarPdf();
             }
             catch (IOException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeErrorGenerarPdf();
             }
             finally
@@ -199,10 +201,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
 
@@ -235,10 +239,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
 

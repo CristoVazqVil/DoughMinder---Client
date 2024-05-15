@@ -136,6 +136,7 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
@@ -225,21 +226,17 @@ namespace DoughMinder___Client.Vista
                     }
                     catch (TimeoutException ex)
                     {
+                        Console.WriteLine(ex.Message);
                         MostrarMensajeSinConexionServidor();
                     }
                     catch (CommunicationException ex)
                     {
+                        Console.WriteLine(ex.Message);
                         MostrarMensajeSinConexionServidor();
                     }
                 }
             }
         }
-
-
-
-
-
-
         private bool ValidarCamposVacios()
         {
             if (string.IsNullOrWhiteSpace(txbNombre.Text) ||
@@ -336,9 +333,6 @@ namespace DoughMinder___Client.Vista
             lbConfirmaContrasena.Visibility = Visibility.Visible;
             lbContrasena.Visibility = Visibility.Visible;
 
-
-
-
         }
 
         private void IrAtras(object sender, MouseButtonEventArgs e)
@@ -368,14 +362,14 @@ namespace DoughMinder___Client.Vista
                         Registrar();
                     }
                 }
-
-
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
 

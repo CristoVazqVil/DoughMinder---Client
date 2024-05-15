@@ -27,7 +27,7 @@ namespace DoughMinder___Client.Vista
         public RegistroRecetas()
         {
             InitializeComponent();
-            RecuperarInsumos();
+            _ = RecuperarInsumos();
         }
 
         public class InsumoItem
@@ -58,10 +58,12 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
+                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
         }
@@ -108,10 +110,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -246,7 +250,7 @@ namespace DoughMinder___Client.Vista
             txbProcedimientoReceta.Clear();
             drgTablaInsumos.ItemsSource = null;
             drgTablaInsumos.Items.Clear();
-            RecuperarInsumos();
+            _ = RecuperarInsumos();
         }
 
         //Validaciones de entradas y cambios gráficos

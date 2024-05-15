@@ -48,7 +48,6 @@ namespace DoughMinder___Client.Vista
             }
         }
 
-
         public void ProveedorCargado()
         {
             txbNombre.IsEnabled = false;
@@ -60,11 +59,6 @@ namespace DoughMinder___Client.Vista
             btnModificar.Visibility = Visibility.Visible;
 
         }
-
-
-
-
-
         public void InformacionProveedor(Proveedor proveedor)
         {
             InitializeComponent();
@@ -122,10 +116,12 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -150,8 +146,6 @@ namespace DoughMinder___Client.Vista
 
             return true;
         }
-
-
 
         private void MostrarMensajeSinConexionServidor()
         {
@@ -237,14 +231,14 @@ namespace DoughMinder___Client.Vista
                         RegistrarProveedor();
                     }
                 }
-
-
                 catch (TimeoutException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
 
