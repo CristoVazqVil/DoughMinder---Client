@@ -122,7 +122,8 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuPrincipal empleados = new MenuPrincipal();
+            this.NavigationService.Navigate(empleados);
         }
 
         private void BuscarEnLista(object sender, TextChangedEventArgs e)
