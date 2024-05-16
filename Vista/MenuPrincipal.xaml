@@ -113,7 +113,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="/Recursos/SalirIcon.png" Grid.Column="0" Width="25"/>
-                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="Salir" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
 

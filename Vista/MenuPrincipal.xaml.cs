@@ -111,5 +111,13 @@ namespace DoughMinder___Client.Vista
             MenuProveedores proveedores = new MenuProveedores();
             this.NavigationService.Navigate(proveedores);
         }
+
+        private void Salir(object sender, MouseButtonEventArgs e)
+        {
+            string appName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            Application.Current.Shutdown();
+            System.Diagnostics.Process.Start(appName);
+        }
+
     }
 }
