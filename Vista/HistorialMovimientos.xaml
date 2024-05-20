@@ -50,18 +50,26 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="40"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Movimientos del último mes" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Corte de caja" VerticalAlignment="Center"/>
                 <Image Grid.Column="2" Grid.Row="0" x:Name="btnGenerarReporte" Source="/Recursos/BotonVerde.png" Cursor="Hand" MouseLeftButtonDown="BtnGenerarReporte_MouseLeftButtonDown"/>
-                <Label Grid.Column="2" Grid.Row="0" Style="{DynamicResource LabelColumnStyle}" FontSize="16" Foreground="White" Content="Generar reporte" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" MouseLeftButtonDown="BtnGenerarReporte_MouseLeftButtonDown"/>
-                <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Fecha: 00/00/00 a las 00:00:00" x:Name="lblFecha"/>
-                <Label Grid.Column="1" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Total: $ 0000" x:Name="lblTotal"/>
+                <Label Grid.Column="2" Grid.Row="0" x:Name="lblGenerarReporte" Style="{DynamicResource LabelColumnStyle}" FontSize="16" Foreground="White" Content="Generar reporte" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" MouseLeftButtonDown="BtnGenerarReporte_MouseLeftButtonDown"/>
 
-                <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" x:Name="lblMovimientosError" Style="{DynamicResource LabelContentStyle}" Content="No hay movimientos registrados" FontSize="18" FontWeight="Bold" Visibility="Collapsed"/>
+                <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Fecha: " x:Name="lblFecha"/>
+                <DatePicker x:Name="dpFecha" Grid.Column="0" Grid.Row="1" Margin="60,0,0,0" VerticalContentAlignment="Center" PreviewTextInput="DpFecha_PreviewTextInput" SelectedDateChanged="DpFecha_SelectedDateChanged"/>
+                <Label x:Name="lblFechaError" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Content="No se puede seleccionar una fecha posterior a la actual." Style="{DynamicResource ErrorLabelStyle}" Visibility="Collapsed" FontSize="14"/>
+
+                <Label Grid.Column="2" Grid.Row="1" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Bottom" Content="Ingresos: $ 0000" x:Name="lblIngresos"/>
+                <Label Grid.Column="2" Grid.Row="2" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Egresos: $ 0000" x:Name="lblEgresos"/>
+                <Label Grid.Column="2" Grid.Row="3" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Center" Content="Total: $ 0000" x:Name="lblTotal"/>
+
+                <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" x:Name="lblMovimientosError" Style="{DynamicResource LabelContentStyle}" Content="No hay movimientos registrados" FontSize="16" FontWeight="Bold" Visibility="Collapsed"/>
                 
-                <ListBox x:Name="lstMovimientos" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" ItemsSource="{Binding listaMovimientos}" Visibility="Collapsed">
+                <ListBox x:Name="lstMovimientos" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" ItemsSource="{Binding listaMovimientos}" Visibility="Collapsed">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

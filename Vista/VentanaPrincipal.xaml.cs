@@ -22,7 +22,7 @@ namespace DoughMinder___Client.Vista
         public VentanaPrincipal()
         {
             InitializeComponent();
-            framePage.Navigate(new Uri("/Vista/MenuPedidos.xaml", UriKind.Relative));
+            framePage.Navigate(new Uri("/Vista/MenuPrincipal.xaml", UriKind.Relative));
         }
     }
 }

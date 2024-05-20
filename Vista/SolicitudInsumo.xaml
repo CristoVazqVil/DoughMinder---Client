@@ -120,6 +120,10 @@
                 <Label Name="lblCostoTotal" Grid.Row="8" Content="Costo total: $0" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center"/>
 
                 <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="7" Name="lblProveedorError" Content="error" Visibility="Collapsed"/>
+
+                <Image HorizontalAlignment="Left" Grid.Row="9" Height="30" VerticalAlignment="Center" Name="btnLimpiar" Source="/Recursos/BotonRojo.png" MouseLeftButtonDown="BtnLimpiar_MouseLeftButtonDown"/>
+
+                <Label HorizontalAlignment="Left" Grid.Row="9" Content="Limpiar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="103" Margin="25,0,0,0" Foreground="White"/>
             </Grid>
         </ScrollViewer>
 

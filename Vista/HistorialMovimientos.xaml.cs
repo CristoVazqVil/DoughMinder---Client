@@ -32,7 +32,6 @@ namespace DoughMinder___Client.Vista
         public decimal CostoTotal { get; set; }
         public string Descripcion {  get; set; }
     }
-
     
 
     public partial class HistorialMovimientos : Page
@@ -45,13 +44,11 @@ namespace DoughMinder___Client.Vista
             InitializeComponent();
             SetFecha();
             SetMovimientos();
-            SetCostoTotal();
         }
 
         private void SetFecha()
         {
-            DateTime fechaActual = DateTime.Now;
-            lblFecha.Content = "Fecha de generación: " + fechaActual.ToString();
+            dpFecha.SelectedDate = RecuperarFechaActual();
         }
 
         private void SetMovimientos()
@@ -91,31 +88,57 @@ namespace DoughMinder___Client.Vista
                 });
             }
 
-            OrdenarMovimientos(elementos);
-            VerificarExistenciaMovimientos();
+            FiltrarMovimientos(DateTime.Now);
         }
 
-        private void SetCostoTotal()
+        private void CalcularCostos(List<MovimientoElemento> movimientos)
         {
             decimal costoTotal = 0;
+            decimal ingresos = 0;
+            decimal egresos = 0;
 
-            foreach (var elemento in elementos)
+            foreach (var movimiento in movimientos)
             {
-                costoTotal += elemento.CostoTotal;
+                costoTotal += movimiento.CostoTotal;
+
+                if (movimiento.CostoTotal.ToString().Contains("-"))
+                {
+                    egresos += movimiento.CostoTotal;
+                }
+                else
+                {
+                    ingresos += movimiento.CostoTotal;
+                }
             }
 
             lblTotal.Content = "Total en caja: $" + costoTotal.ToString();
+            lblEgresos.Content = "Total de egresos: $" + egresos.ToString();
+            lblIngresos.Content = "Total de ingresos: $" + ingresos.ToString();
         }
 
-        private void OrdenarMovimientos(List<MovimientoElemento> movimientos)
+        private void FiltrarMovimientos(DateTime fechaSeleccionada)
         {
-            DateTime fechaActual = DateTime.Now;
-            DateTime fechaInicioUltimoMes = fechaActual.AddMonths(-1);
+            List<MovimientoElemento> movimientosParaFiltrar = elementos;
+            List<MovimientoElemento> movimientosOrdenados = new List<MovimientoElemento>();
 
-            var movimientosUltimoMes = movimientos.Where(m => m.Fecha >= fechaInicioUltimoMes).ToList();
-            var movimientosOrdenados = movimientosUltimoMes.OrderBy(m => m.Fecha).ToList();
+            movimientosOrdenados = OrdenarMovimientos(movimientosParaFiltrar, fechaSeleccionada);
             elementosOrdenados = movimientosOrdenados;
             lstMovimientos.ItemsSource = elementosOrdenados;
+            
+            VerificarExistenciaMovimientos();
+            CalcularCostos(movimientosOrdenados);
+        }
+
+        private List<MovimientoElemento> OrdenarMovimientos(List<MovimientoElemento> movimientos, DateTime fechaSeleccionada)
+        {
+            if (fechaSeleccionada != null)
+            {
+                var movimientosDelDia = movimientos.Where(m => m.Fecha.Date == fechaSeleccionada.Date).ToList();
+                var movimientosOrdenados = movimientosDelDia.OrderBy(m => m.Fecha).ToList();
+                movimientos = movimientosOrdenados;
+            }
+
+            return movimientos;
         }
 
         private void VerificarExistenciaMovimientos()
@@ -125,12 +148,13 @@ namespace DoughMinder___Client.Vista
                 lstMovimientos.Visibility = Visibility.Collapsed;
                 lblMovimientosError.Content = "No se han registrado movimientos";
                 lblMovimientosError.Visibility = Visibility.Visible;
-                btnGenerarReporte.IsEnabled = false;
+                DeshabilitarGenerarReporte();
             }
             else
             {
                 lstMovimientos.Visibility = Visibility.Visible;
                 lblMovimientosError.Visibility = Visibility.Collapsed;
+                HabilitarGenerarReporte();
             }
         }
 
@@ -212,9 +236,21 @@ namespace DoughMinder___Client.Vista
             return solicitudes;
         }
 
+        private DateTime RecuperarFechaSeleccionada()
+        {
+            DateTime fechaSeleccionada = (DateTime)dpFecha.SelectedDate;
+            return fechaSeleccionada;
+        }
+
+        private DateTime RecuperarFechaActual()
+        {
+            DateTime fechaActual = DateTime.Now;
+            return fechaActual;
+        }
+
         private void GenerarReporte()
         {
-            string nombreArchivo = "reporteMovimientos.pdf";
+            string nombreArchivo = "reporteMovimientos-" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".pdf";
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string outputPath = System.IO.Path.Combine(folder, nombreArchivo);
             int numColumnasTabla = 3;
@@ -227,14 +263,20 @@ namespace DoughMinder___Client.Vista
                 PdfWriter.GetInstance(documento, new FileStream(outputPath, FileMode.Create));
                 documento.Open();
 
-                iTextSharp.text.Paragraph titulo = new iTextSharp.text.Paragraph("Reporte de caja del último mes", fontTitulo);
+                iTextSharp.text.Paragraph titulo = new iTextSharp.text.Paragraph("Corte de caja", fontTitulo);
                 titulo.Alignment = Element.ALIGN_CENTER;
                 documento.Add(titulo);
 
                 documento.Add(new iTextSharp.text.Paragraph(" "));
 
-                iTextSharp.text.Paragraph fecha = new iTextSharp.text.Paragraph(lblFecha.Content.ToString());
+                iTextSharp.text.Paragraph fecha = new iTextSharp.text.Paragraph("Fecha de generación: " + RecuperarFechaActual().ToString());
                 documento.Add(fecha);
+
+                iTextSharp.text.Paragraph ingresos = new iTextSharp.text.Paragraph(lblIngresos.Content.ToString());
+                documento.Add(ingresos);
+
+                iTextSharp.text.Paragraph egresos = new iTextSharp.text.Paragraph(lblEgresos.Content.ToString());
+                documento.Add(egresos);
 
                 iTextSharp.text.Paragraph total = new iTextSharp.text.Paragraph(lblTotal.Content.ToString());
                 documento.Add(total);
@@ -283,6 +325,39 @@ namespace DoughMinder___Client.Vista
             }
         }
 
+        private void ValidarSeleccionDeFecha()
+        {
+            DateTime fechaSeleccionada = RecuperarFechaSeleccionada();
+            DateTime fechaActual = RecuperarFechaActual();
+
+            if (fechaSeleccionada > fechaActual)
+            {
+                dpFecha.SelectedDate = fechaActual;
+                lblFechaError.Content = "No se puede seleccionar una fecha posterior a la actual";
+                lblFechaError.Visibility = Visibility.Visible;
+                DeshabilitarGenerarReporte();
+                lstMovimientos.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lblFechaError.Visibility = Visibility.Collapsed;
+                lstMovimientos.Visibility = Visibility.Visible;
+                FiltrarMovimientos(fechaSeleccionada);
+            }
+        }
+
+        private void DeshabilitarGenerarReporte()
+        {
+            btnGenerarReporte.IsEnabled = false;
+            lblGenerarReporte.IsEnabled = false;
+        }
+
+        private void HabilitarGenerarReporte()
+        {
+            btnGenerarReporte.IsEnabled = true;
+            lblGenerarReporte.IsEnabled = true;
+        }
+
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();
@@ -307,9 +382,15 @@ namespace DoughMinder___Client.Vista
             descargaExitosa.Show();
         }
 
+        private void MostrarMenuPrincipal()
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            NavigationService.Navigate(menuPrincipal);
+        }
+
         private void BtnAtras_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MostrarMenuPrincipal();
         }
 
         private void ImgRegistrarMovimiento_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -321,6 +402,16 @@ namespace DoughMinder___Client.Vista
         private void BtnGenerarReporte_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GenerarReporte();
+        }
+
+        private void DpFecha_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ValidarSeleccionDeFecha();
+        }
+
+        private void DpFecha_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

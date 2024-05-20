@@ -43,10 +43,10 @@ namespace DoughMinder___Client.Vista
 
         private void SetInsumos()
         {
-            DoughMinderServicio.InsumoClient insumoClient = new DoughMinderServicio.InsumoClient();
-            List<DoughMinderServicio.Insumo> insumos = new List<Insumo>();
-            DoughMinderServicio.ProductoClient productoClient = new DoughMinderServicio.ProductoClient();
-            List<DoughMinderServicio.Producto> productos = new List<Producto>();
+            InsumoClient insumoClient = new InsumoClient();
+            List<Insumo> insumos = new List<Insumo>();
+            ProductoClient productoClient = new ProductoClient();
+            List<Producto> productos = new List<Producto>();
 
             try
             {
@@ -133,8 +133,8 @@ namespace DoughMinder___Client.Vista
 
         private void SetProveedores()
         {
-            DoughMinderServicio.ProveedorClient client = new DoughMinderServicio.ProveedorClient();
-            List<DoughMinderServicio.Proveedor> proveedores = new List<Proveedor>();
+            ProveedorClient client = new ProveedorClient();
+            List<Proveedor> proveedores = new List<Proveedor>();
 
             try
             {
@@ -402,7 +402,7 @@ namespace DoughMinder___Client.Vista
         {
             SolicitudClient client = new SolicitudClient();
             List<SolicitudProducto> solicitudProductos = new List<SolicitudProducto>();
-            int codigo = 0;
+            string clave = string.Empty;
 
             SolicitudProducto solicitud0 = RecuperarInsumo(cmbInsumo0, cmbCantidad0);
             SolicitudProducto solicitud1 = RecuperarInsumo(cmbInsumo1, cmbCantidad1);
@@ -446,7 +446,7 @@ namespace DoughMinder___Client.Vista
             string costoString = "-" + lblCostoTotal.Content.ToString().Substring(14);
             decimal costoTotal = decimal.Parse(costoString);
 
-            DoughMinderServicio.Solicitud solicitud = new Solicitud
+            Solicitud solicitud = new Solicitud
             {
                 Fecha = fecha,
                 CostoTotal = costoTotal,
@@ -455,9 +455,9 @@ namespace DoughMinder___Client.Vista
 
             try
             {
-                codigo = client.RegistrarSolicitud(solicitud, solicitudProductos.ToArray());
+                clave = client.RegistrarSolicitud(solicitud, solicitudProductos.ToArray());
 
-                if (codigo > 0)
+                if (clave.Contains("SOL-"))
                 {
                     MostrarMensajeRegistroExitoso();
                 }
@@ -474,6 +474,33 @@ namespace DoughMinder___Client.Vista
             {
                 MostrarMensajeSinConexionServidor();
             }
+        }
+
+        private void LimpiarCampos()
+        {
+            lblInsumoError.Visibility = Visibility.Collapsed;
+            lblProveedorError.Visibility = Visibility.Collapsed;
+
+            cmbProveedor.SelectedIndex = -1;
+            cmbInsumo0.SelectedIndex = -1;
+            cmbInsumo1.SelectedIndex = -1;
+            cmbInsumo2.SelectedIndex = -1;
+            cmbInsumo3.SelectedIndex = -1;
+            cmbInsumo4.SelectedIndex = -1;
+            cmbCantidad0.SelectedIndex = -1;
+            cmbCantidad1.SelectedIndex = -1;
+            cmbCantidad2.SelectedIndex = -1;
+            cmbCantidad3.SelectedIndex = -1;
+            cmbCantidad4.SelectedIndex = -1;
+
+            cmbInsumo1.Visibility = Visibility.Collapsed;
+            cmbInsumo2.Visibility = Visibility.Collapsed;
+            cmbInsumo3.Visibility = Visibility.Collapsed;
+            cmbInsumo4.Visibility = Visibility.Collapsed;
+            cmbCantidad1.Visibility = Visibility.Collapsed;
+            cmbCantidad2.Visibility = Visibility.Collapsed;
+            cmbCantidad3.Visibility = Visibility.Collapsed;
+            cmbCantidad4.Visibility = Visibility.Collapsed;
         }
 
         private void MostrarMensajeSinConexionServidor()
@@ -502,6 +529,11 @@ namespace DoughMinder___Client.Vista
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void BtnLimpiar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }

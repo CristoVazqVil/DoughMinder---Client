@@ -88,6 +88,7 @@
       <xs:element minOccurs="0" name="Clave" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Empleado" nillable="true" type="tns:Empleado" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdPedido" type="xs:int" />
@@ -95,9 +96,48 @@
       <xs:element minOccurs="0" name="PedidoProducto" nillable="true" type="tns:ArrayOfPedidoProducto" />
       <xs:element minOccurs="0" name="TelefonoCliente" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TipoEntrega" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Pedido" nillable="true" type="tns:Pedido" />
+  <xs:complexType name="Empleado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contraseña" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdPuesto" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Materno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Paterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pedido" nillable="true" type="tns:ArrayOfPedido" />
+      <xs:element minOccurs="0" name="Puesto" nillable="true" type="tns:Puesto" />
+      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Empleado" nillable="true" type="tns:Empleado" />
+  <xs:complexType name="ArrayOfPedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pedido" nillable="true" type="tns:Pedido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPedido" nillable="true" type="tns:ArrayOfPedido" />
+  <xs:complexType name="Puesto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Empleado" nillable="true" type="tns:ArrayOfEmpleado" />
+      <xs:element minOccurs="0" name="IdPuesto" type="xs:int" />
+      <xs:element minOccurs="0" name="Puesto1" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Puesto" nillable="true" type="tns:Puesto" />
+  <xs:complexType name="ArrayOfEmpleado">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Empleado" nillable="true" type="tns:Empleado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpleado" nillable="true" type="tns:ArrayOfEmpleado" />
   <xs:complexType name="ArrayOfSolicitudProducto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SolicitudProducto" nillable="true" type="tns:SolicitudProducto" />
@@ -119,6 +159,7 @@
   <xs:element name="SolicitudProducto" nillable="true" type="tns:SolicitudProducto" />
   <xs:complexType name="Solicitud">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Clave" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CostoTotal" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdProveedor" nillable="true" type="xs:int" />
@@ -172,47 +213,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMovimiento" nillable="true" type="tns:ArrayOfMovimiento" />
-  <xs:complexType name="Empleado">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Contraseña" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Correo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IdPuesto" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Materno" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Paterno" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Puesto" nillable="true" type="tns:Puesto" />
-      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Empleado" nillable="true" type="tns:Empleado" />
-  <xs:complexType name="Puesto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Empleado" nillable="true" type="tns:ArrayOfEmpleado" />
-      <xs:element minOccurs="0" name="IdPuesto" type="xs:int" />
-      <xs:element minOccurs="0" name="Puesto1" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Puesto" nillable="true" type="tns:Puesto" />
-  <xs:complexType name="ArrayOfEmpleado">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Empleado" nillable="true" type="tns:Empleado" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfEmpleado" nillable="true" type="tns:ArrayOfEmpleado" />
   <xs:complexType name="ArrayOfProveedor">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Proveedor" nillable="true" type="tns:Proveedor" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProveedor" nillable="true" type="tns:ArrayOfProveedor" />
-  <xs:complexType name="ArrayOfPedido">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pedido" nillable="true" type="tns:Pedido" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPedido" nillable="true" type="tns:ArrayOfPedido" />
 </xs:schema>
