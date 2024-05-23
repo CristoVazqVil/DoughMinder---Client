@@ -37,6 +37,8 @@ namespace DoughMinder___Client.Vista
             int row = 0;
             int column = 0;
 
+            // 
+
             gpVistaProductos.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
             foreach (Producto producto in productos)
