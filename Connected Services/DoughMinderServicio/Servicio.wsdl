@@ -213,6 +213,12 @@
   <wsdl:message name="IProducto_RecuperarProductosPorPedido_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProductosPorPedidoResponse" />
   </wsdl:message>
+  <wsdl:message name="IProducto_ActualizarCantidadProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCantidadProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_ActualizarCantidadProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCantidadProductosResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmpleado_GuardarEmpleado_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleado" />
   </wsdl:message>
@@ -409,6 +415,10 @@
     <wsdl:operation name="RecuperarProductosPorPedido">
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosPorPedido" message="tns:IProducto_RecuperarProductosPorPedido_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosPorPedidoResponse" message="tns:IProducto_RecuperarProductosPorPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCantidadProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/ActualizarCantidadProductos" message="tns:IProducto_ActualizarCantidadProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/ActualizarCantidadProductosResponse" message="tns:IProducto_ActualizarCantidadProductos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmpleado">
@@ -695,6 +705,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarProductosPorPedido">
       <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductosPorPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCantidadProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/ActualizarCantidadProductos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -33,11 +33,6 @@
             <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Source="/Recursos/MicrosoftTeams-image.png"/>
             <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png" MouseDown="RegresarVentanaAnterior"/>
             <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
-            <Image Grid.Column="0" Grid.Row="2" Width="40" Source="/Recursos/Agregar.png"/>
-            <Label Grid.Column="1" Grid.Row="2" Content="Registrar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
-
-            <Image Grid.Column="0" Grid.Row="3" Width="40" Source="/Recursos/IconoSolicitudInsumo.png"/>
-            <Label Grid.Column="1" Grid.Row="3" Content="Solicitar &#xD;&#xA;Insumo" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
         </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
@@ -73,7 +68,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -82,27 +78,27 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <ComboBox Name="cmbInsumo0" Grid.Row="0" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged"/>
+                    <ComboBox Name="cmbInsumo0" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="0" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged"/>
                     <ComboBox x:Name="cmbCantidad0" Grid.Column="1" Grid.Row="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" SelectionChanged="CmbCantidad_SelectionChanged"/>
-                    <ComboBox Name="cmbInsumo1" Grid.Row="1" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged1" Visibility="Collapsed"/>
+                    <ComboBox Name="cmbInsumo1" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="1" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged1" Visibility="Collapsed"/>
                     <ComboBox x:Name="cmbCantidad1" Grid.Column="1" Grid.Row="1" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" SelectionChanged="CmbCantidad_SelectionChanged1" Visibility="Collapsed"/>
-                    <ComboBox Name="cmbInsumo2" Grid.Row="2" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged2" Visibility="Collapsed"/>
+                    <ComboBox Name="cmbInsumo2" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="2" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged2" Visibility="Collapsed"/>
                     <ComboBox x:Name="cmbCantidad2" Grid.Column="1" Grid.Row="2" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" SelectionChanged="CmbCantidad_SelectionChanged2" Visibility="Collapsed"/>
-                    <ComboBox Name="cmbInsumo3" Grid.Row="3" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged3" Visibility="Collapsed"/>
+                    <ComboBox Name="cmbInsumo3" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="3" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged3" Visibility="Collapsed"/>
                     <ComboBox x:Name="cmbCantidad3" Grid.Column="1" Grid.Row="3" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" SelectionChanged="CmbCantidad_SelectionChanged3" Visibility="Collapsed"/>
-                    <ComboBox Name="cmbInsumo4" Grid.Row="4" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged4" Visibility="Collapsed"/>
+                    <ComboBox Name="cmbInsumo4" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="4" Grid.Column="0" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="" SelectionChanged="CmbInsumo_SelectionChanged4" Visibility="Collapsed"/>
                     <ComboBox x:Name="cmbCantidad4" Grid.Column="1" Grid.Row="4" Margin="0,10,10,10" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="40" SelectionChanged="CmbCantidad_SelectionChanged4" Visibility="Collapsed"/>
 
-                    <Image x:Name="imgCerrar1" Grid.Row="1" Grid.Column="2" Source="/Recursos/Error.png" Width="30" Visibility="Collapsed"/>
-                    <Image x:Name="imgCerrar2" Grid.Row="2" Grid.Column="2" Source="/Recursos/Error.png" Width="30" Visibility="Collapsed"/>
-                    <Image x:Name="imgCerrar3" Grid.Row="3" Grid.Column="2" Source="/Recursos/Error.png" Width="30" Visibility="Collapsed"/>
-                    <Image x:Name="imgCerrar4" Grid.Row="4" Grid.Column="2" Source="/Recursos/Error.png" Width="30" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto0" Grid.Row="0" Grid.Column="2" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Label x:Name="lblCosto1" Grid.Row="1" Grid.Column="2" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto2" Grid.Row="2" Grid.Column="2" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto3" Grid.Row="3" Grid.Column="2" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Label x:Name="lblCosto4" Grid.Row="4" Grid.Column="2" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
 
-                    <Label x:Name="lblCosto0" Grid.Row="0" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    <Label x:Name="lblCosto1" Grid.Row="1" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                    <Label x:Name="lblCosto2" Grid.Row="2" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                    <Label x:Name="lblCosto3" Grid.Row="3" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                    <Label x:Name="lblCosto4" Grid.Row="4" Grid.Column="3" Style="{DynamicResource LabelContentStyle}" Content="$0" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                    <Image x:Name="imgEliminar1" Grid.Row="1" Grid.Column="3" Source="/Recursos/Error.png" Width="30" HorizontalAlignment="Left" Cursor="Hand" Visibility="Collapsed" MouseLeftButtonDown="ImgEliminar1_MouseLeftButtonDown"/>
+                    <Image x:Name="imgEliminar2" Grid.Row="2" Grid.Column="3" Source="/Recursos/Error.png" Width="30" HorizontalAlignment="Left" Cursor="Hand" Visibility="Collapsed" MouseLeftButtonDown="ImgEliminar2_MouseLeftButtonDown"/>
+                    <Image x:Name="imgEliminar3" Grid.Row="3" Grid.Column="3" Source="/Recursos/Error.png" Width="30" HorizontalAlignment="Left" Cursor="Hand" Visibility="Collapsed" MouseLeftButtonDown="ImgEliminar3_MouseLeftButtonDown"/>
+                    <Image x:Name="imgEliminar4" Grid.Row="4" Grid.Column="3" Source="/Recursos/Error.png" Width="30" HorizontalAlignment="Left" Cursor="Hand" Visibility="Collapsed" MouseLeftButtonDown="ImgEliminar4_MouseLeftButtonDown"/>
                 </Grid>
 
                 <Image Source="/Recursos/IconoMas.png" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Width="30" Margin="10"/>

@@ -140,8 +140,7 @@ namespace DoughMinder___Client.Vista
 
             for (int i = 0; i <= ultimaFila; i++)
             {
-                string nombreCosto = "lblCosto" + i.ToString();
-                Label lblCosto = this.FindName(nombreCosto) as Label;
+                Label lblCosto = ObtenerLabelCostoProducto(i);
 
                 if (lblCosto != null)
                 {
@@ -339,37 +338,17 @@ namespace DoughMinder___Client.Vista
         {
             if (ultimaFila < 5)
             {
-                string nombreProducto = "cmbProducto" + ultimaFila.ToString();
-                ComboBox comboBox = this.FindName(nombreProducto) as ComboBox;
+                ComboBox cmbProducto = ObtenerComboBoxProducto(ultimaFila);
+                cmbProducto.Visibility = Visibility.Visible;
 
-                if (comboBox != null)
-                {
-                    comboBox.Visibility = Visibility.Visible;
-                }
+                ComboBox cmbCantidad = ObtenerComboBoxCantidad(ultimaFila);
+                cmbCantidad.Visibility = Visibility.Visible;
 
-                string nombreCantidad = "cmbCantidad" + ultimaFila.ToString();
-                ComboBox comboBox1 = this.FindName(nombreCantidad) as ComboBox;
+                Image imgEliminar = ObtenerImageEliminar(ultimaFila);
+                imgEliminar.Visibility = Visibility.Visible;
 
-                if (comboBox1 != null)
-                {
-                    comboBox1.Visibility = Visibility.Visible;
-                }
-
-                string nombreEliminar = "imgEliminar" + ultimaFila.ToString();
-                Image image = this.FindName(nombreEliminar) as Image;
-
-                if (image != null)
-                {
-                    image.Visibility = Visibility.Visible;
-                }
-
-                string nombreCosto = "lblCosto" + ultimaFila.ToString();
-                Label label = FindName(nombreCosto) as Label;
-
-                if (label != null)
-                {
-                    label.Visibility = Visibility.Visible;
-                }
+                Label lblCosto = ObtenerLabelCostoProducto(ultimaFila);
+                lblCosto.Visibility = Visibility.Visible;
 
                 ultimaFila++;
             }
@@ -619,49 +598,52 @@ namespace DoughMinder___Client.Vista
             List<PedidoProducto> pedidoProductos = RecuperarProductosAgregados();
             Pedido pedido = new Pedido();
 
-            pedido.Fecha = RecuperarFecha();
-            pedido.CostoTotal = RecuperarCostoTotal();
-            pedido.Estado = "Ordenado";
-            pedido.Usuario = SesionSingleton.Instance.Usuario;
-
-            if (chxDomicilio.IsChecked == true)
+            if (ValidarActualizacionCantidadProducto(pedidoProductos))
             {
-                string nombreCliente = txtbCliente.Text;
-                pedido.NombreCliente = nombreCliente;
+                pedido.Fecha = RecuperarFecha();
+                pedido.CostoTotal = RecuperarCostoTotal();
+                pedido.Estado = "Ordenado";
+                pedido.Usuario = SesionSingleton.Instance.Usuario;
 
-                string domicilio = txtbDireccion.Text;
-                pedido.Direccion = domicilio;
-
-                string telefono = txtbTelefono.Text;
-                pedido.TelefonoCliente = telefono;
-
-                pedido.TipoEntrega = "Domicilio";
-            }
-            else
-            {
-                pedido.TipoEntrega = "En sitio";
-            }
-
-            try
-            {
-                string clave = pedidoClient.RegistrarPedido(pedido, pedidoProductos.ToArray());
-                if (clave.Contains("PED-"))
+                if (chxDomicilio.IsChecked == true)
                 {
-                    MostrarMensajeRegistroExitoso("Pedido " + clave + " registrado correctamente");
-                    MostrarVentanaMenuPedidos();
+                    string nombreCliente = txtbCliente.Text;
+                    pedido.NombreCliente = nombreCliente;
+
+                    string domicilio = txtbDireccion.Text;
+                    pedido.Direccion = domicilio;
+
+                    string telefono = txtbTelefono.Text;
+                    pedido.TelefonoCliente = telefono;
+
+                    pedido.TipoEntrega = "Domicilio";
                 }
                 else
                 {
-                    MostrarMensajeSinConexionBase();
+                    pedido.TipoEntrega = "En sitio";
                 }
-            }
-            catch (TimeoutException ex)
-            {
-                MostrarMensajeSinConexionServidor();
-            }
-            catch (CommunicationException ex)
-            {
-                MostrarMensajeSinConexionServidor();
+
+                try
+                {
+                    string clave = pedidoClient.RegistrarPedido(pedido, pedidoProductos.ToArray());
+                    if (clave.Contains("PED-"))
+                    {
+                        MostrarMensajeRegistroExitoso("Pedido " + clave + " registrado correctamente");
+                        MostrarVentanaMenuPedidos();
+                    }
+                    else
+                    {
+                        MostrarMensajeSinConexionBase();
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
             }
         }
 
@@ -687,10 +669,10 @@ namespace DoughMinder___Client.Vista
             return pedidoProducto;
         }
 
-        private void ActualizarCantidadProducto(List<PedidoProducto> pedidoProductos)
+        private bool ValidarActualizacionCantidadProducto(List<PedidoProducto> pedidoProductos)
         {
-            List<string> productosNoValidos = new List<string>();
-            bool hayProductosNoValidos = false;
+            string productosNoValidos = string.Empty;
+            bool esValido = false;
 
             foreach (PedidoProducto pedidoProducto in pedidoProductos)
             {
@@ -698,19 +680,21 @@ namespace DoughMinder___Client.Vista
 
                 if (producto.Cantidad >= pedidoProducto.Cantidad)
                 {
-
+                    esValido = true;
                 }
                 else
                 {
-                    productosNoValidos.Add(producto.Nombre);
-                    hayProductosNoValidos = true;
+                    productosNoValidos.Concat(producto.Nombre + ", ");
                 }
             }
 
-            if (hayProductosNoValidos)
+            if (!string.IsNullOrEmpty(productosNoValidos))
             {
-                MostrarMensajeInformacionIncorrecta("No existen cantidades suficientes de los siguientes productos: ");
+                MostrarMensajeInformacionIncorrecta("No existen cantidades suficientes de los siguientes productos: " + productosNoValidos);
+                esValido = false;
             }
+
+            return esValido;
         }
 
         private Producto BuscarProducto(PedidoProducto pedidoProducto)
@@ -811,11 +795,11 @@ namespace DoughMinder___Client.Vista
             bool esUltimo = false;
             int numUltimoCombobox = 0;
 
-            ultimaFila--;
 
             for (int i = num; i < 5; i++)
             {
                 ComboBox cmbSiguiente = ObtenerComboBoxProducto(i + 1);
+                ComboBox cmbActual = ObtenerComboBoxProducto(i);
 
                 if (cmbSiguiente != null)
                 {
@@ -824,15 +808,21 @@ namespace DoughMinder___Client.Vista
                         RecorrerInformacionProducto(i);
                         haRecorridoInformacion = true;
                     }
-                    else if (!cmbSiguiente.IsVisible || cmbSiguiente.SelectedIndex == -1)
+                    else if (!cmbSiguiente.IsVisible && cmbSiguiente.SelectedIndex == -1)
                     {
                         numUltimoCombobox = i;
                         break;
                     }
+                    else if (cmbActual.SelectedIndex > -1)
+                    {
+                        numUltimoCombobox = i;
+                        AgregarProductoTodosCombobox(cmbActual, numUltimoCombobox);
+                        ReestablecerComboboxProducto(i);
+                    }
                 }
                 else
                 {
-                    OcultarInformacionProducto(i);
+                    numUltimoCombobox = i;
                     esUltimo = true;
                 }
             }
@@ -841,9 +831,10 @@ namespace DoughMinder___Client.Vista
             {
                 ComboBox cmbActual = ObtenerComboBoxProducto(numUltimoCombobox);
                 AgregarProductoTodosCombobox(cmbActual, numUltimoCombobox);
-                OcultarInformacionProducto(numUltimoCombobox);
             }
-            
+
+            OcultarInformacionProducto(numUltimoCombobox);
+            ultimaFila--;
             lblProductoError.Visibility = Visibility.Collapsed;
         }
 
@@ -868,19 +859,8 @@ namespace DoughMinder___Client.Vista
                     cmbProductoSiguiente.Items.Remove(cmbProductoSiguiente.SelectedValue.ToString());
                 }
 
-                cmbCantidadSiguiente.Visibility = Visibility.Collapsed;
-                cmbCantidadSiguiente.SelectedIndex = -1;
-                cmbProductoSiguiente.Visibility = Visibility.Collapsed;
-                cmbProductoSiguiente.SelectedIndex = -1;
-
-                Label lblCostoSiguiente = ObtenerLabelProducto(numCombobox + 1);
-                lblCostoSiguiente.Visibility = Visibility.Collapsed;
-
-                Label lblCostoActual = ObtenerLabelProducto(numCombobox);
+                Label lblCostoActual = ObtenerLabelCostoProducto(numCombobox);
                 lblCostoActual.Visibility = Visibility.Visible;
-
-                Image imgEliminarSiguiente = ObtenerImageEliminar(numCombobox + 1);
-                imgEliminarSiguiente.Visibility = Visibility.Collapsed;
 
                 Image imgEliminarActual = ObtenerImageEliminar(numCombobox);
                 imgEliminarActual.Visibility = Visibility.Visible;
@@ -898,7 +878,7 @@ namespace DoughMinder___Client.Vista
             cmbCantidadActual.SelectedIndex = -1;
             cmbCantidadActual.IsEnabled = false;
 
-            Label lblCostoActual = ObtenerLabelProducto(numCombobox);
+            Label lblCostoActual = ObtenerLabelCostoProducto(numCombobox);
 
             if (lblCostoActual != null)
             {
@@ -913,6 +893,18 @@ namespace DoughMinder___Client.Vista
             }
         }
 
+        private void ReestablecerComboboxProducto(int numCombobox)
+        {
+            ComboBox cmbProducto = ObtenerComboBoxProducto(numCombobox);
+            ComboBox cmbCantidad = ObtenerComboBoxCantidad(numCombobox);
+            Label lblCostoActual = ObtenerLabelCostoProducto(numCombobox);
+
+            cmbProducto.SelectedIndex = -1;
+            cmbCantidad.SelectedIndex = -1;
+            cmbCantidad.IsEnabled = false;
+            lblCostoActual.Content = "$0";
+        }
+
         private Image ObtenerImageEliminar(int num)
         {
             string nombreImage = "imgEliminar" + num.ToString();
@@ -921,7 +913,7 @@ namespace DoughMinder___Client.Vista
             return image;
         }
 
-        private Label ObtenerLabelProducto(int num)
+        private Label ObtenerLabelCostoProducto(int num)
         {
             string nombreCosto = "lblCosto" + num.ToString();
             Label label = FindName(nombreCosto) as Label;

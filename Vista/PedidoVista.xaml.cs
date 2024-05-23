@@ -44,26 +44,30 @@ namespace DoughMinder___Client.Vista
         private void SetPedido()
         {
             Pedido pedido = RecuperarPedido();
-            lblClave.Content = clave;
-            lblTipoEntrega.Content = "Tipo de entrega: " + pedido.TipoEntrega;
-            lblTotal.Content = "Costo total: $" + pedido.CostoTotal.ToString();
-            lblFecha.Content = "Fecha: " + pedido.Fecha.ToString();
-            lblEstado.Content = "Estado: " + pedido.Estado;
-            lblEmpleado.Content = "Empleado: " + RecuperarEmpleado(pedido.Usuario);
 
-            if (pedido.TipoEntrega.Equals("Domicilio"))
+            if (pedido != null)
             {
-                lblCliente.Content = "Cliente: " + pedido.NombreCliente;
-                lblCliente.Visibility = Visibility.Visible;
+                lblClave.Content = clave;
+                lblTipoEntrega.Content = "Tipo de entrega: " + pedido.TipoEntrega;
+                lblTotal.Content = "Costo total: $" + pedido.CostoTotal.ToString();
+                lblFecha.Content = "Fecha: " + pedido.Fecha.ToString();
+                lblEstado.Content = "Estado: " + pedido.Estado;
+                lblEmpleado.Content = "Empleado: " + RecuperarEmpleado(pedido.Usuario);
 
-                lblTelefono.Content = "Teléfono: " + pedido.TelefonoCliente;
-                lblTelefono.Visibility = Visibility.Visible;
+                if (pedido.TipoEntrega.Equals("Domicilio"))
+                {
+                    lblCliente.Content = "Cliente: " + pedido.NombreCliente;
+                    lblCliente.Visibility = Visibility.Visible;
 
-                lblDireccion.Text = "Dirección: " + pedido.Direccion;
-                lblDireccion.Visibility = Visibility.Visible;
+                    lblTelefono.Content = "Teléfono: " + pedido.TelefonoCliente;
+                    lblTelefono.Visibility = Visibility.Visible;
+
+                    lblDireccion.Text = "Dirección: " + pedido.Direccion;
+                    lblDireccion.Visibility = Visibility.Visible;
+                }
+
+                SetProductos(pedido.IdPedido);
             }
-
-            SetProductos(pedido.IdPedido);
         }
 
         private void SetProductos(int idPedido)

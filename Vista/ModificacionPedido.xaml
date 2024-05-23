@@ -82,23 +82,23 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <ComboBox Name="cmbProducto0" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" SelectionChanged="CmbProducto0_SelectionChanged">
+                    <ComboBox Name="cmbProducto0" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" SelectionChanged="CmbProducto0_SelectionChanged">
                     </ComboBox>
                     <ComboBox x:Name="cmbCantidad0" Grid.Column="1" Grid.Row="0" Margin="0,0,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" SelectionChanged="CmbCantidad0_SelectionChanged"/>
 
-                    <ComboBox Name="cmbProducto1" Grid.Row="1" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto1_SelectionChanged">
+                    <ComboBox Name="cmbProducto1" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="1" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto1_SelectionChanged">
                     </ComboBox>
                     <ComboBox x:Name="cmbCantidad1" Grid.Column="1" Grid.Row="1" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad1_SelectionChanged"/>
 
-                    <ComboBox Name="cmbProducto2" Grid.Row="2" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto2_SelectionChanged"  >
+                    <ComboBox Name="cmbProducto2" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="2" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto2_SelectionChanged"  >
                     </ComboBox>
                     <ComboBox x:Name="cmbCantidad2" Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad2_SelectionChanged"/>
 
-                    <ComboBox Name="cmbProducto3" Grid.Row="3" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto3_SelectionChanged">
+                    <ComboBox Name="cmbProducto3" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="3" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto3_SelectionChanged">
                     </ComboBox>
                     <ComboBox x:Name="cmbCantidad3" Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad3_SelectionChanged"/>
 
-                    <ComboBox Name="cmbProducto4" Grid.Row="4" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto4_SelectionChanged">
+                    <ComboBox Name="cmbProducto4" DropDownOpened="CmbProducto_DropDownOpened" DropDownClosed="CmbProducto_DropDownClosed" Grid.Row="4" Grid.Column="0" Margin="0,10,10,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" IsEditable="True" IsTextSearchEnabled="True" Visibility="Collapsed" SelectionChanged="CmbProducto4_SelectionChanged">
                     </ComboBox>
 
                     <ComboBox x:Name="cmbCantidad4" Grid.Column="1" Grid.Row="4" Margin="0,10,0,0" Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Center" Height="35" Visibility="Collapsed" SelectionChanged="CmbCantidad4_SelectionChanged"/>
@@ -124,9 +124,10 @@
 
                 <Label Grid.Row="7" Grid.Column="0" FontSize="17" Content="Costo total: $0" x:Name="lblTotal"/>
 
+                <TextBlock Grid.Row="8" Grid.Column="0" FontSize="17" Text="Empleado: " x:Name="lblEmpleado" TextWrapping="Wrap"/>
                 <Label Grid.Row="5" Grid.Column="1" FontSize="17" Content="Fecha: " x:Name="lblFecha"/>
                 <Label Grid.Row="6" Grid.Column="1" FontSize="17" Content="Tipo de entrega: " x:Name="lblTipoEntrega"/>
-
+                
                 <Label Grid.Row="7" Grid.Column="1" FontSize="17" Content="Cliente:" x:Name="lblCliente" Visibility="Collapsed"/>
                 <TextBlock Grid.Row="9" Grid.Column="1" FontSize="17" Text="Dirección:" x:Name="lblDireccion" Visibility="Collapsed" TextWrapping="Wrap"/>
                 <Label Grid.Row="8" Grid.Column="1" FontSize="17" Content="Teléfono:" x:Name="lblTelefono" Visibility="Collapsed"/>
@@ -135,6 +136,9 @@
                 <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Content="Modificar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Foreground="White" MouseLeftButtonDown="BtnModificar_MouseLeftButtonDown"/>
                 <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Content="Para cancelar la modificación del pedido, presione regresar" HorizontalAlignment="Center" Opacity="0.5"/>
 
+                <Image Height="30" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" Name="btnLimpiar" HorizontalAlignment="Left" Source="/Recursos/BotonRojo.png" MouseLeftButtonDown="BtnLimpiar_MouseLeftButtonDown" Cursor="Hand"/>
+                <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Content="Limpiar" HorizontalAlignment="Left" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="35,0,0,0" VerticalContentAlignment="Top" Foreground="White"/>
+                
             </Grid>
         </ScrollViewer>
 
