@@ -30,7 +30,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
             <Image Source="/Recursos/FondoVerde.png" Grid.Row="0" Grid.RowSpan="9" Grid.Column="0" Width="300" HorizontalAlignment="Left"/>
 
             <Image Source="/Recursos/MicrosoftTeams-image.png" Grid.Row="0" Height="50"/>
@@ -93,7 +93,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="/Recursos/FinanzasIcon.png" Grid.Column="0" Width="40"/>
-                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Finanzas" HorizontalAlignment="Left" MouseDown="AbrirFinanzas" VerticalAlignment="Center"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Finanzas" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
             </Grid>
 
             <Grid x:Name="gpPedidos" Grid.Row="7">
@@ -113,8 +113,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="/Recursos/SalirIcon.png" Grid.Column="0" Width="25"/>
-                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
-                <Image Source="/Recursos/Inventario.png" Grid.Column="1" Width="40" Margin="170,0,10,0" MouseDown="AbrirInventario"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="Salir" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
 
@@ -136,10 +135,10 @@
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <Grid x:Name="gpVistaProductos">
-
+                    
                 </Grid>
             </ScrollViewer>
         </Grid>
-
+        
     </Grid>
 </Page>

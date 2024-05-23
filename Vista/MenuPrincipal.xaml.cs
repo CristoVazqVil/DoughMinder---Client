@@ -1,7 +1,6 @@
 ﻿using DoughMinder___Client.DoughMinderServicio;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,28 +41,24 @@ namespace DoughMinder___Client.Vista
 
             foreach (Producto producto in productos)
             {
-                /*if (producto.Foto == null)
+                if (producto.RutaFoto == null)
                 {
-                    producto.Foto = "/Recursos/ProductosBlack.png";
-                }*/
+                    producto.RutaFoto = "/Recursos/ProductosBlack.png";
+                }
 
                 Image image = new Image();
-
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = new MemoryStream(producto.Foto);
-                bitmapImage.EndInit();
+                BitmapImage bitmapImage = new BitmapImage(new Uri(producto.RutaFoto, UriKind.Relative));
 
                 image.Source = bitmapImage;
-                image.Tag = producto.Nombre;
-                image.Width = 150;
+                image.Tag = producto.RutaFoto;
+                image.Width = 80;
 
                 Label lblDescripcion = new Label();
                 lblDescripcion.Content = producto.Nombre + "  $" + producto.Precio;
 
                 Grid gpProductoItem = new Grid();
-                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(120) });
-                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(120) });
+                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
+                gpProductoItem.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
                 gpProductoItem.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
                 Grid.SetRow(image, 0);
@@ -101,7 +96,7 @@ namespace DoughMinder___Client.Vista
 
         private void AbrirInsumos(object sender, MouseButtonEventArgs e)
         {
-            MenuInsumos insumos = new MenuInsumos();
+            ModificacionInsumos insumos = new ModificacionInsumos();
             this.NavigationService.Navigate(insumos);
         }
 
@@ -117,16 +112,12 @@ namespace DoughMinder___Client.Vista
             this.NavigationService.Navigate(proveedores);
         }
 
-        private void AbrirFinanzas(object sender, MouseButtonEventArgs e)
+        private void Salir(object sender, MouseButtonEventArgs e)
         {
-            HistorialMovimientos movimientos = new HistorialMovimientos();
-            this.NavigationService.Navigate(movimientos);
+            string appName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            Application.Current.Shutdown();
+            System.Diagnostics.Process.Start(appName);
         }
 
-        private void AbrirInventario(object sender, MouseButtonEventArgs e)
-        {
-            Inventario inventario = new Inventario();
-            this.NavigationService.Navigate(inventario);
-        }
     }
 }

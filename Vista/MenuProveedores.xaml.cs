@@ -63,20 +63,15 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
-                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
 
             return proveedores;
         }
-
-
-
 
 
         private void MostrarMensajeSinConexionServidor()
@@ -121,8 +116,9 @@ namespace DoughMinder___Client.Vista
 
         private void clickIrAtrás(object sender, MouseButtonEventArgs e)
         {
-            MenuPrincipal principal = new MenuPrincipal();
-            this.NavigationService.Navigate(principal);
+
+            MenuPrincipal menu = new MenuPrincipal();
+            this.NavigationService.Navigate(menu);
         }
     }
 }

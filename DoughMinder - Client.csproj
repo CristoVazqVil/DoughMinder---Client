@@ -35,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -92,17 +86,11 @@
     <Compile Include="Vista\Emergentes\ConexionFallidaBase.xaml.cs">
       <DependentUpon>ConexionFallidaBase.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Emergentes\DescargaExitosa.xaml.cs">
-      <DependentUpon>DescargaExitosa.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Vista\Emergentes\DeshabilitacionExitosa.xaml.cs">
       <DependentUpon>DeshabilitacionExitosa.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\EmpleadoExistente.xaml.cs">
       <DependentUpon>EmpleadoExistente.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\Emergentes\ErrorGenerarPDF.xaml.cs">
-      <DependentUpon>ErrorGenerarPDF.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
       <DependentUpon>InsumoExistente.xaml</DependentUpon>
@@ -134,24 +122,12 @@
     <Compile Include="Vista\Emergentes\SinConexionServidor.xaml.cs">
       <DependentUpon>SinConexionServidor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vista\HistorialMovimientos.xaml.cs">
-      <DependentUpon>HistorialMovimientos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\Inventario.xaml.cs">
-      <DependentUpon>Inventario.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Vista\MenuEmpleados.xaml.cs">
       <DependentUpon>MenuEmpleados.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\InicioSesion.xaml.cs">
       <DependentUpon>InicioSesion.xaml</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Vista\MenuInsumos.xaml.cs">
-      <DependentUpon>MenuInsumos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\MenuPedidos.xaml.cs">
-      <DependentUpon>MenuPedidos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
@@ -167,9 +143,6 @@
     </Compile>
     <Compile Include="Vista\ModificacionInsumos.xaml.cs">
       <DependentUpon>ModificacionInsumos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\ModificacionPedido.xaml.cs">
-      <DependentUpon>ModificacionPedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\ModificacionProductos.xaml.cs">
       <DependentUpon>ModificacionProductos.xaml</DependentUpon>
@@ -257,19 +230,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vista\Emergentes\DescargaExitosa.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Vista\Emergentes\DeshabilitacionExitosa.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\Emergentes\EmpleadoExistente.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Vista\Emergentes\ErrorGenerarPDF.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -313,14 +278,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vista\HistorialMovimientos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Vista\Inventario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Vista\MenuEmpleados.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -329,14 +286,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Include="Vista\MenuInsumos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Vista\MenuPedidos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vista\MenuPrincipal.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -355,10 +304,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\ModificacionInsumos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Vista\ModificacionPedido.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -435,15 +380,6 @@
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Login.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Movimiento.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Pedido.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.PedidoProducto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Producto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -451,9 +387,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Receta.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Solicitud.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\item.xsd">
@@ -485,19 +418,12 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Recursos\Inventario.png" />
-    <Resource Include="Recursos\ImagenesProductos\ball.png" />
-    <Resource Include="Recursos\ImagenesProductos\south.png" />
-    <Resource Include="Recursos\ImagenesProductos\ty.png" />
-    <Resource Include="Recursos\ImagenesProductos\mapa.png" />
-    <Resource Include="Recursos\InsumosIcon.png" />
-    <Resource Include="Recursos\PedidosIcon.png" />
-    <Resource Include="Recursos\ProductosBlack.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Recursos\ProductosIcon.png" />
     <Resource Include="Recursos\ProveedoresIcon.png" />
     <Resource Include="Recursos\SalirIcon.png" />
+    <Resource Include="Recursos\ProductosIcon.png" />
+    <Resource Include="Recursos\ProductosBlack.png" />
+    <Resource Include="Recursos\PedidosIcon.png" />
+    <Resource Include="Recursos\InsumosIcon.png" />
     <Resource Include="Recursos\logoBlack.png" />
     <Resource Include="Recursos\IconoSolicitudInsumo.png" />
     <Resource Include="Recursos\IconoMasAzul.png" />
@@ -540,8 +466,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Resource Include="Recursos\FinanzasIcon.png" />
     <Resource Include="Recursos\EmpleadosIcon.png" />
+    <Resource Include="Recursos\FinanzasIcon.png" />
     <Content Include="Recursos\FondoVerde.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -553,6 +479,5 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\DoughMinderServicio\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,19 +34,23 @@ namespace DoughMinder___Client.Vista
 
             this.proveedor = proveedor;
 
-            if (proveedor != null)
-            {
-                txbNombre.Text = proveedor.Nombre;
-                txbCorreo.Text = proveedor.Email;
-                txbTelefono.Text = proveedor.Telefono;
-                txbRFC.Text = proveedor.RFC;
+            txbNombre.Text = proveedor.Nombre;
+            txbCorreo.Text = proveedor.Email;
+            txbTelefono.Text = proveedor.Telefono;
+            txbRFC.Text = proveedor.RFC;
+            chkEstado.IsChecked = proveedor.Estado ?? false;
 
-                if (!string.IsNullOrEmpty(proveedor.Nombre))
-                {
-                    ProveedorCargado();
-                }
+
+
+            if (!string.IsNullOrEmpty(proveedor.Nombre))
+            {
+                ProveedorCargado();
+
             }
         }
+
+    
+
 
         public void ProveedorCargado()
         {
@@ -55,10 +59,16 @@ namespace DoughMinder___Client.Vista
             txbTelefono.IsEnabled = false;
             txbRFC.IsEnabled = false;
             btnRegistro.IsEnabled = false;
+            chkEstado  .IsEnabled = false;
             btnRegistro.Visibility = Visibility.Collapsed;
             btnModificar.Visibility = Visibility.Visible;
 
         }
+
+
+
+
+
         public void InformacionProveedor(Proveedor proveedor)
         {
             InitializeComponent();
@@ -73,10 +83,14 @@ namespace DoughMinder___Client.Vista
 
         private void RegistrarProveedor()
         {
+
+            ReiniciarColoresTextBox();
+
             if (!ValidarCamposVacios())
             {
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
+                MarcarCamposVacios();
             }
             else
             {
@@ -89,6 +103,8 @@ namespace DoughMinder___Client.Vista
                     proveedor.Email = txbCorreo.Text;
                     proveedor.Telefono = txbTelefono.Text;
                     proveedor.RFC = txbRFC.Text;
+
+                    proveedor.Estado = chkEstado.IsChecked ?? false;
 
 
                     int codigo = cliente.GuardarProveedor(proveedor);
@@ -116,12 +132,10 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
@@ -146,6 +160,8 @@ namespace DoughMinder___Client.Vista
 
             return true;
         }
+
+
 
         private void MostrarMensajeSinConexionServidor()
         {
@@ -180,8 +196,7 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            MenuProveedores proveedores = new MenuProveedores();
-            this.NavigationService.Navigate(proveedores);
+            NavigationService.GoBack();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -204,7 +219,7 @@ namespace DoughMinder___Client.Vista
             txbRFC.IsEnabled = true;
             btnRegistro.IsEnabled = false;
             btnModificar.Visibility = Visibility.Collapsed;
-
+            chkEstado.IsEnabled = true;
             btnActualizarProveedor.Visibility = Visibility.Visible;
             btnActualizarProveedor.IsEnabled = true;
 
@@ -212,10 +227,14 @@ namespace DoughMinder___Client.Vista
 
         private void ActualizarProveedor(object sender, MouseButtonEventArgs e)
         {
+            ReiniciarColoresTextBox();
+
             if (!ValidarCamposVacios())
             {
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
+                MarcarCamposVacios();
+
             }
             else
             {
@@ -231,14 +250,14 @@ namespace DoughMinder___Client.Vista
                         RegistrarProveedor();
                     }
                 }
+
+
                 catch (TimeoutException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
 
@@ -248,11 +267,39 @@ namespace DoughMinder___Client.Vista
         private void ClickRegistrar(object sender, MouseButtonEventArgs e)
         {
             RegistrarProveedor();
-            
+            ReiniciarColoresTextBox();
+
+
         }
 
-    }
 
+
+        private void MarcarCamposVacios()
+        {
+            if (string.IsNullOrWhiteSpace(txbNombre.Text))
+                brdrNombre.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbTelefono.Text))
+                brdrNumero.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbCorreo.Text))
+                brdrEmail.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbRFC.Text))
+                brdrRFC.BorderBrush = Brushes.Red;
+        }
+
+        private void ReiniciarColoresTextBox()
+        {
+            brdrNumero.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrEmail.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrRFC.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrNombre.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+
+        }
+
+
+    }
 }
 
     
