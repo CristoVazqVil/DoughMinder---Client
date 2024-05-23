@@ -38,12 +38,6 @@ namespace DoughMinder___Client.Vista
             SetFecha();
         }
 
-        private void SetFecha()
-        {
-            DateTime fechaActual = DateTime.Now;
-            lblFecha.Content = fechaActual.ToString();
-        }
-
         private void SetTipoMovimiento()
         {
             var tipos = Enum.GetValues(typeof(TipoMovimiento));
@@ -52,6 +46,12 @@ namespace DoughMinder___Client.Vista
             {
                 cmbTipo.Items.Add(tipo);
             }
+        }
+
+        private void SetFecha()
+        {
+            DateTime fechaActual = DateTime.Now;
+            lblFecha.Content = fechaActual.ToString();
         }
 
         private bool ValidarInformacion()
@@ -63,6 +63,7 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblTipoError.Content = "Este campo no puede estar vacío";
                 lblTipoError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             if (string.IsNullOrEmpty(txtbDescripcion.Text))
@@ -70,6 +71,7 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblDescripcionError.Content = "Este campo no puede estar vacío";
                 lblDescripcionError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             if (string.IsNullOrEmpty(txtbCostoTotal.Text))
@@ -77,6 +79,7 @@ namespace DoughMinder___Client.Vista
                 esValido = false;
                 lblCostoError.Content = "Este campo no puede estar vacío";
                 lblCostoError.Visibility = Visibility.Visible;
+                MostrarMensajeCamposVacios();
             }
 
             return esValido;
@@ -84,22 +87,22 @@ namespace DoughMinder___Client.Vista
 
         private decimal RecuperarCostoTotal()
         {
-            decimal costoTotal = 0;
+            decimal costo = 0;
             string costoString = txtbCostoTotal.Text;
 
             if (cmbTipo.SelectedItem.ToString() == TipoMovimiento.Gastos.ToString())
             {
                 string costoNegativo = "-" + costoString;
                 decimal costoDecimal = Convert.ToDecimal(costoNegativo);
-                costoTotal = costoDecimal;
+                costo = costoDecimal;
             }
             else
             {
                 decimal costoDecimal = Convert.ToDecimal(costoString);
-                costoTotal = costoDecimal;
+                costo = costoDecimal;
             }
 
-            return costoTotal;
+            return costo;
         }
 
         private DateTime RecuperarFecha()
@@ -118,8 +121,8 @@ namespace DoughMinder___Client.Vista
                     MovimientoClient client = new MovimientoClient();
                     Movimiento movimiento = new Movimiento();
 
-                    movimiento.Descripcion = txtbDescripcion.Text;
                     movimiento.CostoTotal = RecuperarCostoTotal();
+                    movimiento.Descripcion = txtbDescripcion.Text;
                     movimiento.Fecha = RecuperarFecha();
 
                     int codigo = client.RegistrarMovimiento(movimiento);
@@ -127,7 +130,7 @@ namespace DoughMinder___Client.Vista
                     if (codigo == 1)
                     {
                         MostrarMensajeRegistroExitoso();
-                        MostrarHistorialMovimiento();
+                        MostrarHistorialMovimientos();
                     }
                     else
                     {
@@ -136,27 +139,14 @@ namespace DoughMinder___Client.Vista
                 }
                 catch (TimeoutException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
                 catch (CommunicationException ex)
                 {
-                    Console.WriteLine(ex.Message);
                     MostrarMensajeSinConexionServidor();
                 }
             }
 
-        }
-
-        private void LimpiarCampos()
-        {
-            lblCostoError.Visibility = Visibility.Collapsed;
-            lblDescripcionError.Visibility = Visibility.Collapsed;
-            lblTipoError.Visibility = Visibility.Collapsed;
-
-            txtbCostoTotal.Text = string.Empty;
-            txtbDescripcion.Text = string.Empty;
-            cmbTipo.SelectedIndex = -1;
         }
 
         private void CmbTipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -188,12 +178,6 @@ namespace DoughMinder___Client.Vista
             registroExitoso.Show();
         }
 
-        private void MostrarHistorialMovimiento()
-        {
-            HistorialMovimientos historialMovimientos = new HistorialMovimientos();
-            NavigationService.Navigate(historialMovimientos);
-        }
-
         private void MostrarMensajeSinConexionBase()
         {
             ConexionFallidaBase conexionFallidaBase = new ConexionFallidaBase();
@@ -207,7 +191,7 @@ namespace DoughMinder___Client.Vista
 
         private void TxtbDescripcion_TextChanged(object sender, TextChangedEventArgs e)
         {
-            lblDescripcionError.Visibility = Visibility.Collapsed;
+            lblDescripcionError.Visibility = Visibility.Collapsed;                                                                                                          
         }
 
         private void TxtbCostoTotal_TextChanged(object sender, TextChangedEventArgs e)
@@ -217,12 +201,20 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            MostrarHistorialMovimiento();
+            MostrarHistorialMovimientos();
         }
 
-        private void BtnLimpiar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void MostrarHistorialMovimientos()
         {
-            LimpiarCampos();
+            HistorialMovimientos historialMovimientos = new HistorialMovimientos();
+            NavigationService.Navigate(historialMovimientos);
+        }
+
+        private void MostrarMensajeCamposVacios()
+        {
+            CamposVacios camposVacios = new CamposVacios();
+            camposVacios.Show();
         }
     }
 }
+
