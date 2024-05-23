@@ -26,12 +26,12 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
+            
             <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Source="/Recursos/FondoVerde.png" Stretch="UniformToFill"  />
             <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,10,0,0" Source="/Recursos/MicrosoftTeams-image.png"/>
 
-            <Image Grid.Column="0" Grid.Row="1" Height="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png" MouseDown="RegresarVentanaAnterior"/>
-            <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
+            <Image Grid.Column="0" Grid.Row="1" Height="40" Name="btnAtras" Cursor="Hand" Source="/Recursos/FlechaAtras.png" MouseDown="RegresarVentanaAnterior"/>
+            <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás" MouseDown="RegresarVentanaAnterior"/>
 
             <Image Grid.Column="0" Grid.Row="2" Height="40" Source="/Recursos/Agregar.png"/>
             <Label Grid.Column="1" Grid.Row="2" Content="Registrar &#xD;&#xA;Movimiento" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
@@ -57,7 +57,7 @@
 
                 <Label Grid.Row="0" Style="{DynamicResource LabelTitleStyle}" Content="Movimiento" Height="40" Width="175"/>
 
-                <Label x:Name="lblFecha" Grid.Row="0" Content="Fecha: 00/00/00 a las 00:00:00" Style="{DynamicResource LabelContentStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+                <Label Grid.Row="0" x:Name="lblFecha" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Fecha: 00/00/00 a las 00:00:00" Margin="0,0,20,0" Style="{DynamicResource LabelContentStyle}" FontSize="14"/>
 
                 <ComboBox Grid.Row="2" Name="cmbTipo" HorizontalAlignment="Left" Width="260" Style="{DynamicResource ComboBoxStyle1}" Height="40" SelectionChanged="CmbTipo_SelectionChanged"/>
 
@@ -71,7 +71,7 @@
 
                 <Label Style="{DynamicResource ErrorLabelStyle}" Grid.Row="9" Name="lblCostoError" Content="error" Visibility="Collapsed"/>
 
-                <Image Grid.Row="10" Height="30" VerticalAlignment="Center" Name="btnRegistrar" Source="/Recursos/BotonVerde.png" MouseLeftButtonDown="BtnRegistrar_MouseLeftButtonDown"/>
+                <Image Grid.Row="10" Height="30" VerticalAlignment="Center" Name="btnRegistrar" Source="/Recursos/BotonVerde.png" MouseLeftButtonDown="BtnRegistrar_MouseLeftButtonDown" Cursor="Hand"/>
 
                 <Label Grid.Row="10" Content="Registrar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="103" Foreground="White"/>
 
@@ -80,12 +80,8 @@
                 <Label Grid.Row="4" Name="lblDescripcion" Content="Descripción:" FontSize="17" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="175"/>
 
                 <Label Grid.Row="7" Name="lblCostoTotal" Content="Costo total (MXN):" FontSize="17" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="177"/>
-
-                <Image HorizontalAlignment="Left" Grid.Row="10" Height="30" VerticalAlignment="Center" Name="btnLimpiar" Source="/Recursos/BotonRojo.png" MouseLeftButtonDown="BtnLimpiar_MouseLeftButtonDown"/>
-
-                <Label HorizontalAlignment="Left" Grid.Row="10" Content="Limpiar" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="103" Margin="25,0,0,0" Foreground="White"/>
             </Grid>
         </ScrollViewer>
-
+        
     </Grid>
 </Page>

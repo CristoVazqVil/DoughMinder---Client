@@ -119,5 +119,16 @@ namespace DoughMinder___Client.Vista
             System.Diagnostics.Process.Start(appName);
         }
 
+        private void AbrirPedidos(object sender, MouseButtonEventArgs e)
+        {
+            MenuPedidos pedidos = new MenuPedidos();
+            this.NavigationService.Navigate(pedidos);
+        }
+
+        private void AbrirFinanzas(object sender, MouseButtonEventArgs e)
+        {
+            HistorialMovimientos movimientos = new HistorialMovimientos();
+            this.NavigationService.Navigate(movimientos);
+        }
     }
 }
