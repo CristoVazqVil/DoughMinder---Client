@@ -115,6 +115,7 @@
                 <Image Source="/Recursos/SalirIcon.png" Grid.Column="0" Width="25"/>
                 <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
                 <Image Source="/Recursos/Inventario.png" Grid.Column="1" Width="40" Margin="170,0,10,0" MouseDown="AbrirInventario"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="Salir" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
 

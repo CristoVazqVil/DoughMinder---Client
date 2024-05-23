@@ -128,5 +128,12 @@ namespace DoughMinder___Client.Vista
             Inventario inventario = new Inventario();
             this.NavigationService.Navigate(inventario);
         }
+        private void Salir(object sender, MouseButtonEventArgs e)
+        {
+            string appName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            Application.Current.Shutdown();
+            System.Diagnostics.Process.Start(appName);
+        }
+
     }
 }

@@ -22,11 +22,7 @@
 
         </Grid>
 
-
-        <Grid x:Name="registrar" Margin="0,129,622,261">
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Proveedor" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
-        </Grid>
+        <CheckBox Content="¿Está habilitado?" x:Name="chkEstado" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="33" Width="120" Background="#FF527243"/>
 
 
         <Label Content="Proveedor" HorizontalAlignment="Left" Height="40" Margin="185,14,0,0" VerticalAlignment="Top" Width="125" FontSize="24"/>
@@ -38,28 +34,28 @@
         <Label Content="Número" HorizontalAlignment="Left" Height="26" Margin="188,223,0,0" VerticalAlignment="Top" Width="168"/>
 
 
-        
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,86,0,0" VerticalAlignment="Top" Width="526" Height="34">
+
+        <Border x:Name="brdrNombre" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,86,0,0" VerticalAlignment="Top" Width="526" Height="34">
             <TextBox TextWrapping="Wrap" x:Name="txbNombre" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,172,0,0" VerticalAlignment="Top" Width="526" Height="34">
+        <Border x:Name="brdrEmail" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="189,172,0,0" VerticalAlignment="Top" Width="526" Height="34">
             <TextBox TextWrapping="Wrap" x:Name="txbCorreo"  BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0"/>
         </Border>
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="188,249,0,0" VerticalAlignment="Top" Width="526" Height="36">
+        <Border x:Name="brdrNumero" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="188,249,0,0" VerticalAlignment="Top" Width="526" Height="36">
             <TextBox TextWrapping="Wrap" x:Name="txbTelefono" BorderThickness="0" Background="Transparent" Padding="5" Margin="0,0,16,0" TextChanged="TextBox_TextChanged"/>
         </Border>
 
 
 
-        <Border BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="188,320,0,0" VerticalAlignment="Top" Width="526" Height="36">
+        <Border x:Name="brdrRFC" BorderBrush="#FF527243" BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left" Margin="188,320,0,0" VerticalAlignment="Top" Width="526" Height="36">
             <TextBox TextWrapping="Wrap" x:Name="txbRFC" BorderThickness="0" Background="Transparent" Padding="5" Margin="-1,1,17,-1" TextChanged="TextBox_TextChanged"/>
         </Border>
         <CheckBox Content="Activo" HorizontalAlignment="Left" Margin="190,357,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.151,0.729" Height="19" Width="81" Background="#FF527243" Visibility="Collapsed"/>
 
-        
-                <Label Content="RFC" HorizontalAlignment="Left" Height="26" Margin="189,294,0,0" VerticalAlignment="Top" Width="168"/>
+
+        <Label Content="RFC" HorizontalAlignment="Left" Height="26" Margin="189,294,0,0" VerticalAlignment="Top" Width="168"/>
 
 
 

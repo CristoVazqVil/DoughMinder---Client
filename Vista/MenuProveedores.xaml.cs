@@ -76,9 +76,6 @@ namespace DoughMinder___Client.Vista
         }
 
 
-
-
-
         private void MostrarMensajeSinConexionServidor()
         {
             SinConexionServidor sinConexionServidor = new SinConexionServidor();
@@ -121,8 +118,9 @@ namespace DoughMinder___Client.Vista
 
         private void clickIrAtrás(object sender, MouseButtonEventArgs e)
         {
-            MenuPrincipal principal = new MenuPrincipal();
-            this.NavigationService.Navigate(principal);
+
+            MenuPrincipal menu = new MenuPrincipal();
+            this.NavigationService.Navigate(menu);
         }
     }
 }

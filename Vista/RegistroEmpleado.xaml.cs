@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DoughMinder___Client.DoughMinderServicio;
 using DoughMinder___Client.Vista.Emergentes;
 
 namespace DoughMinder___Client.Vista
@@ -56,6 +57,8 @@ namespace DoughMinder___Client.Vista
                 txbContrasena.IsEnabled = false;
                 txbConfirmaContrasena.IsEnabled = false;
                 cbPuesto.IsEnabled = false;
+                txbRFC.IsEnabled = false;
+                chkEstado.IsEnabled = false;
             }
         }
 
@@ -94,7 +97,6 @@ namespace DoughMinder___Client.Vista
 
                 try
                 {
-                    Console.WriteLine(RFC);
 
                     DoughMinderServicio.EmpleadoClient cliente = new DoughMinderServicio.EmpleadoClient();
                     DoughMinderServicio.Empleado empleado = new DoughMinderServicio.Empleado();
@@ -112,7 +114,8 @@ namespace DoughMinder___Client.Vista
                         txbUsuario.Text = empleado.Usuario;
                         txbContrasena.Password = empleado.Contraseña;
                         txbConfirmaContrasena.Password = empleado.Contraseña;
-                        Console.WriteLine(empleado.IdPuesto);
+                        txbRFC.Text = empleado.RFC;
+                        chkEstado.IsChecked = empleado.Estado ?? false;
 
                         switch (empleado.IdPuesto)
                         {
@@ -155,9 +158,12 @@ namespace DoughMinder___Client.Vista
 
         private void Registrar()
         {
+            ReiniciarColoresTextBox();
 
             if (!ValidarCamposVacios())
             {
+
+                MarcarCamposVacios();
                 CamposVacios camposVacios = new CamposVacios();
                 camposVacios.Show();
             }
@@ -183,7 +189,8 @@ namespace DoughMinder___Client.Vista
                         empleado.Usuario = txbUsuario.Text;
                         empleado.Contraseña = txbContrasena.Password;
                         empleado.Correo = txbCorreo.Text;
-                        empleado.Estado = true;
+                        empleado.Estado = chkEstado.IsChecked ?? false;
+                        empleado.RFC = txbRFC.Text;
 
                         ComboBoxItem item = (ComboBoxItem)cbPuesto.SelectedItem;
                         string puestoSeleccionado = item.Content.ToString();
@@ -208,7 +215,9 @@ namespace DoughMinder___Client.Vista
                         if (codigo == 1)
                         {
                             MostrarMensajeRegistroExitoso();
-                            NavigationService.GoBack();
+
+                            MenuEmpleados empleados = new MenuEmpleados();
+                            this.NavigationService.Navigate(empleados);
 
                         }
                         else
@@ -253,6 +262,80 @@ namespace DoughMinder___Client.Vista
 
             return true;
         }
+
+
+
+        private void MarcarCamposVacios()
+        {
+            if (string.IsNullOrWhiteSpace(txbNombre.Text))
+                brdrNombre.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbDireccion.Text))
+                brdrDireccion.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbMaterno.Text))
+                brdrMaterno.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbRFC.Text))
+                brdrRFC.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbPaterno.Text))
+                brdrPaterno.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbRFC.Text))
+                brdrRFC.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbTelefono.Text))
+                brdrTelefono.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbUsuario.Text))
+                brdrUsuario.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbConfirmaContrasena.Password))
+                bbConfirma.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbContrasena.Password))
+                bbContrasena.BorderBrush = Brushes.Red;
+
+
+            if (string.IsNullOrWhiteSpace(txbContrasena.Password))
+                bbContrasena.BorderBrush = Brushes.Red;
+
+            if (string.IsNullOrWhiteSpace(txbCorreo.Text))
+                brdrCorreo.BorderBrush = Brushes.Red;
+
+            if (cbPuesto.SelectedItem == null)
+            {
+                lblPuesto.Foreground = Brushes.Red;
+            }
+
+
+
+        }
+
+
+        private void ReiniciarColoresTextBox()
+        {
+            brdrTelefono.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrCorreo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrRFC.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrNombre.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrDireccion.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrRFC.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrUsuario.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrMaterno.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            brdrPaterno.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+            lblPuesto.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF527243"));
+        }
+
+
+
 
 
         private void MostrarMensajeSinConexionServidor()
@@ -316,6 +399,8 @@ namespace DoughMinder___Client.Vista
             txbContrasena.IsEnabled = true;
             txbConfirmaContrasena.IsEnabled = true;
             cbPuesto.IsEnabled = true;
+            txbRFC.IsEnabled = true;
+            chkEstado.IsEnabled = true;
 
             btnAceptarModificacion.Visibility = Visibility.Visible;
             lblAceptarModificacion.Visibility = Visibility.Visible;
@@ -337,7 +422,8 @@ namespace DoughMinder___Client.Vista
 
         private void IrAtras(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuEmpleados empleados = new MenuEmpleados();
+            this.NavigationService.Navigate(empleados);
         }
 
         private void ModificarEmpleado(object sender, MouseButtonEventArgs e)
