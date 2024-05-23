@@ -56,8 +56,7 @@ namespace DoughMinder___Client.Vista
             if (pedidos != null && pedidos.Count > 0)
             {
                 lstPedidos.Visibility = Visibility.Visible;
-                lstPedidos.ItemsSource = pedidos;
-
+                lstPedidos.ItemsSource = RecuperarPedidosConEmpleado(pedidos);
             }
             else
             {
@@ -65,6 +64,43 @@ namespace DoughMinder___Client.Vista
                 lblPedidosError.Visibility = Visibility.Visible;
                 cmbEstado.IsEnabled = false;
             }
+        }
+
+        private List<Pedido> RecuperarPedidosConEmpleado(List<Pedido> pedidos)
+        {
+            foreach (Pedido pedido in pedidos)
+            {
+                string empleado = RecuperarEmpleado(pedido.Usuario);
+                pedido.Usuario = empleado;
+            }
+
+            return pedidos;
+        }
+
+        private string RecuperarEmpleado(string usuario)
+        {
+            EmpleadoClient empleadoClient = new EmpleadoClient();
+            Empleado empleado = new Empleado();
+
+            try
+            {
+                empleado = empleadoClient.BuscarEmpleado(usuario);
+
+                if (empleado == null)
+                {
+                    MostrarMensajeSinConexionBase();
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+            catch (CommunicationException ex)
+            {
+                MostrarMensajeSinConexionServidor();
+            }
+
+            return empleado.Nombre + " " + empleado.Paterno + " " + empleado.Materno + "(" + empleado.Usuario + ")";
         }
 
         private List<Pedido> RecuperarPedidos()
@@ -83,19 +119,17 @@ namespace DoughMinder___Client.Vista
             }
             catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
             catch (CommunicationException ex)
             {
-                Console.WriteLine(ex.Message);
                 MostrarMensajeSinConexionServidor();
             }
 
             return pedidos;
         }
 
-        
+
 
         private void TxtbBuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -126,20 +160,18 @@ namespace DoughMinder___Client.Vista
 
         private List<Pedido> FiltrarPedidos(List<Pedido> listaPedidos, string busqueda)
         {
-            List<Pedido> pedidos = new List<Pedido>();
-
             if (!string.IsNullOrEmpty(busqueda))
             {
-                var pedidosFiltrados = listaPedidos.Where(pedido => pedido.Clave.ToLower().Contains(busqueda) || pedido.Fecha.ToString().ToLower().Contains(busqueda) || pedido.Estado.ToLower().Contains(busqueda)).ToList();
-                pedidos = pedidosFiltrados.ToList();
+                var pedidosFiltrados = listaPedidos.Where(pedido => pedido.Clave.ToLower().Contains(busqueda) || pedido.Fecha.ToString().ToLower().Contains(busqueda) || pedido.Estado.ToLower().Contains(busqueda) || pedido.Usuario.ToLower().Contains(busqueda)).ToList();
+                listaPedidos = pedidosFiltrados.ToList();
             }
 
-            return pedidos;
+            return listaPedidos;
         }
 
         private void BtnAtras_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MostrarVentanaMenuPrincipal();
         }
 
         private void ImgRealizarPedido_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -148,7 +180,7 @@ namespace DoughMinder___Client.Vista
             NavigationService.Navigate(registroPedido);
         }
 
-        private void BtnModificar_Click(object sender, RoutedEventArgs e)
+        private void BtnVerDetalles_Click(object sender, RoutedEventArgs e)
         {
             Button btnModificar = sender as Button;
 
@@ -158,7 +190,7 @@ namespace DoughMinder___Client.Vista
 
                 if (pedido != null)
                 {
-                    MostrarVentanaModificacionPedido(pedido.Clave);
+                    MostrarVentanaPedidoVista(pedido.Clave);
                 }
             }
         }
@@ -182,8 +214,8 @@ namespace DoughMinder___Client.Vista
             }
             else
             {
-                lstPedidos.Visibility=Visibility.Visible;
-                lblPedidosError.Visibility=Visibility.Collapsed;
+                lstPedidos.Visibility = Visibility.Visible;
+                lblPedidosError.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -238,10 +270,16 @@ namespace DoughMinder___Client.Vista
             conexionFallidaBase.Show();
         }
 
-        private void MostrarVentanaModificacionPedido(string clave)
+        private void MostrarVentanaPedidoVista(string clave)
         {
-            ModificacionPedido modificacionPedido = new ModificacionPedido(clave);          
-            NavigationService.Navigate(modificacionPedido);
+            PedidoVista vistaPedido = new PedidoVista(clave);
+            NavigationService.Navigate(vistaPedido);
+        }
+
+        private void MostrarVentanaMenuPrincipal()
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            NavigationService.Navigate(menuPrincipal);
         }
     }
 }

@@ -974,6 +974,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private string DireccionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DoughMinder___Client.DoughMinderServicio.Empleado EmpleadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -993,6 +996,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TipoEntregaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsuarioField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1039,6 +1045,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.DireccionField, value) != true)) {
                     this.DireccionField = value;
                     this.RaisePropertyChanged("Direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DoughMinder___Client.DoughMinderServicio.Empleado Empleado {
+            get {
+                return this.EmpleadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpleadoField, value) != true)) {
+                    this.EmpleadoField = value;
+                    this.RaisePropertyChanged("Empleado");
                 }
             }
         }
@@ -1134,6 +1153,333 @@ namespace DoughMinder___Client.DoughMinderServicio {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Usuario {
+            get {
+                return this.UsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
+                    this.UsuarioField = value;
+                    this.RaisePropertyChanged("Usuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://schemas.datacontract.org/2004/07/Clases")]
+    [System.SerializableAttribute()]
+    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContraseñaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DireccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdPuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DoughMinder___Client.DoughMinderServicio.Pedido[] PedidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DoughMinder___Client.DoughMinderServicio.Puesto PuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelefonoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsuarioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Contraseña {
+            get {
+                return this.ContraseñaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
+                    this.ContraseñaField = value;
+                    this.RaisePropertyChanged("Contraseña");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Correo {
+            get {
+                return this.CorreoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
+                    this.CorreoField = value;
+                    this.RaisePropertyChanged("Correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Direccion {
+            get {
+                return this.DireccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DireccionField, value) != true)) {
+                    this.DireccionField = value;
+                    this.RaisePropertyChanged("Direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdPuesto {
+            get {
+                return this.IdPuestoField;
+            }
+            set {
+                if ((this.IdPuestoField.Equals(value) != true)) {
+                    this.IdPuestoField = value;
+                    this.RaisePropertyChanged("IdPuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Materno {
+            get {
+                return this.MaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaternoField, value) != true)) {
+                    this.MaternoField = value;
+                    this.RaisePropertyChanged("Materno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Paterno {
+            get {
+                return this.PaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaternoField, value) != true)) {
+                    this.PaternoField = value;
+                    this.RaisePropertyChanged("Paterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DoughMinder___Client.DoughMinderServicio.Pedido[] Pedido {
+            get {
+                return this.PedidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PedidoField, value) != true)) {
+                    this.PedidoField = value;
+                    this.RaisePropertyChanged("Pedido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DoughMinder___Client.DoughMinderServicio.Puesto Puesto {
+            get {
+                return this.PuestoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PuestoField, value) != true)) {
+                    this.PuestoField = value;
+                    this.RaisePropertyChanged("Puesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Usuario {
+            get {
+                return this.UsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
+                    this.UsuarioField = value;
+                    this.RaisePropertyChanged("Usuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Puesto", Namespace="http://schemas.datacontract.org/2004/07/Clases")]
+    [System.SerializableAttribute()]
+    public partial class Puesto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DoughMinder___Client.DoughMinderServicio.Empleado[] EmpleadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdPuestoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Puesto1Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DoughMinder___Client.DoughMinderServicio.Empleado[] Empleado {
+            get {
+                return this.EmpleadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpleadoField, value) != true)) {
+                    this.EmpleadoField = value;
+                    this.RaisePropertyChanged("Empleado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdPuesto {
+            get {
+                return this.IdPuestoField;
+            }
+            set {
+                if ((this.IdPuestoField.Equals(value) != true)) {
+                    this.IdPuestoField = value;
+                    this.RaisePropertyChanged("IdPuesto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Puesto1 {
+            get {
+                return this.Puesto1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Puesto1Field, value) != true)) {
+                    this.Puesto1Field = value;
+                    this.RaisePropertyChanged("Puesto1");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1152,6 +1498,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ClaveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> CostoTotalField;
@@ -1178,6 +1527,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Clave {
+            get {
+                return this.ClaveField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClaveField, value) != true)) {
+                    this.ClaveField = value;
+                    this.RaisePropertyChanged("Clave");
+                }
             }
         }
         
@@ -1282,6 +1644,9 @@ namespace DoughMinder___Client.DoughMinderServicio {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdProveedorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1315,6 +1680,19 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
                 }
             }
         }
@@ -1489,304 +1867,6 @@ namespace DoughMinder___Client.DoughMinderServicio {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://schemas.datacontract.org/2004/07/Clases")]
-    [System.SerializableAttribute()]
-    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContraseñaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CorreoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DireccionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> EstadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> IdPuestoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MaternoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PaternoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DoughMinder___Client.DoughMinderServicio.Puesto PuestoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RFCField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelefonoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsuarioField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Contraseña {
-            get {
-                return this.ContraseñaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
-                    this.ContraseñaField = value;
-                    this.RaisePropertyChanged("Contraseña");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Correo {
-            get {
-                return this.CorreoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
-                    this.CorreoField = value;
-                    this.RaisePropertyChanged("Correo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Direccion {
-            get {
-                return this.DireccionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DireccionField, value) != true)) {
-                    this.DireccionField = value;
-                    this.RaisePropertyChanged("Direccion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Estado {
-            get {
-                return this.EstadoField;
-            }
-            set {
-                if ((this.EstadoField.Equals(value) != true)) {
-                    this.EstadoField = value;
-                    this.RaisePropertyChanged("Estado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> IdPuesto {
-            get {
-                return this.IdPuestoField;
-            }
-            set {
-                if ((this.IdPuestoField.Equals(value) != true)) {
-                    this.IdPuestoField = value;
-                    this.RaisePropertyChanged("IdPuesto");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Materno {
-            get {
-                return this.MaternoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MaternoField, value) != true)) {
-                    this.MaternoField = value;
-                    this.RaisePropertyChanged("Materno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Paterno {
-            get {
-                return this.PaternoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PaternoField, value) != true)) {
-                    this.PaternoField = value;
-                    this.RaisePropertyChanged("Paterno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DoughMinder___Client.DoughMinderServicio.Puesto Puesto {
-            get {
-                return this.PuestoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PuestoField, value) != true)) {
-                    this.PuestoField = value;
-                    this.RaisePropertyChanged("Puesto");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RFC {
-            get {
-                return this.RFCField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
-                    this.RFCField = value;
-                    this.RaisePropertyChanged("RFC");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Telefono {
-            get {
-                return this.TelefonoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
-                    this.TelefonoField = value;
-                    this.RaisePropertyChanged("Telefono");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Usuario {
-            get {
-                return this.UsuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
-                    this.UsuarioField = value;
-                    this.RaisePropertyChanged("Usuario");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Puesto", Namespace="http://schemas.datacontract.org/2004/07/Clases")]
-    [System.SerializableAttribute()]
-    public partial class Puesto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DoughMinder___Client.DoughMinderServicio.Empleado[] EmpleadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdPuestoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Puesto1Field;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DoughMinder___Client.DoughMinderServicio.Empleado[] Empleado {
-            get {
-                return this.EmpleadoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmpleadoField, value) != true)) {
-                    this.EmpleadoField = value;
-                    this.RaisePropertyChanged("Empleado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdPuesto {
-            get {
-                return this.IdPuestoField;
-            }
-            set {
-                if ((this.IdPuestoField.Equals(value) != true)) {
-                    this.IdPuestoField = value;
-                    this.RaisePropertyChanged("IdPuesto");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Puesto1 {
-            get {
-                return this.Puesto1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Puesto1Field, value) != true)) {
-                    this.Puesto1Field = value;
-                    this.RaisePropertyChanged("Puesto1");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Login", Namespace="http://schemas.datacontract.org/2004/07/Clases.Contratos")]
     [System.SerializableAttribute()]
     public partial class Login : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1907,6 +1987,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/RecuperarInsumosDeReceta", ReplyAction="http://tempuri.org/IInsumo/RecuperarInsumosDeRecetaResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, float>> RecuperarInsumosDeRecetaAsync(int idReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/ActualizarCantidadInsumos", ReplyAction="http://tempuri.org/IInsumo/ActualizarCantidadInsumosResponse")]
+        int ActualizarCantidadInsumos(DoughMinder___Client.DoughMinderServicio.Insumo[] insumos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumo/ActualizarCantidadInsumos", ReplyAction="http://tempuri.org/IInsumo/ActualizarCantidadInsumosResponse")]
+        System.Threading.Tasks.Task<int> ActualizarCantidadInsumosAsync(DoughMinder___Client.DoughMinderServicio.Insumo[] insumos);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1991,6 +2077,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, float>> RecuperarInsumosDeRecetaAsync(int idReceta) {
             return base.Channel.RecuperarInsumosDeRecetaAsync(idReceta);
         }
+        
+        public int ActualizarCantidadInsumos(DoughMinder___Client.DoughMinderServicio.Insumo[] insumos) {
+            return base.Channel.ActualizarCantidadInsumos(insumos);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarCantidadInsumosAsync(DoughMinder___Client.DoughMinderServicio.Insumo[] insumos) {
+            return base.Channel.ActualizarCantidadInsumosAsync(insumos);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2032,6 +2126,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas", ReplyAction="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta[]> RecuperarRecetasCompletasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarInsumosPorReceta", ReplyAction="http://tempuri.org/IReceta/RecuperarInsumosPorRecetaResponse")]
+        DoughMinder___Client.DoughMinderServicio.InsumoReceta[] RecuperarInsumosPorReceta(int idReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceta/RecuperarInsumosPorReceta", ReplyAction="http://tempuri.org/IReceta/RecuperarInsumosPorRecetaResponse")]
+        System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.InsumoReceta[]> RecuperarInsumosPorRecetaAsync(int idReceta);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2107,6 +2207,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.Receta[]> RecuperarRecetasCompletasAsync() {
             return base.Channel.RecuperarRecetasCompletasAsync();
+        }
+        
+        public DoughMinder___Client.DoughMinderServicio.InsumoReceta[] RecuperarInsumosPorReceta(int idReceta) {
+            return base.Channel.RecuperarInsumosPorReceta(idReceta);
+        }
+        
+        public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.InsumoReceta[]> RecuperarInsumosPorRecetaAsync(int idReceta) {
+            return base.Channel.RecuperarInsumosPorRecetaAsync(idReceta);
         }
     }
     
@@ -2222,6 +2330,12 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/RecuperarProductosPorPedido", ReplyAction="http://tempuri.org/IProducto/RecuperarProductosPorPedidoResponse")]
         System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.PedidoProducto[]> RecuperarProductosPorPedidoAsync(int idPedido);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/ActualizarCantidadProductos", ReplyAction="http://tempuri.org/IProducto/ActualizarCantidadProductosResponse")]
+        int ActualizarCantidadProductos(DoughMinder___Client.DoughMinderServicio.Producto[] productos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProducto/ActualizarCantidadProductos", ReplyAction="http://tempuri.org/IProducto/ActualizarCantidadProductosResponse")]
+        System.Threading.Tasks.Task<int> ActualizarCantidadProductosAsync(DoughMinder___Client.DoughMinderServicio.Producto[] productos);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2313,6 +2427,14 @@ namespace DoughMinder___Client.DoughMinderServicio {
         
         public System.Threading.Tasks.Task<DoughMinder___Client.DoughMinderServicio.PedidoProducto[]> RecuperarProductosPorPedidoAsync(int idPedido) {
             return base.Channel.RecuperarProductosPorPedidoAsync(idPedido);
+        }
+        
+        public int ActualizarCantidadProductos(DoughMinder___Client.DoughMinderServicio.Producto[] productos) {
+            return base.Channel.ActualizarCantidadProductos(productos);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarCantidadProductosAsync(DoughMinder___Client.DoughMinderServicio.Producto[] productos) {
+            return base.Channel.ActualizarCantidadProductosAsync(productos);
         }
     }
     
@@ -2485,10 +2607,10 @@ namespace DoughMinder___Client.DoughMinderServicio {
     public interface ISolicitud {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISolicitud/RegistrarSolicitud", ReplyAction="http://tempuri.org/ISolicitud/RegistrarSolicitudResponse")]
-        int RegistrarSolicitud(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos);
+        string RegistrarSolicitud(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISolicitud/RegistrarSolicitud", ReplyAction="http://tempuri.org/ISolicitud/RegistrarSolicitudResponse")]
-        System.Threading.Tasks.Task<int> RegistrarSolicitudAsync(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos);
+        System.Threading.Tasks.Task<string> RegistrarSolicitudAsync(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISolicitud/RecuperarSolicitudes", ReplyAction="http://tempuri.org/ISolicitud/RecuperarSolicitudesResponse")]
         DoughMinder___Client.DoughMinderServicio.Solicitud[] RecuperarSolicitudes();
@@ -2524,11 +2646,11 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 base(binding, remoteAddress) {
         }
         
-        public int RegistrarSolicitud(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos) {
+        public string RegistrarSolicitud(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos) {
             return base.Channel.RegistrarSolicitud(solicitud, solicitudProductos);
         }
         
-        public System.Threading.Tasks.Task<int> RegistrarSolicitudAsync(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos) {
+        public System.Threading.Tasks.Task<string> RegistrarSolicitudAsync(DoughMinder___Client.DoughMinderServicio.Solicitud solicitud, DoughMinder___Client.DoughMinderServicio.SolicitudProducto[] solicitudProductos) {
             return base.Channel.RegistrarSolicitudAsync(solicitud, solicitudProductos);
         }
         
@@ -2546,10 +2668,10 @@ namespace DoughMinder___Client.DoughMinderServicio {
     public interface IPedido {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/RegistrarPedido", ReplyAction="http://tempuri.org/IPedido/RegistrarPedidoResponse")]
-        int RegistrarPedido(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos);
+        string RegistrarPedido(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/RegistrarPedido", ReplyAction="http://tempuri.org/IPedido/RegistrarPedidoResponse")]
-        System.Threading.Tasks.Task<int> RegistrarPedidoAsync(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos);
+        System.Threading.Tasks.Task<string> RegistrarPedidoAsync(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPedido/RecuperarPedidos", ReplyAction="http://tempuri.org/IPedido/RecuperarPedidosResponse")]
         DoughMinder___Client.DoughMinderServicio.Pedido[] RecuperarPedidos();
@@ -2609,11 +2731,11 @@ namespace DoughMinder___Client.DoughMinderServicio {
                 base(binding, remoteAddress) {
         }
         
-        public int RegistrarPedido(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos) {
+        public string RegistrarPedido(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos) {
             return base.Channel.RegistrarPedido(pedido, pedidoProductos);
         }
         
-        public System.Threading.Tasks.Task<int> RegistrarPedidoAsync(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos) {
+        public System.Threading.Tasks.Task<string> RegistrarPedidoAsync(DoughMinder___Client.DoughMinderServicio.Pedido pedido, DoughMinder___Client.DoughMinderServicio.PedidoProducto[] pedidoProductos) {
             return base.Channel.RegistrarPedidoAsync(pedido, pedidoProductos);
         }
         

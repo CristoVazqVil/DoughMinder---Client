@@ -12,6 +12,9 @@
         <Image x:Name="btnOK" Source="/Recursos/BotonVerde.png" Margin="162,172,132,-171" MouseDown="CerrarMensaje" MouseEnter="CambiarAzul" MouseLeave="Restaurar" />
         <Label Content="OK" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="188,180,159,-163" VerticalContentAlignment="Top" Width="103" Foreground="White"/>
         <Label Content="Registro exitoso" FontSize="25" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="10,4,231,3" VerticalContentAlignment="Top" Foreground="White"/>
-        <Label Content="Se ha registrado exitosamente" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="128,100,39,-84" VerticalContentAlignment="Top" Foreground="Black" RenderTransformOrigin="0.395,-1.299"/>
+        <Label x:Name="lblContenido" FontSize="20" IsEnabled="False" IsHitTestVisible="False" HorizontalContentAlignment="Center" Margin="128,100,16,-111" VerticalContentAlignment="Top" Foreground="Black" RenderTransformOrigin="0.395,-1.299">
+            <TextBlock x:Name="txtbMensaje" TextWrapping="Wrap" Text="Se ha registrado exitosamente" Height="79"/>
+        </Label>
+
     </Grid>
 </Window>

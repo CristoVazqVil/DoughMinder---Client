@@ -123,6 +123,12 @@
   <wsdl:message name="IInsumo_RecuperarInsumosDeReceta_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarInsumosDeRecetaResponse" />
   </wsdl:message>
+  <wsdl:message name="IInsumo_ActualizarCantidadInsumos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCantidadInsumos" />
+  </wsdl:message>
+  <wsdl:message name="IInsumo_ActualizarCantidadInsumos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCantidadInsumosResponse" />
+  </wsdl:message>
   <wsdl:message name="IReceta_GuardarReceta_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarReceta" />
   </wsdl:message>
@@ -158,6 +164,12 @@
   </wsdl:message>
   <wsdl:message name="IReceta_RecuperarRecetasCompletas_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarRecetasCompletasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarInsumosPorReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInsumosPorReceta" />
+  </wsdl:message>
+  <wsdl:message name="IReceta_RecuperarInsumosPorReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInsumosPorRecetaResponse" />
   </wsdl:message>
   <wsdl:message name="IMovimiento_RegistrarMovimiento_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarMovimiento" />
@@ -218,6 +230,12 @@
   </wsdl:message>
   <wsdl:message name="IProducto_RecuperarProductosPorPedido_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProductosPorPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_ActualizarCantidadProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCantidadProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProducto_ActualizarCantidadProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCantidadProductosResponse" />
   </wsdl:message>
   <wsdl:message name="IEmpleado_GuardarEmpleado_InputMessage">
     <wsdl:part name="parameters" element="tns:GuardarEmpleado" />
@@ -350,6 +368,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IInsumo/RecuperarInsumosDeReceta" message="tns:IInsumo_RecuperarInsumosDeReceta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInsumo/RecuperarInsumosDeRecetaResponse" message="tns:IInsumo_RecuperarInsumosDeReceta_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ActualizarCantidadInsumos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumo/ActualizarCantidadInsumos" message="tns:IInsumo_ActualizarCantidadInsumos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumo/ActualizarCantidadInsumosResponse" message="tns:IInsumo_ActualizarCantidadInsumos_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IReceta">
     <wsdl:operation name="GuardarReceta">
@@ -375,6 +397,10 @@
     <wsdl:operation name="RecuperarRecetasCompletas">
       <wsdl:input wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasCompletas" message="tns:IReceta_RecuperarRecetasCompletas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarRecetasCompletasResponse" message="tns:IReceta_RecuperarRecetasCompletas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInsumosPorReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceta/RecuperarInsumosPorReceta" message="tns:IReceta_RecuperarInsumosPorReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceta/RecuperarInsumosPorRecetaResponse" message="tns:IReceta_RecuperarInsumosPorReceta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IMovimiento">
@@ -419,6 +445,10 @@
     <wsdl:operation name="RecuperarProductosPorPedido">
       <wsdl:input wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosPorPedido" message="tns:IProducto_RecuperarProductosPorPedido_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProducto/RecuperarProductosPorPedidoResponse" message="tns:IProducto_RecuperarProductosPorPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCantidadProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProducto/ActualizarCantidadProductos" message="tns:IProducto_ActualizarCantidadProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProducto/ActualizarCantidadProductosResponse" message="tns:IProducto_ActualizarCantidadProductos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IEmpleado">
@@ -565,6 +595,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ActualizarCantidadInsumos">
+      <soap12:operation soapAction="http://tempuri.org/IInsumo/ActualizarCantidadInsumos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IReceta" type="tns:IReceta">
     <wsp:PolicyReference URI="#NetTcpBinding_IReceta_policy" />
@@ -616,6 +655,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarRecetasCompletas">
       <soap12:operation soapAction="http://tempuri.org/IReceta/RecuperarRecetasCompletas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInsumosPorReceta">
+      <soap12:operation soapAction="http://tempuri.org/IReceta/RecuperarInsumosPorReceta" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -714,6 +762,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarProductosPorPedido">
       <soap12:operation soapAction="http://tempuri.org/IProducto/RecuperarProductosPorPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCantidadProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProducto/ActualizarCantidadProductos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -53,8 +53,8 @@
                 </Grid.RowDefinitions>
 
                 <ComboBox Grid.Column="0" Grid.Row="0" x:Name="cmbEstado" Style="{DynamicResource ComboBoxStyle1}" Height="25" VerticalAlignment="Center" SelectionChanged="CmbEstado_SelectionChanged"/>
-                
-                <Label Grid.Column="2" Grid.Row="0" x:Name="lblBuscar" Opacity="0.5" Style="{DynamicResource LabelContentStyle}" Height="28" VerticalAlignment="Center" Content="Buscar por clave o fecha"/>
+
+                <Label Grid.Column="2" Grid.Row="0" x:Name="lblBuscar" Opacity="0.5" Style="{DynamicResource LabelContentStyle}" Height="28" VerticalAlignment="Center" Content="Buscar por clave, fecha o empleado"/>
                 <TextBox Grid.Column="2" Grid.Row="0" x:Name="txtbBuscar" Background="{x:Null}" Style="{DynamicResource TextBoxStyle1}" Height="28" VerticalAlignment="Center" TextChanged="TxtbBuscar_TextChanged"/>
 
                 <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" x:Name="lblPedidosError" Style="{DynamicResource LabelContentStyle}" Content="No hay pedidos registrados" FontSize="18" FontWeight="Bold" Visibility="Collapsed"/>
@@ -66,13 +66,14 @@
                                 <TextBlock Text="{Binding Clave}" Margin="0,0,10,0"/>
                                 <TextBlock Text="{Binding Fecha}" Margin="0,0,10,0"/>
                                 <TextBlock Text="{Binding Estado}" Margin="0,0,10,0"/>
-                                <Button x:Name="btnModificar" Style="{DynamicResource ButtonStyle1}" Content="Modificar" Click="BtnModificar_Click"/>
+                                <TextBlock Text="{Binding Usuario}" Margin="0,0,10,0"/>
+                                <Button x:Name="btnVerDetalles" Style="{DynamicResource ButtonStyle1}" Content="Ver detalles" Click="BtnVerDetalles_Click"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                
+
             </Grid>
         </ScrollViewer>
 

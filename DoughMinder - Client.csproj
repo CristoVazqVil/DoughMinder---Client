@@ -104,6 +104,9 @@
     <Compile Include="Vista\Emergentes\ErrorGenerarPDF.xaml.cs">
       <DependentUpon>ErrorGenerarPDF.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Emergentes\InformacionIncorrecta.xaml.cs">
+      <DependentUpon>InformacionIncorrecta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Emergentes\InsumoExistente.xaml.cs">
       <DependentUpon>InsumoExistente.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,9 @@
     </Compile>
     <Compile Include="Vista\ModificacionRecetas.xaml.cs">
       <DependentUpon>ModificacionRecetas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\PedidoVista.xaml.cs">
+      <DependentUpon>PedidoVista.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vista\RegistroEmpleado.xaml.cs">
       <DependentUpon>RegistroEmpleado.xaml</DependentUpon>
@@ -272,6 +278,10 @@
     <Page Include="Vista\Emergentes\ErrorGenerarPDF.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\Emergentes\InformacionIncorrecta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vista\Emergentes\InsumoExistente.xaml">
       <SubType>Designer</SubType>
@@ -370,6 +380,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Vista\PedidoVista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vista\RegistroEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -430,6 +444,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Insumo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.InsumoReceta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\DoughMinderServicio\DoughMinder___Client.DoughMinderServicio.Login.datasource">

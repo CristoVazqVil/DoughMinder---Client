@@ -103,7 +103,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="/Recursos/PedidosIcon.png" Grid.Column="0" Width="40"/>
-                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Pedidos" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
+                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Pedidos" HorizontalAlignment="Left" MouseDown="AbrirPedidos" VerticalAlignment="Center"/>
             </Grid>
 
             <Grid x:Name="gpSalir" Grid.Row="8">
