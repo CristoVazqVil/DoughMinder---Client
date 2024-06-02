@@ -93,6 +93,15 @@ namespace DoughMinder___Client.Vista
                 Image imgEliminar = ObtenerImageEliminar(i);
                 Label lblCosto = ObtenerLabelCostoProducto(i);
 
+                string nombreComboBoxCantidad = "cmbCantidad" + i;
+                ComboBox cmbCantidad = FindName(nombreComboBoxCantidad) as ComboBox;
+
+                string nombreEliminar = "imgEliminar" + i;
+                Image imgEliminar = FindName(nombreEliminar) as Image;
+
+                string nombreCosto = "lblCosto" + i;
+                Label lblCosto = FindName(nombreCosto) as Label;
+
                 if (cmbProducto != null)
                 {
                     PedidoProducto productoActual = productosRecuperados[i];
@@ -107,6 +116,12 @@ namespace DoughMinder___Client.Vista
                         int posicionCantidad = BuscarCantidad(cmbCantidad, (int)productoActual.Cantidad);
                         cmbCantidad.SelectedIndex = posicionCantidad;
                     }
+                }
+
+                if (i > 0)
+                {
+                    imgEliminar.Visibility = Visibility.Visible;
+                    lblCosto.Visibility = Visibility.Visible;
                 }
 
                 if (i > 0)
@@ -640,6 +655,22 @@ namespace DoughMinder___Client.Vista
                 Label lblCosto = ObtenerLabelCostoProducto(ultimaFila);
                 lblCosto.Visibility = Visibility.Visible;
 
+                string nombreEliminar = "imgEliminar" + ultimaFila.ToString();
+                Image image = this.FindName(nombreEliminar) as Image;
+
+                if (image != null)
+                {
+                    image.Visibility = Visibility.Visible;
+                }
+
+                string nombreCosto = "lblCosto" + ultimaFila.ToString();
+                Label label = FindName(nombreCosto) as Label;
+
+                if (label != null)
+                {
+                    label.Visibility = Visibility.Visible;
+                }
+
                 ultimaFila++;
             }
             else
@@ -849,6 +880,39 @@ namespace DoughMinder___Client.Vista
             }
 
             return esValido;
+        }
+
+        private void CancelarPedido()
+        {
+            System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("¿Seguro que desea cancelar el pedido? \nNo se podrá revertir el cambio.", "Cancelar pedido", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                PedidoClient pedidoClient = new PedidoClient();
+                int codigo = 0;
+
+                try
+                {
+                    codigo = pedidoClient.CancelarPedido(clave);
+                    if (codigo > 0)
+                    {
+                        MostrarMensajeModificacionExitosa();
+                        MostrarMenuPedidos();
+                    }
+                    else
+                    {
+                        MostrarMensajeSinConexionBase();
+                    }
+                }
+                catch (TimeoutException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+                catch (CommunicationException ex)
+                {
+                    MostrarMensajeSinConexionServidor();
+                }
+            }
         }
 
         private Producto BuscarProducto(PedidoProducto pedidoProducto)

@@ -66,7 +66,7 @@ namespace DoughMinder___Client.Vista
                     if (codigo > 0)
                     {
                         MostrarMensajeModificacionExitosa();
-                        NavigationService.GoBack();
+                        this.NavigationService.GoBack();
                     }
                     else
                     {
@@ -115,7 +115,7 @@ namespace DoughMinder___Client.Vista
                     if (codigo > 0)
                     {
                         MostrarMensajeDeshabilitacionExitosa();
-                        NavigationService.GoBack();
+                        this.NavigationService.GoBack();
                     }
                     else
                     {
