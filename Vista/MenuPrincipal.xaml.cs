@@ -1,4 +1,5 @@
 ﻿using DoughMinder___Client.DoughMinderServicio;
+using DoughMinder___Client.Recursos.Singleton;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,7 @@ namespace DoughMinder___Client.Vista
         {
             InitializeComponent();
             SetProductos();
+            ValidarPuesto();
         }
 
         private void SetProductos()
@@ -42,11 +44,6 @@ namespace DoughMinder___Client.Vista
 
             foreach (Producto producto in productos)
             {
-                /*if (producto.Foto == null)
-                {
-                    producto.Foto = "/Recursos/ProductosBlack.png";
-                }*/
-
                 Image image = new Image();
 
                 BitmapImage bitmapImage = new BitmapImage();
@@ -141,10 +138,36 @@ namespace DoughMinder___Client.Vista
             System.Diagnostics.Process.Start(appName);
         }
 
-        private void AbrirPedidos(object sender, MouseButtonEventArgs e)
+        private void ValidarPuesto()
         {
-            MenuPedidos pedidos = new MenuPedidos();
-            this.NavigationService.Navigate(pedidos);
+            int puesto = SesionSingleton.Instance.Puesto;
+
+            switch (puesto)
+            {
+                case 1:
+                    gpPedidos.Visibility = Visibility.Collapsed;
+                    gpReceta.Visibility = Visibility.Collapsed;
+                    break;
+                case 2:
+                    gpEmpleados.Visibility = Visibility.Collapsed;
+                    imgInventario.Visibility = Visibility.Collapsed;
+                    gpFinanzas.Visibility = Visibility.Collapsed;
+                    gpInsumo.Visibility = Visibility.Collapsed;
+                    gpProveedor.Visibility = Visibility.Collapsed;
+                    gpProductos.Visibility = Visibility.Collapsed;
+                    break;
+                case 3:
+                    gpEmpleados.Visibility = Visibility.Collapsed;
+                    imgInventario.Visibility = Visibility.Collapsed;
+                    gpInsumo.Visibility = Visibility.Collapsed;
+                    gpProveedor.Visibility = Visibility.Collapsed;
+                    gpProductos.Visibility = Visibility.Collapsed;
+                    gpReceta.Visibility = Visibility.Collapsed;
+                    break;
+                default:
+                    break;
+            }
         }
+
     }
 }

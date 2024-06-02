@@ -26,8 +26,8 @@
 
 
         <Grid x:Name="registrar" Margin="0,129,622,261" MouseDown="AbrirRegistroProductos" >
-            <Image Source="/Recursos/Agregar.png" Margin="-2,13,128,15" />
-            <Label Content="Registrar &#xD;&#xA;Producto" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
+            <Image Source="/Recursos/Agregar.png" Name="imgRegistrar" Margin="-2,13,128,15" />
+            <Label Content="Registrar &#xD;&#xA;Producto" Name="lblRegistrar" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="48,-1,0,0" FontSize="20" Width="113" Height="75" />
         </Grid>
 
 

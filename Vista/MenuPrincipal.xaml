@@ -72,8 +72,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/Recursos/Agregar.png" Grid.Column="0" Width="40"/>
-                <Label Content="Recetas" Grid.Column="1" MouseDown="AbrirRecetas" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
+                <Image Name="imgRecetas" Source="/Recursos/Receta.png" Grid.Column="0" Margin="6,0,6,-4"/>
+                <Label Name="lblRecetas" Content="Recetas" Grid.Column="1" MouseDown="AbrirRecetas" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
             </Grid>
 
             <Grid x:Name="gpProveedor" Grid.Row="5">
@@ -82,8 +82,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/Recursos/ProveedoresIcon.png" Grid.Column="0" Width="40"/>
-                <Label Content="Proveedores" Grid.Column="1" MouseDown="AbrirProveedores" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
+                <Image Name="imgProveedores" Source="/Recursos/ProveedoresIcon.png" Grid.Column="0" Width="40"/>
+                <Label Name="lblProveedores" Content="Proveedores" Grid.Column="1" MouseDown="AbrirProveedores" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="20"/>
             </Grid>
 
             <Grid x:Name="gpFinanzas" Grid.Row="6">
@@ -92,8 +92,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/Recursos/FinanzasIcon.png" Grid.Column="0" Width="40"/>
-                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Finanzas" HorizontalAlignment="Left" MouseDown="AbrirFinanzas" VerticalAlignment="Center"/>
+                <Image Name="imgFinanzas" Source="/Recursos/FinanzasIcon.png" Grid.Column="0" Width="40"/>
+                <Label Name="lblFinanzas" Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Finanzas" HorizontalAlignment="Left" MouseDown="AbrirFinanzas" VerticalAlignment="Center"/>
             </Grid>
 
             <Grid x:Name="gpPedidos" Grid.Row="7">
@@ -102,8 +102,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/Recursos/PedidosIcon.png" Grid.Column="0" Width="40"/>
-                <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Pedidos" HorizontalAlignment="Left" MouseDown="AbrirPedidos" VerticalAlignment="Center"/>
+                <Image Name="imgPedidos" Source="/Recursos/PedidosIcon.png" Grid.Column="0" Width="40"/>
+                <Label Name="lblPedidos" Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Pedidos" HorizontalAlignment="Left" MouseDown="AbrirPedidos" VerticalAlignment="Center"/>
             </Grid>
 
             <Grid x:Name="gpSalir" Grid.Row="8">
@@ -114,7 +114,7 @@
 
                 <Image Source="/Recursos/SalirIcon.png" Grid.Column="0" Width="25"/>
                 <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="AbrirEmpleados" VerticalAlignment="Center"/>
-                <Image Source="/Recursos/Inventario.png" Grid.Column="1" Width="40" Margin="170,0,10,0" MouseDown="AbrirInventario"/>
+                <Image Name="imgInventario" Source="/Recursos/Inventario.png" Grid.Column="1" Width="40" Margin="170,0,10,0" MouseDown="AbrirInventario"/>
                 <Label Style="{DynamicResource LabelColumnStyle}" Grid.Column="1" Content="Salir" HorizontalAlignment="Left" MouseDown="Salir" VerticalAlignment="Center"/>
             </Grid>
         </Grid>

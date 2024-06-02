@@ -1,4 +1,4 @@
-﻿<Page x:Class="DoughMinder___Client.Vista.MenuPedidos"
+﻿ <Page x:Class="DoughMinder___Client.Vista.MenuPedidos"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -35,7 +35,7 @@
             <Image Grid.Column="0" Grid.Row="1" Width="40" Name="btnAtras" Source="/Recursos/FlechaAtras.png" MouseLeftButtonDown="BtnAtras_MouseLeftButtonDown" Cursor="Hand"/>
             <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Style="{DynamicResource LabelColumnStyle}" Content="Ir atrás"/>
             <Image Grid.Column="0" Grid.Row="2" Width="40" Source="/Recursos/Agregar.png" x:Name="imgRealizarPedido" MouseLeftButtonDown="ImgRealizarPedido_MouseLeftButtonDown" Cursor="Hand"/>
-            <Label Grid.Column="1" Grid.Row="2" Content="Realizar &#xD;&#xA;Pedido" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
+            <Label Grid.Column="1" Grid.Row="2" Content="Realizar &#xD;&#xA;Pedido" Name="lblRealizarPedido" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="19" Width="113" Height="62" />
         </Grid>
 
 

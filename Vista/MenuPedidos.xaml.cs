@@ -1,4 +1,5 @@
 ﻿using DoughMinder___Client.DoughMinderServicio;
+using DoughMinder___Client.Recursos.Singleton;
 using DoughMinder___Client.Vista.Emergentes;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace DoughMinder___Client.Vista
             InitializeComponent();
             SetEstados();
             SetPedidos();
+            ValidarPuesto();
         }
 
         private List<Pedido> pedidos;
@@ -84,7 +86,7 @@ namespace DoughMinder___Client.Vista
 
             try
             {
-                empleado = empleadoClient.BuscarEmpleado(usuario);
+                empleado = empleadoClient.BuscarEmpleadoPorUsuario(usuario);
 
                 if (empleado == null)
                 {
@@ -280,6 +282,25 @@ namespace DoughMinder___Client.Vista
         {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             NavigationService.Navigate(menuPrincipal);
+        }
+
+        private void ValidarPuesto()
+        {
+            int puesto = SesionSingleton.Instance.Puesto;
+
+            switch (puesto)
+            {
+                case 1:
+                    break;
+                case 2:
+                    lblRealizarPedido.Visibility = Visibility.Collapsed;
+                    imgRealizarPedido.Visibility= Visibility.Collapsed;
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

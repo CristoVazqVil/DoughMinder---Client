@@ -410,10 +410,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="BuscarEmpleadoPorUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarEmpleadoPorUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="BuscarEmpleadoPorUsuarioResult" nillable="true" type="q29:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GuardarProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="proveedor" nillable="true" type="q29:Proveedor" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="proveedor" nillable="true" type="q30:Proveedor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -432,7 +446,7 @@
   <xs:element name="RecuperarProveedoresResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarProveedoresResult" nillable="true" type="q30:ArrayOfProveedor" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarProveedoresResult" nillable="true" type="q31:ArrayOfProveedor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -453,8 +467,8 @@
   <xs:element name="RegistrarSolicitud">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="solicitud" nillable="true" type="q31:Solicitud" />
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="solicitudProductos" nillable="true" type="q32:ArrayOfSolicitudProducto" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="solicitud" nillable="true" type="q32:Solicitud" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="solicitudProductos" nillable="true" type="q33:ArrayOfSolicitudProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -473,15 +487,15 @@
   <xs:element name="RecuperarSolicitudesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarSolicitudesResult" nillable="true" type="q33:ArrayOfSolicitud" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarSolicitudesResult" nillable="true" type="q34:ArrayOfSolicitud" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegistrarPedido">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="pedido" nillable="true" type="q34:Pedido" />
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="pedidoProductos" nillable="true" type="q35:ArrayOfPedidoProducto" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="pedido" nillable="true" type="q35:Pedido" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="pedidoProductos" nillable="true" type="q36:ArrayOfPedidoProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -500,7 +514,7 @@
   <xs:element name="RecuperarPedidosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarPedidosResult" nillable="true" type="q36:ArrayOfPedido" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarPedidosResult" nillable="true" type="q37:ArrayOfPedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -512,7 +526,7 @@
   <xs:element name="RecuperarPedidosNoCanceladosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarPedidosNoCanceladosResult" nillable="true" type="q37:ArrayOfPedido" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarPedidosNoCanceladosResult" nillable="true" type="q38:ArrayOfPedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -526,7 +540,7 @@
   <xs:element name="RecuperarPedidoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarPedidoResult" nillable="true" type="q38:Pedido" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="RecuperarPedidoResult" nillable="true" type="q39:Pedido" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -547,8 +561,8 @@
   <xs:element name="ModificarPedido">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="pedido" nillable="true" type="q39:Pedido" />
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="productosAgregados" nillable="true" type="q40:ArrayOfPedidoProducto" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="pedido" nillable="true" type="q40:Pedido" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Clases" minOccurs="0" name="productosAgregados" nillable="true" type="q41:ArrayOfPedidoProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -585,7 +599,7 @@
   <xs:element name="RecuperarCuentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Clases.Contratos" minOccurs="0" name="RecuperarCuentaResult" nillable="true" type="q41:Login" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Clases.Contratos" minOccurs="0" name="RecuperarCuentaResult" nillable="true" type="q42:Login" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

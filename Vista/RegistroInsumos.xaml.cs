@@ -63,7 +63,8 @@ namespace DoughMinder___Client.Vista
                     if (codigo == 1)
                     {
                         MostrarMensajeRegistroExitoso();
-                        NavigationService.GoBack();
+                        MenuInsumos insumos = new MenuInsumos();
+                        NavigationService.Navigate(insumos);
                     }
                     else
                     {
@@ -130,7 +131,7 @@ namespace DoughMinder___Client.Vista
         private void AdjuntarImagen(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Archivos de imagen|*.png;*.jpeg|Todos los archivos|*.*";
+            openFileDialog.Filter = "Archivos de imagen|*.png|Todos los archivos|*.*";
             openFileDialog.Title = "Selecciona una imagen";
             openFileDialog.Multiselect = false;
 
@@ -179,7 +180,8 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuInsumos insumos = new MenuInsumos();
+            NavigationService.Navigate(insumos);
         }
 
         private void LimpiarCampos(object sender, MouseButtonEventArgs e)

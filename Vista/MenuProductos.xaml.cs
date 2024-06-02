@@ -1,4 +1,5 @@
 ﻿using DoughMinder___Client.DoughMinderServicio;
+using DoughMinder___Client.Recursos.Singleton;
 using DoughMinder___Client.Vista.Emergentes;
 using System;
 using System.Collections.Generic;
@@ -125,6 +126,27 @@ namespace DoughMinder___Client.Vista
                 string codigoProducto = productoSeleccionado.CodigoProducto;
                 ModificacionProductos modificacionProductos = new ModificacionProductos(codigoProducto);
                 NavigationService.Navigate(modificacionProductos);
+            }
+        }
+
+        private void ValidarPuesto()
+        {
+            int puesto = SesionSingleton.Instance.Puesto;
+
+            switch (puesto)
+            {
+                case 1:
+                    break;
+                case 2:
+                    imgRegistrar.Visibility = Visibility.Collapsed;
+                    lblRegistrar.Visibility = Visibility.Collapsed;
+                    break;
+                case 3:
+                    imgRegistrar.Visibility = Visibility.Collapsed;
+                    lblRegistrar.Visibility = Visibility.Collapsed;
+                    break;
+                default:
+                    break;
             }
         }
     }

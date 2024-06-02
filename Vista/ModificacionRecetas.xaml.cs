@@ -53,7 +53,8 @@ namespace DoughMinder___Client.Vista
                     if (codigo > 0)
                     {
                         MostrarMensajeDeshabilitacionExitosa();
-                        NavigationService.GoBack();
+                        MenuRecetas recetas = new MenuRecetas();
+                        NavigationService.Navigate(recetas);
                     }
                     else
                     {
@@ -113,7 +114,8 @@ namespace DoughMinder___Client.Vista
                     if (codigo > 0)
                     {
                         MostrarMensajeModificacionExitosa();
-                        NavigationService.GoBack();
+                        MenuRecetas recetas = new MenuRecetas();
+                        NavigationService.Navigate(recetas);
                     }
                     else
                     {
@@ -357,7 +359,8 @@ namespace DoughMinder___Client.Vista
 
         private void RegresarVentanaAnterior(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GoBack();
+            MenuRecetas recetas = new MenuRecetas();
+            NavigationService.Navigate(recetas);
         }
 
         private void LimpiarCampos(object sender, MouseButtonEventArgs e)

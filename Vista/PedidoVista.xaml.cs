@@ -118,7 +118,7 @@ namespace DoughMinder___Client.Vista
 
             try
             {
-                empleado = empleadoClient.BuscarEmpleado(usuario);
+                empleado = empleadoClient.BuscarEmpleadoPorUsuario(usuario);
 
                 if (empleado == null)
                 {

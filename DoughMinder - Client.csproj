@@ -606,6 +606,9 @@
     <Compile Include="Vista\Emergentes\SinConexionServidor.xaml.cs">
       <DependentUpon>SinConexionServidor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Inventario.xaml.cs">
+      <DependentUpon>Inventario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vista\MenuEmpleados.xaml.cs">
       <DependentUpon>MenuEmpleados.xaml</DependentUpon>
     </Compile>
@@ -789,6 +792,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vista\Inventario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Vista\MenuEmpleados.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -964,6 +971,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\Inventario.png" />
+    <Resource Include="Recursos\receta.png" />
     <Resource Include="Recursos\InsumosIcon.png" />
     <Resource Include="Recursos\PedidosIcon.png" />
     <Resource Include="Recursos\ProductosBlack.png" />
